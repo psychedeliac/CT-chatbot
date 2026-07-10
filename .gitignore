@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+*.pyc
+.env
+chroma_db/
+scratch/
+*.egg-info/
+.pytest_cache/
+.claude/settings.local.json

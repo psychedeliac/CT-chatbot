@@ -1,0 +1,58 @@
+[
+  {
+    "id": "edu-nerdwallet-article-small-business-merchant-cash-advance-0",
+    "source_type": "educational",
+    "topic": "nerdwallet-article-small-business-merchant-cash-advance",
+    "category": "mca-education",
+    "topic_tags": [
+      "nerdwallet"
+    ],
+    "title": "What Is a Merchant Cash Advance (MCA)? - NerdWallet",
+    "section_heading": "Key Takeaways & When It Makes Sense",
+    "chunk_text": "A Merchant Cash Advance (MCA) is a form of business financing where a provider advances a lump sum of capital in exchange for a portion of the business's future sales. MCAs are one of the most expensive types of business financing, often carrying annual percentage rates (APRs) ranging from 40% to 350%. They are not federally regulated, which can lead to confusing contracts. An MCA might make sense if a business needs fast funding (sometimes same-day), cannot qualify for traditional bank loans, has high sales volume, and can support daily or weekly repayments.",
+    "chunk_tokens": 120,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "edu-nerdwallet-article-small-business-merchant-cash-advance-1",
+    "source_type": "educational",
+    "topic": "nerdwallet-article-small-business-merchant-cash-advance",
+    "category": "mca-education",
+    "topic_tags": [
+      "nerdwallet"
+    ],
+    "title": "What Is a Merchant Cash Advance (MCA)? - NerdWallet",
+    "section_heading": "How an MCA Works and Repayment Mechanisms",
+    "chunk_text": "In a merchant cash advance, the provider reviews recent sales data and deposits the advance into the business account. The business repays the advance automatically through one of two methods: 1) Split-funding (retrieval via a fixed percentage of daily credit card sales, known as the holdback rate, typically 10% to 20%), or 2) ACH bank withdrawals (fixed daily or weekly debits directly from the business bank account). Repayments continue automatically until the total repayment amount—which includes the original advance amount plus the factor rate fees—is fully satisfied.",
+    "chunk_tokens": 120,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "edu-nerdwallet-article-small-business-merchant-cash-advance-2",
+    "source_type": "educational",
+    "topic": "nerdwallet-article-small-business-merchant-cash-advance",
+    "category": "mca-education",
+    "topic_tags": [
+      "nerdwallet"
+    ],
+    "title": "What Is a Merchant Cash Advance (MCA)? - NerdWallet",
+    "section_heading": "Understanding Factor Rates and MCA Cost Calculations",
+    "chunk_text": "The cost of a Merchant Cash Advance is calculated using a \"factor rate\" rather than an interest rate. A factor rate is expressed as a decimal multiplier (typically ranging from 1.1 to 1.5) and is applied directly to the principal advance amount. For example, if a business receives a $10,000 advance with a factor rate of 1.2, the total repayment amount is $12,000 ($10,000 x 1.2), meaning the fee is $2,000. Because the factor rate fee is charged upfront on the entire principal, paying off the advance early does not reduce the fee, resulting in extremely high equivalent APRs.",
+    "chunk_tokens": 130,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "edu-nerdwallet-article-small-business-merchant-cash-advance-3",
+    "source_type": "educational",
+    "topic": "nerdwallet-article-small-business-merchant-cash-advance",
+    "category": "mca-education",
+    "topic_tags": [
+      "nerdwallet"
+    ],
+    "title": "What Is a Merchant Cash Advance (MCA)? - NerdWallet",
+    "section_heading": "What Happens if You Default on a Merchant Cash Advance?",
+    "chunk_text": "Defaulting on a Merchant Cash Advance can have severe consequences for a small business. Since MCAs are structured as the purchase of future receivables rather than loans, traditional lending protections may not apply. If a business defaults, the MCA provider may attempt to enforce a Confession of Judgment (COJ) if allowed by state law, freeze bank accounts, or sue the business owner personally if a personal guarantee was signed. Defaulting can lead to aggressive collections and business bankruptcy.",
+    "chunk_tokens": 105,
+    "requires_disclaimer": false
+  }
+]

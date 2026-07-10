@@ -1,0 +1,171 @@
+"""
+main.py — Entry point for the plug-and-play RAG agent.
+
+Usage:
+    python main.py                  
+
+All agent parameters are driven by config.py (or env var overrides).
+No implementation code needs to change between deployments.
+"""
+import os
+import argparse
+
+from dotenv import load_dotenv
+load_dotenv()
+
+from config import load_config, AgentConfig
+from core.factory import AgentFactory
+from core.tools.registry import register_tool
+
+
+# ── RAG Tool Setup ─────────────────────────────────────────────────────────────
+
+def _setup_rag_tool(config: AgentConfig) -> None:
+    """
+    Build the RAG retriever tool and register it in the tool registry.
+    Warns (but does not crash) if the collection hasn't been indexed yet.
+    """
+    from rag.retriever import build_rag_tool
+    from rag.vector_store.chroma import ChromaBackend
+    from rag.embeddings.google import GoogleEmbeddingProvider
+    from rag.embeddings.huggingface import HuggingFaceEmbeddingProvider
+
+    EMBEDDING_PROVIDERS = {
+        "google": GoogleEmbeddingProvider,
+        "huggingface": HuggingFaceEmbeddingProvider,
+    }
+    VECTOR_STORE_BACKENDS = {"chroma": ChromaBackend}
+
+    # Check collection exists before wiring the retriever
+    emb_cls = EMBEDDING_PROVIDERS.get(config.embedding_provider)
+    embeddings = emb_cls(model_name=config.embedding_model).get_embeddings()
+    vs_cls = VECTOR_STORE_BACKENDS.get(config.vector_store_backend)
+    vector_store = vs_cls(
+        embeddings=embeddings,
+        persist_dir=config.vector_store_persist_dir,
+    )
+
+    if not vector_store.collection_exists(config.rag_collection):
+        print(
+            f"\n[Warning] Vector store collection '{config.rag_collection}' not found.\n"
+            f"  Run ingestion first:\n"
+            f"    python scripts/ingest.py --loader corporate_turnaround\n"
+        )
+
+    rag_tool = build_rag_tool(config)
+    register_tool("rag", rag_tool)
+    print(f"[RAG] Tool registered for collection: '{config.rag_collection}'")
+
+
+MODE_PRESETS = {
+    "rag": {
+        "tools": ["rag"],
+    }
+}
+
+
+# ── Main ───────────────────────────────────────────────────────────────────────
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Corporate Turnaround Agent",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Quick start:
+  python scripts/ingest.py --loader corporate_turnaround
+  python main.py
+        """,
+    )
+    parser.add_argument(
+        "--mode",
+        choices=["rag"],
+        default="rag",
+        help="Agent mode (default: rag)",
+    )
+    args = parser.parse_args()
+
+    # ── Config ─────────────────────────────────────────────────────────────────
+    config = load_config()
+    preset = MODE_PRESETS[args.mode]
+    config.tools = preset["tools"]
+
+    # Verify appropriate API key is set
+    if config.llm_provider == "gemini":
+        if not os.environ.get("GEMINI_API_KEY") or os.environ.get("GEMINI_API_KEY") == "your_api_key_here":
+            print("[Error] GEMINI_API_KEY not set. Add it to your .env file.")
+            return
+    elif config.llm_provider == "groq":
+        if not os.environ.get("GROQ_API_KEY") or os.environ.get("GROQ_API_KEY") == "your_api_key_here":
+            print("[Error] GROQ_API_KEY not set. Add it to your .env file.")
+            return
+
+    print(f"\n{'='*62}")
+    print(f"  Plug-and-Play RAG Agent")
+    print(f"{'='*62}")
+    print(f"  Mode:       {args.mode}")
+    print(f"  LLM:        {config.llm_provider} / {config.llm_model}")
+    print(f"  Tools:      {config.tools}")
+    print(f"  PII Guard:  {'enabled (' + config.pii.strategy + ')' if config.pii.enabled else 'disabled'}")
+    print(f"{'='*62}\n")
+
+    # ── RAG tool setup (if needed) ─────────────────────────────────────────────
+    if "rag" in config.tools:
+        _setup_rag_tool(config)
+
+    # ── Build agent ────────────────────────────────────────────────────────────
+    print("Initializing agent...")
+    agent_executor = AgentFactory.create(config)
+    print("Agent ready! Type 'exit' or 'quit' to stop.\n" + "-" * 50)
+
+    # ── Interactive loop ───────────────────────────────────────────────────────
+    while True:
+        try:
+            user_input = input("\nYou: ")
+
+            if user_input.lower() in ["exit", "quit"]:
+                print("Goodbye!")
+                break
+            if not user_input.strip():
+                continue
+
+            # Checkpoint 2: Query-time PII scrub
+            if config.pii.enabled:
+                from rag.guardrails.pii_detector import PIIGuardrail
+                guardrail = PIIGuardrail(config.pii)
+                user_input = guardrail.sanitize_query(user_input)
+
+            session_config = {"configurable": {"thread_id": "session_1"}}
+            response = agent_executor.invoke(
+                {"messages": [("user", user_input)]},
+                config=session_config,
+            )
+
+            # Extract final message text
+            final_message = response["messages"][-1].content
+            if isinstance(final_message, list):
+                final_message = "".join(
+                    part["text"] if isinstance(part, dict) and "text" in part else str(part)
+                    for part in final_message
+                )
+
+            # Clean RAG prefix noise
+            from core.utils import clean_response_prefix
+            final_message = clean_response_prefix(final_message)
+
+            # Checkpoint 3: Output-time PII scrub
+            if config.pii.enabled:
+                from rag.guardrails.pii_detector import PIIGuardrail
+                guardrail = PIIGuardrail(config.pii)
+                final_message = guardrail.scrub_response(final_message)
+
+            print(f"\nAgent: {final_message}")
+
+        except KeyboardInterrupt:
+            print("\nGoodbye!")
+            break
+        except Exception as e:
+            print(f"\n[Error] {e}")
+
+
+if __name__ == "__main__":
+    main()

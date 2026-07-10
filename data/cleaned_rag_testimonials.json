@@ -1,0 +1,800 @@
+[
+    {
+        "id": "5",
+        "customer_problem": "Owing $16,000 in credit card debt with high interest rates, unable to make significant payments",
+        "ct_solution": "Corporate Turnaround took over the credit cards, put the client on an affordable monthly payment plan, and negotiated with creditors to reach a settlement",
+        "outcome": "Paid a total of $10,688.63, including fees to Corporate Turnaround, and avoided paying the full $16,000"
+    },
+    {
+        "id": "6",
+        "customer_problem": "Facing $38,000 in company and personal debt, with high interest credit card debt, business loan payments, and lease agreements, and fearing bankruptcy",
+        "ct_solution": "Corporate Turnaround worked with the client to restructure their business finances, negotiating with creditors to reach affordable payment arrangements",
+        "outcome": " Became essentially business debt-free and reorganized for success after 26 months"
+    },
+    {
+        "id": "7",
+        "customer_problem": "Owing $100,000 in credit card debt across 8 creditors, with high interest rates and harassing phone calls from creditors",
+        "ct_solution": "Corporate Turnaround worked with the client to negotiate with creditors, coaching them on how to handle calls and informing them of their rights, and secured settlements that fit within the client's budget",
+        "outcome": "Saved over $25,000, including fees to Corporate Turnaround, and completed the program"
+    },
+    {
+        "id": "8",
+        "customer_problem": "Owing $62,893.42 to 17 creditors, with threatening and lying debt collectors, and fearing business closure",
+        "ct_solution": "Corporate Turnaround negotiated with creditors to secure settlements, providing a plan to pay off debts and stop creditor harassment",
+        "outcome": "Paid a total of $26,107.94, saving $36,789.94, and was able to keep the business open"
+    },
+    {
+        "id": "9",
+        "customer_problem": "Owing $196,280.00 to vendors and credit card companies, with slow sales and no further advances from the main bank",
+        "ct_solution": "Corporate Turnaround worked with the client to negotiate with creditors, securing settlements and providing a plan to pay off debts",
+        "outcome": "Saved $74,979.00 and will have the debt paid off, with the client able to avoid further financial difficulties"
+    },
+    {
+        "id": "10",
+        "customer_problem": "Unable to make minimum payments on credit cards, relentless creditor calls, and accumulating debt",
+        "ct_solution": "Corporate Turnaround negotiated with creditors and handled the calls, allowing the client to focus on their business",
+        "outcome": "Saved $32,000 on $54,000 in debt and avoided bankruptcy"
+    },
+    {
+        "id": "11",
+        "customer_problem": "Overwhelming credit card debt, high interest rates, and inability to make payments",
+        "ct_solution": "Corporate Turnaround consolidated payments, negotiated with creditors, and helped the client develop a plan to pay off debt",
+        "outcome": "Saved around $110,000 in balance settlements and interest, and paid off $390,000 in debt"
+    },
+    {
+        "id": "12",
+        "customer_problem": "Over $60,000 in credit card debt, high interest rates, and harassing creditor calls",
+        "ct_solution": "Corporate Turnaround worked with the client to develop a plan, negotiated with creditors, and handled creditor calls",
+        "outcome": "Found relief from creditor harassment and was able to focus on their business, with the help of Corporate Turnaround"
+    },
+    {
+        "id": "13",
+        "customer_problem": "High credit card debt, high interest rates, and inability to negotiate with creditors",
+        "ct_solution": "Corporate Turnaround negotiated with the credit card company, handled creditor calls, and helped the client develop a plan to pay off debt",
+        "outcome": "Settled debt with the credit card company, despite their initial refusal to work with Corporate Turnaround, and completed the program"
+    },
+    {
+        "id": "14",
+        "customer_problem": "Over $160,000 in debt, struggling to pay bills, and considering bankruptcy",
+        "ct_solution": "Corporate Turnaround helped the client develop a plan, negotiated with creditors, and assisted with the settlement process",
+        "outcome": "Made progress in settling accounts, avoided bankruptcy, and was nearing the end of the process with the help of Corporate Turnaround"
+    },
+    {
+        "id": "15",
+        "customer_problem": "Inability to pay bills due to difficult times, including divorce and employee theft, resulting in $65,000 worth of debt",
+        "ct_solution": "Corporate Turnaround negotiated a payment arrangement with creditors to settle for $34,000, allowing the client to pay off the debt over 3 years",
+        "outcome": "Client was able to pay off the debt and is now free and clear, able to focus on their business again"
+    },
+    {
+        "id": "16",
+        "customer_problem": "Overwhelming debt load of $24,000 owed to credit cards and vendors, with high interest rates and unaffordable payment plans",
+        "ct_solution": "Corporate Turnaround's debt restructuring program allowed the client to focus on their business while CT handled creditor communications and negotiations, resulting in settlements and reduced payments",
+        "outcome": "Client was able to pay off all creditors, save $9,034.42, and take back control of their business"
+    },
+    {
+        "id": "17",
+        "customer_problem": "Serious trouble due to declining economy, customer bankruptcies, reduced sales, and demanding vendors, resulting in panic and uncertainty about the business's future",
+        "ct_solution": "Corporate Turnaround compiled a list of debts, contacted creditors, and negotiated reduced payment amounts and more time to pay, allowing the client to stabilize their business",
+        "outcome": "Client was able to pay off all obligations, stabilize their business, and feel confident about proceeding, despite a temporary hit to their personal credit"
+    },
+    {
+        "id": "18",
+        "customer_problem": "Accumulated $229,000 in credit card debt and $116,000 in payables, with high interest rates and unaffordable monthly payments, threatening the business's survival",
+        "ct_solution": "Corporate Turnaround's program allowed the client to make payments while CT handled creditor communications and negotiations, resulting in settled debts and reduced payments",
+        "outcome": "Client was able to become debt-free, save time and stress, and focus on running their business productively"
+    },
+    {
+        "id": "19",
+        "customer_problem": "Struggling to pay bills and facing harassment from credit card companies and third-party collectors, with lawsuits and a potential business closure looming",
+        "ct_solution": "Corporate Turnaround took care of the debt, negotiating settlements and allowing the client to pay off the debt over time, providing guidance and support throughout the process",
+        "outcome": "Client was able to settle approximately $62,500 in debt for $38,000 over 3 years, avoiding bankruptcy and ending the nightmare of creditor harassment"
+    },
+    {
+        "id": "20",
+        "customer_problem": "Cash flow issues, overwhelming creditor demands, and fear of bankruptcy",
+        "ct_solution": "Corporate Turnaround negotiated with creditors and set up a payment plan",
+        "outcome": "Avoided bankruptcy, paid off debts, and gained financial relief"
+    },
+    {
+        "id": "21",
+        "customer_problem": "Overwhelming debt, creditor harassment, and fear of bankruptcy",
+        "ct_solution": "Corporate Turnaround negotiated with creditors, reduced debt amount, and set up a payment plan",
+        "outcome": "Saved over $16,000, stopped creditor harassment, and avoided bankruptcy"
+    },
+    {
+        "id": "22",
+        "customer_problem": "Massive debt, creditor harassment, and financial hardship",
+        "ct_solution": "Corporate Turnaround contacted creditors, set up a payment plan, and negotiated settlements",
+        "outcome": "Paid off debts, gained financial freedom, and avoided bankruptcy"
+    },
+    {
+        "id": "23",
+        "customer_problem": "Over $125,000 in debt, creditor harassment, and fear of bankruptcy",
+        "ct_solution": "Corporate Turnaround negotiated with creditors, set up a payment plan, and secured favorable settlements",
+        "outcome": "Saved over $44,000, paid off $155,000 in debt, and gained peace of mind"
+    },
+    {
+        "id": "24",
+        "customer_problem": "Over $100,000 in debt, cash flow issues, and fear of business bankruptcy",
+        "ct_solution": "Corporate Turnaround negotiated with creditors, set up a payment plan, and secured favorable settlements",
+        "outcome": "Retired over $100,000 in debt, saved business from bankruptcy, and protected employees' livelihoods"
+    },
+    {
+        "id": "25",
+        "customer_problem": "Overwhelming debt, creditor demands, and fear of business failure",
+        "ct_solution": "Corporate Turnaround worked with the client to negotiate payment arrangements with creditors, coached them on how to handle debt collectors, and provided monthly updates on the progress of each account",
+        "outcome": "The client was able to save a significant amount of money, settled their debts, and was able to focus on their business again"
+    },
+    {
+        "id": "26",
+        "customer_problem": "Tight cash flow, debt from local vendors and credit cards, and harassment from creditors",
+        "ct_solution": "Corporate Turnaround negotiated payment arrangements with the client's creditors, handled communications with debt collectors, and provided guidance on how to manage their debt",
+        "outcome": "The client was able to settle their debts, including credit card debt, and was able to complete the program and achieve debt freedom"
+    },
+    {
+        "id": "27",
+        "customer_problem": "Cash flow issues due to employee theft, overwhelming debt, and creditor harassment",
+        "ct_solution": "Corporate Turnaround provided guidance on how to deal with debt collectors, negotiated with creditors to reduce the amount owed, and helped the client develop a plan to become debt-free",
+        "outcome": "The client was able to save over $41,000 in debt, achieved financial stability, and was able to pay their bills on time"
+    },
+    {
+        "id": "28",
+        "customer_problem": "Over $50,000 in debt, creditor harassment, and fear of business failure",
+        "ct_solution": "Corporate Turnaround negotiated with creditors to reduce the amount owed, developed a payment plan that fit the client's budget, and handled communications with debt collectors",
+        "outcome": "The client was able to reduce their debt from $50,014.91 to $30,561.02, settled their debts, and was able to focus on their business again"
+    },
+    {
+        "id": "29",
+        "customer_problem": "Debt from equipment leases, vendor debt, and cash flow issues due to business downturn",
+        "ct_solution": "Corporate Turnaround worked with the client to develop a budget, negotiated with creditors to reduce the amount owed, and provided guidance on how to manage their debt",
+        "outcome": "The client was able to become debt-free, developed a 5-year plan, and was able to focus on growing their business again"
+    },
+    {
+        "id": "48",
+        "customer_problem": "Cash flow issues, lawsuit threats, and vendors refusing to sell needed parts and materials due to fear of a depression",
+        "ct_solution": "Corporate Turnaround negotiated with creditors and developed a payment program",
+        "outcome": "The company was able to continue to buy parts and materials, paid off a huge debt, and is now stronger and poised to grow"
+    },
+    {
+        "id": "49",
+        "customer_problem": "Over $110,000 in debt, aggressive creditor calls, and inability to negotiate on own",
+        "ct_solution": "Corporate Turnaround handled negotiations and settled debt for less than $32,000",
+        "outcome": "The company saved over $70,000 and is still in business thanks to Corporate Turnaround's help"
+    },
+    {
+        "id": "50",
+        "customer_problem": "Cash flow issues, high credit card interest rates, and inability to pay debts due to family obligations",
+        "ct_solution": "Corporate Turnaround helped reorganize debt with reasonable payments and flexibility",
+        "outcome": "The company was able to pay down debt, saved $70,057, and is now on the road to redemption"
+    },
+    {
+        "id": "51",
+        "customer_problem": "High credit card debt, raised interest rates, and dropped credit limits making monthly payments unaffordable",
+        "ct_solution": "Corporate Turnaround helped negotiate settlements and created an affordable monthly payment plan",
+        "outcome": "The company was able to settle debts for $19,000, saved $40,000, and is now debt-free"
+    },
+    {
+        "id": "52",
+        "customer_problem": "Difficulty making minimum credit card payments, high interest and penalty charges, and consideration of bankruptcy",
+        "ct_solution": "Corporate Turnaround negotiated with creditors and set up a payment plan that fit the company's budget",
+        "outcome": "The company was able to pay off a total debt of $46,870 and is now free from the burden of debt"
+    },
+    {
+        "id": "53",
+        "customer_problem": "Unable to make minimum payments on debt, high interest rates, and facing potential bankruptcy",
+        "ct_solution": "Negotiated with 6 creditors, put the client on a payment plan they could afford",
+        "outcome": "Paid off debt of over $71,000 in almost 2 years, avoided bankruptcy"
+    },
+    {
+        "id": "54",
+        "customer_problem": "Overwhelming credit debt of $75,235.18 with 15 creditors, high interest rates, and monthly debt service of over $3,000",
+        "ct_solution": "Settled debt for $41,593.51 over 4 years, reduced monthly obligation to $1,255",
+        "outcome": "Avoided bankruptcy, became debt-free, and was able to grow the business and hire new employees"
+    },
+    {
+        "id": "55",
+        "customer_problem": "Large debt, loss of funding, exhausted lines of credit, and vendor debt",
+        "ct_solution": "Got vendors into payment plans that were more affordable for the client's limited budget",
+        "outcome": " Became debt-free, was able to grow the business back up, and continued to provide services"
+    },
+    {
+        "id": "56",
+        "customer_problem": "Unable to pay bills and debts, considered closing the company and filing bankruptcy, had $340,000 in debt",
+        "ct_solution": "Handled all creditors and collectors, provided expertise to get the client back to running their business",
+        "outcome": "Saved $167,000 over 3 years, became debt-free, and was able to continue providing services"
+    },
+    {
+        "id": "57",
+        "customer_problem": "Unknown",
+        "ct_solution": "Unknown",
+        "outcome": "Unknown"
+    },
+    {
+        "id": "58",
+        "customer_problem": "Facing a default of over $91,000.00, struggling to make payments and dealing with the financial impact on the business, employees, and family",
+        "ct_solution": "Corporate Turnaround negotiated with creditors to reduce the debt to $42,000.00, a savings of 46%",
+        "outcome": "Saved 46% of the original debt amount, avoiding financial devastation and allowing the business to recover"
+    },
+    {
+        "id": "59",
+        "customer_problem": "Struggling to make minimum payments on debts, facing high interest rates and finance charges, and needing a more affordable payment plan",
+        "ct_solution": "Corporate Turnaround consolidated debts, negotiated with creditors, and set up an affordable monthly payment plan",
+        "outcome": "Paid off all debts in 4 years, saved thousands of dollars in finance charges, and allowed the business to thrive"
+    },
+    {
+        "id": "60",
+        "customer_problem": "Owing 4 creditors over $65,000 in credit card debt, struggling to make minimum payments, and facing high interest rates",
+        "ct_solution": "Corporate Turnaround set up an affordable monthly payment plan, took over communication with creditors, and negotiated settlements",
+        "outcome": "Paid off credit card debt in 4 years, saved over $6,000, and allowed the business to focus on growth"
+    },
+    {
+        "id": "61",
+        "customer_problem": "Owing 6 creditors roughly $97,000, struggling to make payments, and needing a more affordable plan to satisfy creditors",
+        "ct_solution": "Corporate Turnaround worked with creditors to come up with affordable solutions, negotiated settlements, and managed the debt repayment process",
+        "outcome": "Saved close to $64,000, paid off debts on an affordable monthly budget, and allowed the business to focus on growth"
+    },
+    {
+        "id": "62",
+        "customer_problem": "Facing over $100,000 in corporate debt, struggling to make minimum payments, and needing guidance on debt restructuring",
+        "ct_solution": "Corporate Turnaround provided guidance on debt restructuring, negotiated with creditors, and set up a payment plan to settle debts at about half the cost",
+        "outcome": "Settled debts at about half the cost, allowed the business to recover, and put the company on solid footing"
+    },
+    {
+        "id": "63",
+        "customer_problem": "Tight cash flow, inability to pay down debts, fear of business failure",
+        "ct_solution": "Negotiated with creditors to allow for reasonable terms and flexibility, settled debts for $25K out of $50K owed",
+        "outcome": "Saved $25K, able to stay in business and grow"
+    },
+    {
+        "id": "64",
+        "customer_problem": "Overwhelming debt of $100,000, creditor demands, fear of losing business and providing for family",
+        "ct_solution": "Took over negotiating with creditors, reduced and eliminated debt, set up easy weekly payments",
+        "outcome": "Saved business, reduced debt, able to provide for family and grow business"
+    },
+    {
+        "id": "65",
+        "customer_problem": "Astronomical debt of $170,000, inability to pay creditors, fear of business failure",
+        "ct_solution": "Negotiated with creditors to reduce debt by $102,000, set up realistic budget and payment plan",
+        "outcome": "Paid off 14 creditors, saved $102,000, business is flourishing again"
+    },
+    {
+        "id": "66",
+        "customer_problem": "Financial trouble due to outsourcing and sluggish economy, overwhelming credit card debt, creditor harassment",
+        "ct_solution": "Took over debt negotiations, developed a plan to pay off debt, settled debt for $24,000 plus fees",
+        "outcome": "Retired debt of over $50,000, paid off credit card debt, able to focus on business again"
+    },
+    {
+        "id": "67",
+        "customer_problem": "Struggling to take care of financial obligations due to personal tragedy and economic downturn, skeptical of debt relief options",
+        "ct_solution": "Communicated with creditors, negotiated reasonable terms and flexibility, helped with debt payoff",
+        "outcome": "Able to see a future, stayed in business, freed from debt that would have otherwise been insurmountable"
+    },
+    {
+        "id": "68",
+        "customer_problem": "High debt amount of $250k, mainly credit card and loan debt, with high interest rates, causing cash flow issues and creditor demands",
+        "ct_solution": "Debt Restructuring Program, negotiated with creditors to accept a total repayment of $88,806.86, and provided budgeting software to manage payments",
+        "outcome": "Saved over $162,000, avoided bankruptcy, and got back on the road to profitability"
+    },
+    {
+        "id": "69",
+        "customer_problem": "Overwhelming creditor demands, threatening phone calls, and cash flow issues due to economic downturn",
+        "ct_solution": "Developed a monthly payment structure that fit the business's budget, and adjusted payments when needed, while negotiating with creditors",
+        "outcome": "Relief from creditor demands, ability to focus on running the business, and eventual completion of debt repayment"
+    },
+    {
+        "id": "70",
+        "customer_problem": "High debt amount, cash flow issues, and creditor threats of bankruptcy, due to accumulated credit card debt and high interest rates",
+        "ct_solution": "Debt restructuring program, assigned a client advocate to handle the account, and negotiated with creditors to settle debt",
+        "outcome": "Saved $41,000, reduced debt to $6,000, and gained ability to focus on growing the business instead of just surviving"
+    },
+    {
+        "id": "71",
+        "customer_problem": "Accumulated $40,000 credit card debt, cash flow issues, and high expenses, due to the Great Recession and reduced discretionary income",
+        "ct_solution": "Worked alongside the business to manage credit card debt, provided a client advocate to guide the process, and negotiated with creditors",
+        "outcome": "On track to resolve debt, with a bright outlook for the future, and solid financial footing, after working with Corporate Turnaround"
+    },
+    {
+        "id": "72",
+        "customer_problem": "High debt amount, cash flow issues, and risk of bankruptcy, due to economic downturn and failed projects",
+        "ct_solution": "Provided a debt restructuring program, assigned a representative to handle the account, and negotiated with creditors to fulfill debt obligations",
+        "outcome": "Ability to persevere and continue the business, with a can-do outlook, and appreciation for the respectful and consistent encouragement from Corporate Turnaround"
+    },
+    {
+        "id": "73",
+        "customer_problem": "Past due balances, angry vendors, and questionable financials, considering bankruptcy",
+        "ct_solution": "Corporate Turnaround negotiated with vendors and structured payment solutions",
+        "outcome": "Avoided bankruptcy, able to focus on turning the business around"
+    },
+    {
+        "id": "74",
+        "customer_problem": "Over $160,000 in debt, tight cash flow, and creditor demands, considering bankruptcy",
+        "ct_solution": "Corporate Turnaround negotiated with creditors, reduced debt by 50-60%, and structured a repayment plan",
+        "outcome": "Saved almost $93,000, avoided bankruptcy, and was able to focus on running the business"
+    },
+    {
+        "id": "75",
+        "customer_problem": "Credit card bills, vendor bills, and a working capital loan, considering bankruptcy",
+        "ct_solution": "Corporate Turnaround took over communications with creditors, negotiated a settlement, and provided guidance",
+        "outcome": "Negotiated a great settlement, was able to make a one-time payment, and was able to start over with a new brand"
+    },
+    {
+        "id": "76",
+        "customer_problem": "Over $1 million in debt, facing bankruptcy, and struggling to make payments",
+        "ct_solution": "Corporate Turnaround helped negotiate a 6-year plan with a critical vendor, and paid off and settled almost $1 million in debt",
+        "outcome": "Paid off $500,000 to a vendor, had credit extended again, and was able to buy a new home"
+    },
+    {
+        "id": "77",
+        "customer_problem": "Substantial business debts, creditors threatening foreclosure and seizure of personal assets",
+        "ct_solution": "Corporate Turnaround negotiated with creditors, stopped intimidating phone calls, and handled debt negotiations",
+        "outcome": "Ended creditor nightmare, saved peace of mind and finances, and highly recommends Corporate Turnaround"
+    },
+    {
+        "id": "78",
+        "customer_problem": "Owed nine different creditors, struggling with cash flow, and facing potential bankruptcy due to debt and recession",
+        "ct_solution": "Negotiated with creditors to reduce debt and set up payment plans, providing breathing room to generate cash flow",
+        "outcome": "Paid off all creditors over three and a half years, avoided bankruptcy, and was able to stay in business"
+    },
+    {
+        "id": "79",
+        "customer_problem": "Facing financial hardships due to the economic crisis, struggling to keep the business afloat",
+        "ct_solution": "Provided financial guidance, negotiated with vendors and credit cards to reduce debt and set up payment plans",
+        "outcome": "Kept the business afloat, moved forward, and was able to recommend Corporate Turnaround's services"
+    },
+    {
+        "id": "80",
+        "customer_problem": "Over $58,000 in debt, struggling to pay off startup costs, and facing potential bankruptcy",
+        "ct_solution": "Worked with creditors to settle outstanding accounts, stopped creditor calls, and set up a payment plan",
+        "outcome": "Settled all outstanding accounts, was able to grow the business, and is on track to retire with a profitable and stable business"
+    },
+    {
+        "id": "81",
+        "customer_problem": "Struggling to pay creditors, facing potential bankruptcy, and dealing with mental health issues",
+        "ct_solution": "Stopped creditor calls, negotiated with creditors to reduce debt, and set up a payment plan",
+        "outcome": "Avoided bankruptcy, sold the business at a discount, and was able to start a new life without a huge debt burden"
+    },
+    {
+        "id": "82",
+        "customer_problem": "Struggling to pay bills, facing potential bankruptcy, and needing to restructure debt",
+        "ct_solution": "Negotiated with creditors to accept new payment plans, restructured debt, and provided guidance",
+        "outcome": "Got out of debt, was able to pay creditors at an affordable monthly amount, and is back on track with the business"
+    },
+    {
+        "id": "83",
+        "customer_problem": "Over $124,000 in debt owed to 9 different creditors, facing financial losses and potential business closure",
+        "ct_solution": "Corporate Turnaround negotiated affordable payment terms with creditors, secured settlement agreements, and helped the business become debt-free",
+        "outcome": "Business is debt-free, saved over $67,000, and can focus on growth again"
+    },
+    {
+        "id": "84",
+        "customer_problem": "Facing bankruptcy due to $204,000 in debt owed to 8 creditors, declining business, and personal health issues",
+        "ct_solution": "Corporate Turnaround negotiated affordable payment terms with creditors, worked with the business to create a manageable monthly budget",
+        "outcome": "Business paid off debt at a significantly reduced amount of $81,267.35, avoided bankruptcy, and is now sustainable"
+    },
+    {
+        "id": "85",
+        "customer_problem": "Owing over $200,000 to a large banking institution, facing debt and personal health issues, including cancer diagnosis",
+        "ct_solution": "Corporate Turnaround negotiated an affordable monthly payment plan with the creditor, helped the business navigate debt repayment despite personal health challenges",
+        "outcome": "Business completed debt repayment arrangement, put debt behind them, and is now focused on future growth"
+    },
+    {
+        "id": "86",
+        "customer_problem": "Facing business closure due to $262,000 in debt, personal family issues, and declining childcare business",
+        "ct_solution": "Corporate Turnaround helped negotiate debt repayment, saved the business over $207,000, and provided guidance throughout the debt restructuring process",
+        "outcome": "Business is now debt-free, avoided closure, and can focus on regaining control and growing again"
+    },
+    {
+        "id": "87",
+        "customer_problem": "Facing business closure due to sudden loss of a long-negotiated business loan, coupled with the 2008 economic downturn",
+        "ct_solution": "Corporate Turnaround helped make the business's bills manageable, provided peace of mind, and guided the business through a rough time",
+        "outcome": "Business was able to pull through the challenging time, is now in a position to grow, and has a healthy outlook for the future"
+    },
+    {
+        "id": "88",
+        "customer_problem": "Cash flow issues, creditor demands, and fear of bankruptcy due to serious financial mistakes and debt",
+        "ct_solution": "Negotiated debt with creditors, provided a buffer between the client and creditors, and helped the client concentrate on their business",
+        "outcome": "Paid off debt, avoided bankruptcy, and was able to focus on the business again, with the business now being 'alive and stronger than ever'"
+    },
+    {
+        "id": "89",
+        "customer_problem": "Lack of time to manage payables, pressure from vendors, and risk of business failure",
+        "ct_solution": "Built a buffer zone between the client and aggressive vendors, helped the client manage their payables, and provided support to keep the business running",
+        "outcome": "Paid off financial obligations to creditors, generated close to $1 million in annual billings, and was able to keep the business open and staff motivated"
+    },
+    {
+        "id": "90",
+        "customer_problem": "Overwhelming credit card debt, inability to afford monthly payments, and risk of business failure",
+        "ct_solution": "Negotiated with creditors to reduce debt, provided a program to manage debt, and helped the client become debt-free",
+        "outcome": "Paid off over $40,000 in credit card debt, saved over 50% of the debt, and was able to become debt-free in 3+ years"
+    },
+    {
+        "id": "91",
+        "customer_problem": "Approximately $100,000 in credit card debt, risk of bankruptcy, and inability to manage debt",
+        "ct_solution": "Partnered with the client to resolve debt, provided dedication and follow-up, and helped the client become debt-free",
+        "outcome": "Paid off $100,000 in credit card debt, avoided bankruptcy, and was able to keep the business running and become debt-free"
+    },
+    {
+        "id": "92",
+        "customer_problem": "High-risk loans, daily withdrawals of $900, and inability to raise capital or manage cash flow",
+        "ct_solution": "Took over the client's debt, negotiated with creditors, and helped the client become debt-free",
+        "outcome": "Resolved $50,000 in debt for $28,700, became debt-free in 16 months, and was able to run the business without the burden of debt"
+    },
+    {
+        "id": "93",
+        "customer_problem": "Over $166,000 in high interest credit card debt, unable to pay off",
+        "ct_solution": "Debt restructuring program, negotiated terms with creditors",
+        "outcome": "Paid off over $166,000 in debt in 4 years, avoided bankruptcy"
+    },
+    {
+        "id": "94",
+        "customer_problem": "Loss of major clients, $50,000 in debt, struggling to stay in business",
+        "ct_solution": "Developed a reasonable budget, worked with creditors to eliminate debt",
+        "outcome": "Eliminated over $50,000 in debt in 2 years, business is now running smoothly and growing"
+    },
+    {
+        "id": "95",
+        "customer_problem": "Struggling to survive with high interest Merchant Cash Advance loans, cash poor",
+        "ct_solution": "Debt restructuring program, renegotiated terms with lenders",
+        "outcome": "Resolved debts at a more affordable rate, business is now able to survive"
+    },
+    {
+        "id": "96",
+        "customer_problem": "Over $170,000 in credit card and loan debt, unable to make payments, considering bankruptcy",
+        "ct_solution": "Debt restructuring program, worked with creditors to reduce debt",
+        "outcome": "Paid off $170,000 in debt, debt was cut in half, avoided bankruptcy"
+    },
+    {
+        "id": "97",
+        "customer_problem": "Struggling to make minimum payments, considering bankruptcy due to bad economy",
+        "ct_solution": "Monthly payment plan, worked with creditors to eliminate debt",
+        "outcome": "Paid off debt, avoided bankruptcy, able to focus on business again"
+    },
+    {
+        "id": "98",
+        "customer_problem": "Overwhelming debt from a Merchant Cash Advance loan with aggressive repayment terms and high interest",
+        "ct_solution": "Corporate Turnaround negotiated a more affordable payment plan and saved the client money on the debt",
+        "outcome": "The client was able to avoid bankruptcy and stay in business"
+    },
+    {
+        "id": "99",
+        "customer_problem": "Financial turmoil, inability to pay debts, and consideration of bankruptcy",
+        "ct_solution": "Corporate Turnaround handled the client's debt and negotiated with creditors to resolve the issues",
+        "outcome": "The client was able to survive and continue their business, resolving approximately $330K of debt"
+    },
+    {
+        "id": "100",
+        "customer_problem": "Cash flow issues due to incorrect billing and claim processing by a third-party billing company, leading to unpaid bills and eviction notices",
+        "ct_solution": "Corporate Turnaround helped the client create a budget and paid off outstanding debts over a period of less than 3 years",
+        "outcome": "The client was able to continue providing services and paid off their debts, avoiding financial crisis"
+    },
+    {
+        "id": "101",
+        "customer_problem": "Accumulated debts, including over $50,000 in credit card debt and IRS debt, with no access to further credit or loans",
+        "ct_solution": "Corporate Turnaround handled the necessary work to resolve the outstanding debts without the client's involvement",
+        "outcome": "The client was able to resolve their debts and avoid further financial struggles, with Corporate Turnaround keeping them informed throughout the process"
+    },
+    {
+        "id": "102",
+        "customer_problem": "Substantial business debt threatening the organization's mission and operations",
+        "ct_solution": "Corporate Turnaround guided the organization through the process of negotiating and eliminating the debt",
+        "outcome": "The organization was able to achieve a sense of peace of mind and liberation, with Corporate Turnaround providing a solution-oriented perspective and professional guidance"
+    },
+    {
+        "id": "103",
+        "customer_problem": "Cash flow issues, creditor demands, and potential bankruptcy due to business struggles and debt",
+        "ct_solution": "Negotiated multiple payoffs with significant savings and provided contact with an attorney to handle mortgage issues",
+        "outcome": "Became debt free with a rapidly recovering credit score"
+    },
+    {
+        "id": "104",
+        "customer_problem": "Over $115k in high-interest credit card and loan debt, lost line of credit, and unable to make payments",
+        "ct_solution": "Created a strategy to breathe and still pay off bills, handled everything like a true professional, and worked with the client until all debts were paid off",
+        "outcome": "Paid off all debts and became debt free after 5 years"
+    },
+    {
+        "id": "105",
+        "customer_problem": "Incurved credit card and loan debt, stress from bill collectors, and potential business closure due to recession",
+        "ct_solution": "Worked with creditors, settled big accounts, and allowed the business to reorganize and serve customers better",
+        "outcome": "Reduced staff, redesigned website, and became more efficient, with a significant reduction in debt"
+    },
+    {
+        "id": "106",
+        "customer_problem": "Debt, cash flow issues, and potential bankruptcy due to circumstances beyond control, such as drought and fire",
+        "ct_solution": "Saved money, assisted with cash flow, and helped the business stay afloat by understanding the situation and negotiating with creditors",
+        "outcome": "Contained and paid most of the debt, and was able to sell assets on their own terms after completing the engagement with Corporate Turnaround"
+    },
+    {
+        "id": "107",
+        "customer_problem": "Cash flow issues and a bad money situation due to funding advancements from cash advance companies",
+        "ct_solution": "Dealt with the cash advance companies, settled on an amount, and made weekly payments affordable, guiding the business to relieve debt",
+        "outcome": "Got cash flow back to normal, paid off debt in 18 months, and kept the business going"
+    },
+    {
+        "id": "108",
+        "customer_problem": "Over $100,000 in debt, unable to keep up with bills, and collection calls",
+        "ct_solution": "Corporate Turnaround negotiated with creditors and helped set up a payment plan",
+        "outcome": "Paid off debt, saved $24,000, and avoided bankruptcy"
+    },
+    {
+        "id": "109",
+        "customer_problem": "Cash flow issues, overwhelming debt, and harassment from creditors",
+        "ct_solution": "Corporate Turnaround helped renegotiate debt and set up a payment plan, and provided support and guidance throughout the process",
+        "outcome": " Became debt-free, and the business is still alive and stronger than before"
+    },
+    {
+        "id": "110",
+        "customer_problem": "Overwhelming debt, late fees, and overdraft fees, and stress affecting family and business",
+        "ct_solution": "Corporate Turnaround set up a program to renegotiate debt and put it into convenient monthly payments",
+        "outcome": "Able to see the end of the debt sooner than expected, and can now work towards an achievable goal"
+    },
+    {
+        "id": "111",
+        "customer_problem": "Over $80,000 in credit card debt, minimum payments not making a dent, and emotional distress",
+        "ct_solution": "Corporate Turnaround worked with the customer to create a hardship letter, and negotiated with creditors to reduce debt",
+        "outcome": "Saved money in the long run, improved credit scores, and gained the ability to be back in control of finances"
+    },
+    {
+        "id": "112",
+        "customer_problem": "Unable to maintain financial obligations due to economic factors, increasing costs, and creditor demands",
+        "ct_solution": "Corporate Turnaround took the stress away, negotiated with creditors, and created settlements",
+        "outcome": "Completed the program, had remaining debt written off, and is still providing services to the community"
+    },
+    {
+        "id": "113",
+        "customer_problem": "Loss of biggest customer, 50% drop in business revenues, debt piling up, harassing creditor calls",
+        "ct_solution": "Negotiated with creditors on their behalf, set up a manageable payment plan",
+        "outcome": "Became debt-free, able to focus on rebuilding the trucking business, purchased new equipment"
+    },
+    {
+        "id": "114",
+        "customer_problem": "Unable to collect receivables, struggling to meet monthly overhead",
+        "ct_solution": "Helped negotiate with creditors, set up a payment plan",
+        "outcome": "Able to meet obligations, stayed in business"
+    },
+    {
+        "id": "115",
+        "customer_problem": "Struggling with lenders after a short sale, debt restructuring issues, pressure from credit collectors",
+        "ct_solution": "Restructured debt, helped deal with lenders and credit collectors",
+        "outcome": "Relieved pressure, able to navigate banking maze, paid off debt"
+    },
+    {
+        "id": "116",
+        "customer_problem": "75% drop in sales, unable to pay for inventory, behind on rent and mortgage, struggling to make payroll",
+        "ct_solution": "Negotiated with creditors, set up a flexible payment plan accommodating seasonal cash flow",
+        "outcome": "97% paid down, back on their feet, able to adjust to changes in business"
+    },
+    {
+        "id": "117",
+        "customer_problem": "Expansion failed, fell behind on liabilities, harassing phone calls from creditors",
+        "ct_solution": "Took control of debt load, negotiated with creditors",
+        "outcome": "Became debt-free, able to focus on business, generating revenue and growing"
+    },
+    {
+        "id": "118",
+        "customer_problem": "Struggling to keep inventory fresh, took on multiple loans with daily and monthly payments, sales not keeping up with expenses, incurring NSF fees",
+        "ct_solution": "Corporate Turnaround helped restructure debt, worked with the business to pay off bad debt",
+        "outcome": "Paid off all bad debt, business is still operational"
+    },
+    {
+        "id": "119",
+        "customer_problem": "Multiple loans with daily payments, total debt of $240K, struggling to make payments",
+        "ct_solution": "Corporate Turnaround halted daily payments, worked to settle debt with funding companies",
+        "outcome": "Settlements reached with all creditors, payment plans in place, business can sleep at night knowing they will come out of financial mess"
+    },
+    {
+        "id": "120",
+        "customer_problem": "Delayed payments, overdue invoices, forced to take high interest loans, at risk of bankruptcy",
+        "ct_solution": "Corporate Turnaround provided guidance through debt restructuring, handled creditor settlements and payments",
+        "outcome": "Reached settlements with all creditors, saved $110,000, business credit report improved"
+    },
+    {
+        "id": "121",
+        "customer_problem": "Multiple quick loans with daily deductions, stressing the business, at risk of shutting down",
+        "ct_solution": "Corporate Turnaround helped design a weekly payment plan, worked with the business to pay off debt",
+        "outcome": "Paid off all debt in less than 2 years, restaurant is doing well"
+    },
+    {
+        "id": "122",
+        "customer_problem": "Overwhelming business debt, at risk of defaulting",
+        "ct_solution": "Corporate Turnaround provided debt negotiation and credit settlement services, helped design a plan to pay off debt",
+        "outcome": "Avoided defaulting, paid off business debt bills, able to focus on business goals and success"
+    },
+    {
+        "id": "123",
+        "customer_problem": "Over $55,000 in credit card debt with $700 monthly interest payments, struggling to pay off debt and facing potential bankruptcy",
+        "ct_solution": "Corporate Turnaround negotiated debt reduction and created a payoff plan, handling creditor communications and allowing the client to focus on their business",
+        "outcome": "Debt paid off in 18 months, credit score improved, and business is now operating profitably"
+    },
+    {
+        "id": "124",
+        "customer_problem": "Multiple unpaid or partially paid jobs led to a large deficit, forcing the company to take on three loans that became unmanageable",
+        "ct_solution": "Corporate Turnaround worked with the company to settle the three loans at a comfortable amount, allowing the business to continue operating",
+        "outcome": "All three loans were taken care of, and the business is now able to move forward"
+    },
+    {
+        "id": "125",
+        "customer_problem": "Struggling to resolve credit card debt, facing threatening calls and letters from creditors, and unable to negotiate a payoff plan on their own",
+        "ct_solution": "Corporate Turnaround's Client Advocate, Adam, developed a payoff plan, interacted with the credit card company, and saved the client time, frustration, and money",
+        "outcome": "Debt is paid, and the client has better controls on their spending, with a positive experience working with Corporate Turnaround"
+    },
+    {
+        "id": "126",
+        "customer_problem": "Facing financial difficulties, needing help with negotiating with creditors and setting up a payment plan",
+        "ct_solution": "Corporate Turnaround negotiated with creditors, set up a monthly payment plan, and provided professional and friendly service",
+        "outcome": "Client is able to get back to growing their business, with comfort knowing their credit and financial difficulties are being handled"
+    },
+    {
+        "id": "127",
+        "customer_problem": "Over $100,000 in debt from short-term high-interest loans, facing potential bankruptcy, and struggling to pay personal and business bills",
+        "ct_solution": "Corporate Turnaround took control of the debt, worked with the client to create a budget, and negotiated with creditors to reduce the debt",
+        "outcome": "Debt was significantly reduced, and the client is grateful for the help, able to avoid bankruptcy and get back on track with their business"
+    },
+    {
+        "id": "128",
+        "customer_problem": "Over $550,000 in debt, unable to manage tough financial matters, and fearing bankruptcy",
+        "ct_solution": "Corporate Turnaround negotiated with creditors, settled debt, and provided a debt restructuring plan",
+        "outcome": "Saved $326,452.50, able to refocus business, and no longer living in fear of bankruptcy"
+    },
+    {
+        "id": "129",
+        "customer_problem": "Major debt situation, unsure of how to restructure debt",
+        "ct_solution": "Corporate Turnaround guided the company through the debt restructuring process, providing professional assistance",
+        "outcome": "Successfully restructured debt, back on path to success, and commended Corporate Turnaround for their assistance"
+    },
+    {
+        "id": "130",
+        "customer_problem": "Insurmountable debt load, facing bankruptcy, and struggling to recover from unexpected problems",
+        "ct_solution": "Corporate Turnaround provided a debt restructuring plan, renegotiated outstanding liabilities, and introduced a more affordable monthly payment plan",
+        "outcome": " Became debt-free, a better business owner, and learned a valuable lesson about managing debt"
+    },
+    {
+        "id": "131",
+        "customer_problem": "Drowning in debt with four daily cash advances, feeling hopeless",
+        "ct_solution": "Corporate Turnaround worked with the business to negotiate payment plans with creditors, provided an online portal to track progress, and offered responsive support",
+        "outcome": "Felt reassured, able to trust the process, and recommends Corporate Turnaround to others struggling with debt"
+    },
+    {
+        "id": "132",
+        "customer_problem": "Embedded in multiple unsustainable MCA loans, struggling to stay afloat",
+        "ct_solution": "Corporate Turnaround provided realistic expectations, put the business owner at ease, and worked to settle the loans",
+        "outcome": "Reduced debt from $500k to $350k, sees a brighter future, and regrets not seeking help from Corporate Turnaround sooner"
+    },
+    {
+        "id": "133",
+        "customer_problem": "Overwhelming debt from multiple businesses, inability to manage daily payments, and fear of losing their home and business",
+        "ct_solution": "Corporate Turnaround negotiated with creditors, managed paperwork and legal matters, and helped create a plan to manage the business more effectively",
+        "outcome": "The business is now running without advance loans, and the owners are able to manage their business more effectively and have peace of mind"
+    },
+    {
+        "id": "134",
+        "customer_problem": "Overwhelming debt, collection calls, and fear of losing the family business",
+        "ct_solution": "Corporate Turnaround worked to get payments into a manageable state, stopped collection calls, and helped the business stay open",
+        "outcome": "The business is still open, and the family was able to avoid bankruptcy and keep their business"
+    },
+    {
+        "id": "135",
+        "customer_problem": "Unmanageable debt, catastrophic events, and mental depression leading to a downward spiral for the business",
+        "ct_solution": "Corporate Turnaround put a plan in motion to help the business get back on track, resolved debts at a more affordable rate, and provided a Client Advocate for support",
+        "outcome": "The business was able to recover, rebuild, and eventually become debt-free, with the owner feeling a sense of relief and gratitude"
+    },
+    {
+        "id": "136",
+        "customer_problem": "Loss of state contract, decline of business, foreclosure of home, and loss of reputation",
+        "ct_solution": "Corporate Turnaround negotiated with creditors, allowed time to make things right, and provided a Client Advocate for support and guidance",
+        "outcome": "The business was saved, the home was saved from foreclosure, and the owner was able to focus on strengthening the business and rebuilding their reputation"
+    },
+    {
+        "id": "137",
+        "customer_problem": "Crippling debt, aggressive creditors, and inability to focus on the business",
+        "ct_solution": "Corporate Turnaround handled communication, negotiation, and payments with creditors, and provided a plan to restructure the debt",
+        "outcome": "The business was able to re-build, the owner's credit is back in a good place, and the business is on a path towards prosperity again"
+    },
+    {
+        "id": "138",
+        "customer_problem": "Overwhelming debt, cash flow issues, and creditor demands, including a large IRS bill",
+        "ct_solution": "Corporate Turnaround worked with their creditor to get their debt resolved",
+        "outcome": "Finally out of debt"
+    },
+    {
+        "id": "139",
+        "customer_problem": "Insane amount of debt, inability to get financing, and overwhelming monthly commitments",
+        "ct_solution": "Corporate Turnaround took over loans and communication, allowing the client to focus on finding ways to make money to pay lenders back",
+        "outcome": "On the road to recovery with a brighter future"
+    },
+    {
+        "id": "140",
+        "customer_problem": "Insurmountable debt load and inability to pay it off",
+        "ct_solution": "Corporate Turnaround successfully navigated the company out of debt in a relatively short period of time",
+        "outcome": "All debt paid off"
+    },
+    {
+        "id": "141",
+        "customer_problem": "Difficulty with creditors, especially during the COVID-19 pandemic",
+        "ct_solution": "Corporate Turnaround provided a plan, negotiated new payment terms with creditors, and supported the client throughout the process",
+        "outcome": "Able to work with new payment terms and appreciate the guidance and support"
+    },
+    {
+        "id": "142",
+        "customer_problem": "Insolvent business with an insurmountable amount of debt and no idea how to get out of it",
+        "ct_solution": "Corporate Turnaround explained their program, handled creditor issues, and allowed the client to focus on rebuilding their business",
+        "outcome": "Celebrating 20 years in business, doing well despite the pandemic, and having peace of mind to strategize a business plan for success"
+    },
+    {
+        "id": "143",
+        "customer_problem": "Cash flow issues due to accounts receivable and accounts payable, facing draconian choices",
+        "ct_solution": "Rationally planned a recovery strategy, provided guidance and support, helped reach reasonable settlements with creditors",
+        "outcome": "Avoided long-term negative impact to credit, resolved indebtedness in manageable payments"
+    },
+    {
+        "id": "1",
+        "customer_problem": "Overwhelmed by debt, creditor harassment, and stress",
+        "ct_solution": "Worked with account advocate to clear debt, handled creditor communications and intimidation tactics",
+        "outcome": "Became debt-free, reduced stress, and regained control of life"
+    },
+    {
+        "id": "2",
+        "customer_problem": "Financial difficulties, needed a second chance",
+        "ct_solution": "Provided commercial credit counseling services",
+        "outcome": "Felt given a second chance, able to move forward"
+    },
+    {
+        "id": "3",
+        "customer_problem": "Financial struggles, needed guidance and support",
+        "ct_solution": "Provided personal and helpful service through Anthony Passanante",
+        "outcome": "Appreciated the personal touch and help during rough times"
+    },
+    {
+        "id": "4",
+        "customer_problem": "Errors in business judgment, bad management, and resulting debt",
+        "ct_solution": "Worked with Corporate Turnaround team to settle debt, provided guidance and support",
+        "outcome": "Paid off debt over three years, felt a great sense of relief and accomplishment"
+    },
+    {
+        "id": "31",
+        "customer_problem": "creditor demands, cash flow issues",
+        "ct_solution": "negotiated terms with creditors, managed debt payments",
+        "outcome": "avoided financial headaches, paid creditors according to agreed terms"
+    },
+    {
+        "id": "32",
+        "customer_problem": "debt restructuring, potential financial insolvency",
+        "ct_solution": "restructured debt",
+        "outcome": "avoided financial difficulties, successfully managed debt"
+    },
+    {
+        "id": "33",
+        "customer_problem": "cash flow issues, debt with leasing company, financing problems",
+        "ct_solution": "helped with debt management, refinancing",
+        "outcome": "managed to refinance, reduced financial stress"
+    },
+    {
+        "id": "34",
+        "customer_problem": "debt issues, considered chapter 11 bankruptcy",
+        "ct_solution": "provided credit counseling services, managed debt collectors",
+        "outcome": "avoided chapter 11 bankruptcy, successfully managed debt"
+    },
+    {
+        "id": "35",
+        "customer_problem": "debt restructuring, risk of bankruptcy",
+        "ct_solution": "restructured debt, provided professional guidance",
+        "outcome": "avoided bankruptcy, successfully completed debt restructuring"
+    },
+    {
+        "id": "36",
+        "customer_problem": "Cash flow issues, needed freedom from debt",
+        "ct_solution": "Corporate Turnaround provided assistance to achieve freedom from debt",
+        "outcome": "Achieved freedom from debt, able to focus on business again"
+    },
+    {
+        "id": "37",
+        "customer_problem": "Harassment from collection agencies, cash flow issues",
+        "ct_solution": "Corporate Turnaround took over account and negotiated with creditors",
+        "outcome": "Relief from collection agency harassment, able to focus on business again"
+    },
+    {
+        "id": "42",
+        "customer_problem": "Overwhelming debt, cash flow issues, threat of business bankruptcy",
+        "ct_solution": "Corporate Turnaround negotiated with creditors and settled debt",
+        "outcome": "Saved $12,000, eliminated $37,000 in debt, able to focus on business again"
+    }
+]
