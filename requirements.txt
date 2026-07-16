@@ -2,6 +2,7 @@
 langchain>=0.3.0
 langchain-core>=0.3.0
 langchain-community>=0.3.0
+langchain-classic>=1.0.0
 langchain-google-genai>=2.0.0
 langchain-chroma>=0.2.0
 langchain-text-splitters>=0.3.0
@@ -9,6 +10,10 @@ langgraph>=0.2.0
 
 # ── Vector Store ──────────────────────────────────────────────────────────────
 chromadb>=0.5.0
+
+# ── Retrieval Pipeline (RRF fusion + cross-encoder rerank) ────────────────────
+sentence-transformers>=5.0.0
+torch>=2.0.0
 
 # ── PII Guardrails ────────────────────────────────────────────────────────────
 # Install spacy model after: python -m spacy download en_core_web_lg

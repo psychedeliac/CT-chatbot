@@ -81,9 +81,59 @@ class AgentConfig:
 
     # ── RAG Settings ──────────────────────────────────────────────────────────
     rag_collection: str = "enriched_knowledge_base"
-    rag_k: int = 5               # top-k documents to retrieve per query
+    rag_k: int = 5               # top-k documents returned to the agent per query
     chunk_size: int = 1000       # characters per chunk
     chunk_overlap: int = 200     # overlap between adjacent chunks
+
+    # ── Retrieval Pipeline (RRF fusion + cross-encoder rerank) ────────────────
+    # Candidates fetched per retriever (Chroma + BM25) before fusion/reranking.
+    # Default (15) assumes rag_k=5 (3x headroom) -- update both together if
+    # rag_k changes materially.
+    rag_candidate_pool_k: int = 15
+    rrf_c: int = 60               # RRF damping constant (see architecture.md)
+    rerank_enabled: bool = True
+    rerank_model: str = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+    # Minimum cross-encoder score required to keep a candidate. ms-marco-MiniLM
+    # outputs unbounded regression logits, not 0-1 probabilities. Calibrated via
+    # `python scripts/eval_retrieval.py --threshold-sweep -12 8 1` against
+    # data/eval_retrieval_set.json: 100% accuracy held from -9.0 to 4.0; 2.0 is
+    # chosen for margin on both sides, leaning conservative (fewer false
+    # positives reaching the LLM) since recall only starts dropping past 5.0.
+    # Re-run the sweep if the embedding model, corpus, or eval set changes.
+    rerank_score_threshold: float = 2.0
+
+    # ── Rerank rescue path (formality-bias mitigation) ────────────────────────
+    # The cross-encoder scores informal/urgent phrasing (e.g. "i am behind on
+    # three mca loans, i need help") far lower than formal phrasing of the same
+    # need, even when RRF fusion (BM25 + semantic) independently ranked the
+    # right docs at the top. A candidate both retrievers agreed belongs in the
+    # top rerank_rescue_rrf_rank_cutoff positions is rescued from a gate failure
+    # if it clears a lower score floor. Re-calibrated 2026-07-15 via:
+    #   python scripts/eval_retrieval.py --rescue-grid-sweep 2 2 1 -12 -1 1 --rescue-rrf-cutoff 3
+    # against data/eval_retrieval_set.json (61 queries, expanded with much
+    # blunter/messier real-world MCA/business-debt phrasing than the original
+    # informal set -- e.g. "i just took out my 4th mca this month what do i
+    # do" previously scored -8.16, well past the old -3.5 floor, despite RRF
+    # ranking the correct MCA content #1). -3.5 no longer covers this style at
+    # all (0% informal recall on the new examples). -9.0 restores 93%
+    # informal recall (98% overall accuracy) with exactly ONE out-of-domain
+    # false positive across the whole set: "i cant sleep at night what should
+    # i do" matches a real client testimonial that mentions sleep loss from
+    # debt stress -- a genuinely ambiguous query, not a calibration miss (its
+    # match scores -5.09, and no threshold that keeps our target recall can
+    # exclude it without also losing legitimate matches sitting at rrf_rank
+    # 3). Going one step further to -10.0 does reach 100% informal recall,
+    # but ALSO admits "tell me a joke" as a second false positive (score
+    # -9.55) -- an unambiguous off-topic query getting debt content back is a
+    # worse failure than the "sleep" edge case, so -9.0 was kept per this
+    # file's existing preference for leaning stricter (false positives
+    # reaching the LLM cost more than a safe "not in knowledge base"
+    # fallback). rrf_rank_cutoff=3 unchanged -- tightening to 1 or 2 would
+    # drop the "sleep" false positive but also drops 2 legitimate matches
+    # sitting at rank 3, a worse trade. Re-sweep both if the eval set, corpus,
+    # or reranker model changes.
+    rerank_rescue_score_threshold: float = -9.0
+    rerank_rescue_rrf_rank_cutoff: int = 3
 
     # ── Guardrails ────────────────────────────────────────────────────────────
     pii: PIIConfig = field(default_factory=PIIConfig)
@@ -156,6 +206,22 @@ def load_config() -> AgentConfig:
         config.rag_collection = os.getenv("RAG_COLLECTION")
     if os.getenv("RAG_K"):
         config.rag_k = int(os.getenv("RAG_K"))
+
+    # Retrieval pipeline overrides
+    if os.getenv("RAG_CANDIDATE_POOL_K"):
+        config.rag_candidate_pool_k = int(os.getenv("RAG_CANDIDATE_POOL_K"))
+    if os.getenv("RRF_C"):
+        config.rrf_c = int(os.getenv("RRF_C"))
+    if os.getenv("RERANK_ENABLED"):
+        config.rerank_enabled = os.getenv("RERANK_ENABLED", "true").lower() == "true"
+    if os.getenv("RERANK_MODEL"):
+        config.rerank_model = os.getenv("RERANK_MODEL")
+    if os.getenv("RERANK_SCORE_THRESHOLD"):
+        config.rerank_score_threshold = float(os.getenv("RERANK_SCORE_THRESHOLD"))
+    if os.getenv("RERANK_RESCUE_SCORE_THRESHOLD"):
+        config.rerank_rescue_score_threshold = float(os.getenv("RERANK_RESCUE_SCORE_THRESHOLD"))
+    if os.getenv("RERANK_RESCUE_RRF_RANK_CUTOFF"):
+        config.rerank_rescue_rrf_rank_cutoff = int(os.getenv("RERANK_RESCUE_RRF_RANK_CUTOFF"))
 
     # PII overrides
     if os.getenv("PII_ENABLED"):

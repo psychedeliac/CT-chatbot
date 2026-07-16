@@ -1,0 +1,133 @@
+[
+  {
+    "id": "qa-mca-factor-rate-1",
+    "source_type": "qa_pair",
+    "topic": "mca-factor-rate",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: How do MCA factor rates work and what do they cost?",
+    "section_heading": "Q: i got offered a 50k mca with a 1.4 factor rate how much am i really paying is this a good deal or am i getting ripped off",
+    "chunk_text": "A: The factor rate of 1.4 means you'll pay a fee of $14,000 on a $10,000 advance. This translates to an extremely high equivalent APR, but the exact APR should be discussed as it depends on the repayment period and method. To get a better understanding of the deal, I recommend calling 1-800-889-0232.",
+    "chunk_tokens": 68,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "nerdwallet-article-small-business-merchant-cash-advance"
+    ],
+    "mismatches": [
+      {
+        "principal": 10000,
+        "factor_rate": 1.4,
+        "stated_total": null,
+        "stated_fee": 14000,
+        "expected_total": 14000.0,
+        "expected_fee": 4000.0,
+        "problems": [
+          "stated_fee=14000 but total-principal=4000.00"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "qa-mca-factor-rate-3",
+    "source_type": "qa_pair",
+    "topic": "mca-factor-rate",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: How do MCA factor rates work and what do they cost?",
+    "section_heading": "Q: they gave me twenty five grand and said the factor rate was 1.29 and now they want thirty two grand back in like six months this is way more than i thought is that normal or am i just stupid for signing it",
+    "chunk_text": "A: The factor rate of 1.29 is applied directly to the principal advance amount of $25,000. This means the total repayment amount is $31,750 ($25,000 x 1.29), which is higher than the $32,000 you mentioned. Paying off the advance early does not reduce the fee, which is a characteristic of merchant cash advances.",
+    "chunk_tokens": 68,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "nerdwallet-article-small-business-merchant-cash-advance"
+    ],
+    "mismatches": [
+      {
+        "principal": 25000,
+        "factor_rate": 1.29,
+        "stated_total": 31750,
+        "stated_fee": null,
+        "expected_total": 32250.0,
+        "expected_fee": 7250.0,
+        "problems": [
+          "stated_total=31750 but principal*factor_rate=32250.00"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "qa-mca-factor-rate-5",
+    "source_type": "qa_pair",
+    "topic": "mca-factor-rate",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: How do MCA factor rates work and what do they cost?",
+    "section_heading": "Q: my friend said factor rates are a total scam how much does a 1.49 factor rate really cost me on a 75k loan",
+    "chunk_text": "A: If a business receives a $75,000 advance with a factor rate of 1.49, the total repayment amount would be $75,000 x 1.49. This means the fee would be $112,250 - $75,000 = $37,250.",
+    "chunk_tokens": 44,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "nerdwallet-article-small-business-merchant-cash-advance"
+    ],
+    "mismatches": [
+      {
+        "principal": 75000,
+        "factor_rate": 1.49,
+        "stated_total": 112250,
+        "stated_fee": 37250,
+        "expected_total": 111750.0,
+        "expected_fee": 36750.0,
+        "problems": [
+          "stated_fee=37250 but total-principal=36750.00"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "qa-mca-multi-debt-2",
+    "source_type": "qa_pair",
+    "topic": "mca-multi-debt",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What should a business owner do when juggling multiple simultaneous MCAs they can't keep up with?",
+    "section_heading": "Q: 4 mcas crushing my business like 60 grand total please help me",
+    "chunk_text": "A: The total repayment amount for a $25,000 merchant cash advance with a factor rate of 1.29 is $31,750. This is calculated by multiplying the principal advance amount by the factor rate. Paying off the advance early does not reduce the fee.",
+    "chunk_tokens": 54,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "mca-factor-rate",
+      "nerdwallet-article-small-business-merchant-cash-advance"
+    ],
+    "mismatches": [
+      {
+        "principal": 25000,
+        "factor_rate": 1.29,
+        "stated_total": 31750,
+        "stated_fee": null,
+        "expected_total": 32250.0,
+        "expected_fee": 7250.0,
+        "problems": [
+          "stated_total=31750 but principal*factor_rate=32250.00"
+        ]
+      }
+    ]
+  }
+]

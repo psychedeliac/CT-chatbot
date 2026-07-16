@@ -8,27 +8,13 @@
       "ftc"
     ],
     "title": "Debt Collection FAQs | Consumer Advice",
-    "section_heading": "Debt Collection FAQs | Consumer Advice",
-    "chunk_text": "The .gov means it’s official.Federal government websites often end in .gov or .mil. Before sharing sensitive information, make sure you’re on a federal government site. The site is secure.Thehttps://ensures that you are connecting to the official website and that any information you provide is encrypted and transmitted securely.",
-    "chunk_tokens": 62,
-    "requires_disclaimer": false
-  },
-  {
-    "id": "gov-ftc-articles-debt-collection-faqs-1",
-    "source_type": "regulatory",
-    "topic": "ftc-articles-debt-collection-faqs",
-    "category": "business-debt",
-    "topic_tags": [
-      "ftc"
-    ],
-    "title": "Debt Collection FAQs | Consumer Advice",
     "section_heading": "Debt Collection FAQs",
     "chunk_text": "Is a debt collector calling? What can you do? What are your rights? The Fair Debt Collection Practices Act (FDCPA) makes it illegal for debt collectors to use abusive, unfair, or deceptive practices when they collect debts. Here are some answers to frequently asked questions about your rights. What To Know About Debt Collection What To Know About Repaying Debts What To Know About Lawsuits and Garnishment",
     "chunk_tokens": 87,
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-debt-collection-faqs-2",
+    "id": "gov-ftc-articles-debt-collection-faqs-1",
     "source_type": "regulatory",
     "topic": "ftc-articles-debt-collection-faqs",
     "category": "business-debt",
@@ -42,7 +28,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-debt-collection-faqs-3",
+    "id": "gov-ftc-articles-debt-collection-faqs-2",
     "source_type": "regulatory",
     "topic": "ftc-articles-debt-collection-faqs",
     "category": "business-debt",
@@ -56,7 +42,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-debt-collection-faqs-4",
+    "id": "gov-ftc-articles-debt-collection-faqs-3",
     "source_type": "regulatory",
     "topic": "ftc-articles-debt-collection-faqs",
     "category": "business-debt",
@@ -70,7 +56,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-debt-collection-faqs-5",
+    "id": "gov-ftc-articles-debt-collection-faqs-4",
     "source_type": "regulatory",
     "topic": "ftc-articles-debt-collection-faqs",
     "category": "business-debt",
@@ -84,7 +70,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-debt-collection-faqs-6",
+    "id": "gov-ftc-articles-debt-collection-faqs-5",
     "source_type": "regulatory",
     "topic": "ftc-articles-debt-collection-faqs",
     "category": "business-debt",
@@ -98,7 +84,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-debt-collection-faqs-7",
+    "id": "gov-ftc-articles-debt-collection-faqs-6",
     "source_type": "regulatory",
     "topic": "ftc-articles-debt-collection-faqs",
     "category": "business-debt",
@@ -112,7 +98,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-debt-collection-faqs-8",
+    "id": "gov-ftc-articles-debt-collection-faqs-7",
     "source_type": "regulatory",
     "topic": "ftc-articles-debt-collection-faqs",
     "category": "business-debt",
@@ -126,7 +112,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-debt-collection-faqs-9",
+    "id": "gov-ftc-articles-debt-collection-faqs-8",
     "source_type": "regulatory",
     "topic": "ftc-articles-debt-collection-faqs",
     "category": "business-debt",
@@ -140,7 +126,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-debt-collection-faqs-10",
+    "id": "gov-ftc-articles-debt-collection-faqs-9",
     "source_type": "regulatory",
     "topic": "ftc-articles-debt-collection-faqs",
     "category": "business-debt",
@@ -154,7 +140,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-debt-collection-faqs-11",
+    "id": "gov-ftc-articles-debt-collection-faqs-10",
     "source_type": "regulatory",
     "topic": "ftc-articles-debt-collection-faqs",
     "category": "business-debt",
@@ -168,7 +154,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-debt-collection-faqs-12",
+    "id": "gov-ftc-articles-debt-collection-faqs-11",
     "source_type": "regulatory",
     "topic": "ftc-articles-debt-collection-faqs",
     "category": "business-debt",
@@ -182,7 +168,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-debt-collection-faqs-13",
+    "id": "gov-ftc-articles-debt-collection-faqs-12",
     "source_type": "regulatory",
     "topic": "ftc-articles-debt-collection-faqs",
     "category": "business-debt",
@@ -196,7 +182,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-debt-collection-faqs-14",
+    "id": "gov-ftc-articles-debt-collection-faqs-13",
     "source_type": "regulatory",
     "topic": "ftc-articles-debt-collection-faqs",
     "category": "business-debt",
@@ -210,7 +196,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-debt-collection-faqs-15",
+    "id": "gov-ftc-articles-debt-collection-faqs-14",
     "source_type": "regulatory",
     "topic": "ftc-articles-debt-collection-faqs",
     "category": "business-debt",
@@ -224,7 +210,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-debt-collection-faqs-16",
+    "id": "gov-ftc-articles-debt-collection-faqs-15",
     "source_type": "regulatory",
     "topic": "ftc-articles-debt-collection-faqs",
     "category": "business-debt",
@@ -238,7 +224,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-debt-collection-faqs-17",
+    "id": "gov-ftc-articles-debt-collection-faqs-16",
     "source_type": "regulatory",
     "topic": "ftc-articles-debt-collection-faqs",
     "category": "business-debt",
@@ -252,7 +238,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-debt-collection-faqs-18",
+    "id": "gov-ftc-articles-debt-collection-faqs-17",
     "source_type": "regulatory",
     "topic": "ftc-articles-debt-collection-faqs",
     "category": "business-debt",
@@ -266,7 +252,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-debt-collection-faqs-19",
+    "id": "gov-ftc-articles-debt-collection-faqs-18",
     "source_type": "regulatory",
     "topic": "ftc-articles-debt-collection-faqs",
     "category": "business-debt",
@@ -280,7 +266,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-debt-collection-faqs-20",
+    "id": "gov-ftc-articles-debt-collection-faqs-19",
     "source_type": "regulatory",
     "topic": "ftc-articles-debt-collection-faqs",
     "category": "business-debt",
@@ -294,7 +280,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-debt-collection-faqs-21",
+    "id": "gov-ftc-articles-debt-collection-faqs-20",
     "source_type": "regulatory",
     "topic": "ftc-articles-debt-collection-faqs",
     "category": "business-debt",
@@ -308,7 +294,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-debt-collection-faqs-22",
+    "id": "gov-ftc-articles-debt-collection-faqs-21",
     "source_type": "regulatory",
     "topic": "ftc-articles-debt-collection-faqs",
     "category": "business-debt",
@@ -322,7 +308,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-debt-collection-faqs-23",
+    "id": "gov-ftc-articles-debt-collection-faqs-22",
     "source_type": "regulatory",
     "topic": "ftc-articles-debt-collection-faqs",
     "category": "business-debt",
@@ -336,7 +322,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-debt-collection-faqs-24",
+    "id": "gov-ftc-articles-debt-collection-faqs-23",
     "source_type": "regulatory",
     "topic": "ftc-articles-debt-collection-faqs",
     "category": "business-debt",
@@ -350,7 +336,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-debt-collection-faqs-25",
+    "id": "gov-ftc-articles-debt-collection-faqs-24",
     "source_type": "regulatory",
     "topic": "ftc-articles-debt-collection-faqs",
     "category": "business-debt",
@@ -364,7 +350,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-debt-collection-faqs-26",
+    "id": "gov-ftc-articles-debt-collection-faqs-25",
     "source_type": "regulatory",
     "topic": "ftc-articles-debt-collection-faqs",
     "category": "business-debt",
@@ -386,27 +372,13 @@
       "ftc"
     ],
     "title": "What To Do if a Debt Collector Sues You | Consumer Advice",
-    "section_heading": "What To Do if a Debt Collector Sues You | Consumer Advice",
-    "chunk_text": "The .gov means it’s official.Federal government websites often end in .gov or .mil. Before sharing sensitive information, make sure you’re on a federal government site. The site is secure.Thehttps://ensures that you are connecting to the official website and that any information you provide is encrypted and transmitted securely.",
-    "chunk_tokens": 62,
-    "requires_disclaimer": false
-  },
-  {
-    "id": "gov-ftc-articles-what-do-if-debt-collector-sues-you-1",
-    "source_type": "regulatory",
-    "topic": "ftc-articles-what-do-if-debt-collector-sues-you",
-    "category": "business-debt",
-    "topic_tags": [
-      "ftc"
-    ],
-    "title": "What To Do if a Debt Collector Sues You | Consumer Advice",
     "section_heading": "What To Do if a Debt Collector Sues You",
     "chunk_text": "If a debt collector files a lawsuit against you to collect a debt, it’s important to respond — either yourself or through an attorney. And remember,you have rightswhen it comes to dealing with debt collectors. Here are answers to some common questions you might have about the process. A Debt Collector is Suing me — Now What? What Happens if I Don’t Respond? Where Do I Report a Debt Collector for Breaking the Law?",
     "chunk_tokens": 96,
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-what-do-if-debt-collector-sues-you-2",
+    "id": "gov-ftc-articles-what-do-if-debt-collector-sues-you-1",
     "source_type": "regulatory",
     "topic": "ftc-articles-what-do-if-debt-collector-sues-you",
     "category": "business-debt",
@@ -420,7 +392,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-what-do-if-debt-collector-sues-you-3",
+    "id": "gov-ftc-articles-what-do-if-debt-collector-sues-you-2",
     "source_type": "regulatory",
     "topic": "ftc-articles-what-do-if-debt-collector-sues-you",
     "category": "business-debt",
@@ -434,7 +406,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-what-do-if-debt-collector-sues-you-4",
+    "id": "gov-ftc-articles-what-do-if-debt-collector-sues-you-3",
     "source_type": "regulatory",
     "topic": "ftc-articles-what-do-if-debt-collector-sues-you",
     "category": "business-debt",
@@ -448,7 +420,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-what-do-if-debt-collector-sues-you-5",
+    "id": "gov-ftc-articles-what-do-if-debt-collector-sues-you-4",
     "source_type": "regulatory",
     "topic": "ftc-articles-what-do-if-debt-collector-sues-you",
     "category": "business-debt",
@@ -462,7 +434,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-what-do-if-debt-collector-sues-you-6",
+    "id": "gov-ftc-articles-what-do-if-debt-collector-sues-you-5",
     "source_type": "regulatory",
     "topic": "ftc-articles-what-do-if-debt-collector-sues-you",
     "category": "business-debt",
@@ -476,7 +448,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-what-do-if-debt-collector-sues-you-7",
+    "id": "gov-ftc-articles-what-do-if-debt-collector-sues-you-6",
     "source_type": "regulatory",
     "topic": "ftc-articles-what-do-if-debt-collector-sues-you",
     "category": "business-debt",
@@ -490,7 +462,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-what-do-if-debt-collector-sues-you-8",
+    "id": "gov-ftc-articles-what-do-if-debt-collector-sues-you-7",
     "source_type": "regulatory",
     "topic": "ftc-articles-what-do-if-debt-collector-sues-you",
     "category": "business-debt",
@@ -504,7 +476,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-what-do-if-debt-collector-sues-you-9",
+    "id": "gov-ftc-articles-what-do-if-debt-collector-sues-you-8",
     "source_type": "regulatory",
     "topic": "ftc-articles-what-do-if-debt-collector-sues-you",
     "category": "business-debt",
@@ -518,7 +490,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-what-do-if-debt-collector-sues-you-10",
+    "id": "gov-ftc-articles-what-do-if-debt-collector-sues-you-9",
     "source_type": "regulatory",
     "topic": "ftc-articles-what-do-if-debt-collector-sues-you",
     "category": "business-debt",
@@ -532,7 +504,7 @@
     "requires_disclaimer": false
   },
   {
-    "id": "gov-ftc-articles-what-do-if-debt-collector-sues-you-11",
+    "id": "gov-ftc-articles-what-do-if-debt-collector-sues-you-10",
     "source_type": "regulatory",
     "topic": "ftc-articles-what-do-if-debt-collector-sues-you",
     "category": "business-debt",
@@ -543,6 +515,174 @@
     "section_heading": "Where Do I Report a Debt Collector for Breaking the Law?",
     "chunk_text": "happened because the collector broke the law — expenses like lost wages or medical bills, or compensation for the effect the debt collector’s actions had on your job or your health. But even if a court finds a debt collector violated the law in trying to collect a legitimate debt, you may still owe the debt.",
     "chunk_tokens": 72,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-ftc-news-events-news-press-releases-2022-01-merchant-cash-advance-providers-banned-industry-ordered-redress-small-businesses-0",
+    "source_type": "regulatory",
+    "topic": "ftc-news-events-news-press-releases-2022-01-merchant-cash-advance-providers-banned-industry-ordered-redress-small-businesses",
+    "category": "business-debt",
+    "topic_tags": [
+      "ftc"
+    ],
+    "title": "Merchant Cash Advance Providers Banned from Industry, Ordered to Redress Small Businesses | Federal Trade Commission",
+    "section_heading": "Merchant Cash Advance Providers Banned from Industry, Ordered to Redress Small Businesses",
+    "chunk_text": "Two of the defendants behind an alleged small business financing scheme, RAM Capital Funding, LLC and its owner Tzvi Reich,will be permanently bannedfrom the merchant cash advance and debt collection industries, and required to pay $675,000 to settle Federal Trade Commission charges that they used deceptive and illegal means to seize assets from small businesses, non-profits, and religious organizations. “Today’s order makes clear that preying on small businesses will come with a heavy price,” said Samuel Levine, the Director of the FTC’s Bureau of Consumer Protection. “These defendants have been banned from",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-ftc-news-events-news-press-releases-2022-01-merchant-cash-advance-providers-banned-industry-ordered-redress-small-businesses-1",
+    "source_type": "regulatory",
+    "topic": "ftc-news-events-news-press-releases-2022-01-merchant-cash-advance-providers-banned-industry-ordered-redress-small-businesses",
+    "category": "business-debt",
+    "topic_tags": [
+      "ftc"
+    ],
+    "title": "Merchant Cash Advance Providers Banned from Industry, Ordered to Redress Small Businesses | Federal Trade Commission",
+    "section_heading": "Merchant Cash Advance Providers Banned from Industry, Ordered to Redress Small Businesses",
+    "chunk_text": "the merchant cash advance business, and we intend to hold their co-defendants similarly accountable.” Merchant cash advances are a type of alternative small business financing. Generally speaking, merchant cash advance companies provide funds to businesses in exchange for a percentage of the businesses’ revenue. Typically, a merchant cash advance company will make daily withdrawals from the business’s bank account until the obligation has been met. As detailed in theFebruary 2020 FTC staff perspectiveon the “Strictly Business” forum, however, some merchant cash advance providersengage in aggressive, and potentially misleading, marketing practices and use",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-ftc-news-events-news-press-releases-2022-01-merchant-cash-advance-providers-banned-industry-ordered-redress-small-businesses-2",
+    "source_type": "regulatory",
+    "topic": "ftc-news-events-news-press-releases-2022-01-merchant-cash-advance-providers-banned-industry-ordered-redress-small-businesses",
+    "category": "business-debt",
+    "topic_tags": [
+      "ftc"
+    ],
+    "title": "Merchant Cash Advance Providers Banned from Industry, Ordered to Redress Small Businesses | Federal Trade Commission",
+    "section_heading": "Merchant Cash Advance Providers Banned from Industry, Ordered to Redress Small Businesses",
+    "chunk_text": "potentially abusive collection tactics. The FTC alleged that since 2015, the defendants deceived small businesses and other organizations in violation of the FTC Act and the Gramm-Leach-Bliley Act by requiring personal guarantees and upfront fees from consumers after representing they wouldn’t make these demands, providing less funding to consumers than promised, and by debiting more from consumers’ bank accounts than they said they would. The agency also alleged that the defendants made unauthorized withdrawals from consumers’ accounts and used unfair collection practices, including sometimes threatening physical violence. In addition, the FTC alleged",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-ftc-news-events-news-press-releases-2022-01-merchant-cash-advance-providers-banned-industry-ordered-redress-small-businesses-3",
+    "source_type": "regulatory",
+    "topic": "ftc-news-events-news-press-releases-2022-01-merchant-cash-advance-providers-banned-industry-ordered-redress-small-businesses",
+    "category": "business-debt",
+    "topic_tags": [
+      "ftc"
+    ],
+    "title": "Merchant Cash Advance Providers Banned from Industry, Ordered to Redress Small Businesses | Federal Trade Commission",
+    "section_heading": "Merchant Cash Advance Providers Banned from Industry, Ordered to Redress Small Businesses",
+    "chunk_text": "that the defendants illegally weaponized “confessions of judgment,” contractual terms that allowed defendants to pursue customers’ personal assets in court and obtain uncontested judgments against them. As part of the settlement, the defendants are being ordered to vacate any judgments against their former customers and to release any liens against their customers’ property. The proposed order would also ban these defendants from making these and similar misrepresentations, and from further violations of the Gramm-Leach-Bliley Act. The Commission’s case against the other defendants, RCG Advances, LLC, Robert Giardina, and Jonathan Braun, is ongoing,",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-ftc-news-events-news-press-releases-2022-01-merchant-cash-advance-providers-banned-industry-ordered-redress-small-businesses-4",
+    "source_type": "regulatory",
+    "topic": "ftc-news-events-news-press-releases-2022-01-merchant-cash-advance-providers-banned-industry-ordered-redress-small-businesses",
+    "category": "business-debt",
+    "topic_tags": [
+      "ftc"
+    ],
+    "title": "Merchant Cash Advance Providers Banned from Industry, Ordered to Redress Small Businesses | Federal Trade Commission",
+    "section_heading": "Merchant Cash Advance Providers Banned from Industry, Ordered to Redress Small Businesses",
+    "chunk_text": "and the proposed order requires settling defendants RAM Capital Funding and Reich to cooperate with the FTC. The Commission vote approving the stipulated final order was 4-0. The FTC filed the proposed orderin the U.S. District Court for the Southern District of New York. NOTE:Stipulated final orders or injunctions, etc. have the force of law when approved and signed by the District Court judge. The Federal Trade Commission works to promote competition andprotect and educate consumers. The FTC will never demand money, make threats, tell you to transfer money, or promise you",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-ftc-news-events-news-press-releases-2022-01-merchant-cash-advance-providers-banned-industry-ordered-redress-small-businesses-5",
+    "source_type": "regulatory",
+    "topic": "ftc-news-events-news-press-releases-2022-01-merchant-cash-advance-providers-banned-industry-ordered-redress-small-businesses",
+    "category": "business-debt",
+    "topic_tags": [
+      "ftc"
+    ],
+    "title": "Merchant Cash Advance Providers Banned from Industry, Ordered to Redress Small Businesses | Federal Trade Commission",
+    "section_heading": "Merchant Cash Advance Providers Banned from Industry, Ordered to Redress Small Businesses",
+    "chunk_text": "a prize. Learn more about consumer topics atconsumer.ftc.gov, or report fraud, scams, and bad business practices atReportFraud.ftc.gov. Follow theFTC on social media, readconsumer alertsand thebusiness blog, andsign up to get the latest FTC news and alerts.",
+    "chunk_tokens": 46,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-ftc-news-events-news-press-releases-2023-10-ftc-case-leads-permanent-ban-against-merchant-cash-advance-owner-deceiving-small-businesses-seizing-0",
+    "source_type": "regulatory",
+    "topic": "ftc-news-events-news-press-releases-2023-10-ftc-case-leads-permanent-ban-against-merchant-cash-advance-owner-deceiving-small-businesses-seizing",
+    "category": "business-debt",
+    "topic_tags": [
+      "ftc"
+    ],
+    "title": "FTC Case Leads to Permanent Ban Against Merchant Cash Advance Owner for Deceiving Small Businesses, Seizing Personal and Business Assets | Federal Trade Commission",
+    "section_heading": "FTC Case Leads to Permanent Ban Against Merchant Cash Advance Owner for Deceiving Small Businesses, Seizing Personal and Business Assets",
+    "chunk_text": "As a result of a Federal Trade Commission lawsuit, Jonathan Braun, who controlled small-business funding company RCG Advances, will face a permanent ban from the merchant cash advance and debt collection industries. A federal courtissued summary judgment in favor of the FTCin the case along with apermanent injunctionagainst Braun. “Mr. Braun and his company targeted small business consumers with an egregious array of tactics, from predatory contract terms to violent threats, and the court’s opinion is a significant win on their behalf,” said Samuel Levine, Director of the FTC’s Bureau of Consumer",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-ftc-news-events-news-press-releases-2023-10-ftc-case-leads-permanent-ban-against-merchant-cash-advance-owner-deceiving-small-businesses-seizing-1",
+    "source_type": "regulatory",
+    "topic": "ftc-news-events-news-press-releases-2023-10-ftc-case-leads-permanent-ban-against-merchant-cash-advance-owner-deceiving-small-businesses-seizing",
+    "category": "business-debt",
+    "topic_tags": [
+      "ftc"
+    ],
+    "title": "FTC Case Leads to Permanent Ban Against Merchant Cash Advance Owner for Deceiving Small Businesses, Seizing Personal and Business Assets | Federal Trade Commission",
+    "section_heading": "FTC Case Leads to Permanent Ban Against Merchant Cash Advance Owner for Deceiving Small Businesses, Seizing Personal and Business Assets",
+    "chunk_text": "Protection. “This case makes clear that the FTC will fight back against those who prey on small businesses.” The FTCsued Braun in June 2020, along with four other defendants, for his role withRCG Advances, which formerly did business as Richmond Capital Group, charging that he deceived small businesses and other organizations by misrepresenting the terms of merchant cash advances the business provided, and then used unfair collection practices, including sometimes threatening physical violence, to compel consumers to pay. The suit also alleged that Braun and the other defendants made unauthorized withdrawals from",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-ftc-news-events-news-press-releases-2023-10-ftc-case-leads-permanent-ban-against-merchant-cash-advance-owner-deceiving-small-businesses-seizing-2",
+    "source_type": "regulatory",
+    "topic": "ftc-news-events-news-press-releases-2023-10-ftc-case-leads-permanent-ban-against-merchant-cash-advance-owner-deceiving-small-businesses-seizing",
+    "category": "business-debt",
+    "topic_tags": [
+      "ftc"
+    ],
+    "title": "FTC Case Leads to Permanent Ban Against Merchant Cash Advance Owner for Deceiving Small Businesses, Seizing Personal and Business Assets | Federal Trade Commission",
+    "section_heading": "FTC Case Leads to Permanent Ban Against Merchant Cash Advance Owner for Deceiving Small Businesses, Seizing Personal and Business Assets",
+    "chunk_text": "consumers’ accounts and required businesses and their owners to sign confessions of judgment as part of their contracts, which allowed the defendants to go immediately to court and obtain an uncontested judgment in case of an alleged default. The complaint alleges that the defendants unlawfully and unfairly used these confessions of judgment to seize consumers’ personal and business assets in circumstances not expected by consumers or permitted by the defendants’ financing contracts. The court’s opinion granting summary judgment in favor of the FTC found that Braun engaged in “extensive misconduct” that violated",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-ftc-news-events-news-press-releases-2023-10-ftc-case-leads-permanent-ban-against-merchant-cash-advance-owner-deceiving-small-businesses-seizing-3",
+    "source_type": "regulatory",
+    "topic": "ftc-news-events-news-press-releases-2023-10-ftc-case-leads-permanent-ban-against-merchant-cash-advance-owner-deceiving-small-businesses-seizing",
+    "category": "business-debt",
+    "topic_tags": [
+      "ftc"
+    ],
+    "title": "FTC Case Leads to Permanent Ban Against Merchant Cash Advance Owner for Deceiving Small Businesses, Seizing Personal and Business Assets | Federal Trade Commission",
+    "section_heading": "FTC Case Leads to Permanent Ban Against Merchant Cash Advance Owner for Deceiving Small Businesses, Seizing Personal and Business Assets",
+    "chunk_text": "both the FTC Act and the Gramm-Leach-Bliley (GLB) Act, and that Braun was liable for the damages caused by his and the company’s unlawful conduct. The permanent injunction includes a number of key provisions: Ban on merchant cash advance:Braun is permanently banned from any involvement with the merchant cash advance industry, including assisting anyone else in offering those services. Ban on debt collection:Braun is permanently banned from the debt collection industry. Remove negative credit information:Braun is required to contact credit reporting agencies within 30 days to remove any negative information that was",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-ftc-news-events-news-press-releases-2023-10-ftc-case-leads-permanent-ban-against-merchant-cash-advance-owner-deceiving-small-businesses-seizing-4",
+    "source_type": "regulatory",
+    "topic": "ftc-news-events-news-press-releases-2023-10-ftc-case-leads-permanent-ban-against-merchant-cash-advance-owner-deceiving-small-businesses-seizing",
+    "category": "business-debt",
+    "topic_tags": [
+      "ftc"
+    ],
+    "title": "FTC Case Leads to Permanent Ban Against Merchant Cash Advance Owner for Deceiving Small Businesses, Seizing Personal and Business Assets | Federal Trade Commission",
+    "section_heading": "FTC Case Leads to Permanent Ban Against Merchant Cash Advance Owner for Deceiving Small Businesses, Seizing Personal and Business Assets",
+    "chunk_text": "filed on consumer or business credit reports as a result of his actions. Prohibition on deceiving consumers and unauthorized charges: Braun is prohibited from deceiving consumers about any product or service, and is also prohibited from charging consumers without their authorization. The court has scheduled a trial for January 2024 to determine the amount of monetary relief that should be imposed for Braun’s law violations. The other defendants in the FTC’s casepreviously settledthe FTC’s charges against them, resulting in industry bans and monetary relief totaling more than $2 million. The Federal Trade",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-ftc-news-events-news-press-releases-2023-10-ftc-case-leads-permanent-ban-against-merchant-cash-advance-owner-deceiving-small-businesses-seizing-5",
+    "source_type": "regulatory",
+    "topic": "ftc-news-events-news-press-releases-2023-10-ftc-case-leads-permanent-ban-against-merchant-cash-advance-owner-deceiving-small-businesses-seizing",
+    "category": "business-debt",
+    "topic_tags": [
+      "ftc"
+    ],
+    "title": "FTC Case Leads to Permanent Ban Against Merchant Cash Advance Owner for Deceiving Small Businesses, Seizing Personal and Business Assets | Federal Trade Commission",
+    "section_heading": "FTC Case Leads to Permanent Ban Against Merchant Cash Advance Owner for Deceiving Small Businesses, Seizing Personal and Business Assets",
+    "chunk_text": "Commission works to promote competition andprotect and educate consumers. The FTC will never demand money, make threats, tell you to transfer money, or promise you a prize. Learn more about consumer topics atconsumer.ftc.gov, or report fraud, scams, and bad business practices atReportFraud.ftc.gov. Follow theFTC on social media, readconsumer alertsand thebusiness blog, andsign up to get the latest FTC news and alerts.",
+    "chunk_tokens": 79,
     "requires_disclaimer": false
   },
   {
@@ -826,6 +966,20 @@
     "requires_disclaimer": false
   },
   {
+    "id": "gov-treasury-top-0",
+    "source_type": "regulatory",
+    "topic": "treasury-top",
+    "category": "business-debt",
+    "topic_tags": [
+      "treasury"
+    ],
+    "title": "Treasury Offset Program | Bureau of the Fiscal Service",
+    "section_heading": "Treasury Offset Program",
+    "chunk_text": "The Treasury Offset Program (TOP) collects past-due (delinquent) debts (for example, child support payments) that people owe to state and federal agencies. TOP matches people and businesses who owe delinquent debts with money that federal agencies are paying (for example, a tax refund). To the extent allowed by law, when a match happens, TOP withholds (offsets) money to pay the delinquent debt. In fiscal year 2024, TOP recovered more than $3.8 billion in federal and state delinquent debts.",
+    "chunk_tokens": 101,
+    "requires_disclaimer": false
+  },
+  {
     "id": "gov-irs-payments-offer-in-compromise-0",
     "source_type": "regulatory",
     "topic": "irs-payments-offer-in-compromise",
@@ -1033,6 +1187,594 @@
     "section_heading": "Get help",
     "chunk_text": "Explains the actions IRS may take to recover taxes owed. DownloadPublication 594, The IRS Collection ProcessPDF. Looking to settle for less with the IRS? Check out thefull playlistfor step-by-step instructions",
     "chunk_tokens": 39,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-0",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "More In File",
+    "chunk_text": "Businesses and self-employedBusiness tax accountEmployer ID numbersBusiness taxesBusiness structuresOperating a businessSelf-employedSmall businessIndustries and professionsSmall business eventsOnline learningLarge business Small businessIndustries and professionsSmall business eventsOnline learning Federal, state and local governments Taxpayer identification numbers (TIN) General Offer in Compromise (OIC) information After the offer has been accepted, rejected or returned",
+    "chunk_tokens": 63,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-1",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "General offer in compromise (OIC) information",
+    "chunk_text": "You can complete theOffer in Compromise Pre-Qualifier Toolto find out if you may qualify for an offer in compromise. You may also check your eligibility in yourIndividual Online Account. You qualify if your adjusted gross income (AGI), as determined by your most recently filed income tax return (Form 1040 or 1040-SR), is less than or equal to the amount shown in the chart on Form 656, Section 1, based on your family size and where you live. Taxpayers who do not qualify based on the AGI may request a waiver based on",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-2",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "General offer in compromise (OIC) information",
+    "chunk_text": "their current household’s gross monthly income from Form 433 (OIC) x 12. If you qualify, you are not required to submit any payments of the application fee upon submission or during the consideration of your offer. The National Standards are the amounts allowed by IRS forfood, clothing and other items. You are allowed the total National Standard amounts for your family size and income level, without the IRS questioning the amount you actually spend. Note: Alaska and Hawaii have their own National Standards tables. The Local Standards are the amounts allowed forhousing",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-3",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "General offer in compromise (OIC) information",
+    "chunk_text": "and utilitiesandtransportation. The Local Standards are limited to the amounts you actually spend per month or the standard amounts, whichever is less. National and local standards are guidelines. If the IRS determines that the standards would not cover basic living expenses in a particular case, then deviations are allowed. The IRS will figure the correct offer amount. If it is more than what you offered, and you have no special circumstances, the IRS will give you an opportunity to increase your offer amount. If you do not, the offer will be rejected.",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-4",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "General offer in compromise (OIC) information",
+    "chunk_text": "If the IRS finds you can full pay the liability, you can request an installment agreement. The IRS reviews OICs for possible fraudulent intent. Submitting an OIC with false information, or making a false statement to an IRS employee, is considered fraud and may be subject to civil or criminal penalties. No. If you have an installment agreement in place, you do not have to make payments while your offer is being processed. If your offer is not accepted and you have not incurred any additional tax debt, your installment agreement with",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-5",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "General offer in compromise (OIC) information",
+    "chunk_text": "the IRS will be reinstated with no additional fee. During the offer process the IRS may file a Notice of Federal Tax Lien (NFTL). This is a public notice to creditors that you owe a tax debt. However, an NFTL will not normally be filed until a final decision has been made on your offer. The lien will be released if your offer is accepted and the agreed offer amount has been paid in full. There is no requirement to release a levy that was served prior to the offer submission. Your",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-6",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "General offer in compromise (OIC) information",
+    "chunk_text": "circumstances will be considered when determining to release or keep the levy in place while the offer is pending. We may be able to remove the levy if it was placed on your account after the IRS received date of the offer in compromise. An investigation of your offer may not be completed while there is a pending claim or an open audit of any tax year on which you owe a liability. If you submit a claim requesting relief under innocent spouse provisions, you have been notified a tax year will",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-7",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "General offer in compromise (OIC) information",
+    "chunk_text": "be audited, or currently have a tax year under audit, we recommend you wait for the resolution of the matter prior to submitting an offer. If we cannot complete investigation of your offer due to a pending examination or claim, the offer may be returned and any payments and application fee submitted will not be refunded. Prior to filing a Doubt as to Liability Offer in Compromise you should understand the difference between doubt as to liability and doubt as to collectability. Understanding this difference will help you determine which application form",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-8",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "General offer in compromise (OIC) information",
+    "chunk_text": "is the most appropriate for your situation. Doubt as to liability is when there is a genuine dispute as to the existence or amount of the correct tax debt under the law. If you have a legitimate doubt that you owe part or all of the tax debt, you will need to complete aForm 656-L, Offer in Compromise (Doubt as to Liability)PDF. Doubt as to collectability is when you agree with the amount due, however you are unable to pay the entire amount owed. If you are unable to pay the amount",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-9",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "General offer in compromise (OIC) information",
+    "chunk_text": "you owe through an installment agreement and/or equity in your assets, complete Form 656- Offer in Compromise located withinForm 656-B, Offer in Compromise BookletPDF. Doubt as to liability offer in compromise helpful hints: If you agree that you owe the tax but cannot afford to pay do not file a Form 656-L. To request consideration under doubt as to collectability, do not use the Form 656-L. You must provide a written statement explaining why the tax debt or portion of the tax debt is incorrect. In addition, you must provide supporting documentation",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-10",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "General offer in compromise (OIC) information",
+    "chunk_text": "or evidence that will help the IRS identify the reason(s) you doubt the accuracy of the tax debt. An offer based on doubt as to liability will only be considered for those periods/years identified in the offer. You must offer a dollar amount. An offer of zero will not be considered. Doubt as to liability cannot be considered if the tax debt has been established by a final court decision or judgment. See page 4 of the Form 656-L, pre-qualifier assessment, to find out if you may be eligible for a Doubt",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-11",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "General offer in compromise (OIC) information",
+    "chunk_text": "as to Liability offer in compromise. You may provide additional verification or documentation to support a different valuation to the employee investigating your offer. At any time, you may ask for a telephonic conference with the offer manager to discuss areas of disagreement. Additionally, certain disputes may qualify for Fast Track Mediation which allows for an expedited review of a specific area of disagreement. The mediation is not binding on either party, and certain cases and issues are not eligible. For more information, seeFast Track mediation. If you have received the rejection",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-12",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "General offer in compromise (OIC) information",
+    "chunk_text": "letter, seeAfter the offer has been accepted, rejected or returned, Fast Track Mediation does not apply once a rejection letter has been issued. No. Form 8821 authorizes a third party you designate to inspect and/or receive your confidential information for the type of tax and the years or periods you list on Form 8821. A Form 8821 does not authorize your appointee to speak on your behalf or to otherwise advocate your position before the IRS. Therefore, your appointee cannot represent you in a collection matter, such as an offer in compromise,",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-13",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "General offer in compromise (OIC) information",
+    "chunk_text": "before the IRS. Use Form 2848, Power of Attorney and Declaration of Representative, to authorize an individual to represent you before the IRS. The IRS has options for you to send information electronically. Ask the assigned employee about methods to send the documents electronically. The complete offer investigation can take up to 24 months, depending on inventory levels and case complexity. After we receive your Form 656 and supporting documentation with the required initial payment and application fee or low-income waiver, we will review it to ensure it can be processed. If",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-14",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "General offer in compromise (OIC) information",
+    "chunk_text": "we can’t process your offer, we will send your OIC package (including the application fee) back to you with a letter explaining the reason. Generally, the initial payment will be applied to your tax liability. If we can process your offer, we will send you a letter with the estimated date of contact. The letter might also request that you send additional information. Your OIC will ultimately be assigned to an offer examiner (OE) in a Centralized (COIC) office or an offer specialist (OS) in a Field (FOIC) office for investigation. The",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-15",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "General offer in compromise (OIC) information",
+    "chunk_text": "OE or OS will contact you by phone or mail to request any additional information that is needed to investigate the offer. If we don’t receive the information we request from you during the offer processing or investigation, we may return your offer without appeal rights. We will notify you in writing of our determination.",
+    "chunk_tokens": 71,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-16",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "Forms and requirements",
+    "chunk_text": "No, we are unable to consider an offer while there is an open bankruptcy; once it is discharged and closed, you can file an offer. You must file all tax returns you are legally required to file for personal or business taxes. If you have a valid extension and have made your required payments, you are considered current for that unfiled return. The extension doesn’t extend the time to pay taxes, only to file the return. Yes. Refer to page 1 of Form 656-B under “Are you Eligible?” Yes. Refer to page",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-17",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "Forms and requirements",
+    "chunk_text": "1 of Form 656-B under “Are you Eligible?” Estimated tax payments must equal either 100 percent of your total tax from the prior tax year, or 90 percent of the income tax you expect to owe for the current year. Divide the total by 4 to get your quarterly payment amounts. All estimated tax payments that are due should be paid prior to filing an offer. For more information see Publication 505, Tax Withholding and Estimated Tax. The number of Forms 656, application fees, and offer payments required are based on the",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-18",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "Forms and requirements",
+    "chunk_text": "types of taxes you want to compromise. The following number of Forms 656, application fees, and offer payments must be sent with the offer (unless payment is not required because you qualify for the Low Income Certification box in Section 1 of the Form 656 and check the box): One Form 656 with one application fee and one offer payment if you are compromising either your individual tax liability or two taxpayers owe only joint liabilities. Note: This includes divorced, separated, or married couples living apart if all liabilities are joint and",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-19",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "Forms and requirements",
+    "chunk_text": "they choose to file a joint offer together. One Form 656 with one application fee and offer payment if you are compromising either a partnership or corporate liability. Two separate Forms 656 with two separate application fees and two offer payments if: Two taxpayers have separate liabilities Two taxpayers have joint liabilities and one or both also have separate liabilities Two separate Forms 656, one for the business or corporation liabilities and one for the individual liabilities, when the intent is to compromise both if: An individual is submitting offers to compromise",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-20",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "Forms and requirements",
+    "chunk_text": "both individual and corporate liabilities Note: Either section 1 (Individual Information) OR section 2 (Business Information) should be completed on each Form 656. Both sections should not be combined on one Form 656. One form may be used if your business is a sole proprietorship linked to your SSN. A separate offer, with application fee and offer payment, is needed if your business is not a sole proprietorship linked to your SSN. Yes. You will need to gather information about your household's average gross monthly income and actual expenses. The entire household",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-21",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "Forms and requirements",
+    "chunk_text": "includes all those in addition to yourself who contribute money to pay expenses relating to the household, such as rent, utilities, insurance, groceries, etc. This is necessary for the IRS to accurately evaluate your offer. It may also be used to determine your share of the total household income and expenses.",
+    "chunk_tokens": 66,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-22",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "Payments and application fees",
+    "chunk_text": "You may designate which tax debt you would like to apply your offer payment(s) to in writing when the offer is submitted or when the payment is made. You may not designate the application fee, or any payment after the IRS accepts the offer. In the absence of any written designation request, the IRS will apply the offer payment(s) in the best interest of the government. You may make your payment(s) electronically using: Electronic Federal Tax Payment System (EFTPS) When making an electronic payment, be sure to select“Payment Options – Offer in",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-23",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "Payments and application fees",
+    "chunk_text": "Compromise.” If you are unable to access one of these electronic payment methods, you may send acheck or money ordermade payable to the“United States Treasury”to the address listed inForm 656-BPDF Note:If you send your payments by mail, you must includetwo separate checks: One for the$205 application fee, and One for yourinitial payment(either 20% of your offer amount or your first periodic payment). See the instructions inForm 656-BPDFfor additional details. Yes. You will need to make two payments: One for the application fee ($205.00) One for the required offer payment (either 20% of",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-24",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "Payments and application fees",
+    "chunk_text": "your offer amount or your first periodic payment). However, you do not need to include these payments if you qualify for the low-income certification (see the instructions inForm 656-BPDFfor details). You may make your initial offer payments electronically using: Electronic Federal Tax Payment System (EFTPS) Individual Online Account (IOLA), Be sure to select the correct OIC payment option when making your payment online. After completing your payment, you must enter the Electronic Funds Transfer number on Form 656. If you cannot access an online account, you may mail two separate checks to",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-25",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "Payments and application fees",
+    "chunk_text": "the address listed in Form 656. Be sure to annotate your payments in Section 5, page 4 of the form. No. Checks that combine application fees for several offers will not be accepted and the offers will be returned. Each Form 656 must have separate checks attached. After you file your periodic payment offer and include the application fee and initial payment, you must continue making your required periodic payments while the IRS is considering your offer. You can make your periodic payments electronically using: Electronic Federal Tax Payment System (EFTPS) Individual",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-26",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "Payments and application fees",
+    "chunk_text": "Online Account (IOLA) Be sure to select the correct payment option and apply the payment to yourOffer in Compromise (OIC). Keep records of your payments for your files. If you prefer to mail your payments, send them to thesame IRS address where you mailed your Form 656, unless the IRS notifies you otherwise. If the IRS assigns your case to a specific office or employee, follow any updated payment instructions they provide. No. Offer payments that must be sent with the offer are not refundable. The IRS will try to contact you",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-27",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "Payments and application fees",
+    "chunk_text": "to provide you with one opportunity to pay the missing amount. If you do not make the payment, the offer will be withdrawn and returned to you without appeal rights. All payment(s) already received will be applied to your tax liabilities. The IRS will also keep the application fee.",
+    "chunk_tokens": 63,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-28",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "After the offer has been accepted, rejected or returned",
+    "chunk_text": "If a triggering event occurs and you properly enter into a transfer agreement under section 965(i)(2), your section 965(i) net tax liability associated with the transfer agreement will not be assessed. If you do not enter into a transfer agreement under section 965(i)(2), you will be required to timely pay the triggered section 965(i) net tax liability either in its entirety or according to the installment schedule if you properly make a section 965(h) election with respect to the triggered section 965(i) net tax liability or the offer will default. Review the",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-29",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "After the offer has been accepted, rejected or returned",
+    "chunk_text": "letter for the reason(s) we returned your Offer in Compromise. There is no return reconsideration if we returned the offer for any of the following reasons: you have an open case in bankruptcy; you have been non-compliant with filing/payment after submitting the offer; we concluded that your offer was submitted as solely to delay; we concluded that the collection of the tax is in jeopardy; there are other IRS investigations pending; or the original assessment has been abated. If you believe we returned the offer in error, you can request a reconsideration",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-30",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "After the offer has been accepted, rejected or returned",
+    "chunk_text": "by calling the number on your return letter and providing your objections within 30 days from the date of the return letter. If the IRS agrees your offer should be reconsidered, we will ask you to return the original Form 656 and Form 433-A (OIC) or 433-B (OIC) along with the application fee if returned, and we will open it as a new offer. If you no longer have the original Form 656, you can provide a new Form 656 with the same offer amount and terms as the original. If you",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-31",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "After the offer has been accepted, rejected or returned",
+    "chunk_text": "paid an application fee that was returned to you, then you must send the application fee back to us; any offer payments you paid with the original offer will be applied to your new offer. If you need new forms, you candownload a copyon IRS.gov. If you disagree with the rejection, you have 30 days from the date on the rejection letter to appeal by following the instructions in the letter. If you agree with the rejection, you can send full payment of your tax debt to avoid additional interest and penalty,",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-32",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "After the offer has been accepted, rejected or returned",
+    "chunk_text": "or request an installment agreement to pay your tax debt. If your offer in compromise is accepted: You must pay the offer amount in accordance with the terms of your acceptance agreement. The IRS will keep any tax refund, including interest due, as the result of an overpayment of any tax or other liability due through the date the IRS accepts your offer in compromise. You may not designate a refund and/or overpayment to be applied to estimated tax payments for the following year. This condition does not apply if the offer",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-33",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "After the offer has been accepted, rejected or returned",
+    "chunk_text": "in compromise is based on doubt as to liability only. You will waive your right to contest in court or otherwise, the amount of the tax liability. If a Notice of Federal Tax Lien has been filed against you, the IRS will release it when the payment terms of the offer in compromise have been completed. You must remain in compliance with filing and payment of all tax returns for a period of five years from the date the offer in compromise is accepted, including any extensions. If you do not pay",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-34",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "After the offer has been accepted, rejected or returned",
+    "chunk_text": "the offer in compromise on time and remain in compliance during the five-year period after the offer in compromise is accepted, including any extensions, your offer will default. A copy of the acceptance letter is in the offer case file, which has been forwarded to the Federal Records Center. You can request a copy through the Freedom of Information Act by contacting your local IRS office. Please send your offer payments to the address listed on your acceptance letter. You may also make your payments via the onlineElectronic Federal Tax Payment System",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-35",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "After the offer has been accepted, rejected or returned",
+    "chunk_text": "(EFTPS)orIndividual Online Account (IOLA). Offer terms cannot be changed once the offer is accepted. A one-time extension may be granted on an offer payment within a 24-month period. All subsequent payments must be made timely. Contact the monitoring examiner to request the extension. As part of the accepted offer agreement the IRS will keep any refund, including interest, for taxes due through the date the IRS accepts the offer. No. The refund that is retained as part of the offer agreement is applied to the overall tax debt and is not considered",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-36",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "After the offer has been accepted, rejected or returned",
+    "chunk_text": "a payment toward your accepted offer amount. Your subsequent refunds can be applied to your offer balance with a signed written request. You may not specify to which tax period the payment should be applied. Both signatures are required on the request if the tax return was filed jointly. Requests may be mailed to the following applicable monitoring site based on where you submitted your initial offer: Memphis – IRS-MOIC, PO Box 77, Memphis, TN 38118-0077 Brookhaven – IRS-MOIC, PO Box 9006, Holtsville, NY 11742 No. Once your offer is accepted, additional",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-37",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "After the offer has been accepted, rejected or returned",
+    "chunk_text": "tax balances cannot be added to the offer and must be paid in full or the offer will default. Note: Installment agreements are not allowed with new balances. The lien will be released if your offer is accepted and the agreed offer amount has been paid in full. The IRS electronically releases liens to the county where the lien was filed. Cashier Check, Money Order or Online Payment – immediately upon receipt Personal Check or Business Check – 30 days after receipt Debit Card – 100 days after receipt Credit Card –",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-38",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "After the offer has been accepted, rejected or returned",
+    "chunk_text": "120 days after receipt You must continue to file and pay all of your taxes on time for the timeframe noted in the offer contract including any Collateral Agreement signed as part of the accepted offer. When an offer defaults, the IRS may levy or file suit to collect the entire balance of the offer or an amount equal to the original tax debt less any payment(s) received under the terms of the offer. All penalties and interest will be reinstated. Liens and levies may be placed on the account. Note: The",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-39",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "After the offer has been accepted, rejected or returned",
+    "chunk_text": "IRS will not default your agreement when you have filed a joint offer in compromise with a spouse or ex-spouse, as long as you have kept, or are keeping, all the terms of the agreement, even if your spouse or ex-spouse violates the future compliance requirements. The IRS may default the offer in compromise and reinstate the entire tax liability, less all payments and credits received. Interest will be added on the tax amount you owe until the offer is accepted. As of the date the offer is accepted no additional interest",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-40",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "After the offer has been accepted, rejected or returned",
+    "chunk_text": "will be added to your tax debt or accepted offer amount.",
+    "chunk_tokens": 14,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-41",
+    "source_type": "regulatory",
+    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
+    "category": "business-debt",
+    "topic_tags": [
+      "irs"
+    ],
+    "title": "Offer in compromise FAQs | Internal Revenue Service",
+    "section_heading": "Related topic",
+    "chunk_text": "Looking to settle for less with the IRS?",
+    "chunk_tokens": 10,
     "requires_disclaimer": false
   }
 ]

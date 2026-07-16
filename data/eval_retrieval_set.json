@@ -1,0 +1,429 @@
+[
+  {
+    "query": "how do I settle my business debt",
+    "label": "in_domain",
+    "style": "formal",
+    "expect_hit": true,
+    "expected_content_contains": ["debt", "restructur", "settl"]
+  },
+  {
+    "query": "what is unsecured debt",
+    "label": "in_domain",
+    "style": "formal",
+    "expect_hit": true,
+    "expected_content_contains": ["unsecured debt", "collateral"]
+  },
+  {
+    "query": "what is a merchant cash advance",
+    "label": "in_domain",
+    "style": "formal",
+    "expect_hit": true,
+    "expected_content_contains": ["merchant cash advance", "mca"]
+  },
+  {
+    "query": "can debt collectors call me on weekends",
+    "label": "in_domain",
+    "style": "formal",
+    "expect_hit": true,
+    "expected_content_contains": ["debt collector", "weekend", "sunday"]
+  },
+  {
+    "query": "what happens if I default on a merchant cash advance",
+    "label": "in_domain",
+    "style": "formal",
+    "expect_hit": true,
+    "expected_content_contains": ["mca", "merchant cash advance", "default"]
+  },
+  {
+    "query": "how does debt affect my credit score",
+    "label": "in_domain",
+    "style": "formal",
+    "expect_hit": true,
+    "expected_content_contains": ["credit", "debt"]
+  },
+  {
+    "query": "what is debt consolidation",
+    "label": "in_domain",
+    "style": "formal",
+    "expect_hit": true,
+    "expected_content_contains": ["consolidat"]
+  },
+  {
+    "query": "can a debt collector take money from my bank account",
+    "label": "in_domain",
+    "style": "formal",
+    "expect_hit": true,
+    "expected_content_contains": ["bank account", "debt collector", "garnish"]
+  },
+  {
+    "query": "what is the statute of limitations on debt",
+    "label": "in_domain",
+    "style": "formal",
+    "expect_hit": true,
+    "expected_content_contains": ["statute of limitations"]
+  },
+  {
+    "query": "how does the corporate turnaround program work",
+    "label": "in_domain",
+    "style": "formal",
+    "expect_hit": true,
+    "expected_content_contains": ["program", "corporate turnaround"]
+  },
+  {
+    "query": "what is a factor rate",
+    "label": "in_domain",
+    "style": "formal",
+    "expect_hit": true,
+    "expected_content_contains": ["factor rate"]
+  },
+  {
+    "query": "what is the fair debt collection practices act",
+    "label": "in_domain",
+    "style": "formal",
+    "expect_hit": true,
+    "expected_content_contains": ["fair debt collection", "fdcpa"]
+  },
+  {
+    "query": "what is mca",
+    "label": "borderline",
+    "style": "formal",
+    "expect_hit": true,
+    "expected_content_contains": ["merchant cash advance", "mca"]
+  },
+  {
+    "query": "mca",
+    "label": "borderline",
+    "style": "formal",
+    "expect_hit": true,
+    "expected_content_contains": ["merchant cash advance", "mca"]
+  },
+  {
+    "query": "wage garnishment",
+    "label": "borderline",
+    "style": "formal",
+    "expect_hit": true,
+    "expected_content_contains": ["garnish"]
+  },
+  {
+    "query": "charge offs",
+    "label": "borderline",
+    "style": "formal",
+    "expect_hit": true,
+    "expected_content_contains": ["charge off", "charge-off"]
+  },
+  {
+    "query": "frozen bank account",
+    "label": "borderline",
+    "style": "formal",
+    "expect_hit": true,
+    "expected_content_contains": ["frozen", "freeze"]
+  },
+  {
+    "query": "what is islam",
+    "label": "out_of_domain",
+    "style": "formal",
+    "expect_hit": false,
+    "expected_content_contains": []
+  },
+  {
+    "query": "what is the capital of france",
+    "label": "out_of_domain",
+    "style": "formal",
+    "expect_hit": false,
+    "expected_content_contains": []
+  },
+  {
+    "query": "tell me a joke",
+    "label": "out_of_domain",
+    "style": "formal",
+    "expect_hit": false,
+    "expected_content_contains": []
+  },
+  {
+    "query": "who is the current us president",
+    "label": "out_of_domain",
+    "style": "formal",
+    "expect_hit": false,
+    "expected_content_contains": []
+  },
+  {
+    "query": "what is photosynthesis",
+    "label": "out_of_domain",
+    "style": "formal",
+    "expect_hit": false,
+    "expected_content_contains": []
+  },
+  {
+    "query": "write me a poem about spring",
+    "label": "out_of_domain",
+    "style": "formal",
+    "expect_hit": false,
+    "expected_content_contains": []
+  },
+  {
+    "query": "what's your favorite movie",
+    "label": "out_of_domain",
+    "style": "formal",
+    "expect_hit": false,
+    "expected_content_contains": []
+  },
+  {
+    "query": "who won the last world cup",
+    "label": "out_of_domain",
+    "style": "formal",
+    "expect_hit": false,
+    "expected_content_contains": []
+  },
+  {
+    "query": "what is the best recipe for chocolate cake",
+    "label": "out_of_domain",
+    "style": "formal",
+    "expect_hit": false,
+    "expected_content_contains": []
+  },
+  {
+    "query": "how do I fix my wifi router",
+    "label": "out_of_domain",
+    "style": "formal",
+    "expect_hit": false,
+    "expected_content_contains": []
+  },
+  {
+    "query": "i am behind on three mca loans, i need help",
+    "label": "in_domain",
+    "style": "informal",
+    "expect_hit": true,
+    "expected_content_contains": ["mca", "merchant cash advance", "default"]
+  },
+  {
+    "query": "i have three merchant cash advance loans and cannot keep up with payments",
+    "label": "in_domain",
+    "style": "informal",
+    "expect_hit": true,
+    "expected_content_contains": ["mca", "merchant cash advance", "default"]
+  },
+  {
+    "query": "cant pay my business debt anymore what do i do",
+    "label": "in_domain",
+    "style": "informal",
+    "expect_hit": true,
+    "expected_content_contains": ["debt", "restructur", "settl"]
+  },
+  {
+    "query": "debt collectors keep calling me on sundays is that even legal",
+    "label": "in_domain",
+    "style": "informal",
+    "expect_hit": true,
+    "expected_content_contains": ["debt collector", "weekend", "sunday"]
+  },
+  {
+    "query": "my bank account got frozen idk what happened",
+    "label": "in_domain",
+    "style": "informal",
+    "expect_hit": true,
+    "expected_content_contains": ["frozen", "freeze"]
+  },
+  {
+    "query": "whats wage garnishment mean",
+    "label": "borderline",
+    "style": "informal",
+    "expect_hit": true,
+    "expected_content_contains": ["garnish"]
+  },
+  {
+    "query": "i need help, my marriage is falling apart",
+    "label": "out_of_domain",
+    "style": "informal",
+    "expect_hit": false,
+    "expected_content_contains": []
+  },
+  {
+    "query": "i cant sleep at night what should i do",
+    "label": "out_of_domain",
+    "style": "informal",
+    "expect_hit": false,
+    "expected_content_contains": []
+  },
+  {
+    "query": "my car broke down again and idk how to fix it",
+    "label": "out_of_domain",
+    "style": "informal",
+    "expect_hit": false,
+    "expected_content_contains": []
+  },
+  {
+    "query": "i just had a baby and im so tired lol",
+    "label": "out_of_domain",
+    "style": "informal",
+    "expect_hit": false,
+    "expected_content_contains": []
+  },
+  {
+    "query": "i have 3 mca debts, i need help",
+    "label": "in_domain",
+    "style": "informal",
+    "expect_hit": true,
+    "expected_content_contains": ["mca", "merchant cash advance"]
+  },
+  {
+    "query": "i am $50000 usd in debt, what can i do",
+    "label": "in_domain",
+    "style": "informal",
+    "expect_hit": true,
+    "expected_content_contains": ["debt"]
+  },
+  {
+    "query": "i have 2 mca's and they keep taking money from my account everyday its killing my cashflow what can i do right now",
+    "label": "in_domain",
+    "style": "informal",
+    "expect_hit": true,
+    "expected_content_contains": ["mca", "merchant cash advance"]
+  },
+  {
+    "query": "they gave me twenty five grand and said the factor rate was 1.29 and now they want thirty two grand back in like six months this is way more than i thought is that normal or am i just stupid for signing it",
+    "label": "in_domain",
+    "style": "informal",
+    "expect_hit": true,
+    "expected_content_contains": ["factor rate"]
+  },
+  {
+    "query": "im constantly negative in my bank account because of all these daily mca payments i'm so stressed out idk how to survive",
+    "label": "in_domain",
+    "style": "informal",
+    "expect_hit": true,
+    "expected_content_contains": ["mca", "merchant cash advance"]
+  },
+  {
+    "query": "i just took out my 4th mca this month what do i do",
+    "label": "in_domain",
+    "style": "informal",
+    "expect_hit": true,
+    "expected_content_contains": ["mca", "merchant cash advance"]
+  },
+  {
+    "query": "i heard you cant stack mcas is that true because i got two already and now im really struggling with payments",
+    "label": "in_domain",
+    "style": "informal",
+    "expect_hit": true,
+    "expected_content_contains": ["mca", "stack"]
+  },
+  {
+    "query": "cant pay my mca and they got a ucc-1 what do i do right now is it too late",
+    "label": "in_domain",
+    "style": "informal",
+    "expect_hit": true,
+    "expected_content_contains": ["ucc"]
+  },
+  {
+    "query": "i cant pay my 3 mcas anymore like 120k total can i settle for less",
+    "label": "in_domain",
+    "style": "informal",
+    "expect_hit": true,
+    "expected_content_contains": ["mca", "merchant cash advance"]
+  },
+  {
+    "query": "i thought i got a loan for 20k but they taking like 28k back is that normal for a merchant cash advance or did i get scammed my bank said their loan would only be like 22k total",
+    "label": "in_domain",
+    "style": "informal",
+    "expect_hit": true,
+    "expected_content_contains": ["merchant cash advance", "mca"]
+  },
+  {
+    "query": "ive got a 100k mca and im struggling bad can i offer them like half to just get rid of it",
+    "label": "in_domain",
+    "style": "informal",
+    "expect_hit": true,
+    "expected_content_contains": ["mca", "merchant cash advance"]
+  },
+  {
+    "query": "im scared they gonna take my house for this mca debt did i personly garantee it",
+    "label": "in_domain",
+    "style": "informal",
+    "expect_hit": true,
+    "expected_content_contains": ["guarantee"]
+  },
+  {
+    "query": "4 mcas crushing my business like 60 grand total please help me",
+    "label": "in_domain",
+    "style": "informal",
+    "expect_hit": true,
+    "expected_content_contains": ["mca", "merchant cash advance"]
+  },
+  {
+    "query": "my sba loan deferment is ending and i have no idea how im gonna make the payments what do i do",
+    "label": "in_domain",
+    "style": "informal",
+    "expect_hit": true,
+    "expected_content_contains": ["sba", "loan"]
+  },
+  {
+    "query": "i need 50k for my new food truck but my personal credit score is only like 580 what are my options for business credit",
+    "label": "in_domain",
+    "style": "informal",
+    "expect_hit": true,
+    "expected_content_contains": ["credit"]
+  },
+  {
+    "query": "i got this sba loan for like 150k and they made me sign some pg thing what does that even mean for my own money",
+    "label": "in_domain",
+    "style": "informal",
+    "expect_hit": true,
+    "expected_content_contains": ["guarantee", "sba"]
+  },
+  {
+    "query": "my business went under and i still owe like 100 grand on an sba loan will this ruin my personal credit score for like ever",
+    "label": "in_domain",
+    "style": "informal",
+    "expect_hit": true,
+    "expected_content_contains": ["sba", "credit"]
+  },
+  {
+    "query": "my restaurant is losing money like crazy i owe 75k to suppliers and the bank should i go chapter 7 to just shut down or is 11 a way to like save it",
+    "label": "in_domain",
+    "style": "informal",
+    "expect_hit": true,
+    "expected_content_contains": ["chapter 7", "chapter 11", "bankruptcy"]
+  },
+  {
+    "query": "my biz owes like 100k and im scared to death if i file chapter 7 do i lose everything or does chapter 11 let me keep operating and pay off some debt",
+    "label": "in_domain",
+    "style": "informal",
+    "expect_hit": true,
+    "expected_content_contains": ["chapter 7", "chapter 11", "bankruptcy"]
+  },
+  {
+    "query": "my small business is 150 grand in debt to like 5 different lenders can i sort this out without having to go to court",
+    "label": "in_domain",
+    "style": "informal",
+    "expect_hit": true,
+    "expected_content_contains": ["restructur", "debt"]
+  },
+  {
+    "query": "my main supplier is gonna cut me off if i dont pay this 10k invoice by friday and i just dont have the cash flow what happens then",
+    "label": "in_domain",
+    "style": "informal",
+    "expect_hit": true,
+    "expected_content_contains": ["debt", "credit"]
+  },
+  {
+    "query": "i owe like 75k to a bunch of different places and im drowning what do i even do",
+    "label": "in_domain",
+    "style": "informal",
+    "expect_hit": true,
+    "expected_content_contains": ["debt"]
+  },
+  {
+    "query": "my business debt is like 120 thousand dollars and im so stressed out i cant focus on anything what can i do",
+    "label": "in_domain",
+    "style": "informal",
+    "expect_hit": true,
+    "expected_content_contains": ["debt"]
+  },
+  {
+    "query": "i got like 5 different loans i cant pay them like 200k worth of debt is this free consult gonna help me figure out anything or just tell me im screwed what do i do",
+    "label": "in_domain",
+    "style": "informal",
+    "expect_hit": true,
+    "expected_content_contains": ["consult", "corporate turnaround", "debt"]
+  }
+]

@@ -1,25 +1,35 @@
 import os
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse
-from scripts.scrapers.utils import fetch, parse_body, split_into_chunks, make_chunk, save_raw, logger
+from scripts.scrapers.utils import fetch, parse_body, split_into_chunks, make_chunk, save_raw, logger, is_boilerplate
 
 GOV_URLS = [
-    # FTC — FDCPA & debt rights
+    # FTC — FDCPA & debt rights, plus real MCA enforcement actions (the old
+    # "merchant-cash-advances" consumer-education article was retired; these
+    # press releases are live and directly explain what predatory MCA
+    # conduct looks like from a regulator's own findings).
     ("ftc", "https://consumer.ftc.gov/articles/debt-collection-faqs"),
     ("ftc", "https://consumer.ftc.gov/articles/what-do-if-debt-collector-sues-you"),
-    ("ftc", "https://consumer.ftc.gov/articles/merchant-cash-advances"),
+    ("ftc", "https://www.ftc.gov/news-events/news/press-releases/2022/01/merchant-cash-advance-providers-banned-industry-ordered-redress-small-businesses"),
+    ("ftc", "https://www.ftc.gov/news-events/news/press-releases/2023/10/ftc-case-leads-permanent-ban-against-merchant-cash-advance-owner-deceiving-small-businesses-seizing"),
 
-    # CFPB — debt collection & small biz
-    ("cfpb", "https://www.consumerfinance.gov/consumer-tools/debt-collection/"),
-    ("cfpb", "https://www.consumerfinance.gov/consumer-tools/credit-reports-and-scores/"),
+    # CFPB dropped: consumerfinance.gov returns 403 on every path tried
+    # (bot-protection block, not a moved/retired page — verified directly,
+    # not assumed) as of 2026-07. No CFPB source in this pipeline currently.
 
     # SBA — loans, defaults, financial health
     ("sba", "https://www.sba.gov/funding-programs/loans/7a-loans"),
     ("sba", "https://www.sba.gov/business-guide/manage-your-business/manage-your-finances"),
 
+    # Treasury — defaulted federally-guaranteed loans (incl. SBA) that go to
+    # collection get referred here; closes the "what happens after SBA
+    # default" gap that the IRS OIC pages (tax debt, not SBA loan debt)
+    # never actually covered despite being in this list before.
+    ("treasury", "https://www.fiscal.treasury.gov/top/"),
+
     # IRS — tax debt for context
-    ("irs", "https://www.irs.gov/businesses/small-businesses-self-employed/collection-procedures-for-businesses"),
     ("irs", "https://www.irs.gov/payments/offer-in-compromise"),
+    ("irs", "https://www.irs.gov/businesses/small-businesses-self-employed/offer-in-compromise-faqs"),
 ]
 
 def extract_chunks_from_html(html: str, url: str, agency: str) -> list[dict]:
@@ -56,6 +66,8 @@ def extract_chunks_from_html(html: str, url: str, agency: str) -> list[dict]:
     for heading, text in sections:
         text_chunks = split_into_chunks(text)
         for i, text_chunk in enumerate(text_chunks):
+            if is_boilerplate(text_chunk):
+                continue
             chunk_id = f"gov-{topic}-{chunk_counter}"
             chunk = make_chunk(
                 id=chunk_id,

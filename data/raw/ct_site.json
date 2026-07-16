@@ -51,7 +51,7 @@
     ],
     "title": "About Us",
     "section_heading": "About Us",
-    "chunk_text": "Who is Corporate Turnaround?News Click Hereor call800.889.0232for a free consultation. Almost all companies placed for collection are smaller businesses. These companies usually don't have the money, the experience, the resources or the time to resolve issues that larger companies have. Some of these companies have minor cash flow problems and can afford to make lump sum settlements or pay in full given a reasonable amount of time. Other companies have severe financial problems. These struggling companies will go out of business or file business bankruptcy unless they get the help they desperately",
+    "chunk_text": "need. They could be decent, hard working people who genuinely want to pay their creditors but don't have nearly enough money to pay everyone they owe. I realized that if I could negotiate affordable terms with the struggling business creditors, all parties involved could win: My collection client could be paid. The other creditors could be paid. And the struggling company could survive. That's howCorporate Turnaroundwas born.We soon had businesses calling us from around the country asking for our help. We've worked with over 10,000 companies and successfully resolved over 50,000 business",
     "chunk_tokens": 119,
     "requires_disclaimer": false
   },
@@ -65,7 +65,7 @@
     ],
     "title": "About Us",
     "section_heading": "About Us",
-    "chunk_text": "need. They could be decent, hard working people who genuinely want to pay their creditors but don't have nearly enough money to pay everyone they owe. I realized that if I could negotiate affordable terms with the struggling business creditors, all parties involved could win: My collection client could be paid. The other creditors could be paid. And the struggling company could survive. That's howCorporate Turnaroundwas born.We soon had businesses calling us from around the country asking for our help. We've worked with over 10,000 companies and successfully resolved over 50,000 business",
+    "chunk_text": "debts from all different types of creditors. Part of the success of ourbusiness debt restructuringprogram comes from our ability to show our clients' hardship. Creditors and collection agencies are ready to negotiate more affordable terms once they understand the hardship a business owner is facing. We're currently negotiating over $400 million of our clients' debt.Look through ourtestimonials. You'll find people who were enduring the worst time of their lives when they became our clients. Family members were seriously ill; storms destroyed almost everything they owned. These stories can't be seen in a",
     "chunk_tokens": 119,
     "requires_disclaimer": false
   },
@@ -79,7 +79,7 @@
     ],
     "title": "About Us",
     "section_heading": "About Us",
-    "chunk_text": "debts from all different types of creditors. Part of the success of ourbusiness debt restructuringprogram comes from our ability to show our clients' hardship. Creditors and collection agencies are ready to negotiate more affordable terms once they understand the hardship a business owner is facing. We're currently negotiating over $400 million of our clients' debt.Look through ourtestimonials. You'll find people who were enduring the worst time of their lives when they became our clients. Family members were seriously ill; storms destroyed almost everything they owned. These stories can't be seen in a",
+    "chunk_text": "bank statement. They have to be explained. When clients send their collection calls to us, they free up precious time to be with their families during a crisis; to recover from serious illness; to rebuild business and their lives.Despite helping thousands of businesses, we felt we could do more. Some clients were completing our program, but still in debt with the IRS. Others needed cash for operating expenses. We responded by expanding our services. We now have tax specialists who can negotiate directly with the IRS. We also have multiple lenders who",
     "chunk_tokens": 119,
     "requires_disclaimer": false
   },
@@ -93,26 +93,12 @@
     ],
     "title": "About Us",
     "section_heading": "About Us",
-    "chunk_text": "bank statement. They have to be explained. When clients send their collection calls to us, they free up precious time to be with their families during a crisis; to recover from serious illness; to rebuild business and their lives.Despite helping thousands of businesses, we felt we could do more. Some clients were completing our program, but still in debt with the IRS. Others needed cash for operating expenses. We responded by expanding our services. We now have tax specialists who can negotiate directly with the IRS. We also have multiple lenders who",
-    "chunk_tokens": 119,
-    "requires_disclaimer": false
-  },
-  {
-    "id": "ct-site-aboutus-4",
-    "source_type": "corporate_turnaround_site",
-    "topic": "aboutus",
-    "category": "ct-process",
-    "topic_tags": [
-      "aboutus"
-    ],
-    "title": "About Us",
-    "section_heading": "About Us",
     "chunk_text": "specialize in alternative financing.That's just the beginning. We formed an alliance withSCORE\"Counselors to America's Small Business\". They provide free, ongoing business counseling to help you get back on track and improve your budgeting and financial management skills. SCORE is a resource partner with the U.S. Small Business Administration.We offer free marketing help from the nations highest paid consultant, Jay Abraham. Jay specializes in finding hidden assets in every company and teaching businesses to profit from them. We also offer a free computer based tool that can help track finances in real time.When",
     "chunk_tokens": 119,
     "requires_disclaimer": false
   },
   {
-    "id": "ct-site-aboutus-5",
+    "id": "ct-site-aboutus-4",
     "source_type": "corporate_turnaround_site",
     "topic": "aboutus",
     "category": "ct-process",
@@ -140,34 +126,6 @@
     "requires_disclaimer": false
   },
   {
-    "id": "ct-site-whatwedo-1",
-    "source_type": "corporate_turnaround_site",
-    "topic": "whatwedo",
-    "category": "ct-process",
-    "topic_tags": [
-      "whatwedo"
-    ],
-    "title": "What We Do",
-    "section_heading": "What We Do",
-    "chunk_text": "you're owed. Free Business Resources: Guidance and tools to help you grow your business. Business Debt RestructuringTax HelpCollection HelpFree Business Resources Click Hereor call800.889.0232for a free consultation.",
-    "chunk_tokens": 35,
-    "requires_disclaimer": false
-  },
-  {
-    "id": "ct-site-news-0",
-    "source_type": "corporate_turnaround_site",
-    "topic": "news",
-    "category": "ct-process",
-    "topic_tags": [
-      "news"
-    ],
-    "title": "News",
-    "section_heading": "News",
-    "chunk_text": "Click Hereor call800.889.0232for a free consultation.",
-    "chunk_tokens": 7,
-    "requires_disclaimer": false
-  },
-  {
     "id": "ct-site-freeconsultation-0",
     "source_type": "corporate_turnaround_site",
     "topic": "freeconsultation",
@@ -179,34 +137,6 @@
     "section_heading": "Free Consultation",
     "chunk_text": "Your consultation is free and requires no obligation to sign up. Our experts can help you: Negotiate affordable terms with your creditors. Spend less time dealing with creditors, collectors and attorneys. Get your business out of debt within a limited monthly budget.",
     "chunk_tokens": 54,
-    "requires_disclaimer": false
-  },
-  {
-    "id": "ct-site-whatwedo/businesstools-0",
-    "source_type": "corporate_turnaround_site",
-    "topic": "whatwedo/businesstools",
-    "category": "ct-process",
-    "topic_tags": [
-      "whatwedo/businesstools"
-    ],
-    "title": "Free Business Resources",
-    "section_heading": "Free Business Resources",
-    "chunk_text": "Free marketing help from the nations highest paid consultant. One on one support from an expert in your area. Business Debt Calculator to determine your affordability. Click Hereor call800.889.0232for a free consultation.",
-    "chunk_tokens": 41,
-    "requires_disclaimer": false
-  },
-  {
-    "id": "ct-site-whatwedo/score-0",
-    "source_type": "corporate_turnaround_site",
-    "topic": "whatwedo/score",
-    "category": "ct-process",
-    "topic_tags": [
-      "whatwedo/score"
-    ],
-    "title": "SCORE Business Counseling",
-    "section_heading": "SCORE Business Counseling",
-    "chunk_text": "Click Hereor call800.889.0232for a free consultation.",
-    "chunk_tokens": 7,
     "requires_disclaimer": false
   },
   {
@@ -392,34 +322,6 @@
     "requires_disclaimer": false
   },
   {
-    "id": "ct-site-whatwedo/debtrestructuring-2",
-    "source_type": "corporate_turnaround_site",
-    "topic": "whatwedo/debtrestructuring",
-    "category": "ct-process",
-    "topic_tags": [
-      "whatwedo/debtrestructuring"
-    ],
-    "title": "Business Debt Restructuring",
-    "section_heading": "Business Debt Restructuring",
-    "chunk_text": "put you out of business.But don't take our word. The SBA reports that approximately 45,000 businesses a month close their doors or file business bankruptcy. These companies didn't have a solid and proven plan to get out of debt; all they had were hopes and dreams. The good news is that the moment you turn your problem debts over to us, your debt problem is under control. Click Hereor call800.889.0232for a free consultation.",
-    "chunk_tokens": 94,
-    "requires_disclaimer": false
-  },
-  {
-    "id": "ct-site-whatwedo/tax-0",
-    "source_type": "corporate_turnaround_site",
-    "topic": "whatwedo/tax",
-    "category": "ct-process",
-    "topic_tags": [
-      "whatwedo/tax"
-    ],
-    "title": "Tax Help From Our Alliance Partners",
-    "section_heading": "Tax Help From Our Alliance Partners",
-    "chunk_text": "Click Hereor call800.889.0232for a free consultation.",
-    "chunk_tokens": 7,
-    "requires_disclaimer": false
-  },
-  {
     "id": "ct-site-whatwedo/receivables-0",
     "source_type": "corporate_turnaround_site",
     "topic": "whatwedo/receivables",
@@ -434,20 +336,6 @@
     "requires_disclaimer": false
   },
   {
-    "id": "ct-site-whatwedo/receivables-1",
-    "source_type": "corporate_turnaround_site",
-    "topic": "whatwedo/receivables",
-    "category": "ct-process",
-    "topic_tags": [
-      "whatwedo/receivables"
-    ],
-    "title": "Collection Help From Our Alliance Partners",
-    "section_heading": "Collection Help From Our Alliance Partners",
-    "chunk_text": "data and take payments. Click Hereor call800.889.0232for a free consultation.",
-    "chunk_tokens": 13,
-    "requires_disclaimer": false
-  },
-  {
     "id": "ct-site-whatwedo/windfallprofits-0",
     "source_type": "corporate_turnaround_site",
     "topic": "whatwedo/windfallprofits",
@@ -459,20 +347,6 @@
     "section_heading": "Windfall Profits Report",
     "chunk_text": "He has consulted for Citibank, Tony Robbins and thousands of small businesses. He's created over $5.4 billion in added profits for his clients. He normally charges $5,000 an hour to consult with a business. The suggested price for the Windfall Profits Paradox report is $295. We are giving it to our clients and prospective clients at no cost. The Windfall Profits ParadoxHow You Can Build Tremendous Long TermBusiness Wealth and SuccessUsing Short Term Windfall Generating Opportunity Thinking' The key to a rapid influx of cash. The lifetime value of a customer. How",
     "chunk_tokens": 119,
-    "requires_disclaimer": false
-  },
-  {
-    "id": "ct-site-whatwedo/windfallprofits-1",
-    "source_type": "corporate_turnaround_site",
-    "topic": "whatwedo/windfallprofits",
-    "category": "ct-process",
-    "topic_tags": [
-      "whatwedo/windfallprofits"
-    ],
-    "title": "Windfall Profits Report",
-    "section_heading": "Windfall Profits Report",
-    "chunk_text": "to multiply profits from your existing customers. Create new profit centers before having a back end. Host beneficiary relationships. Click Hereor call800.889.0232for a free consultation.",
-    "chunk_tokens": 32,
     "requires_disclaimer": false
   },
   {
@@ -686,6 +560,90 @@
     "requires_disclaimer": false
   },
   {
+    "id": "ct-site-whatwedo/typicalclient-0",
+    "source_type": "corporate_turnaround_site",
+    "topic": "whatwedo/typicalclient",
+    "category": "ct-process",
+    "topic_tags": [
+      "whatwedo/typicalclient"
+    ],
+    "title": "A Typical Client",
+    "section_heading": "A Typical Client",
+    "chunk_text": "Sales are down:Economic, personal or other unforeseen circumstances have decreased your income. Sales are down:Economic, personal or other unforeseen circumstances have decreased your income. Slow or uncollectible receivables:Some customers are paying slowly and some are not paying at all. Slow or uncollectible receivables:Some customers are paying slowly and some are not paying at all. Lack of capital:Without sufficient capital, even the smallest debts are a major challenge. Lack of capital:Without sufficient capital, even the smallest debts are a major challenge. Collection calls:Creditors, collection agencies and attorneys take valuable time away from operating",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "ct-site-aboutus-0",
+    "source_type": "corporate_turnaround_site",
+    "topic": "aboutus",
+    "category": "ct-process",
+    "topic_tags": [
+      "aboutus"
+    ],
+    "title": "About Us",
+    "section_heading": "About Us",
+    "chunk_text": "Who is Corporate Turnaround?News Click Hereor call800.889.0232for a free consultation. Almost all companies placed for collection are smaller businesses. These companies usually don't have the money, the experience, the resources or the time to resolve issues that larger companies have. Some of these companies have minor cash flow problems and can afford to make lump sum settlements or pay in full given a reasonable amount of time. Other companies have severe financial problems. These struggling companies will go out of business or file business bankruptcy unless they get the help they desperately",
+    "chunk_tokens": 119,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "ct-site-whatwedo-1",
+    "source_type": "corporate_turnaround_site",
+    "topic": "whatwedo",
+    "category": "ct-process",
+    "topic_tags": [
+      "whatwedo"
+    ],
+    "title": "What We Do",
+    "section_heading": "What We Do",
+    "chunk_text": "you're owed. Free Business Resources: Guidance and tools to help you grow your business. Business Debt RestructuringTax HelpCollection HelpFree Business Resources Click Hereor call800.889.0232for a free consultation.",
+    "chunk_tokens": 35,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "ct-site-whatwedo/businesstools-0",
+    "source_type": "corporate_turnaround_site",
+    "topic": "whatwedo/businesstools",
+    "category": "ct-process",
+    "topic_tags": [
+      "whatwedo/businesstools"
+    ],
+    "title": "Free Business Resources",
+    "section_heading": "Free Business Resources",
+    "chunk_text": "Free marketing help from the nations highest paid consultant. One on one support from an expert in your area. Business Debt Calculator to determine your affordability. Click Hereor call800.889.0232for a free consultation.",
+    "chunk_tokens": 41,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "ct-site-whatwedo/debtrestructuring-2",
+    "source_type": "corporate_turnaround_site",
+    "topic": "whatwedo/debtrestructuring",
+    "category": "ct-process",
+    "topic_tags": [
+      "whatwedo/debtrestructuring"
+    ],
+    "title": "Business Debt Restructuring",
+    "section_heading": "Business Debt Restructuring",
+    "chunk_text": "put you out of business.But don't take our word. The SBA reports that approximately 45,000 businesses a month close their doors or file business bankruptcy. These companies didn't have a solid and proven plan to get out of debt; all they had were hopes and dreams. The good news is that the moment you turn your problem debts over to us, your debt problem is under control. Click Hereor call800.889.0232for a free consultation.",
+    "chunk_tokens": 94,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "ct-site-whatwedo/windfallprofits-1",
+    "source_type": "corporate_turnaround_site",
+    "topic": "whatwedo/windfallprofits",
+    "category": "ct-process",
+    "topic_tags": [
+      "whatwedo/windfallprofits"
+    ],
+    "title": "Windfall Profits Report",
+    "section_heading": "Windfall Profits Report",
+    "chunk_text": "to multiply profits from your existing customers. Create new profit centers before having a back end. Host beneficiary relationships. Click Hereor call800.889.0232for a free consultation.",
+    "chunk_tokens": 32,
+    "requires_disclaimer": false
+  },
+  {
     "id": "ct-site-whatwedo/faq-15",
     "source_type": "corporate_turnaround_site",
     "topic": "whatwedo/faq",
@@ -725,20 +683,6 @@
     "section_heading": "Our Guarantee",
     "chunk_text": "If you qualify for our guarantee, the total amount you pay back over time, including our fees, will be less than what you actually owe. Click Hereor call800.889.0232for a free consultation.",
     "chunk_tokens": 40,
-    "requires_disclaimer": false
-  },
-  {
-    "id": "ct-site-whatwedo/typicalclient-0",
-    "source_type": "corporate_turnaround_site",
-    "topic": "whatwedo/typicalclient",
-    "category": "ct-process",
-    "topic_tags": [
-      "whatwedo/typicalclient"
-    ],
-    "title": "A Typical Client",
-    "section_heading": "A Typical Client",
-    "chunk_text": "Sales are down:Economic, personal or other unforeseen circumstances have decreased your income. Sales are down:Economic, personal or other unforeseen circumstances have decreased your income. Slow or uncollectible receivables:Some customers are paying slowly and some are not paying at all. Slow or uncollectible receivables:Some customers are paying slowly and some are not paying at all. Lack of capital:Without sufficient capital, even the smallest debts are a major challenge. Lack of capital:Without sufficient capital, even the smallest debts are a major challenge. Collection calls:Creditors, collection agencies and attorneys take valuable time away from operating",
-    "chunk_tokens": 119,
     "requires_disclaimer": false
   },
   {

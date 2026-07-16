@@ -1,0 +1,818 @@
+[
+  {
+    "id": "qa-mca-basics-0",
+    "source_type": "qa_pair",
+    "topic": "mca-basics",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What is a Merchant Cash Advance (MCA)?",
+    "section_heading": "Q: whats a merchant cash advance exactly is it a loan",
+    "chunk_text": "A: A merchant cash advance is a form of business financing where a provider advances a lump sum of capital in exchange for a portion of the business's future sales. It's not a traditional loan, but rather a purchase of future sales.",
+    "chunk_tokens": 54,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "nerdwallet-article-small-business-merchant-cash-advance"
+    ]
+  },
+  {
+    "id": "qa-mca-basics-1",
+    "source_type": "qa_pair",
+    "topic": "mca-basics",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What is a Merchant Cash Advance (MCA)?",
+    "section_heading": "Q: i got this thing called an mca for like 30 thousand but my business is doing worse now and i cant pay them back what happens next am i screwed",
+    "chunk_text": "A: Defaulting on a Merchant Cash Advance can have severe consequences for your small business. The MCA provider may attempt to enforce a Confession of Judgment (COJ) if allowed by state law, freeze bank accounts, or sue you personally if a personal guarantee was signed. This can lead to aggressive collections and business bankruptcy. \n\nFor more information on your specific situation and potential options, please call 1-800-889-0232.",
+    "chunk_tokens": 87,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "nerdwallet-article-small-business-merchant-cash-advance"
+    ]
+  },
+  {
+    "id": "qa-mca-factor-rate-0",
+    "source_type": "qa_pair",
+    "topic": "mca-factor-rate",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: How do MCA factor rates work and what do they cost?",
+    "section_heading": "Q: my mca has a 1.35 factor rate what does that even mean for what i pay back",
+    "chunk_text": "A: A factor rate of 1.35 means that for every dollar you borrowed, you'll pay back $1.35. This means if you borrowed $10,000, you'd pay back $13,500. Paying off the advance early won't reduce the fee, which can result in a high equivalent APR. To understand the specifics of your situation, I recommend calling 1-800-889-0232.",
+    "chunk_tokens": 71,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "nerdwallet-article-small-business-merchant-cash-advance"
+    ]
+  },
+  {
+    "id": "qa-mca-factor-rate-2",
+    "source_type": "qa_pair",
+    "topic": "mca-factor-rate",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: How do MCA factor rates work and what do they cost?",
+    "section_heading": "Q: factor rate vs interest rate for mca explain",
+    "chunk_text": "A: A factor rate is a decimal multiplier applied directly to the principal advance amount, typically ranging from 1.1 to 1.5. For example, if a business receives a $10,000 advance with a factor rate of 1.2, the total repayment amount is $12,000 ($10,000 x 1.2), meaning the fee is $2,000. This fee is charged upfront on the entire principal, resulting in extremely high equivalent APRs.",
+    "chunk_tokens": 84,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "sba-funding-programs-loans-7a-loans"
+    ]
+  },
+  {
+    "id": "qa-mca-factor-rate-4",
+    "source_type": "qa_pair",
+    "topic": "mca-factor-rate",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: How do MCA factor rates work and what do they cost?",
+    "section_heading": "Q: how do factor rates work fast i need to know before i sign anything",
+    "chunk_text": "A: A factor rate is a decimal multiplier applied directly to the principal advance amount. For example, if a business receives a $10,000 advance with a factor rate of 1.2, the total repayment amount is $12,000 ($10,000 x 1.2), meaning the fee is $2,000. The factor rate fee is charged upfront on the entire principal, resulting in extremely high equivalent APRs.",
+    "chunk_tokens": 79,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "nerdwallet-article-small-business-merchant-cash-advance"
+    ]
+  },
+  {
+    "id": "qa-mca-factor-rate-6",
+    "source_type": "qa_pair",
+    "topic": "mca-factor-rate",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: How do MCA factor rates work and what do they cost?",
+    "section_heading": "Q: whats the real apr on an mca with a 1.3 factor rate",
+    "chunk_text": "A: The factor rate fee is charged upfront on the entire principal, so paying off the advance early does not reduce the fee. This results in extremely high equivalent APRs. To determine the real APR on an MCA with a 1.3 factor rate, we would need to calculate the equivalent APR based on the repayment terms and schedule. Please call 1-800-889-0232 to discuss further.",
+    "chunk_tokens": 83,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "nerdwallet-article-small-business-merchant-cash-advance"
+    ]
+  },
+  {
+    "id": "qa-mca-factor-rate-7",
+    "source_type": "qa_pair",
+    "topic": "mca-factor-rate",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: How do MCA factor rates work and what do they cost?",
+    "section_heading": "Q: i took out 2 mca loans and both have factor rates above 1.3 and i cant figure out what the total payback is for each of them i just dont understand how this works and im terrified of the daily payments",
+    "chunk_text": "A: The cost of each MCA loan is calculated using a factor rate, which is a decimal multiplier applied directly to the principal advance amount. For example, if you received a $10,000 advance with a factor rate of 1.3, the total repayment amount would be $13,000 ($10,000 x 1.3), meaning the fee is $3,000. The repayment amount includes the original advance amount plus the factor rate fees. \n\nThe daily payments will continue automatically until the total repayment amount is fully satisfied, either through a fixed percentage of daily credit card sales or fixed daily or weekly ACH bank withdrawals. \n\nTo discuss the specifics of your situation, including the total payback for each loan and how to manage your daily payments, please call 1-800-889-0232.",
+    "chunk_tokens": 159,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "nerdwallet-article-small-business-merchant-cash-advance"
+    ]
+  },
+  {
+    "id": "qa-mca-daily-ach-0",
+    "source_type": "qa_pair",
+    "topic": "mca-daily-ach",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: How do daily ACH debits from MCAs drain business cash flow?",
+    "section_heading": "Q: my bank account is always empty becaus of these daily ach withdrawls from the mca",
+    "chunk_text": "A: It sounds like the daily ACH withdrawals from the MCA are causing your bank account to be empty. This is likely due to the repayment mechanism of the MCA, where funds are withdrawn automatically from your business bank account. The amount withdrawn daily or weekly is typically a fixed percentage of your daily credit card sales or a fixed withdrawal amount.",
+    "chunk_tokens": 80,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "nerdwallet-article-small-business-merchant-cash-advance"
+    ]
+  },
+  {
+    "id": "qa-mca-default-0",
+    "source_type": "qa_pair",
+    "topic": "mca-default",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What happens when you default on a Merchant Cash Advance?",
+    "section_heading": "Q: i signed a pg on my mca am i screwed personally",
+    "chunk_text": "A: If you signed a personal guarantee (PG) on your Merchant Cash Advance (MCA), you may be personally liable for the debt if the business defaults. This means the MCA provider may attempt to collect the debt from you directly. The extent of your personal liability should be discussed with a debt relief advisor. Please call 1-800-889-0232 for further guidance.",
+    "chunk_tokens": 78,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "nerdwallet-article-small-business-merchant-cash-advance"
+    ]
+  },
+  {
+    "id": "qa-mca-default-1",
+    "source_type": "qa_pair",
+    "topic": "mca-default",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What happens when you default on a Merchant Cash Advance?",
+    "section_heading": "Q: got served papers for my mca debt can they really take everything",
+    "chunk_text": "A: You've been served papers for your MCA debt. The legal process starts with a lawsuit, and those papers explain the claim against you and give you a deadline to respond. If you default on the MCA, the provider may attempt to enforce a Confession of Judgment (COJ) if allowed by state law, freeze bank accounts, or sue the business owner personally if a personal guarantee was signed. \n\nTo discuss the specifics of your situation and potential next steps, I recommend calling 1-800-889-0232.",
+    "chunk_tokens": 107,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "What Happens Before a Bank Levy",
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "nerdwallet-article-small-business-merchant-cash-advance"
+    ]
+  },
+  {
+    "id": "qa-mca-vs-loan-0",
+    "source_type": "qa_pair",
+    "topic": "mca-vs-loan",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: How is an MCA different from a business loan?",
+    "section_heading": "Q: i got this daily withdrawal thing with an mca but my bank loan is monthly why is it different i cant keep up with this",
+    "chunk_text": "A: The difference in repayment terms between your MCA and bank loan is likely due to the nature of the financing. MCAs often require daily or weekly repayments because they're based on a percentage of your future sales, whereas bank loans typically have a fixed monthly repayment schedule. This is because MCAs are designed to be repaid quickly, usually within a few months, whereas bank loans can have longer repayment periods.",
+    "chunk_tokens": 92,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "nerdwallet-article-small-business-merchant-cash-advance"
+    ]
+  },
+  {
+    "id": "qa-mca-vs-loan-1",
+    "source_type": "qa_pair",
+    "topic": "mca-vs-loan",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: How is an MCA different from a business loan?",
+    "section_heading": "Q: i thought i got a loan for 20k but they taking like 28k back is that normal for a merchant cash advance or did i get scammed my bank said their loan would only be like 22k total",
+    "chunk_text": "A: It's possible that the total repayment amount exceeds the original loan amount due to the factor rate fees. The repayment mechanism, such as a fixed percentage of daily credit card sales or ACH bank withdrawals, can also impact the total amount repaid. The exact terms of your loan should be reviewed to understand the total repayment amount.",
+    "chunk_tokens": 75,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "ftc-news-events-news-press-releases-2022-01-merchant-cash-advance-providers-banned-industry-ordered-redress-small-businesses",
+      "nerdwallet-article-small-business-merchant-cash-advance"
+    ]
+  },
+  {
+    "id": "qa-mca-vs-loan-2",
+    "source_type": "qa_pair",
+    "topic": "mca-vs-loan",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: How is an MCA different from a business loan?",
+    "section_heading": "Q: do mcas seize your assets like a normal business loan if i default cuz i got a couple of em im worried sick",
+    "chunk_text": "A: Since Merchant Cash Advances (MCAs) are structured as the purchase of future receivables rather than loans, traditional lending protections may not apply. If a business defaults, the MCA provider may attempt to enforce a Confession of Judgment (COJ) if allowed by state law, freeze bank accounts, or sue the business owner personally if a personal guarantee was signed. This can lead to aggressive collections and business bankruptcy. \n\nFor more information on how this may specifically affect your situation, please call 1-800-889-0232.",
+    "chunk_tokens": 106,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "nerdwallet-article-small-business-merchant-cash-advance"
+    ]
+  },
+  {
+    "id": "qa-mca-daily-ach-1",
+    "source_type": "qa_pair",
+    "topic": "mca-daily-ach",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: How do daily ACH debits from MCAs drain business cash flow?",
+    "section_heading": "Q: im constantly negative in my bank account because of all these daily mca payments i'm so stressed out idk how to survive",
+    "chunk_text": "A: It sounds like the MCA payments are taking a significant toll on your finances. The repayment mechanism for MCAs can be automatic, either through a fixed percentage of daily credit card sales or fixed daily/weekly bank withdrawals. This can lead to a constant negative balance in your bank account. I'd like to discuss ways to potentially reduce or restructure these payments to help alleviate your stress.",
+    "chunk_tokens": 87,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      ""
+    ]
+  },
+  {
+    "id": "qa-mca-coj-0",
+    "source_type": "qa_pair",
+    "topic": "mca-coj",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What is a Confession of Judgment (COJ) in an MCA contract?",
+    "section_heading": "Q: what is a confession of judgment in a mca contract",
+    "chunk_text": "A: A Confession of Judgment (COJ) in an MCA contract is a provision that allows the MCA provider to obtain a judgment against the business owner if they default on the loan, without the need for a court trial. This can lead to aggressive collections and business bankruptcy.",
+    "chunk_tokens": 62,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "mca-basics",
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "mca-vs-loan",
+      "nerdwallet-article-small-business-merchant-cash-advance"
+    ]
+  },
+  {
+    "id": "qa-mca-coj-1",
+    "source_type": "qa_pair",
+    "topic": "mca-coj",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What is a Confession of Judgment (COJ) in an MCA contract?",
+    "section_heading": "Q: i have 3 mca loans and all had that confession of judgement thing if i cant pay will they just take all my money from my business account",
+    "chunk_text": "A: If you can't pay your MCA loans, the MCA provider may attempt to enforce a Confession of Judgment (COJ) if allowed by state law, which could lead to them freezing your business account. However, simply owing a debt does not give them the right to reach into your account on their own. They would need to sue you, win a court judgment, and obtain a legal order to direct your bank to turn over funds.",
+    "chunk_tokens": 98,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "mca-basics",
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "Debt Collector's Authority"
+    ]
+  },
+  {
+    "id": "qa-mca-default-2",
+    "source_type": "qa_pair",
+    "topic": "mca-default",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What happens when you default on a Merchant Cash Advance?",
+    "section_heading": "Q: these mca companies call me 10 times a day telling me ill lose my house is that legal",
+    "chunk_text": "A: It's not uncommon for MCA companies to aggressively market their services, and their claims can be misleading. Since MCAs are not federally regulated, they may not adhere to strict guidelines on communication with business owners. These companies may contact you frequently, but it's essential to understand your options and the terms of any agreement before making a decision.",
+    "chunk_tokens": 76,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "nerdwallet-article-small-business-merchant-cash-advance"
+    ]
+  },
+  {
+    "id": "qa-mca-default-3",
+    "source_type": "qa_pair",
+    "topic": "mca-default",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What happens when you default on a Merchant Cash Advance?",
+    "section_heading": "Q: i cant pay my 3 mcas anymore like 120k total can i settle for less",
+    "chunk_text": "A: The total repayment amount for each MCA loan is calculated using a factor rate, which is a decimal multiplier applied directly to the principal advance amount. For example, if you received a $10,000 advance with a factor rate of 1.3, the total repayment amount would be $13,000 ($10,000 x 1.3). To discuss the specifics of your situation, including the total payback for each loan and how to manage your daily payments, please call 1-800-889-0232.",
+    "chunk_tokens": 97,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "mca-factor-rate",
+      "nerdwallet-article-small-business-merchant-cash-advance"
+    ]
+  },
+  {
+    "id": "qa-mca-default-4",
+    "source_type": "qa_pair",
+    "topic": "mca-default",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What happens when you default on a Merchant Cash Advance?",
+    "section_heading": "Q: my ach keeps getting reversed for this mca what happens when they cant take their money",
+    "chunk_text": "A: When an MCA provider can't take their money through ACH, they may attempt to enforce a Confession of Judgment (COJ) if allowed by state law, freeze bank accounts, or sue the business owner personally if a personal guarantee was signed. To discuss the specifics of your situation and potential next steps, I recommend calling 1-800-889-0232.",
+    "chunk_tokens": 72,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "mca-default",
+      "mca-daily-ach",
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "nerdwallet-article-small-business-merchant-cash-advance"
+    ]
+  },
+  {
+    "id": "qa-mca-vs-loan-3",
+    "source_type": "qa_pair",
+    "topic": "mca-vs-loan",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: How is an MCA different from a business loan?",
+    "section_heading": "Q: whats the real diff tween mca and a regular loan i dont get it",
+    "chunk_text": "A: A merchant cash advance (MCA) is usually fast and easy to qualify for, but it's one of the most expensive types of business financing. Unlike a regular loan, an MCA is not federally regulated, which can result in misleading marketing and confusing contracts. The factor rate fee is charged upfront on the entire principal, so paying off the advance early does not reduce the fee.",
+    "chunk_tokens": 85,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "mca-factor-rate"
+    ]
+  },
+  {
+    "id": "qa-mca-vs-loan-4",
+    "source_type": "qa_pair",
+    "topic": "mca-vs-loan",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: How is an MCA different from a business loan?",
+    "section_heading": "Q: what makes an mca not a loan legally speaking like what's the big deal",
+    "chunk_text": "A: An MCA is not a loan because it's not a traditional loan with a fixed interest rate or repayment term. Instead, it's a purchase of a portion of the business's future sales, which can result in a higher total repayment amount due to the factor rate fees. The repayment mechanism, such as a fixed percentage of daily credit card sales, can also impact the total amount repaid.",
+    "chunk_tokens": 88,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "mca-vs-loan",
+      "nerdwallet-article-small-business-merchant-cash-advance"
+    ]
+  },
+  {
+    "id": "qa-mca-negotiate-0",
+    "source_type": "qa_pair",
+    "topic": "mca-negotiate",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: Can you negotiate or settle a Merchant Cash Advance?",
+    "section_heading": "Q: i got three merchant cash advances and my sales dropped hard can i call them up and try to negotiate a lower payment or something",
+    "chunk_text": "A: You can try to call the MCA providers to discuss your situation, but keep in mind that MCAs are not federally regulated, which can lead to confusing contracts. It's essential to be cautious and prepared when negotiating with MCA companies. We can also help you review your contracts and explore options for resolving your debt.",
+    "chunk_tokens": 72,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "nerdwallet-article-small-business-merchant-cash-advance"
+    ]
+  },
+  {
+    "id": "qa-mca-negotiate-1",
+    "source_type": "qa_pair",
+    "topic": "mca-negotiate",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: Can you negotiate or settle a Merchant Cash Advance?",
+    "section_heading": "Q: i have four separate mca agreements and honestly my bank account is almost empty what can i do right now to stop them from taking more money",
+    "chunk_text": "A: The daily ACH withdrawals from the MCA are causing your bank account to be empty due to the repayment mechanism of the MCA, where funds are withdrawn automatically from your business bank account. The amount withdrawn daily or weekly is typically a fixed percentage of your daily credit card sales or a fixed withdrawal amount. To stop them from taking more money, you can consider contacting the MCA provider to discuss possible alternatives or temporary payment suspensions.",
+    "chunk_tokens": 101,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "mca-daily-ach",
+      "nerdwallet-article-small-business-merchant-cash-advance"
+    ]
+  },
+  {
+    "id": "qa-mca-personal-guar-0",
+    "source_type": "qa_pair",
+    "topic": "mca-personal-guar",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: Do MCAs require a personal guarantee?",
+    "section_heading": "Q: mca personal guarantee or no",
+    "chunk_text": "A: If you signed a personal guarantee (PG) on your Merchant Cash Advance (MCA), you may be personally liable for the debt if the business defaults. This means the MCA provider may attempt to collect the debt from you directly. The extent of your personal liability should be discussed with a debt relief advisor. Please call 1-800-889-0232 for further guidance.",
+    "chunk_tokens": 78,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "mca-default",
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "mca-basics",
+      "mca-vs-loan",
+      "nerdwallet-article-small-business-personal-guarantee-business-loan"
+    ]
+  },
+  {
+    "id": "qa-mca-personal-guar-1",
+    "source_type": "qa_pair",
+    "topic": "mca-personal-guar",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: Do MCAs require a personal guarantee?",
+    "section_heading": "Q: what does personal guarantee mean for a merchant cash advance i dont remember signing anything like that but now they say im on the hook",
+    "chunk_text": "A: If you signed a personal guarantee on your Merchant Cash Advance, you may be personally liable for the debt if your business defaults. This means the MCA provider may attempt to collect the debt from you directly. The extent of your personal liability should be discussed with a debt relief advisor. Please call 1-800-889-0232 for further guidance.",
+    "chunk_tokens": 75,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "mca-basics",
+      "mca-default",
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "nerdwallet-article-small-business-personal-guarantee-business-loan",
+      "nerdwallet-article-small-business-personal-guarantee-business-loan"
+    ]
+  },
+  {
+    "id": "qa-mca-personal-guar-2",
+    "source_type": "qa_pair",
+    "topic": "mca-personal-guar",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: Do MCAs require a personal guarantee?",
+    "section_heading": "Q: can they seize my personal bank account for an mca if i signed a personal guarantee what do i do right now",
+    "chunk_text": "A: If you signed a personal guarantee on your MCA, the provider may attempt to collect the debt from you directly. They may also attempt to freeze your bank accounts or sue you personally. This can be a serious situation, and I recommend discussing the specifics of your situation and potential next steps by calling 1-800-889-0232.",
+    "chunk_tokens": 72,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "mca-vs-loan",
+      "mca-default",
+      "mca-default",
+      "mca-basics",
+      "nerdwallet-article-small-business-merchant-cash-advance"
+    ]
+  },
+  {
+    "id": "qa-mca-multi-debt-0",
+    "source_type": "qa_pair",
+    "topic": "mca-multi-debt",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What should a business owner do when juggling multiple simultaneous MCAs they can't keep up with?",
+    "section_heading": "Q: got 4 mcas cant make payments anymore",
+    "chunk_text": "A: It sounds like you're struggling with 4 Merchant Cash Advances. MCAs can be quite expensive, with annual percentage rates ranging from 40% to 350%. They're also not federally regulated, which can lead to confusing contracts. I'd be happy to discuss your situation further and explore options for resolving these debts.",
+    "chunk_tokens": 66,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "nerdwallet-article-small-business-merchant-cash-advance"
+    ]
+  },
+  {
+    "id": "qa-mca-multi-debt-1",
+    "source_type": "qa_pair",
+    "topic": "mca-multi-debt",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What should a business owner do when juggling multiple simultaneous MCAs they can't keep up with?",
+    "section_heading": "Q: i owe like 150k across 3 mca loans my business is bleeding money what happens if i just stop paying",
+    "chunk_text": "A: Stopping payments on your MCA loans can lead to severe consequences, including aggressive collections and potential business bankruptcy. Since MCAs are structured as the purchase of future receivables, traditional lending protections may not apply. This means the MCA provider may attempt to enforce a Confession of Judgment (COJ) if allowed by state law, freeze bank accounts, or sue you personally if a personal guarantee was signed. \n\nFor a more detailed discussion on the potential consequences and options available to you, please call 1-800-889-0232.",
+    "chunk_tokens": 109,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "",
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "Signs of Debt Trouble"
+    ]
+  },
+  {
+    "id": "qa-biz-debt-types-0",
+    "source_type": "qa_pair",
+    "topic": "biz-debt-types",
+    "category": "business-debt",
+    "topic_tags": [
+      "business-debt",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What types of debt do small businesses typically have?",
+    "section_heading": "Q: i got 5 different mca loans and theyre taking like 20 grand a month from my account",
+    "chunk_text": "A: It's possible that the total repayment amount exceeds the original loan amount due to the factor rate fees. The repayment mechanism, such as a fixed percentage of daily credit card sales or ACH bank withdrawals, can also impact the total amount repaid. The exact terms of your loan should be reviewed to understand the total repayment amount.",
+    "chunk_tokens": 75,
+    "requires_disclaimer": false,
+    "grounded_source_ids": [
+      "mca-vs-loan",
+      "",
+      "nerdwallet-article-small-business-merchant-cash-advance"
+    ]
+  },
+  {
+    "id": "qa-biz-debt-types-1",
+    "source_type": "qa_pair",
+    "topic": "biz-debt-types",
+    "category": "business-debt",
+    "topic_tags": [
+      "business-debt",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What types of debt do small businesses typically have?",
+    "section_heading": "Q: my sba loan deferment is ending and i have no idea how im gonna make the payments what do i do",
+    "chunk_text": "A: It sounds like you're facing a challenging situation with your SBA loan payments. I recommend reaching out to your lender to discuss possible options, such as restructuring your loan terms or deferring payments for a period of time. You can also create an account in the SBA Loan Portal to monitor your loan status and view statements. To explore these options in more detail, I suggest you contact your lender directly or call 1-800-889-0232 for further assistance.",
+    "chunk_tokens": 101,
+    "requires_disclaimer": false,
+    "grounded_source_ids": [
+      "nerdwallet-article-small-business-business-loan-default",
+      "sba-funding-programs-loans-7a-loans",
+      "sba-funding-programs-loans-7a-loans"
+    ]
+  },
+  {
+    "id": "qa-biz-sba-default-0",
+    "source_type": "qa_pair",
+    "topic": "biz-sba-default",
+    "category": "business-debt",
+    "topic_tags": [
+      "business-debt",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What happens if you default on an SBA loan?",
+    "section_heading": "Q: what happens if i cant pay my sba loan anymore",
+    "chunk_text": "A: If you can't pay your SBA loan anymore, you may want to talk to your lender about possible options such as deferring payments for a period of time or restructuring your loan terms to make payments more manageable. You can also create an account in the SBA Loan Portal to monitor your loan status and discuss your situation with your lender. The specifics of your situation should be discussed directly with your lender.",
+    "chunk_tokens": 96,
+    "requires_disclaimer": false,
+    "grounded_source_ids": [
+      "nerdwallet-article-small-business-business-loan-default",
+      "sba-funding-programs-loans-7a-loans",
+      "sba-funding-programs-loans-7a-loans"
+    ]
+  },
+  {
+    "id": "qa-biz-ch7-vs-ch11-0",
+    "source_type": "qa_pair",
+    "topic": "biz-ch7-vs-ch11",
+    "category": "business-debt",
+    "topic_tags": [
+      "business-debt",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What is the difference between Chapter 7 and Chapter 11 bankruptcy?",
+    "section_heading": "Q: my restaurant is losing money like crazy i owe 75k to suppliers and the bank should i go chapter 7 to just shut down or is 11 a way to like save it",
+    "chunk_text": "A: If your restaurant is losing money and you owe $75,000 to suppliers and the bank, you may want to consider filing a petition under Chapter 11 of the Bankruptcy Code to remain in business and potentially reorganize your debt. This could allow you to adjust your debts, either by reducing the amount owed or extending the time for repayment. Chapter 11 may be a viable option for you to explore. Please call 1-800-889-0232 to discuss further.",
+    "chunk_tokens": 100,
+    "requires_disclaimer": false,
+    "grounded_source_ids": [
+      "uscourts-court-programs-bankruptcy-bankruptcy-basics-chapter-7-bankruptcy-basics"
+    ]
+  },
+  {
+    "id": "qa-biz-dollar-overwhelm-0",
+    "source_type": "qa_pair",
+    "topic": "biz-dollar-overwhelm",
+    "category": "business-debt",
+    "topic_tags": [
+      "business-debt",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What should a business owner do when they're overwhelmed by a large, specific total amount of business debt (e.g. $50,000+)?",
+    "section_heading": "Q: got 5 different credit card debts for my business and it's over 100 grand how do i stop this",
+    "chunk_text": "A: It sounds like you're struggling with a significant amount of credit card debt for your business. Considering your debt is over $100,000, it's essential to take action to avoid further financial stress. I recommend exploring debt consolidation options with a lower-interest rate to simplify your payments and potentially reduce your overall debt burden. Please call 1-800-889-0232 to discuss your specific situation and create a plan to get back on track.",
+    "chunk_tokens": 92,
+    "requires_disclaimer": false,
+    "grounded_source_ids": [
+      "",
+      "Financial Stress",
+      ""
+    ]
+  },
+  {
+    "id": "qa-ct-what-is-0",
+    "source_type": "qa_pair",
+    "topic": "ct-what-is",
+    "category": "ct-process",
+    "topic_tags": [
+      "ct-process",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What does Corporate Turnaround do?",
+    "section_heading": "Q: my business is losing money like 10k a month what exactly does a corporate turnaround company do",
+    "chunk_text": "A: At Corporate Turnaround, we help small business owners resolve business debt without bankruptcy by negotiating affordable terms with their creditors. This way, all parties involved can win: your creditors get paid, other creditors get paid, and your business can survive. We've worked with over 10,000 companies and successfully resolved over 50,000 business debts.",
+    "chunk_tokens": 70,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "aboutus",
+      "aboutus"
+    ]
+  },
+  {
+    "id": "qa-ct-what-is-1",
+    "source_type": "qa_pair",
+    "topic": "ct-what-is",
+    "category": "ct-process",
+    "topic_tags": [
+      "ct-process",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What does Corporate Turnaround do?",
+    "section_heading": "Q: i need help now is corporate turnaround like bankruptcy or something different what do they do to save a business",
+    "chunk_text": "A: Corporate Turnaround is not like bankruptcy. We help small business owners resolve business debt without bankruptcy by getting payments into a manageable state, stopping collection calls, and negotiating with creditors. This allows businesses to stay open and avoid bankruptcy. For more information, please call 1-800-889-0232.",
+    "chunk_tokens": 59,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "",
+      "",
+      "aboutus"
+    ]
+  },
+  {
+    "id": "qa-ct-what-is-2",
+    "source_type": "qa_pair",
+    "topic": "ct-what-is",
+    "category": "ct-process",
+    "topic_tags": [
+      "ct-process",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What does Corporate Turnaround do?",
+    "section_heading": "Q: my business is failing fast ive got like 3 bad loans and vendors are mad what does a corporate turnaround service offer me",
+    "chunk_text": "A: At Corporate Turnaround, we can help you create an Affordable Budget to negotiate with your creditors and handle most business debts such as vendors, credit cards, and many leases and loans. We've worked with over 10,000 small business owners since 1998 to find solutions. We can also help you avoid bankruptcy and focus on turning your business around.",
+    "chunk_tokens": 76,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "home",
+      "",
+      "aboutus"
+    ]
+  },
+  {
+    "id": "qa-ct-consultation-0",
+    "source_type": "qa_pair",
+    "topic": "ct-consultation",
+    "category": "ct-process",
+    "topic_tags": [
+      "ct-process",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What happens during a free consultation with Corporate Turnaround?",
+    "section_heading": "Q: what's a free consult with corporate turnaround like do i just tell my whole story",
+    "chunk_text": "A: A free consult with Corporate Turnaround is a review of your situation where we'll discuss your financial dilemma and explore options available to you. You'll have the opportunity to share your story and we'll provide guidance on what's possible. We'll also answer any questions you have and explain our services.",
+    "chunk_tokens": 66,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "aboutus",
+      "aboutus"
+    ]
+  },
+  {
+    "id": "qa-ct-consultation-1",
+    "source_type": "qa_pair",
+    "topic": "ct-consultation",
+    "category": "ct-process",
+    "topic_tags": [
+      "ct-process",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What happens during a free consultation with Corporate Turnaround?",
+    "section_heading": "Q: what exactly do you guys do on the free consultation like do i just talk about my problems or do you give me some actual steps for my 60k loan and my 2 mca's",
+    "chunk_text": "A: During the free consultation, you'll have the opportunity to discuss your business debt concerns, including your $60,000 loan and two MCA's. Our expert will listen to your situation and provide guidance on potential steps to take. This may include using our Business Debt Calculator to determine your affordability. We'll also discuss how our services can help you negotiate affordable terms with your creditors.",
+    "chunk_tokens": 83,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "freeconsultation",
+      "whatwedo/businesstools"
+    ]
+  },
+  {
+    "id": "qa-ct-consultation-2",
+    "source_type": "qa_pair",
+    "topic": "ct-consultation",
+    "category": "ct-process",
+    "topic_tags": [
+      "ct-process",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What happens during a free consultation with Corporate Turnaround?",
+    "section_heading": "Q: how long does the free consult take is it really free or will they try to charge me right away",
+    "chunk_text": "A: Our free consultation is truly free and requires no obligation to sign up. It's a chance for our experts to help you understand your options and create a plan to get your business out of debt. The consultation itself is a conversation to discuss your situation and determine the best course of action.",
+    "chunk_tokens": 70,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "freeconsultation",
+      "whatwedo/businesstools",
+      "whatwedo/typicalclient"
+    ]
+  }
+]

@@ -1,57 +1,50 @@
+import json
 import os
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse
-from scripts.scrapers.utils import fetch, parse_body, split_into_chunks, make_chunk, save_raw, logger
+from scripts.scrapers.utils import fetch, parse_body, split_into_chunks, make_chunk, save_raw, logger, is_boilerplate, merge_with_existing
 
 BLOG_SOURCES = [
-    # NerdWallet — confirmed accessible
+    # NerdWallet — confirmed accessible. Several 2024-era URLs in this list
+    # were retired (site restructure, 404 as of 2026-07); replaced with the
+    # current live equivalents where NerdWallet still covers the topic.
     {
         "domain": "nerdwallet",
         "selector": "article",  # confirmed <article> tag wraps body
         "urls": [
             "https://www.nerdwallet.com/article/small-business/merchant-cash-advance",
-            "https://www.nerdwallet.com/article/small-business/business-debt-consolidation",
-            "https://www.nerdwallet.com/article/small-business/how-to-get-out-of-business-debt",
-            "https://www.nerdwallet.com/article/small-business/merchant-cash-advance-alternatives",
-            "https://www.nerdwallet.com/article/small-business/ucc-lien",
-            "https://www.nerdwallet.com/article/small-business/sba-loan-default",
-            "https://www.nerdwallet.com/article/small-business/personal-guarantee",
+            "https://www.nerdwallet.com/article/small-business/ucc-filing",
+            "https://www.nerdwallet.com/article/small-business/personal-guarantee-business-loan",
+            "https://www.nerdwallet.com/article/small-business/business-loan-default",
         ],
     },
-    # Investopedia — may be blocked (460); best-effort
+    # Investopedia dropped: its `.article-body` content div is served
+    # inconsistently (present in some fetches, reduced to a CSS-only stub in
+    # others — likely bot-tiered rendering), so scrapes of it are not
+    # reliably reproducible. NerdWallet + uscourts.gov below cover the same
+    # ground (personal guarantee, business loan default, bankruptcy chapters)
+    # with reliable static HTML.
+    # U.S. Courts — public domain, closes the "business bankruptcy types" gap
+    # (Chapter 7 liquidation vs. 11 reorganization vs. 13) with zero licensing
+    # risk, unlike paraphrasing a commercial blog.
     {
-        "domain": "investopedia",
-        "selector": "div[data-testid='article-body']",
+        "domain": "uscourts",
+        "selector": "article",
         "urls": [
-            "https://www.investopedia.com/terms/m/merchant-cash-advance.asp",
-            "https://www.investopedia.com/terms/c/chapter11.asp",
-            "https://www.investopedia.com/terms/c/chapter7.asp",
-            "https://www.investopedia.com/terms/u/ucc-1-statement.asp",
-            "https://www.investopedia.com/terms/p/personal-guarantee.asp",
-        ],
-    },
-    # Nav.com
-    {
-        "domain": "nav",
-        "selector": "article, .article-content, .post-content",
-        "urls": [
-            "https://www.nav.com/resource/merchant-cash-advance/",
-            "https://www.nav.com/resource/business-credit-score/",
-            "https://www.nav.com/resource/ucc-filing/",
-            "https://www.nav.com/resource/business-debt-relief/",
-        ],
-    },
-    # Fundera (NerdWallet subdomain)
-    {
-        "domain": "fundera",
-        "selector": "article, .post-content",
-        "urls": [
-            "https://www.fundera.com/business-loans/guides/merchant-cash-advance",
-            "https://www.fundera.com/business-loans/guides/mca-stacking",
-            "https://www.fundera.com/blog/out-of-court-debt-settlement",
+            "https://www.uscourts.gov/court-programs/bankruptcy/bankruptcy-basics/chapter-7-bankruptcy-basics",
+            "https://www.uscourts.gov/court-programs/bankruptcy/bankruptcy-basics/chapter-11-bankruptcy-basics",
+            "https://www.uscourts.gov/court-programs/bankruptcy/bankruptcy-basics/chapter-13-bankruptcy-basics",
         ],
     },
 ]
+
+# Domain-level category overrides — the default heuristic in
+# extract_chunks_from_html (category = "mca-education" if "mca" appears in
+# the URL else "business-debt") misclassifies bankruptcy-basics pages, which
+# never contain "mca" but are also not general business-debt-mechanics content.
+CATEGORY_OVERRIDES = {
+    "uscourts": "business-bankruptcy",
+}
 
 def extract_chunks_from_html(html: str, url: str, source: dict) -> list[dict]:
     soup = parse_body(html)
@@ -92,12 +85,18 @@ def extract_chunks_from_html(html: str, url: str, source: dict) -> list[dict]:
     path = urlparse(url).path.strip('/').replace('/', '-') or 'home'
     topic = f"{source['domain']}-{path}"
     
-    # Simple category heuristic based on URL
-    category = "mca-education" if "mca" in url or "merchant-cash-advance" in url else "business-debt"
+    # Simple category heuristic based on URL, with a per-domain override for
+    # sources that don't fit the mca/business-debt binary (see CATEGORY_OVERRIDES).
+    if source["domain"] in CATEGORY_OVERRIDES:
+        category = CATEGORY_OVERRIDES[source["domain"]]
+    else:
+        category = "mca-education" if "mca" in url or "merchant-cash-advance" in url else "business-debt"
     
     for heading, text in sections:
         text_chunks = split_into_chunks(text)
         for i, text_chunk in enumerate(text_chunks):
+            if is_boilerplate(text_chunk):
+                continue
             chunk_id = f"edu-{topic}-{chunk_counter}"
             chunk = make_chunk(
                 id=chunk_id,
@@ -118,23 +117,39 @@ def extract_chunks_from_html(html: str, url: str, source: dict) -> list[dict]:
 def run():
     all_chunks = []
     skipped_urls = []
-    
+    manifest = []
+
     for source in BLOG_SOURCES:
         for url in source["urls"]:
             html = fetch(url, delay=2.0)
             if not html:
                 logger.warning(f"[SKIPPED] {url} — blocked or unavailable. Add to manual review list.")
                 skipped_urls.append(url)
+                manifest.append({"url": url, "http_ok": False, "n_chunks": 0})
                 continue
-                
+
             page_chunks = extract_chunks_from_html(html, url, source)
             logger.info(f"Extracted {len(page_chunks)} chunks from {url}")
+            manifest.append({"url": url, "http_ok": True, "n_chunks": len(page_chunks)})
+            if not page_chunks:
+                # Fetch succeeded (2xx) but no chunks were extracted — usually
+                # a stale CSS selector or an anti-bot/consent stub page. This
+                # previously went unlogged once the run finished, making the
+                # failure invisible to anyone auditing skipped_urls.txt.
+                logger.warning(f"[EMPTY] {url} — page fetched OK but yielded 0 chunks (selector mismatch?).")
+                skipped_urls.append(url)
+                continue
             all_chunks.extend(page_chunks)
-            
+
     base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
     save_path = os.path.join(base_dir, "data", "raw", "industry_blogs.json")
-    save_raw(all_chunks, save_path)
-    
+    save_raw(merge_with_existing(all_chunks, save_path), save_path)
+
+    manifest_path = os.path.join(base_dir, "data", "raw", "industry_blogs_manifest.json")
+    with open(manifest_path, "w", encoding="utf-8") as f:
+        json.dump(manifest, f, ensure_ascii=False, indent=2)
+    logger.info(f"Saved per-URL manifest to {manifest_path}")
+
     if skipped_urls:
         skipped_path = os.path.join(base_dir, "data", "raw", "skipped_urls.txt")
         os.makedirs(os.path.dirname(skipped_path), exist_ok=True)

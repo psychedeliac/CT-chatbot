@@ -1,6 +1,8 @@
 import streamlit as st
 import os
 import sys
+import json
+from datetime import datetime, timezone
 from dotenv import load_dotenv
 
 # Allow running from project root
@@ -68,6 +70,40 @@ def parse_retrieved_chunks(content: str) -> list:
         })
     return parsed_chunks
 
+# Helper to build a QA export of the conversation + retrieved chunks
+def build_qa_export(messages: list, config) -> str:
+    turns = []
+    pending_user = None
+    for msg in messages:
+        if msg["role"] == "user":
+            pending_user = msg["content"]
+        else:
+            turns.append({
+                "user_message": pending_user,
+                "assistant_response": msg["content"],
+                "retrieved_chunks": [
+                    {
+                        "title": c["title"],
+                        "section": c["section"],
+                        "score": c["score"],
+                        "text": c["text"],
+                    }
+                    for c in msg.get("chunks", [])
+                ],
+            })
+            pending_user = None
+
+    export = {
+        "exported_at": datetime.now(timezone.utc).isoformat(),
+        "llm_provider": config.llm_provider,
+        "llm_model": config.llm_model,
+        "rag_collection": config.rag_collection,
+        "embedding_model": config.embedding_model,
+        "turns": turns,
+    }
+    return json.dumps(export, indent=2, ensure_ascii=False)
+
+
 # Sidebar info
 with st.sidebar:
     st.title("💼 Corporate Turnaround")
@@ -81,6 +117,16 @@ with st.sidebar:
     st.text(f"Collection: {config.rag_collection}")
     st.text(f"Embeddings: {config.embedding_model}")
     
+    st.markdown("---")
+    st.download_button(
+        "📥 Export Chat for QA",
+        data=build_qa_export(st.session_state.messages, config),
+        file_name=f"qa_export_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
+        mime="application/json",
+        disabled=not st.session_state.messages,
+        help="Downloads the full conversation, including every retrieved chunk per turn, as JSON for QA review.",
+    )
+
     st.markdown("---")
     if st.button("Clear Conversation & Reset Agent"):
         st.session_state.messages = []
@@ -148,9 +194,13 @@ if user_input := st.chat_input("Ask a question about business debt or Corporate 
                 )
             
             # Clean RAG prefix noise
-            from core.utils import clean_response_prefix
+            from core.utils import clean_response_prefix, enforce_grounding_refusal
             final_message = clean_response_prefix(final_message)
-                
+
+            # Deterministic backstop: if rag_search found nothing this turn,
+            # don't trust the LLM to have actually refused as instructed.
+            final_message = enforce_grounding_refusal(response, final_message)
+
             st.write(final_message)
             
             # Show chunks

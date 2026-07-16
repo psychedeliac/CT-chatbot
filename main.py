@@ -149,8 +149,12 @@ Quick start:
                 )
 
             # Clean RAG prefix noise
-            from core.utils import clean_response_prefix
+            from core.utils import clean_response_prefix, enforce_grounding_refusal
             final_message = clean_response_prefix(final_message)
+
+            # Deterministic backstop: if rag_search found nothing this turn,
+            # don't trust the LLM to have actually refused as instructed.
+            final_message = enforce_grounding_refusal(response, final_message)
 
             # Checkpoint 3: Output-time PII scrub
             if config.pii.enabled:

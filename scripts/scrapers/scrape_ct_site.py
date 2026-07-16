@@ -1,7 +1,7 @@
 import os
 from urllib.parse import urljoin, urlparse
 from bs4 import BeautifulSoup
-from scripts.scrapers.utils import fetch, parse_body, split_into_chunks, make_chunk, save_raw, logger
+from scripts.scrapers.utils import fetch, parse_body, split_into_chunks, make_chunk, save_raw, logger, is_boilerplate
 
 CT_SEED_URLS = [
     "https://www.corporateturnaround.com/",
@@ -61,6 +61,8 @@ def extract_chunks_from_html(html: str, url: str) -> list[dict]:
     for heading, text in sections:
         text_chunks = split_into_chunks(text)
         for i, text_chunk in enumerate(text_chunks):
+            if is_boilerplate(text_chunk):
+                continue
             chunk_id = f"ct-site-{topic}-{chunk_counter}"
             chunk = make_chunk(
                 id=chunk_id,
