@@ -644,6 +644,171 @@
     "requires_disclaimer": false
   },
   {
+    "id": "ct-services-0",
+    "source_type": "ct_services",
+    "topic": "services",
+    "category": "ct-services",
+    "topic_tags": [
+      "services",
+      "advice-priority"
+    ],
+    "title": "Our Services — Corporate Turnaround",
+    "section_heading": "OurServices.",
+    "chunk_text": "From debt negotiation to full financial restructuring, Corporate Turnaround delivers targeted strategies that protect your business and restore long-term stability.",
+    "chunk_tokens": 26,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "ct-services-1",
+    "source_type": "ct_services",
+    "topic": "services",
+    "category": "ct-services",
+    "topic_tags": [
+      "services",
+      "advice-priority"
+    ],
+    "title": "Our Services — Corporate Turnaround",
+    "section_heading": "Built AroundYour\nNeeds",
+    "chunk_text": "No two businesses are the same. Our suite of services covers the full spectrum of business debt relief — from emergency intervention to long-term strategic restructuring. Every engagement starts with understanding your unique situation.",
+    "chunk_tokens": 44,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "ct-services-2",
+    "source_type": "ct_services",
+    "topic": "services",
+    "category": "ct-services",
+    "topic_tags": [
+      "services",
+      "advice-priority"
+    ],
+    "title": "Our Services — Corporate Turnaround",
+    "section_heading": "Debt Negotiation & Settlement",
+    "chunk_text": "Our expert negotiators work directly with your creditors to reduce balances, eliminate penalties, and — most importantly — restructure your obligations into payments your business can actually afford, all without bankruptcy.",
+    "chunk_tokens": 40,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "ct-services-3",
+    "source_type": "ct_services",
+    "topic": "services",
+    "category": "ct-services",
+    "topic_tags": [
+      "services",
+      "advice-priority"
+    ],
+    "title": "Our Services — Corporate Turnaround",
+    "section_heading": "MCA Debt Relief",
+    "chunk_text": "Merchant Cash Advances can cripple cash flow with daily debits. We stop the bleeding by renegotiating MCA terms, extending payback periods, and reducing factor rates — giving your business room to breathe.",
+    "chunk_tokens": 41,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "ct-services-4",
+    "source_type": "ct_services",
+    "topic": "services",
+    "category": "ct-services",
+    "topic_tags": [
+      "services",
+      "advice-priority"
+    ],
+    "title": "Our Services — Corporate Turnaround",
+    "section_heading": "Business Restructuring",
+    "chunk_text": "Full operational and financial restructuring — analyzing your business model, renegotiating vendor contracts, and redesigning your debt obligations so the business is viable long-term.",
+    "chunk_tokens": 31,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "ct-services-5",
+    "source_type": "ct_services",
+    "topic": "services",
+    "category": "ct-services",
+    "topic_tags": [
+      "services",
+      "advice-priority"
+    ],
+    "title": "Our Services — Corporate Turnaround",
+    "section_heading": "Creditor Harassment Protection",
+    "chunk_text": "We intervene immediately to stop predatory collection calls, legal threats, and bank levies — putting a formal legal shield between you and your creditors. LEGAL PROTECTION ACTIVATED WITHIN 48 HOURS.",
+    "chunk_tokens": 39,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "ct-services-6",
+    "source_type": "ct_services",
+    "topic": "services",
+    "category": "ct-services",
+    "topic_tags": [
+      "services",
+      "advice-priority"
+    ],
+    "title": "Our Services — Corporate Turnaround",
+    "section_heading": "SBA & Business Loan Workouts",
+    "chunk_text": "Specialized expertise in SBA loan defaults, bank workout negotiations, and term modifications that prevent foreclosure on business or personal assets. $2.4B+ IN SBA & BANK LOANS SUCCESSFULLY NEGOTIATED.",
+    "chunk_tokens": 36,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "ct-services-7",
+    "source_type": "ct_services",
+    "topic": "services",
+    "category": "ct-services",
+    "topic_tags": [
+      "services",
+      "advice-priority"
+    ],
+    "title": "Our Services — Corporate Turnaround",
+    "section_heading": "Tax Debt Resolution",
+    "chunk_text": "IRS and state tax debt creates unique legal risks. Our specialists negotiate offers-in-compromise, installment agreements, and penalty abatements tailored to your situation. IRS PENALTIES REDUCED OR ELIMINATED WHERE ELIGIBLE.",
+    "chunk_tokens": 37,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "ct-services-8",
+    "source_type": "ct_services",
+    "topic": "services",
+    "category": "ct-services",
+    "topic_tags": [
+      "services",
+      "advice-priority"
+    ],
+    "title": "Our Services — Corporate Turnaround",
+    "section_heading": "We Work AcrossEvery Sector",
+    "chunk_text": "Corporate Turnaround has deep experience across dozens of industries — each with unique debt structures, lender relationships, and regulatory environments.",
+    "chunk_tokens": 26,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "ct-services-9",
+    "source_type": "ct_services",
+    "topic": "services",
+    "category": "ct-services",
+    "topic_tags": [
+      "services",
+      "advice-priority"
+    ],
+    "title": "Our Services — Corporate Turnaround",
+    "section_heading": "Protect What You've BuiltBefore It's Too Late.",
+    "chunk_text": "You do not need another generic consultation or another loan that creates more pressure. Get a clear review of your contracts, your payments, and your realistic options. Confidential · Clear fee structure · Over 25 years in business",
+    "chunk_tokens": 49,
+    "requires_disclaimer": false
+  },
+  {
+    "id": "ct-services-10",
+    "source_type": "ct_services",
+    "topic": "services",
+    "category": "ct-services",
+    "topic_tags": [
+      "services",
+      "advice-priority"
+    ],
+    "title": "Our Services — Corporate Turnaround",
+    "section_heading": "Book Your Free\nConsultation Today",
+    "chunk_text": "Speak with a senior debt specialist — completely free and confidential. We'll review your situation and outline your real options within 24 hours.",
+    "chunk_tokens": 29,
+    "requires_disclaimer": false
+  },
+  {
     "id": "gov-ftc-articles-debt-collection-faqs-0",
     "source_type": "regulatory",
     "topic": "ftc-articles-debt-collection-faqs",

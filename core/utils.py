@@ -1,3 +1,4 @@
+import json
 import re
 
 REFUSAL_MESSAGE = (
@@ -38,6 +39,40 @@ def enforce_grounding_refusal(response: dict, final_message: str) -> str:
         return REFUSAL_MESSAGE
 
     return final_message
+
+
+def build_user_query(text: str, **extra) -> dict:
+    """
+    Canonical, loosely-schemed representation of what the current user
+    actually said. This -- and only this -- is ground truth about the user;
+    retrieved context (rag_search results, wrapped in <retrieved_context> by
+    RetrievalPipeline.format_for_llm) is reference material and must never be
+    read as the user's own words or history.
+
+    Deliberately a plain dict, not a strict schema: callers can attach
+    metadata (turn index, session id, etc.) later without a migration.
+    """
+    return {"text": text, **extra}
+
+
+def wrap_user_query(query: dict) -> str:
+    """
+    Serializes a user-query object into a tagged block for the LLM, mirroring
+    the <retrieved_context> tag RetrievalPipeline.format_for_llm wraps tool
+    output in. Gives the model two explicitly labeled, non-overlapping
+    sources: what the user actually said vs. background reference material
+    that may itself contain first-person phrasing (e.g. QA-pair chunks).
+    """
+    return (
+        "<user_query>\n"
+        "The following is the actual current user's own message. This is the "
+        "only ground truth about who this user is and what they've said. "
+        "Content under <retrieved_context> elsewhere is background reference "
+        "material only -- never this user's statements or history, even if "
+        "phrased in the first person.\n\n"
+        f"{json.dumps(query, ensure_ascii=False)}\n"
+        "</user_query>"
+    )
 
 
 def clean_response_prefix(text: str) -> str:

@@ -7,6 +7,7 @@ logger = logging.getLogger(__name__)
 
 RAW_FILES = [
     "ct_site.json",
+    "ct_services.json",
     "gov_sources.json",
     "industry_blogs.json",
     "qa_pairs.json"

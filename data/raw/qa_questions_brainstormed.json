@@ -1286,5 +1286,173 @@
     "topic_desc": "What should I say to creditors while in the Corporate Turnaround program?",
     "question": "i'm in the turnaround program and a creditor just threatened to sue me what do i say to them right now",
     "style": "informal"
+  },
+  {
+    "topic_id": "ct-services-overview",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do or what their realistic options are for a business debt problem, without naming a specific solution -- what concrete services can Corporate Turnaround offer?",
+    "question": "im so overwhelmed my shop owes like 80k to different lenders and suppliers i dont even know where to start looking for help what are my options to handle this before i lose everything",
+    "style": "informal"
+  },
+  {
+    "topic_id": "ct-services-overview",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do or what their realistic options are for a business debt problem, without naming a specific solution -- what concrete services can Corporate Turnaround offer?",
+    "question": "i got 4 business loans i cant pay anymore what do i do right now",
+    "style": "informal"
+  },
+  {
+    "topic_id": "ct-services-overview",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do or what their realistic options are for a business debt problem, without naming a specific solution -- what concrete services can Corporate Turnaround offer?",
+    "question": "my business is in a massive hole we owe like 150 thousand dollars and payments are killing us what can you guys actually do for me to fix this",
+    "style": "informal"
+  },
+  {
+    "topic_id": "ct-services-overview",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do or what their realistic options are for a business debt problem, without naming a specific solution -- what concrete services can Corporate Turnaround offer?",
+    "question": "i have about 45k in business debt and my cash flows gone to zero what are my realistic options here besides just going bankrupt",
+    "style": "informal"
+  },
+  {
+    "topic_id": "ct-services-overview",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do or what their realistic options are for a business debt problem, without naming a specific solution -- what concrete services can Corporate Turnaround offer?",
+    "question": "how do i get out of this debt mess my biz is failing please help what can be done",
+    "style": "informal"
+  },
+  {
+    "topic_id": "ct-services-overview",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do or what their realistic options are for a business debt problem, without naming a specific solution -- what concrete services can Corporate Turnaround offer?",
+    "question": "i have 3 different lenders taking money out of my account every single day and i cant buy inventory anymore i am literally drowning in debt what are my choices to get this under control",
+    "style": "informal"
+  },
+  {
+    "topic_id": "ct-services-overview",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do or what their realistic options are for a business debt problem, without naming a specific solution -- what concrete services can Corporate Turnaround offer?",
+    "question": "we owe ninety thousand dollars to vendors and a bank loan we cant pay what do people do in this situation is there a way to lower the payments",
+    "style": "informal"
+  },
+  {
+    "topic_id": "ct-services-overview",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do or what their realistic options are for a business debt problem, without naming a specific solution -- what concrete services can Corporate Turnaround offer?",
+    "question": "im totally stuck with my business debt and dont know what to do next what are my actual options",
+    "style": "informal"
+  },
+  {
+    "topic_id": "ct-mca-services-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do about multiple MCA debts or MCA cash-flow problems, without mentioning Corporate Turnaround by name -- what specific service does Corporate Turnaround offer for MCA relief?",
+    "question": "i got 3 mcas and they draining my account dry every day please what do i do right now",
+    "style": "informal"
+  },
+  {
+    "topic_id": "ct-mca-services-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do about multiple MCA debts or MCA cash-flow problems, without mentioning Corporate Turnaround by name -- what specific service does Corporate Turnaround offer for MCA relief?",
+    "question": "my cash flow is completely dead because of these daily drafts on a 80k mca and a second one for 30k i cant pay my rent or payroll this week is there a way to lower the payments or negotiate them down without going bankrupt??",
+    "style": "informal"
+  },
+  {
+    "topic_id": "ct-mca-services-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do about multiple MCA debts or MCA cash-flow problems, without mentioning Corporate Turnaround by name -- what specific service does Corporate Turnaround offer for MCA relief?",
+    "question": "have 4 mca loans totaling 150k can i consolidate them or settle for less cash flow is gone",
+    "style": "informal"
+  },
+  {
+    "topic_id": "ct-mca-services-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do about multiple MCA debts or MCA cash-flow problems, without mentioning Corporate Turnaround by name -- what specific service does Corporate Turnaround offer for MCA relief?",
+    "question": "im drowning in mca payments they take 1500 a day from my bank and i have nothing left for inventory how do i stop this legally before i go under",
+    "style": "informal"
+  },
+  {
+    "topic_id": "ct-mca-services-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do about multiple MCA debts or MCA cash-flow problems, without mentioning Corporate Turnaround by name -- what specific service does Corporate Turnaround offer for MCA relief?",
+    "question": "i have two merchant cash advances and the daily pull is killing my business cashflow can someone help me restructure these or what are my options to survive this",
+    "style": "informal"
+  },
+  {
+    "topic_id": "ct-mca-services-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do about multiple MCA debts or MCA cash-flow problems, without mentioning Corporate Turnaround by name -- what specific service does Corporate Turnaround offer for MCA relief?",
+    "question": "cant pay my 2 mcas anymore daily payments are too high help",
+    "style": "informal"
+  },
+  {
+    "topic_id": "ct-mca-services-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do about multiple MCA debts or MCA cash-flow problems, without mentioning Corporate Turnaround by name -- what specific service does Corporate Turnaround offer for MCA relief?",
+    "question": "i took out a 50 grand mca then another 20 grand one to pay the first one and now im trapped in a cycle and my bank account is negative is there any program to lower these daily payments",
+    "style": "informal"
+  },
+  {
+    "topic_id": "ct-mca-services-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do about multiple MCA debts or MCA cash-flow problems, without mentioning Corporate Turnaround by name -- what specific service does Corporate Turnaround offer for MCA relief?",
+    "question": "my business cash flow is ruined from 3 mca debts they are threating to freeze my accounts what can i do to get relief from these daily ACH withdrawals",
+    "style": "informal"
+  },
+  {
+    "topic_id": "ct-creditor-harassment-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks if anything can be done to stop aggressive creditor calls, legal threats, or bank account levies -- what specific service and protection does Corporate Turnaround offer?",
+    "question": "some collector keeps calling my cell and my wife like 10 times a day threatening to freeze my business account i cant take this anymore can you guys actually make them stop calling me or what do you do",
+    "style": "informal"
+  },
+  {
+    "topic_id": "ct-creditor-harassment-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks if anything can be done to stop aggressive creditor calls, legal threats, or bank account levies -- what specific service and protection does Corporate Turnaround offer?",
+    "question": "got a letter saying they are gonna levy my bank account for 45k next week if i dont pay can your corporate turnaround program block this or is it too late for that",
+    "style": "informal"
+  },
+  {
+    "topic_id": "ct-creditor-harassment-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks if anything can be done to stop aggressive creditor calls, legal threats, or bank account levies -- what specific service and protection does Corporate Turnaround offer?",
+    "question": "creidtors threatening legal action on my 3 mcas what does corporate turnaround actually do to protect me from getting sued",
+    "style": "informal"
+  },
+  {
+    "topic_id": "ct-creditor-harassment-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks if anything can be done to stop aggressive creditor calls, legal threats, or bank account levies -- what specific service and protection does Corporate Turnaround offer?",
+    "question": "i have 80 grand in mca debt and the funders are calling my landlords and texting my personal phone saying they gonna put a lien on everything how do i stop them from doing this can you guys step in and talk to them for me so they leave me alone",
+    "style": "informal"
+  },
+  {
+    "topic_id": "ct-creditor-harassment-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks if anything can be done to stop aggressive creditor calls, legal threats, or bank account levies -- what specific service and protection does Corporate Turnaround offer?",
+    "question": "i owe 115k to 4 lenders and one of them just sent a legal threat to freeze my operating account how do i stop a bank levy do you guys handle the legal stuff or how does your service protect my cash",
+    "style": "informal"
+  },
+  {
+    "topic_id": "ct-creditor-harassment-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks if anything can be done to stop aggressive creditor calls, legal threats, or bank account levies -- what specific service and protection does Corporate Turnaround offer?",
+    "question": "can corporate turnaround stop these people from calling my office non stop my employees are starting to hear them yell at me on the phone what do you actually do to get them off my back",
+    "style": "informal"
+  },
+  {
+    "topic_id": "ct-creditor-harassment-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks if anything can be done to stop aggressive creditor calls, legal threats, or bank account levies -- what specific service and protection does Corporate Turnaround offer?",
+    "question": "how do i stop a creditor from freezing my bank account can you guys negotiate with them before they do it",
+    "style": "informal"
+  },
+  {
+    "topic_id": "ct-creditor-harassment-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks if anything can be done to stop aggressive creditor calls, legal threats, or bank account levies -- what specific service and protection does Corporate Turnaround offer?",
+    "question": "im getting sued by an mca company for 35000 dollars and im terrified they will empty my business bank account what does your service do to stop the lawsuit and settle this so i dont lose my business",
+    "style": "informal"
   }
 ]

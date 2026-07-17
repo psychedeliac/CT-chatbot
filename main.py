@@ -134,9 +134,10 @@ Quick start:
                 guardrail = PIIGuardrail(config.pii)
                 user_input = guardrail.sanitize_query(user_input)
 
+            from core.utils import build_user_query, wrap_user_query
             session_config = {"configurable": {"thread_id": "session_1"}}
             response = agent_executor.invoke(
-                {"messages": [("user", user_input)]},
+                {"messages": [("user", wrap_user_query(build_user_query(user_input)))]},
                 config=session_config,
             )
 

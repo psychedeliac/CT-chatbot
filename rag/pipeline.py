@@ -238,6 +238,16 @@ class RetrievalPipeline:
                 text = content
 
             score_str = f"{c.rerank_score:.4f}" if c.rerank_score is not None else "N/A (reranking disabled)"
-            formatted.append(f"Title: {title}\nSection: {section}\nScore: {score_str}\n\n{text}")
+            if title.startswith("Q&A:"):
+                # section_heading for qa_pair chunks is a first-person hypothetical
+                # question ("i got three mca...sales dropped hard"), not a neutral
+                # topic label. Left unmarked, the LLM reads it as the current
+                # user's own facts and launders scenario details across turns.
+                formatted.append(
+                    f"Title: {title}\nSimilar past case (NOT the current user): \"{section}\"\n"
+                    f"Score: {score_str}\n\n{text}"
+                )
+            else:
+                formatted.append(f"Title: {title}\nSection: {section}\nScore: {score_str}\n\n{text}")
 
         return "\n\n---\n\n".join(formatted)

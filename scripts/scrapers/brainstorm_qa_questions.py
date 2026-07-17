@@ -78,7 +78,28 @@ QA_TOPICS = [
     ("ct-mca-help",       "ct-process",       "Can Corporate Turnaround help settle a Merchant Cash Advance?"),
     ("ct-industries",     "ct-process",       "What industries does Corporate Turnaround serve?"),
     ("ct-success-stats",  "ct-process",       "What are Corporate Turnaround's track record and success statistics?"),
+    # Bridges generic/topic-specific "what can I do" advice-seeking phrasing
+    # (no mention of "Corporate Turnaround" by name) to the concrete named
+    # service lines on corpo-nine.vercel.app/services. Without these, that
+    # content only retrieves when a query already names the company --
+    # generic distress phrasing ("i have 3 mca loans what can i do") never
+    # surfaces it, since it's the QA pairs' informal phrasing that wins the
+    # keyword/semantic match, not the services page's marketing copy.
+    ("ct-services-overview",       "ct-process", "A business owner asks generically what they can do or what their realistic options are for a business debt problem, without naming a specific solution -- what concrete services can Corporate Turnaround offer?"),
+    ("ct-mca-services-bridge",     "ct-process", "A business owner asks generically what they can do about multiple MCA debts or MCA cash-flow problems, without mentioning Corporate Turnaround by name -- what specific service does Corporate Turnaround offer for MCA relief?"),
+    ("ct-creditor-harassment-bridge", "ct-process", "A business owner asks if anything can be done to stop aggressive creditor calls, legal threats, or bank account levies -- what specific service and protection does Corporate Turnaround offer?"),
 ]
+
+# Topic ids added after the initial brainstorm run -- used by
+# scripts/scrapers/append_new_qa_topics.py to generate only the new topics'
+# questions and append them, rather than re-running the full list (which
+# would regenerate every existing topic's questions at temperature 0.9 and
+# break synthesize_qa_answers.py's already_answered resume matching).
+NEWLY_ADDED_TOPIC_IDS = {
+    "ct-services-overview",
+    "ct-mca-services-bridge",
+    "ct-creditor-harassment-bridge",
+}
 
 PROMPT_TEMPLATE = """
 You are helping build a test set of REAL, messy questions that struggling small business
@@ -116,7 +137,15 @@ def brainstorm_questions(llm, topic_desc: str, fewshots: list[str], n: int = 8) 
     prompt = PROMPT_TEMPLATE.format(topic_desc=topic_desc, fewshots=fewshot_block, n=n)
 
     response = llm.invoke(prompt)
-    response_text = response.content.strip()
+    content = response.content
+    if isinstance(content, list):
+        # Newer Gemini models return content as a list of typed blocks
+        # (text blocks plus signed reasoning metadata), not a plain string.
+        content = "".join(
+            part["text"] if isinstance(part, dict) and "text" in part else str(part)
+            for part in content
+        )
+    response_text = content.strip()
     if response_text.startswith("```json"):
         response_text = response_text[7:]
     if response_text.endswith("```"):
@@ -135,7 +164,11 @@ def run():
     fewshots = load_informal_fewshots()
     logger.info(f"Loaded {len(fewshots)} informal few-shot anchors from {EVAL_SET_PATH}")
 
-    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", temperature=0.9)
+    # gemini-2.5-flash returns 404 "no longer available to new users" for the
+    # current API key/project despite being listed by models.list -- an
+    # account-level restriction, not a real deprecation. gemini-flash-latest
+    # is the current equivalent.
+    llm = ChatGoogleGenerativeAI(model="gemini-flash-latest", temperature=0.9)
 
     all_questions = []
     for topic_id, category, topic_desc in QA_TOPICS:

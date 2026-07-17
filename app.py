@@ -160,9 +160,10 @@ if user_input := st.chat_input("Ask a question about business debt or Corporate 
     # Query LangGraph Agent
     with st.chat_message("assistant"):
         with st.spinner("Searching knowledge base and thinking..."):
+            from core.utils import build_user_query, wrap_user_query
             session_config = {"configurable": {"thread_id": "session_streamlit"}}
             response = st.session_state.agent_executor.invoke(
-                {"messages": [("user", user_input)]},
+                {"messages": [("user", wrap_user_query(build_user_query(user_input)))]},
                 config=session_config,
             )
             

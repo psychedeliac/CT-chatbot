@@ -5,7 +5,7 @@
     "topic_desc": "What is a Merchant Cash Advance (MCA)?",
     "question": "i have 2 mca's and they keep taking money from my account everyday its killing my cashflow what can i do right now",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions a \"factor rate fees\" which is not explicitly mentioned in the CONTEXT as a specific rate or percentage."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"a fixed percentage of your daily credit card sales\", but the CONTEXT does not provide specific information about credit card sales being used for MCA repayment."
   },
   {
     "topic_id": "mca-basics",
@@ -13,7 +13,7 @@
     "topic_desc": "What is a Merchant Cash Advance (MCA)?",
     "question": "my business is about to go under because of these daily payments from this cash advance thing is there any way out",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"a fixed percentage of your daily credit card sales\" which is not explicitly stated in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"daily or weekly\" but the CONTEXT does not specify this frequency."
   },
   {
     "topic_id": "mca-basics",
@@ -21,7 +21,7 @@
     "topic_desc": "What is a Merchant Cash Advance (MCA)?",
     "question": "i owe like 50 grand on these merchant advances will they come after my house or my personal stuff",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The answer mentions \"daily withdrawals\" but does not specify the amount or percentage of revenue taken, which is not explicitly stated in the context."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions a Confession of Judgment (COJ) and freezing bank accounts, but the CONTEXT does not provide a specific example or case related to these claims."
   },
   {
     "topic_id": "mca-basics",
@@ -29,7 +29,7 @@
     "topic_desc": "What is a Merchant Cash Advance (MCA)?",
     "question": "can an mca lender garnish my wages",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"MCA lender\" which is not present in the CONTEXT, and it does not provide a specific rate or amount for the MCA lender's wage garnishment process."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"MCA lender\", which is not explicitly defined in the CONTEXT."
   },
   {
     "topic_id": "mca-basics",
@@ -37,7 +37,7 @@
     "topic_desc": "What is a Merchant Cash Advance (MCA)?",
     "question": "i signed up for this business cash thing a few months ago and now im losing sleep every night because the payments are too high my wife says im crazy for doing it what do i even tell her",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"Corporate Turnaround\" which is not explicitly stated in the CONTEXT as the name of the company that helped the customer."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"fixed percentage of daily credit card sales\" which is not explicitly stated in the CONTEXT."
   },
   {
     "topic_id": "mca-basics",
@@ -45,7 +45,15 @@
     "topic_desc": "What is a Merchant Cash Advance (MCA)?",
     "question": "my busines has 4 mc as and the daily withdrawls are emptying my account fast what the hell do i do",
     "style": "informal",
-    "reason": "no_retrieval"
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"daily ACH withdrawals\" but does not specify the percentage of daily credit card sales or the fixed withdrawal amount, which are mentioned in the CONTEXT."
+  },
+  {
+    "topic_id": "mca-factor-rate",
+    "category": "mca-education",
+    "topic_desc": "How do MCA factor rates work and what do they cost?",
+    "question": "they gave me twenty five grand and said the factor rate was 1.29 and now they want thirty two grand back in like six months this is way more than i thought is that normal or am i just stupid for signing it",
+    "style": "informal",
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"factor rate fees\" but does not specify the range of factor rates (1.1 to 1.5) mentioned in the CONTEXT."
   },
   {
     "topic_id": "mca-daily-ach",
@@ -53,7 +61,7 @@
     "topic_desc": "How do daily ACH debits from MCAs drain business cash flow?",
     "question": "these daily mca payments are draining my account what do i do",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions a \"fixed percentage of your daily credit card sales\" but does not specify the range (10% to 20%) as mentioned in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions a fixed percentage of daily credit card sales, but the CONTEXT does not specify the exact percentage or rate."
   },
   {
     "topic_id": "mca-daily-ach",
@@ -61,7 +69,7 @@
     "topic_desc": "How do daily ACH debits from MCAs drain business cash flow?",
     "question": "i got like four merchant cash advances and they take 800 bucks a day i can't pay my rent or employees",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions a daily repayment of $800, but this amount is not present in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions annual percentage rates ranging from 40% to 350%, but the CONTEXT does not provide a specific source or reference for this claim."
   },
   {
     "topic_id": "mca-daily-ach",
@@ -69,23 +77,7 @@
     "topic_desc": "How do daily ACH debits from MCAs drain business cash flow?",
     "question": "it feels like every single day money just disappears from my business account because of these mca loans how am i supposed to keep the lights on and buy inventory when all my cash is gone right away",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"one of the most expensive types of business financing\" but does not specify the range of APRs (40% to 350%) mentioned in the CONTEXT."
-  },
-  {
-    "topic_id": "mca-daily-ach",
-    "category": "mca-education",
-    "topic_desc": "How do daily ACH debits from MCAs drain business cash flow?",
-    "question": "i gotta pay 300 a day to an mca and my cash flow is completely wrecked is there any way to stop this",
-    "style": "informal",
-    "reason": "groundedness_check_failed: NO: The answer mentions \"daily MCA repayments\" which is not explicitly stated in the context, although it is implied."
-  },
-  {
-    "topic_id": "mca-daily-ach",
-    "category": "mca-education",
-    "topic_desc": "How do daily ACH debits from MCAs drain business cash flow?",
-    "question": "mca daily debits means i have no working capital left what do i do",
-    "style": "informal",
-    "reason": "groundedness_check_failed: NO: The claim \"a fixed percentage of your daily credit card sales or a fixed daily/weekly amount\" does not explicitly appear in the CONTEXT, although it is implied in the section \"How an MCA Works and Repayment Mechanisms\"."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions a \"fixed percentage of your daily credit card sales\" which is not explicitly stated in the CONTEXT."
   },
   {
     "topic_id": "mca-daily-ach",
@@ -93,7 +85,7 @@
     "topic_desc": "How do daily ACH debits from MCAs drain business cash flow?",
     "question": "with two mca loans taking money daily my actual income for the biz is almost nothing after they take their cut",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The specific phone number 1-800-889-0232 is not present in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The answer mentions \"daily credit card sales\" which is a specific claim not present in the context."
   },
   {
     "topic_id": "mca-stacking",
@@ -101,7 +93,7 @@
     "topic_desc": "What is MCA stacking and why is it dangerous?",
     "question": "i just took out my 4th mca this month what do i do",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions a 4th MCA in one month, which is not present in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: All DOMAIN factual claims appear in the context, except for the specific dollar amounts ($150k, $30 thousand) and the score (-5.8109, -6.0831)."
   },
   {
     "topic_id": "mca-stacking",
@@ -109,7 +101,7 @@
     "topic_desc": "What is MCA stacking and why is it dangerous?",
     "question": "this mca stacking thing sounds really bad like im kinda worried about my business surviving if i get another one is it true it can kill your company",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The answer mentions \"severe consequences\" and \"aggressive collections and business bankruptcy\" but does not specify the exact scores or ratings mentioned in the CONTEXT (-1.2451, -5.7367, -6.8626)."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"a fixed percentage of daily credit card sales\" which is not explicitly stated in the CONTEXT."
   },
   {
     "topic_id": "mca-stacking",
@@ -117,7 +109,7 @@
     "topic_desc": "What is MCA stacking and why is it dangerous?",
     "question": "mca stacking danger what is it",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The answer mentions \"MCA stacking danger\" which is not explicitly mentioned in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"MCA stacking danger\" which is a concept not explicitly stated in the CONTEXT."
   },
   {
     "topic_id": "mca-stacking",
@@ -125,15 +117,7 @@
     "topic_desc": "What is MCA stacking and why is it dangerous?",
     "question": "my daily mca payments are like 1500 bucks now because of all the stacking idk how im gonna make payroll",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions a daily repayment amount of $1500, but this amount is not present in the CONTEXT."
-  },
-  {
-    "topic_id": "mca-stacking",
-    "category": "mca-education",
-    "topic_desc": "What is MCA stacking and why is it dangerous?",
-    "question": "whats mca stacking why is it so bad everyone says its bad",
-    "style": "informal",
-    "reason": "groundedness_check_failed: NO: The term \"MCA stacking\" is not mentioned in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"a fixed percentage of daily credit card sales\" and \"fixed daily/weekly bank withdrawals\", but does not specify the exact percentage or rates."
   },
   {
     "topic_id": "mca-stacking",
@@ -141,15 +125,7 @@
     "topic_desc": "What is MCA stacking and why is it dangerous?",
     "question": "i heard you cant stack mcas is that true because i got two already and now im really struggling with payments",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER contains a factual claim about MCA restrictions on stacking, which is not explicitly mentioned in the CONTEXT."
-  },
-  {
-    "topic_id": "mca-stacking",
-    "category": "mca-education",
-    "topic_desc": "What is MCA stacking and why is it dangerous?",
-    "question": "my first mca lender is saying im in default now because i got a second one and now they want all 50 grand back what the hell",
-    "style": "informal",
-    "reason": "groundedness_check_failed: NO: The answer mentions \"taking out a second loan\" which is not explicitly stated in the context."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"MCAs can be quite expensive, with annual percentage rates ranging from 40% to 350%\", but the CONTEXT does not provide the exact rates or the range."
   },
   {
     "topic_id": "mca-stacking",
@@ -157,7 +133,7 @@
     "topic_desc": "What is MCA stacking and why is it dangerous?",
     "question": "will mca stacking put my business out of business im already barely making it everyday",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"most expensive types of business financing\" but does not specify the exact score (-5.5791) or the source of this claim in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions a \"fixed percentage of daily credit card sales\" but this specific detail is not present in the CONTEXT."
   },
   {
     "topic_id": "mca-ucc-lien",
@@ -165,7 +141,7 @@
     "topic_desc": "What is a UCC-1 lien and how do MCA lenders use it?",
     "question": "my mca lender filed a ucc-1 can they really take everything i own",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The claim \"This means anyone can see the assets listed, but it does not automatically mean the lender can take everything you own\" does not appear in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"a UCC-1 filing\", but the CONTEXT only mentions \"UCC filings\" and \"UCC liens\" without specifying the type (UCC-1)."
   },
   {
     "topic_id": "mca-ucc-lien",
@@ -173,7 +149,7 @@
     "topic_desc": "What is a UCC-1 lien and how do MCA lenders use it?",
     "question": "what even is a ucc-1 lien this mca company keeps talking about it",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The answer mentions a \"UCC-3 form\" which is not explicitly mentioned in the context."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions a UCC-3 form, which is not explicitly mentioned in the CONTEXT."
   },
   {
     "topic_id": "mca-ucc-lien",
@@ -181,7 +157,7 @@
     "topic_desc": "What is a UCC-1 lien and how do MCA lenders use it?",
     "question": "i got 3 mca loans and theyre all saying they got ucc-1 liens on my biz what happens if i cant pay",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The DOMAIN factual claim \"MCA loans\" does not appear in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"Confession of Judgment (COJ) if allowed by state law\", but the CONTEXT does not explicitly state that MCA providers can enforce COJ in all states, only that it is allowed by state law."
   },
   {
     "topic_id": "mca-ucc-lien",
@@ -189,7 +165,7 @@
     "topic_desc": "What is a UCC-1 lien and how do MCA lenders use it?",
     "question": "help i signed a ucc-1 for a merchant cash advance are my assets safe",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The specific assets listed on the UCC-1 are the ones the lender can seize if you default on the merchant cash advance is not explicitly stated in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions a UCC-1, which is not present in the CONTEXT."
   },
   {
     "topic_id": "mca-ucc-lien",
@@ -197,7 +173,7 @@
     "topic_desc": "What is a UCC-1 lien and how do MCA lenders use it?",
     "question": "this mcc lender just filed a ucc-1 on my business for like 75 grand what does that mean for my inventory and stuff",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The DOMAIN factual claim \"A UCC-1 filing by the MCC lender\" does not appear in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The answer mentions \"MCC lender\" which is not present in the context."
   },
   {
     "topic_id": "mca-ucc-lien",
@@ -205,7 +181,7 @@
     "topic_desc": "What is a UCC-1 lien and how do MCA lenders use it?",
     "question": "cant pay my mca and they got a ucc-1 what do i do right now is it too late",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The answer mentions \"Confession of Judgment (COJ)\" but does not specify that it's allowed by state law, which is mentioned in the context."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"Confession of Judgment (COJ)\" without specifying that it's allowed by state law, whereas the CONTEXT mentions this caveat in the relevant question and answer."
   },
   {
     "topic_id": "mca-ucc-lien",
@@ -213,7 +189,7 @@
     "topic_desc": "What is a UCC-1 lien and how do MCA lenders use it?",
     "question": "my lawyer mentioned a ucc-1 filing from my mca company like what is that exactly and how does it affect my other debts",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions that a UCC-1 filing itself does not impact your business credit score, but this claim is not explicitly stated in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions a Merchant Cash Advance (MCA) but does not provide any specific information about it in the CONTEXT."
   },
   {
     "topic_id": "mca-ucc-lien",
@@ -221,23 +197,7 @@
     "topic_desc": "What is a UCC-1 lien and how do MCA lenders use it?",
     "question": "i took out 2 mca loans both said ucc one lien is that normal or should i be worried sick about my business",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The claim \"annual percentage rates (APRs) ranging from 40% to 350%\" appears in the CONTEXT, but the specific numbers \"40% to 350%\" and the claim \"same-day funding\" do not."
-  },
-  {
-    "topic_id": "mca-coj",
-    "category": "mca-education",
-    "topic_desc": "What is a Confession of Judgment (COJ) in an MCA contract?",
-    "question": "i signed a coj with my mca and now im behind what do i do is it too late",
-    "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"state law\" but does not specify which state laws are being referred to, whereas the CONTEXT mentions that the MCA provider may attempt to enforce a COJ \"if allowed by state law\"."
-  },
-  {
-    "topic_id": "mca-coj",
-    "category": "mca-education",
-    "topic_desc": "What is a Confession of Judgment (COJ) in an MCA contract?",
-    "question": "this mca deal i did had a coj clause in it and my business is doing really bad like i owe 80k and im scared they will come after my personal house or car can they do that with that thing",
-    "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions a COJ clause, but the CONTEXT does not specify if the MCA deal in question had a COJ clause."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions a Confession of Judgment (COJ), but the CONTEXT does not provide a definition or explanation of what a COJ is."
   },
   {
     "topic_id": "mca-coj",
@@ -245,7 +205,7 @@
     "topic_desc": "What is a Confession of Judgment (COJ) in an MCA contract?",
     "question": "whats a coj mean for my merchant cash advance like what does it let them do legally",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions a \"February 2020 FTC staff perspective\" which is not present in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The answer mentions \"if allowed by state law\" which is not explicitly stated in the context, although it is implied in multiple answers."
   },
   {
     "topic_id": "mca-coj",
@@ -253,7 +213,7 @@
     "topic_desc": "What is a Confession of Judgment (COJ) in an MCA contract?",
     "question": "my mca has a confession of judgement for 120 grand and i just missed a payment can they freeze my bank account tomorrow",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The exact timeline for obtaining a court order to freeze a bank account is not mentioned in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions a specific amount of $120,000, which does not appear in the CONTEXT."
   },
   {
     "topic_id": "mca-coj",
@@ -261,15 +221,7 @@
     "topic_desc": "What is a Confession of Judgment (COJ) in an MCA contract?",
     "question": "is that confession of judgment thing even legal in an mca contract it seems really unfair like they dont even need to sue me or anything",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The answer mentions \"state law\" but does not specify which state laws allow a Confession of Judgment (COJ) in an MCA contract, whereas the CONTEXT mentions that the MCA provider can enforce a COJ \"if allowed by state law\"."
-  },
-  {
-    "topic_id": "mca-coj",
-    "category": "mca-education",
-    "topic_desc": "What is a Confession of Judgment (COJ) in an MCA contract?",
-    "question": "they mentioned confession of judgement after i defaulted on my 40k mca what happens now",
-    "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions a 40k MCA, but the CONTEXT only mentions a 30k MCA."
+    "reason": "groundedness_check_failed: NO: The ANSWER contains the phrase \"without the need for a court trial\", which is a legal claim not explicitly stated in the CONTEXT."
   },
   {
     "topic_id": "mca-default",
@@ -277,7 +229,7 @@
     "topic_desc": "What happens when you default on a Merchant Cash Advance?",
     "question": "they froze my bank account because of an mca whats next",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The claim \"Deposits may still come in\" is not explicitly stated in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"collect the debt from you directly\" but does not specify how this is done, and the CONTEXT does not explicitly state that this is a direct result of signing a personal guarantee."
   },
   {
     "topic_id": "mca-default",
@@ -285,15 +237,7 @@
     "topic_desc": "What happens when you default on a Merchant Cash Advance?",
     "question": "i owe 50 grand on two mcas now they say they have a lien on my equipment what does that mean",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The answer mentions a lien on equipment, which is not explicitly mentioned in the context."
-  },
-  {
-    "topic_id": "mca-default",
-    "category": "mca-education",
-    "topic_desc": "What happens when you default on a Merchant Cash Advance?",
-    "question": "this mca default is killing my credit and im so stressed out idk what to do first",
-    "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"traditional lending protections may not apply\" but does not specify that this is due to MCAs being structured as the purchase of future receivables rather than loans."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions a lien on equipment, but the CONTEXT does not provide specific information about liens on equipment."
   },
   {
     "topic_id": "mca-vs-loan",
@@ -301,7 +245,7 @@
     "topic_desc": "How is an MCA different from a business loan?",
     "question": "will getting a merchant advance hurt my credit score more than a standard business loan for my next round of funding",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The claim \"it does not typically report to the major credit bureaus\" is not explicitly stated in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions a \"unique repayment structure\" which is not explicitly stated in the CONTEXT."
   },
   {
     "topic_id": "mca-vs-loan",
@@ -309,7 +253,7 @@
     "topic_desc": "How is an MCA different from a business loan?",
     "question": "i got 5 mcas and they taking money everyday from my account my cash flow is gone a normal loan isnt like this right",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The claim \"one of the most expensive types of business financing\" appears in the CONTEXT with a score of -5.8254, but the exact ranking \"-1.7560\" and \"-6.3550\" do not."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"a normal loan\", but the CONTEXT does not provide a clear definition of a normal loan."
   },
   {
     "topic_id": "mca-vs-loan",
@@ -317,7 +261,7 @@
     "topic_desc": "How is an MCA different from a business loan?",
     "question": "my business partner says mcas are different because they dont have personal guarantees is that true or am i on the hook for this 30k advance",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"structured as the purchase of future receivables rather than loans\", but does not specify that traditional lending protections may not apply."
+    "reason": "groundedness_check_failed: NO: The answer does not mention any specific numbers, rates, dates, or program specifics that appear in the CONTEXT."
   },
   {
     "topic_id": "mca-negotiate",
@@ -325,7 +269,7 @@
     "topic_desc": "Can you negotiate or settle a Merchant Cash Advance?",
     "question": "can i negotiate my mca loans if im already behind",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions a specific debt reduction from $500k to $350k, which is not present in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"MCAs are not federally regulated\", but the CONTEXT does not provide a specific example or case to support this claim."
   },
   {
     "topic_id": "mca-negotiate",
@@ -333,7 +277,7 @@
     "topic_desc": "Can you negotiate or settle a Merchant Cash Advance?",
     "question": "i owe like 70k on an mca can i even settle that",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The specific numbers ($70,000) and the mention of a credit score of 620 or higher in the ANSWER do not appear in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The answer mentions \"MCAs are not federally regulated\" which is a factual claim but the context does not provide any information about the regulation of MCAs."
   },
   {
     "topic_id": "mca-negotiate",
@@ -341,7 +285,7 @@
     "topic_desc": "Can you negotiate or settle a Merchant Cash Advance?",
     "question": "my business is dying can i like settle these mca payments",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The answer mentions \"Confession of Judgment (COJ)\" but does not specify which state laws allow this, and the term \"personal guarantee\" is mentioned but not defined or explained."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"MCAs are not federally regulated\", but the CONTEXT does not provide information about the regulation status of MCAs."
   },
   {
     "topic_id": "mca-negotiate",
@@ -349,7 +293,7 @@
     "topic_desc": "Can you negotiate or settle a Merchant Cash Advance?",
     "question": "settle mca debt how",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions a total debt of $240K, but the CONTEXT only mentions a debt of $500k and $350k."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"MCAs are not federally regulated\", but this claim is not explicitly stated in the CONTEXT."
   },
   {
     "topic_id": "mca-negotiate",
@@ -357,7 +301,7 @@
     "topic_desc": "Can you negotiate or settle a Merchant Cash Advance?",
     "question": "i defaulted on my mca last month is it too late to try and negotiate a settlement now",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"aggressive collections\" but the CONTEXT does not specify the term \"aggressive collections\" in relation to the consequences of defaulting on an MCA."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"MCAs are not federally regulated\", but the CONTEXT does not explicitly state this."
   },
   {
     "topic_id": "mca-negotiate",
@@ -365,23 +309,7 @@
     "topic_desc": "Can you negotiate or settle a Merchant Cash Advance?",
     "question": "ive got a 100k mca and im struggling bad can i offer them like half to just get rid of it",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions a \"Confession of Judgment (COJ)\" which is not explicitly mentioned in the CONTEXT."
-  },
-  {
-    "topic_id": "mca-personal-guar",
-    "category": "mca-education",
-    "topic_desc": "Do MCAs require a personal guarantee?",
-    "question": "i got 2 mca loans totaling 75k and now my business is failing will they come after my personal stuff like my house if i cant pay",
-    "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions pursuing personal assets, including a house, but this specific detail is not present in the CONTEXT."
-  },
-  {
-    "topic_id": "mca-personal-guar",
-    "category": "mca-education",
-    "topic_desc": "Do MCAs require a personal guarantee?",
-    "question": "im scared they gonna take my house for this mca debt did i personly garantee it",
-    "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions a \"Confession of Judgment (COJ)\" which is a specific legal claim mentioned in the CONTEXT, but it's related to a Merchant Cash Advance, whereas in the CONTEXT, it's related to debt collectors."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions an annual percentage rate range of 40% to 350%, but the CONTEXT only mentions a range of 40% to 350% in the first Q&A, and does not explicitly state this range in the other two Q&As."
   },
   {
     "topic_id": "mca-personal-guar",
@@ -389,15 +317,7 @@
     "topic_desc": "Do MCAs require a personal guarantee?",
     "question": "i took out 40 thousand in mca money do i have a personal guarantee on that or is it just business debt",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions a personal guarantee, but the CONTEXT does not explicitly state that the MCA in question has a personal guarantee."
-  },
-  {
-    "topic_id": "mca-personal-guar",
-    "category": "mca-education",
-    "topic_desc": "Do MCAs require a personal guarantee?",
-    "question": "3 mcas personal guarantee what happens now",
-    "style": "informal",
-    "reason": "groundedness_check_failed: NO: The specific amount of $3 does not appear in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The ANSWER contains the phrase \"if your business defaults\" but does not specify what happens next, whereas the CONTEXT provides more information on the consequences of defaulting."
   },
   {
     "topic_id": "mca-personal-guar",
@@ -405,7 +325,7 @@
     "topic_desc": "Do MCAs require a personal guarantee?",
     "question": "i thought mca loans didnt have personal guarantees but my lawyer just said something about it is that true for my 120k mca",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions a specific phone number (1-800-889-0232) which is not present in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The phone number 1-800-889-0232 is mentioned in the ANSWER, but not in the CONTEXT."
   },
   {
     "topic_id": "mca-multi-debt",
@@ -413,7 +333,7 @@
     "topic_desc": "What should a business owner do when juggling multiple simultaneous MCAs they can't keep up with?",
     "question": "i took out a second mca loan then a third and now a fourth i feel like im just paying interest and my business is going to collapse what do i do right now is it too late",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The answer mentions \"Corporate Turnaround\" which is not explicitly stated in the context as a company name, but rather as a solution in the first customer problem."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"a fixed percentage of your daily credit card sales\" which is not explicitly stated in the CONTEXT as the only possible withdrawal method."
   },
   {
     "topic_id": "mca-multi-debt",
@@ -421,23 +341,7 @@
     "topic_desc": "What should a business owner do when juggling multiple simultaneous MCAs they can't keep up with?",
     "question": "my business cash advance payments are too high i have like 3 of them and im gonna miss payroll this week",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The phone number 1-800-889-0232 is not present in the CONTEXT."
-  },
-  {
-    "topic_id": "mca-multi-debt",
-    "category": "mca-education",
-    "topic_desc": "What should a business owner do when juggling multiple simultaneous MCAs they can't keep up with?",
-    "question": "multiple mcas are killing my cash flow i cant breathe my business is going under",
-    "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"18 months\" which is a specific time frame, but it does not appear in the CONTEXT."
-  },
-  {
-    "topic_id": "mca-multi-debt",
-    "category": "mca-education",
-    "topic_desc": "What should a business owner do when juggling multiple simultaneous MCAs they can't keep up with?",
-    "question": "i got 5 mca loans now and they keep taking money from my bank account whats gonna happen to my personal stuff",
-    "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions a personal guarantee, but the CONTEXT only mentions a personal guarantee in the section about defaulting on an MCA."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"a fixed percentage of daily credit card sales\" which is not explicitly stated in the CONTEXT."
   },
   {
     "topic_id": "mca-multi-debt",
@@ -445,7 +349,15 @@
     "topic_desc": "What should a business owner do when juggling multiple simultaneous MCAs they can't keep up with?",
     "question": "these merchant cash advances are too much i got two more after the first one and now i cant pay any of them and i dont know what to do",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions a Confession of Judgment (COJ) and personal guarantee, but the CONTEXT does not explicitly state that a personal guarantee is required for an MCA."
+    "reason": "groundedness_check_failed: NO: The domain factual claim \"annual percentage rates ranging from 40% to 350%\" appears in the ANSWER but the exact range is not explicitly stated in the CONTEXT."
+  },
+  {
+    "topic_id": "mca-multi-debt",
+    "category": "mca-education",
+    "topic_desc": "What should a business owner do when juggling multiple simultaneous MCAs they can't keep up with?",
+    "question": "4 mcas crushing my business like 60 grand total please help me",
+    "style": "informal",
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"fixed percentage of daily credit card sales\" which is not explicitly stated in the CONTEXT."
   },
   {
     "topic_id": "biz-debt-types",
@@ -461,7 +373,7 @@
     "topic_desc": "What types of debt do small businesses typically have?",
     "question": "i took out a 150k traditional bank loan 3 years ago and now we cant pay it is it too late to negotiate",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions a traditional bank loan, interest rate, and repayment terms, which do not appear in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The answer mentions \"over 25 years of experience\", but the context only mentions \"over 25 years in business\" without specifying the type of business."
   },
   {
     "topic_id": "biz-debt-types",
@@ -469,7 +381,7 @@
     "topic_desc": "What types of debt do small businesses typically have?",
     "question": "i owe my main supplier almost 20k and my commercial rent is past due what kinda debt is trade credit",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The phone number 1-800-889-0232 is mentioned in the ANSWER."
+    "reason": "groundedness_check_failed: NO: The domain factual claim \"owing almost $20,000\" does not appear in the CONTEXT."
   },
   {
     "topic_id": "biz-debt-types",
@@ -477,7 +389,7 @@
     "topic_desc": "What types of debt do small businesses typically have?",
     "question": "my business line of credit is frozen and i also have 2 payroll tax debts is that like a super bad debt",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions a \"frozen business line of credit\" and \"payroll tax debts\" but does not specify the exact amount of the debts, which is mentioned in the CONTEXT as \"over $115k\"."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions a \"frozen business line of credit\" and \"payroll tax debts\", but the CONTEXT does not provide specific information about these topics."
   },
   {
     "topic_id": "biz-debt-types",
@@ -485,7 +397,7 @@
     "topic_desc": "What types of debt do small businesses typically have?",
     "question": "i dont even know all the types of debt i have but i got like equipment leases and a few smaller loans and credit cards",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions a mix of equipment leases, but the CONTEXT does not provide information about equipment leases."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"AnnualCreditReport.com\" but does not specify that it offers free credit reports, which is a factual claim in the CONTEXT."
   },
   {
     "topic_id": "biz-debt-types",
@@ -493,7 +405,7 @@
     "topic_desc": "What types of debt do small businesses typically have?",
     "question": "whats the difference between a secured and unsecured loan my business bank loan is like 75k and i signed for it",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The answer mentions a specific loan amount ($75,000) which is not present in the context."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions a specific loan amount of 75k, but this number does not appear in the CONTEXT."
   },
   {
     "topic_id": "biz-credit-score",
@@ -501,7 +413,7 @@
     "topic_desc": "How does business credit work vs. personal credit?",
     "question": "i put 20 grand of my own money into the business and now its failing will my personal credit be ruined",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions a specific phone number (1-800-889-0232) which is not present in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions a specific phone number (1-800-889-0232) and a generic advice to \"call us\" which is not present in the CONTEXT."
   },
   {
     "topic_id": "biz-credit-score",
@@ -509,7 +421,7 @@
     "topic_desc": "How does business credit work vs. personal credit?",
     "question": "business credit vs personal credit whats the difference",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"Business credit scores are used to evaluate a business's creditworthiness, while personal credit scores reflect an individual's credit history\" which is not explicitly stated in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The answer mentions \"two separate types of credit\" but does not explicitly state that business credit is used for business loans and personal credit is used for personal loans, which is a factual claim not present in the context."
   },
   {
     "topic_id": "biz-credit-score",
@@ -517,7 +429,7 @@
     "topic_desc": "How does business credit work vs. personal credit?",
     "question": "they want me to sign a pg for a small business loan like what happens if the business cant pay that means its on me right",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The answer mentions a credit score impact, but the specific score (-3.3718) is not mentioned in the context."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"you may be personally liable for the debt\" but does not specify the type of loan (Merchant Cash Advance or business loan), whereas the CONTEXT mentions both types of loans."
   },
   {
     "topic_id": "biz-credit-score",
@@ -525,7 +437,7 @@
     "topic_desc": "How does business credit work vs. personal credit?",
     "question": "my business has 30k in debt but my personal credit is bad can i even get help or is it too late",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The phone number 1-800-889-0232 is mentioned in the ANSWER, but not in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The answer contains the number \"$30,000\" which is not present in the CONTEXT."
   },
   {
     "topic_id": "biz-credit-score",
@@ -533,7 +445,7 @@
     "topic_desc": "How does business credit work vs. personal credit?",
     "question": "how do you build biz credit do i just like open a bunch of cards or something or is it different from personal",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The claim about Employer Identification Number (EIN) and its purpose is not mentioned in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions obtaining an Employer Identification Number (EIN) from the IRS, but the CONTEXT does not provide specific information about this process."
   },
   {
     "topic_id": "biz-credit-score",
@@ -541,7 +453,7 @@
     "topic_desc": "How does business credit work vs. personal credit?",
     "question": "i need 50k for my new food truck but my personal credit score is only like 580 what are my options for business credit",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The credit score of 580 in ANSWER does not appear in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The credit score of 620 or higher is mentioned in the CONTEXT, but the specific credit score of 580 in the ANSWER is not mentioned in the CONTEXT."
   },
   {
     "topic_id": "biz-credit-score",
@@ -549,7 +461,7 @@
     "topic_desc": "How does business credit work vs. personal credit?",
     "question": "does business debt show up on my personal credit report",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"if it's not reported to the credit bureaus\" which is not explicitly stated in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"if it's not reported to the credit bureaus\" which is not explicitly stated in the CONTEXT, but it is implied. However, the specific mention of \"if you signed a personal guarantee on a business loan\" is supported by the CONTEXT in the section \"Personal Guarantees for Business Loans: What to Know Before Signing - NerdWallet\"."
   },
   {
     "topic_id": "biz-credit-score",
@@ -557,7 +469,7 @@
     "topic_desc": "How does business credit work vs. personal credit?",
     "question": "if my business gets sued for 120 grand will they come after my personal stuff",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The specific assets that could be at risk would depend on the terms of the personal guarantee and the lender's policies. This claim does not appear in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions a specific phone number and a generic advice to \"discuss with an advisor\", which are not factual claims and appear in the CONTEXT as a redirect."
   },
   {
     "topic_id": "biz-personal-guar",
@@ -565,7 +477,7 @@
     "topic_desc": "What does signing a personal guarantee mean for a business owner?",
     "question": "i signed a personal guarantee what now if my business goes under",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The answer mentions \"up to a third of the outstanding balance\" which is not present in the context."
+    "reason": "groundedness_check_failed: NO: The phone number 1-800-889-0232 is mentioned in the answer."
   },
   {
     "topic_id": "biz-personal-guar",
@@ -573,7 +485,7 @@
     "topic_desc": "What does signing a personal guarantee mean for a business owner?",
     "question": "i got this sba loan for like 150k and they made me sign some pg thing what does that even mean for my own money",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The phone number 1-800-889-0232 is not mentioned in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"SBA loan\", but the CONTEXT only mentions SBA loan in the context of a loan deferment, not a personal guarantee."
   },
   {
     "topic_id": "biz-personal-guar",
@@ -581,7 +493,7 @@
     "topic_desc": "What does signing a personal guarantee mean for a business owner?",
     "question": "can they take my house for business debt i signed a personal guarantee",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The phone number 1-800-889-0232 is mentioned in the ANSWER, but not in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"repaying the debt from your personal assets, including your house\", but the CONTEXT does not explicitly mention houses as personal assets."
   },
   {
     "topic_id": "biz-personal-guar",
@@ -589,7 +501,7 @@
     "topic_desc": "What does signing a personal guarantee mean for a business owner?",
     "question": "i totally forgot i signed that personal guarantee for my 30k line of credit and now the business is sinking am i personally on the hook for that",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions a business line of credit, but the CONTEXT only discusses general business loans."
+    "reason": "groundedness_check_failed: NO: The answer mentions a \"line of credit\" which is not present in the context."
   },
   {
     "topic_id": "biz-personal-guar",
@@ -597,7 +509,7 @@
     "topic_desc": "What does signing a personal guarantee mean for a business owner?",
     "question": "my equipment loan has a personal guarantee attached and i cant make next month's payment is my personal bank account safe",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The claim \"up to a third of the outstanding balance\" is not explicitly stated in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions a specific phone number (1-800-889-0232) which is not present in the CONTEXT."
   },
   {
     "topic_id": "biz-personal-guar",
@@ -605,7 +517,7 @@
     "topic_desc": "What does signing a personal guarantee mean for a business owner?",
     "question": "pg for a business loan what happens to *me* if we cant pay",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The answer mentions a personal guarantee, but the CONTEXT does not specify the exact consequences of having a personal guarantee."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"Confession of Judgment (COJ)\" which is not explicitly defined in the CONTEXT, although it is mentioned in a similar past case."
   },
   {
     "topic_id": "biz-personal-guar",
@@ -613,7 +525,7 @@
     "topic_desc": "What does signing a personal guarantee mean for a business owner?",
     "question": "i signed a personal guarantee for a 200k loan like 2 years ago and now things are really bad with the business like really bad will they come after my savings or my wife's stuff",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The specific amount of the loan ($200k) does not appear in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The loan amount in the ANSWER is 200k, but the CONTEXT only mentions a business loan without specifying the amount."
   },
   {
     "topic_id": "biz-personal-guar",
@@ -621,7 +533,7 @@
     "topic_desc": "What does signing a personal guarantee mean for a business owner?",
     "question": "i got a 50k business credit card and signed a personal guarantee does that mean my personal credit score is at risk",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The specific amount of the business credit card ($50k) does not appear in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions a business credit card, which is not explicitly mentioned in the CONTEXT."
   },
   {
     "topic_id": "biz-sba-default",
@@ -629,7 +541,7 @@
     "topic_desc": "What happens if you default on an SBA loan?",
     "question": "i got a 50k sba loan and now they are saying they will take my house because i signed a personal guarantee is that even possible what do i do",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions a debt relief advisor and a specific company (\"Corporate Turnaround\"), which is not present in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions seizing personal assets such as a house, which is not explicitly mentioned in the CONTEXT."
   },
   {
     "topic_id": "biz-sba-default",
@@ -637,7 +549,7 @@
     "topic_desc": "What happens if you default on an SBA loan?",
     "question": "my business went under and i still owe like 100 grand on an sba loan will this ruin my personal credit score for like ever",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The answer mentions a specific phone number and a debt relief advisor, which are not present in the context."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions the potential impact on personal credit score, but the CONTEXT does not explicitly state that SBA loans can negatively impact personal credit scores."
   },
   {
     "topic_id": "biz-sba-default",
@@ -645,7 +557,7 @@
     "topic_desc": "What happens if you default on an SBA loan?",
     "question": "sba loan default whats the first thing they do",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The domain factual claim \"SBA loan\" appears in the context, but the specific claim \"SBA loan\" is not the issue. The issue is that the answer mentions \"SBA loan\" but the context only mentions \"7(a) loans | U.S. Small Business Administration\" which is a specific type of loan."
+    "reason": "groundedness_check_failed: NO: The answer contains the phrase \"SBA Loan Portal\", which is not explicitly mentioned in the context as a specific program or service."
   },
   {
     "topic_id": "biz-sba-default",
@@ -653,7 +565,7 @@
     "topic_desc": "What happens if you default on an SBA loan?",
     "question": "i got a ppp and an eidl loan and i just stopped paying both what will they do about my car can they take that",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The context does not mention PPP, EIDL loans, or the potential impact on a business owner's car, but it does contain a factual claim of a specific score (-8.0167) which is not related to the context."
+    "reason": "groundedness_check_failed: NO: The context does not mention the specific phone number 1-800-889-0232."
   },
   {
     "topic_id": "biz-sba-default",
@@ -661,7 +573,7 @@
     "topic_desc": "What happens if you default on an SBA loan?",
     "question": "i missed like three payments on my sba loan is it too late to fix this im freaking out",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"get back on track\" which is not a specific claim from the CONTEXT, but rather a general statement."
+    "reason": "groundedness_check_failed: NO: The answer includes the claim that payments can only be made using the SBA Loan Portal for SBA-purchased 7(a) loans, which is a domain factual claim not present in the context."
   },
   {
     "topic_id": "biz-sba-default",
@@ -669,15 +581,7 @@
     "topic_desc": "What happens if you default on an SBA loan?",
     "question": "my sba loan went to collections now they keep calling my parents and my wife can they do that",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions the SBA District Office, which is not directly mentioned in the CONTEXT as a resource for debt collection assistance."
-  },
-  {
-    "topic_id": "biz-sba-default",
-    "category": "business-debt",
-    "topic_desc": "What happens if you default on an SBA loan?",
-    "question": "i heard they can sue you for defaulting on an sba loan but i dont have any money to pay a lawyer is there like free help for this",
-    "style": "informal",
-    "reason": "groundedness_check_failed: NO: The answer includes a specific phone number (1-800-889-0232) which is not present in the context."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions that lenders are not allowed to contact third parties about a business debt, which is a legal claim that does not appear in the CONTEXT."
   },
   {
     "topic_id": "biz-ch7-vs-ch11",
@@ -685,7 +589,7 @@
     "topic_desc": "What is the difference between Chapter 7 and Chapter 11 bankruptcy?",
     "question": "i have like 150 grand in business debt and im completely underwater do i file chapter 7 or chapter 11 what's the real difference between them i need to know for my small business",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The phone number 1-800-889-0232 is mentioned in the ANSWER, but it does not appear in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The amount of business debt ($150,000) mentioned in the ANSWER does not appear in the CONTEXT."
   },
   {
     "topic_id": "biz-ch7-vs-ch11",
@@ -693,7 +597,7 @@
     "topic_desc": "What is the difference between Chapter 7 and Chapter 11 bankruptcy?",
     "question": "chapter 7 vs 11 whats the deal",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The phone number 1-800-889-0232 is mentioned in the answer."
+    "reason": "groundedness_check_failed: NO: The answer mentions \"liquidating the business under the supervision of a bankruptcy trustee\", but the CONTEXT does not explicitly state that Chapter 7 involves a trustee."
   },
   {
     "topic_id": "biz-ch7-vs-ch11",
@@ -701,7 +605,7 @@
     "topic_desc": "What is the difference between Chapter 7 and Chapter 11 bankruptcy?",
     "question": "is chapter 7 where everything gets liquidated or is that chapter 11 im so confused what do i do right now to keep my business",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The DOMAIN factual claim \"1-800-889-0232\" appears in the ANSWER but not in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The answer mentions \"everything gets liquidated\" which is a general description, but it does not specify that this is a characteristic of Chapter 7 bankruptcy."
   },
   {
     "topic_id": "biz-ch7-vs-ch11",
@@ -709,7 +613,7 @@
     "topic_desc": "What is the difference between Chapter 7 and Chapter 11 bankruptcy?",
     "question": "i got 4 business credit cards plus an sba loan and im way behind can i use chapter 7 to get rid of it all or do i gotta do chapter 11 to reorganise my debts what exactly is the difference in simple terms",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions Chapter 11's filing fee difference ($922) and the lack of fee for converting from Chapter 7 to Chapter 13, but these specific details do not appear in the CONTEXT."
+    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"Chapter 7 bankruptcy is typically used to liquidate assets and discharge debts\", but the CONTEXT does not provide a direct comparison between Chapter 7 and Chapter 11."
   },
   {
     "topic_id": "biz-ch7-vs-ch11",
@@ -717,7 +621,7 @@
     "topic_desc": "What is the difference between Chapter 7 and Chapter 11 bankruptcy?",
     "question": "what's chapter 7 bankruptcy versus chapter 11 bankruptcy for a small business what does each one mean",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The answer mentions \"Chapter 7 bankruptcy\" which is not discussed in the provided context."
+    "reason": "groundedness_check_failed: NO: The context does not mention Chapter 7 bankruptcy, which is mentioned in the answer."
   },
   {
     "topic_id": "biz-ch7-vs-ch11",
@@ -725,7 +629,7 @@
     "topic_desc": "What is the difference between Chapter 7 and Chapter 11 bankruptcy?",
     "question": "my biz owes like 100k and im scared to death if i file chapter 7 do i lose everything or does chapter 11 let me keep operating and pay off some debt",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The answer mentions \"some or all of your business assets\" and \"the specifics depend on the type of business entity you have and the laws that apply to it\", which are not explicitly stated in the context."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 123.594059ms.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '0s'}]}}"
   },
   {
     "topic_id": "biz-ch7-vs-ch11",
@@ -733,7 +637,7 @@
     "topic_desc": "What is the difference between Chapter 7 and Chapter 11 bankruptcy?",
     "question": "chapter 7 and chapter 11 what's the main difference",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The answer mentions \"Chapter 7 typically results in a discharge of debts\", but the context does not provide a specific percentage or rate to support this claim."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 58.324020223s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '58s'}]}}"
   },
   {
     "topic_id": "biz-out-of-court",
@@ -741,7 +645,7 @@
     "topic_desc": "What is out-of-court debt restructuring?",
     "question": "i heard about something called out of court debt restructuring for my business is that even a real thing can it help me",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The DOMAIN factual claim \"more than 30% of your payables are over 90 days old\" appears in the CONTEXT, but the DOMAIN factual claim \"this can be a good option if more than 30% of your payables are over 90 days old\" is a conclusion drawn from the CONTEXT, not a direct claim."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 56.524035638s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '56s'}]}}"
   },
   {
     "topic_id": "biz-out-of-court",
@@ -749,7 +653,7 @@
     "topic_desc": "What is out-of-court debt restructuring?",
     "question": "my small business is 150 grand in debt to like 5 different lenders can i sort this out without having to go to court",
     "style": "informal",
-    "reason": "no_retrieval"
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 54.736523268s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '54s'}]}}"
   },
   {
     "topic_id": "biz-out-of-court",
@@ -757,7 +661,7 @@
     "topic_desc": "What is out-of-court debt restructuring?",
     "question": "whats the alternative to bankruptcy i keep hearing about settling debt outside of court but idk what it means",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"chapter 11 of the Bankruptcy Code\" but does not specify the chapter number in the context of the provided text."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 52.957071112s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-embedding-2', 'location': 'global'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '52s'}]}}"
   },
   {
     "topic_id": "biz-out-of-court",
@@ -765,7 +669,7 @@
     "topic_desc": "What is out-of-court debt restructuring?",
     "question": "i cant make payroll next week my business has 3 MCAs and 2 bank loans can i negotiate with them without court involvement",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"senior debt relief advisor\" which is a title, but it does not appear in the CONTEXT."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 51.172534447s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '51s'}]}}"
   },
   {
     "topic_id": "biz-out-of-court",
@@ -773,7 +677,7 @@
     "topic_desc": "What is out-of-court debt restructuring?",
     "question": "is it possible to restructure my business debts like $80,000 worth without all the legal fees and court stuff",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The DOMAIN factual claim \"30% of your payables are over 90 days old\" appears in the CONTEXT, but the DOMAIN factual claim \"our debt restructuring program\" is not explicitly defined in the CONTEXT, only mentioned as \"our program\"."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 49.378478078s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-embedding-2', 'location': 'global'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '49s'}]}}"
   },
   {
     "topic_id": "biz-out-of-court",
@@ -781,7 +685,7 @@
     "topic_desc": "What is out-of-court debt restructuring?",
     "question": "how do i deal with all these creditors calling me all the time without filing for bankruptcy or going to court",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"our team\" which is not explicitly stated in the CONTEXT."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 47.576413612s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '47s'}]}}"
   },
   {
     "topic_id": "biz-out-of-court",
@@ -789,7 +693,7 @@
     "topic_desc": "What is out-of-court debt restructuring?",
     "question": "i need help my business is failing i have three different types of debt i wanna avoid court at all costs what can i do",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"get back on track with your business\" which is not explicitly stated in the CONTEXT."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 45.787526844s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '45s'}]}}"
   },
   {
     "topic_id": "biz-out-of-court",
@@ -797,7 +701,7 @@
     "topic_desc": "What is out-of-court debt restructuring?",
     "question": "whats out of court debt restructuring mean for a small biz like mine do i need a lawyer for that too",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"without going through bankruptcy\" and \"you don't necessarily need a lawyer\", which are not explicitly stated in the CONTEXT."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 43.990417726s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-embedding-2', 'location': 'global'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '43s'}]}}"
   },
   {
     "topic_id": "biz-vendor-debt",
@@ -805,7 +709,7 @@
     "topic_desc": "What happens when you can't pay your vendors?",
     "question": "i owe like 5 different suppliers and cant pay any of them next week what do i do",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"Defaulting on a debt to multiple suppliers\" whereas the CONTEXT mentions \"Defaulting on a Merchant Cash Advance\"."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 42.205803422s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '42s'}]}}"
   },
   {
     "topic_id": "biz-vendor-debt",
@@ -813,7 +717,7 @@
     "topic_desc": "What happens when you can't pay your vendors?",
     "question": "my main supplier is gonna cut me off if i dont pay this 10k invoice by friday and i just dont have the cash flow what happens then",
     "style": "informal",
-    "reason": "no_retrieval"
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 40.41437491s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '40s'}]}}"
   },
   {
     "topic_id": "biz-vendor-debt",
@@ -821,7 +725,7 @@
     "topic_desc": "What happens when you can't pay your vendors?",
     "question": "can vendors sue me if i dont pay",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions a specific phone number (1-800-889-0232) which is not present in the CONTEXT."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 38.63083536s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '38s'}]}}"
   },
   {
     "topic_id": "biz-vendor-debt",
@@ -829,7 +733,7 @@
     "topic_desc": "What happens when you can't pay your vendors?",
     "question": "i'm behind on a 20k payment to my inventory vendor and they stopped shipping is there a way to fix this",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions a $20,000 payment, but this amount is not present in the CONTEXT."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 36.840038833s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-embedding-2', 'location': 'global'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '36s'}]}}"
   },
   {
     "topic_id": "biz-vendor-debt",
@@ -837,7 +741,7 @@
     "topic_desc": "What happens when you can't pay your vendors?",
     "question": "i'm getting calls everyday from my food suppliers and my packaging company and i just cant make payroll AND pay them all i dont know who to pay first its all a mess",
     "style": "informal",
-    "reason": "no_retrieval"
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 35.063518298s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '35s'}]}}"
   },
   {
     "topic_id": "biz-vendor-debt",
@@ -845,7 +749,7 @@
     "topic_desc": "What happens when you can't pay your vendors?",
     "question": "what if i just ignore the invoices from my old vendors will they eventually give up",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The phone number 1-800-889-0232 is mentioned in the ANSWER, which is not present in the CONTEXT."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 33.277123756s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-embedding-2', 'location': 'global'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '33s'}]}}"
   },
   {
     "topic_id": "biz-vendor-debt",
@@ -853,7 +757,7 @@
     "topic_desc": "What happens when you can't pay your vendors?",
     "question": "my biggest vendor is threatening to report me to a credit agency if i dont pay this 1500 overdue bill is that even real",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The number \"1500\" and the specific action of a vendor reporting to a credit agency are not mentioned in the CONTEXT."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 31.484077275s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '31s'}]}}"
   },
   {
     "topic_id": "biz-vendor-debt",
@@ -861,7 +765,7 @@
     "topic_desc": "What happens when you can't pay your vendors?",
     "question": "they stopped delivering my raw materials cuz i didnt pay last month now what",
     "style": "informal",
-    "reason": "no_retrieval"
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 29.424683884s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '29s'}]}}"
   },
   {
     "topic_id": "biz-ucc-search",
@@ -869,7 +773,7 @@
     "topic_desc": "How do you find UCC liens filed against your business?",
     "question": "where to find ucc liens on my business",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The answer mentions \"the secretary of state's office\" without specifying the state, whereas in the context, it is specified as the state where the business is located."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 27.656690244s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '27s'}]}}"
   },
   {
     "topic_id": "biz-ucc-search",
@@ -877,7 +781,7 @@
     "topic_desc": "How do you find UCC liens filed against your business?",
     "question": "someone said they filed a ucc against my company for 100k how do i find that fast",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The phone number 1-800-889-0232 appears in the ANSWER, but not in the CONTEXT."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 25.562251727s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-embedding-2', 'location': 'global'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '25s'}]}}"
   },
   {
     "topic_id": "biz-ucc-search",
@@ -885,7 +789,7 @@
     "topic_desc": "How do you find UCC liens filed against your business?",
     "question": "i got like five different lenders breathing down my neck and i heard about ucc filings what even are those and how do i check if they put one on my business i need to know before things get worse",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER does not mention the secretary of state's office as the place where UCC liens can be checked, whereas the CONTEXT mentions this detail."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 23.735720734s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '23s'}]}}"
   },
   {
     "topic_id": "biz-ucc-search",
@@ -893,7 +797,7 @@
     "topic_desc": "How do you find UCC liens filed against your business?",
     "question": "i think i have 2 ucc liens against my business where do i look right now is it too late to do anything",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The phone number 1-800-889-0232 is mentioned in the ANSWER section."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 21.616028903s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '21s'}]}}"
   },
   {
     "topic_id": "biz-ucc-search",
@@ -901,7 +805,7 @@
     "topic_desc": "How do you find UCC liens filed against your business?",
     "question": "how do i see if there are any ucc filings on my business like a public record or something for free",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The claim \"This information is publicly available, and you can access it for free\" does not appear in the CONTEXT."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 19.812502446s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '19s'}]}}"
   },
   {
     "topic_id": "biz-ucc-search",
@@ -909,7 +813,7 @@
     "topic_desc": "How do you find UCC liens filed against your business?",
     "question": "a lender mentioned a UCC filing for 30 grand on my company what website shows me that",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The answer mentions searching for \"your state's secretary of state\" along with \"UCC search\", which is not a specific domain factual claim present in the context."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 17.68898936s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-embedding-2', 'location': 'global'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '17s'}]}}"
   },
   {
     "topic_id": "biz-ucc-search",
@@ -917,7 +821,7 @@
     "topic_desc": "How do you find UCC liens filed against your business?",
     "question": "i need to know how to search for ucc liens filed against my LLC what government office handles that",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The answer mentions contacting the secretary of state's office, but it does not specify the state where the business is located, which is mentioned in the context."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 15.918007749s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '15s'}]}}"
   },
   {
     "topic_id": "biz-ucc-search",
@@ -925,7 +829,7 @@
     "topic_desc": "How do you find UCC liens filed against your business?",
     "question": "my account got frozen for a bit and now im worried about other things like UCC liens on my business how do i search for them quickly",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The phone number 1-800-889-0232 appears in the ANSWER, but not in the CONTEXT."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 13.861229171s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '13s'}]}}"
   },
   {
     "topic_id": "biz-dollar-overwhelm",
@@ -933,7 +837,7 @@
     "topic_desc": "What should a business owner do when they're overwhelmed by a large, specific total amount of business debt (e.g. $50,000+)?",
     "question": "i owe like 75k to a bunch of different places and im drowning what do i even do",
     "style": "informal",
-    "reason": "no_retrieval"
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 11.946817391s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-embedding-2', 'location': 'global'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '11s'}]}}"
   },
   {
     "topic_id": "biz-dollar-overwhelm",
@@ -941,7 +845,7 @@
     "topic_desc": "What should a business owner do when they're overwhelmed by a large, specific total amount of business debt (e.g. $50,000+)?",
     "question": "can they take my house if my business goes under with 200k in debt",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions a specific amount of debt ($200k) and its potential impact on a house, which is not present in the CONTEXT."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 10.138150978s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '10s'}]}}"
   },
   {
     "topic_id": "biz-dollar-overwhelm",
@@ -949,7 +853,7 @@
     "topic_desc": "What should a business owner do when they're overwhelmed by a large, specific total amount of business debt (e.g. $50,000+)?",
     "question": "my business debt is like 120 thousand dollars and im so stressed out i cant focus on anything what can i do",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The domain factual claim \"business debt of $120,000\" does not appear in the CONTEXT."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 8.346703379s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '8s'}]}}"
   },
   {
     "topic_id": "biz-dollar-overwhelm",
@@ -957,7 +861,7 @@
     "topic_desc": "What should a business owner do when they're overwhelmed by a large, specific total amount of business debt (e.g. $50,000+)?",
     "question": "im behind on six different loans for my business and i dont know where to turn",
     "style": "informal",
-    "reason": "no_retrieval"
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 6.539086507s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-embedding-2', 'location': 'global'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '6s'}]}}"
   },
   {
     "topic_id": "biz-dollar-overwhelm",
@@ -965,7 +869,7 @@
     "topic_desc": "What should a business owner do when they're overwhelmed by a large, specific total amount of business debt (e.g. $50,000+)?",
     "question": "is it too late i have 300k in business debt and cant see a way out",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The domain factual claim \"300k in business debt\" does not appear in the CONTEXT."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 4.748014077s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '4s'}]}}"
   },
   {
     "topic_id": "biz-dollar-overwhelm",
@@ -973,7 +877,7 @@
     "topic_desc": "What should a business owner do when they're overwhelmed by a large, specific total amount of business debt (e.g. $50,000+)?",
     "question": "i took out a sba loan then a line of credit and its all like 150000 what if i lose everything",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The maximum loan amount for a 7(a) loan is $5 million, but the context does not mention the specific concern about losing everything."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 2.937482009s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-embedding-2', 'location': 'global'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '2s'}]}}"
   },
   {
     "topic_id": "biz-dollar-overwhelm",
@@ -981,7 +885,7 @@
     "topic_desc": "What should a business owner do when they're overwhelmed by a large, specific total amount of business debt (e.g. $50,000+)?",
     "question": "need help business debt is crippling me over 50k",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions a specific amount of $25K out of $50K owed, but this is not explicitly stated in the CONTEXT as a general rule or a specific example."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 1.132749323s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '1s'}]}}"
   },
   {
     "topic_id": "ct-what-is",
@@ -989,7 +893,7 @@
     "topic_desc": "What does Corporate Turnaround do?",
     "question": "i keep hearing about 'corporate turnaround' what even is that for small businesses is it just for big guys",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"over 10,000 small business owners since 1998\", but the CONTEXT does not provide the exact number of businesses helped or the specific year."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 59.069935759s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-embedding-2', 'location': 'global'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '59s'}]}}"
   },
   {
     "topic_id": "ct-what-is",
@@ -997,7 +901,7 @@
     "topic_desc": "What does Corporate Turnaround do?",
     "question": "can a turnaround firm stop creditors from suing me i got like 5 big debts and they're calling non stop",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions a specific timeframe of 3 years for settling debt, which is not present in the CONTEXT."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 57.238008821s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '57s'}]}}"
   },
   {
     "topic_id": "ct-what-is",
@@ -1005,7 +909,7 @@
     "topic_desc": "What does Corporate Turnaround do?",
     "question": "my company is about to go under i heard about corporate turnaround is it too late for that or can they still do something",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The score of -2.5933 and -4.6664, and the specific mention of \"without bankruptcy\" do not appear in the CONTEXT."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 55.420109181s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '55s'}]}}"
   },
   {
     "topic_id": "ct-what-is",
@@ -1013,7 +917,7 @@
     "topic_desc": "What does Corporate Turnaround do?",
     "question": "what do corporate turnaround consultants *do* like practically speaking will they help me with payroll or sales or just negotiate debt",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The answer mentions \"senior debt relief advisor\" which is not present in the context."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 53.661531284s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '53s'}]}}"
   },
   {
     "topic_id": "ct-what-is",
@@ -1021,7 +925,7 @@
     "topic_desc": "What does Corporate Turnaround do?",
     "question": "i'm drowning in business debt probably 150000 total what does corporate turnaround actually *do* to fix things before i lose everything",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"at about half the cost\" which is not explicitly stated in the CONTEXT, although it is implied in the second customer problem and solution."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 51.872720655s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '51s'}]}}"
   },
   {
     "topic_id": "ct-consultation",
@@ -1029,7 +933,7 @@
     "topic_desc": "What happens during a free consultation with Corporate Turnaround?",
     "question": "i got like 5 different loans i cant pay them like 200k worth of debt is this free consult gonna help me figure out anything or just tell me im screwed what do i do",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"limited monthly budget\" which is a program-specific claim, but it does not specify what this budget is limited to (e.g. income, total debt, etc.)."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 50.064055167s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '50s'}]}}"
   },
   {
     "topic_id": "ct-consultation",
@@ -1037,7 +941,7 @@
     "topic_desc": "What happens during a free consultation with Corporate Turnaround?",
     "question": "i owe 150 grand across 4 business credit cards what do i need to have ready for the free consult is it too late",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"limited monthly budget\" which is not present in the CONTEXT."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 48.262300452s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '48s'}]}}"
   },
   {
     "topic_id": "ct-consultation",
@@ -1045,7 +949,7 @@
     "topic_desc": "What happens during a free consultation with Corporate Turnaround?",
     "question": "my business is drowning in debt like 300k and i cant sleep will the free consultation tell me anything useful or is it just a sales pitch",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The 300k debt mentioned in the ANSWER does not appear in the CONTEXT."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 46.46886162s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '46s'}]}}"
   },
   {
     "topic_id": "ct-consultation",
@@ -1053,7 +957,7 @@
     "topic_desc": "What happens during a free consultation with Corporate Turnaround?",
     "question": "is that corporate turnaround free chat thing confidential i don't want my partners to know im calling",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The answer mentions a \"free consultation\" which is not explicitly stated in the context, although it is implied."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 43.782241286s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '43s'}]}}"
   },
   {
     "topic_id": "ct-consultation",
@@ -1061,7 +965,7 @@
     "topic_desc": "What happens during a free consultation with Corporate Turnaround?",
     "question": "im so lost with all these bills and collections calling me nonstop what will the free consult cover do i need to bring like all my paperwork for my 120 grand in debt",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"limited monthly budget\" which is not explicitly mentioned in the CONTEXT as a specific timeframe."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 42.356888417s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '42s'}]}}"
   },
   {
     "topic_id": "ct-creditor-calls",
@@ -1069,7 +973,7 @@
     "topic_desc": "What should I say to creditors while in the Corporate Turnaround program?",
     "question": "what exactly do i say to creditors about being in this turnaround program",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The answer mentions \"develop a plan that you can afford and they will accept\" which is a general statement, but it doesn't mention the specifics of \"negotiating with creditors as well as with their collection agencies and attorneys\" or \"stretch settlements out over time and/or reduce the amount you owe\" which are program specifics that appear in the CONTEXT."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 40.916716466s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-embedding-2', 'location': 'global'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '40s'}]}}"
   },
   {
     "topic_id": "ct-creditor-calls",
@@ -1077,7 +981,7 @@
     "topic_desc": "What should I say to creditors while in the Corporate Turnaround program?",
     "question": "i just started the turnaround program but my landlord and vendors are still hounding me what do i tell them so they back off a bit",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The phone number 1-800-889-0232 is not present in the CONTEXT."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 39.474355615s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '39s'}]}}"
   },
   {
     "topic_id": "ct-creditor-calls",
@@ -1085,7 +989,7 @@
     "topic_desc": "What should I say to creditors while in the Corporate Turnaround program?",
     "question": "how do i talk to my 4 biggest creditors i owe them like 250 grand combined and im in this turnaround thing",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions the number of creditors (4) which is not present in the CONTEXT."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 37.703047958s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '37s'}]}}"
   },
   {
     "topic_id": "ct-creditor-calls",
@@ -1093,7 +997,7 @@
     "topic_desc": "What should I say to creditors while in the Corporate Turnaround program?",
     "question": "my turnaround advisor said to talk to creditors but i dont know the right words to use im scared ill make it worse",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The answer mentions \"It's completely normal to feel nervous when talking to creditors\" which is a general statement, but it doesn't mention any specific numbers, rates, dates, or program specifics that appear in the CONTEXT."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 36.280425729s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '36s'}]}}"
   },
   {
     "topic_id": "ct-creditor-calls",
@@ -1101,7 +1005,7 @@
     "topic_desc": "What should I say to creditors while in the Corporate Turnaround program?",
     "question": "creditors keep calling what's the official line to give them about the turnaround program",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER contains the specific phone number 1-800-889-0232, which is excluded from the analysis."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 34.473794456s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '34s'}]}}"
   },
   {
     "topic_id": "ct-creditor-calls",
@@ -1109,7 +1013,7 @@
     "topic_desc": "What should I say to creditors while in the Corporate Turnaround program?",
     "question": "is it safe to tell creditors im in corporate turnaround will they respect that or just get more aggressive",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"creditors are informed that you're participating in our program\", which is not explicitly stated in the CONTEXT."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 32.966444497s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-embedding-2', 'location': 'global'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '32s'}]}}"
   },
   {
     "topic_id": "ct-creditor-calls",
@@ -1117,7 +1021,7 @@
     "topic_desc": "What should I say to creditors while in the Corporate Turnaround program?",
     "question": "i have 2 sba loans and 3 credit lines and im in the turnaround plan what should i say to each one differently",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The ANSWER mentions \"turnaround plan\" which is not explicitly mentioned in the CONTEXT."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 31.495697107s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-embedding-2', 'location': 'global'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '31s'}]}}"
   },
   {
     "topic_id": "ct-creditor-calls",
@@ -1125,6 +1029,198 @@
     "topic_desc": "What should I say to creditors while in the Corporate Turnaround program?",
     "question": "i'm in the turnaround program and a creditor just threatened to sue me what do i say to them right now",
     "style": "informal",
-    "reason": "groundedness_check_failed: NO: The answer mentions \"Corporate Turnaround\" and its program specifics, which are not present in the context."
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 29.689336971s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-embedding-2', 'location': 'global'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '29s'}]}}"
+  },
+  {
+    "topic_id": "ct-services-overview",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do or what their realistic options are for a business debt problem, without naming a specific solution -- what concrete services can Corporate Turnaround offer?",
+    "question": "im so overwhelmed my shop owes like 80k to different lenders and suppliers i dont even know where to start looking for help what are my options to handle this before i lose everything",
+    "style": "informal",
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 28.236028866s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '28s'}]}}"
+  },
+  {
+    "topic_id": "ct-services-overview",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do or what their realistic options are for a business debt problem, without naming a specific solution -- what concrete services can Corporate Turnaround offer?",
+    "question": "i got 4 business loans i cant pay anymore what do i do right now",
+    "style": "informal",
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 26.758543471s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '26s'}]}}"
+  },
+  {
+    "topic_id": "ct-services-overview",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do or what their realistic options are for a business debt problem, without naming a specific solution -- what concrete services can Corporate Turnaround offer?",
+    "question": "my business is in a massive hole we owe like 150 thousand dollars and payments are killing us what can you guys actually do for me to fix this",
+    "style": "informal",
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 25.187724116s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '25s'}]}}"
+  },
+  {
+    "topic_id": "ct-services-overview",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do or what their realistic options are for a business debt problem, without naming a specific solution -- what concrete services can Corporate Turnaround offer?",
+    "question": "i have about 45k in business debt and my cash flows gone to zero what are my realistic options here besides just going bankrupt",
+    "style": "informal",
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 23.442562538s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '23s'}]}}"
+  },
+  {
+    "topic_id": "ct-services-overview",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do or what their realistic options are for a business debt problem, without naming a specific solution -- what concrete services can Corporate Turnaround offer?",
+    "question": "how do i get out of this debt mess my biz is failing please help what can be done",
+    "style": "informal",
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 21.990462477s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '21s'}]}}"
+  },
+  {
+    "topic_id": "ct-services-overview",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do or what their realistic options are for a business debt problem, without naming a specific solution -- what concrete services can Corporate Turnaround offer?",
+    "question": "i have 3 different lenders taking money out of my account every single day and i cant buy inventory anymore i am literally drowning in debt what are my choices to get this under control",
+    "style": "informal",
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 20.315835886s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-embedding-2', 'location': 'global'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '20s'}]}}"
+  },
+  {
+    "topic_id": "ct-services-overview",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do or what their realistic options are for a business debt problem, without naming a specific solution -- what concrete services can Corporate Turnaround offer?",
+    "question": "we owe ninety thousand dollars to vendors and a bank loan we cant pay what do people do in this situation is there a way to lower the payments",
+    "style": "informal",
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 18.509397398s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '18s'}]}}"
+  },
+  {
+    "topic_id": "ct-services-overview",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do or what their realistic options are for a business debt problem, without naming a specific solution -- what concrete services can Corporate Turnaround offer?",
+    "question": "im totally stuck with my business debt and dont know what to do next what are my actual options",
+    "style": "informal",
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 17.087170691s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '17s'}]}}"
+  },
+  {
+    "topic_id": "ct-mca-services-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do about multiple MCA debts or MCA cash-flow problems, without mentioning Corporate Turnaround by name -- what specific service does Corporate Turnaround offer for MCA relief?",
+    "question": "i got 3 mcas and they draining my account dry every day please what do i do right now",
+    "style": "informal",
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 15.626194634s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-embedding-2', 'location': 'global'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '15s'}]}}"
+  },
+  {
+    "topic_id": "ct-mca-services-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do about multiple MCA debts or MCA cash-flow problems, without mentioning Corporate Turnaround by name -- what specific service does Corporate Turnaround offer for MCA relief?",
+    "question": "my cash flow is completely dead because of these daily drafts on a 80k mca and a second one for 30k i cant pay my rent or payroll this week is there a way to lower the payments or negotiate them down without going bankrupt??",
+    "style": "informal",
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 14.147386804s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '14s'}]}}"
+  },
+  {
+    "topic_id": "ct-mca-services-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do about multiple MCA debts or MCA cash-flow problems, without mentioning Corporate Turnaround by name -- what specific service does Corporate Turnaround offer for MCA relief?",
+    "question": "have 4 mca loans totaling 150k can i consolidate them or settle for less cash flow is gone",
+    "style": "informal",
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 12.745185972s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '12s'}]}}"
+  },
+  {
+    "topic_id": "ct-mca-services-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do about multiple MCA debts or MCA cash-flow problems, without mentioning Corporate Turnaround by name -- what specific service does Corporate Turnaround offer for MCA relief?",
+    "question": "im drowning in mca payments they take 1500 a day from my bank and i have nothing left for inventory how do i stop this legally before i go under",
+    "style": "informal",
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 11.310624738s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '11s'}]}}"
+  },
+  {
+    "topic_id": "ct-mca-services-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do about multiple MCA debts or MCA cash-flow problems, without mentioning Corporate Turnaround by name -- what specific service does Corporate Turnaround offer for MCA relief?",
+    "question": "i have two merchant cash advances and the daily pull is killing my business cashflow can someone help me restructure these or what are my options to survive this",
+    "style": "informal",
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 9.356195163s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-embedding-2', 'location': 'global'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '9s'}]}}"
+  },
+  {
+    "topic_id": "ct-mca-services-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do about multiple MCA debts or MCA cash-flow problems, without mentioning Corporate Turnaround by name -- what specific service does Corporate Turnaround offer for MCA relief?",
+    "question": "cant pay my 2 mcas anymore daily payments are too high help",
+    "style": "informal",
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 7.836186332s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '7s'}]}}"
+  },
+  {
+    "topic_id": "ct-mca-services-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do about multiple MCA debts or MCA cash-flow problems, without mentioning Corporate Turnaround by name -- what specific service does Corporate Turnaround offer for MCA relief?",
+    "question": "i took out a 50 grand mca then another 20 grand one to pay the first one and now im trapped in a cycle and my bank account is negative is there any program to lower these daily payments",
+    "style": "informal",
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 6.365556991s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-embedding-2', 'location': 'global'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '6s'}]}}"
+  },
+  {
+    "topic_id": "ct-mca-services-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks generically what they can do about multiple MCA debts or MCA cash-flow problems, without mentioning Corporate Turnaround by name -- what specific service does Corporate Turnaround offer for MCA relief?",
+    "question": "my business cash flow is ruined from 3 mca debts they are threating to freeze my accounts what can i do to get relief from these daily ACH withdrawals",
+    "style": "informal",
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 4.763266358s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '4s'}]}}"
+  },
+  {
+    "topic_id": "ct-creditor-harassment-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks if anything can be done to stop aggressive creditor calls, legal threats, or bank account levies -- what specific service and protection does Corporate Turnaround offer?",
+    "question": "some collector keeps calling my cell and my wife like 10 times a day threatening to freeze my business account i cant take this anymore can you guys actually make them stop calling me or what do you do",
+    "style": "informal",
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 3.34186445s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '3s'}]}}"
+  },
+  {
+    "topic_id": "ct-creditor-harassment-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks if anything can be done to stop aggressive creditor calls, legal threats, or bank account levies -- what specific service and protection does Corporate Turnaround offer?",
+    "question": "got a letter saying they are gonna levy my bank account for 45k next week if i dont pay can your corporate turnaround program block this or is it too late for that",
+    "style": "informal",
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 1.91853677s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '1s'}]}}"
+  },
+  {
+    "topic_id": "ct-creditor-harassment-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks if anything can be done to stop aggressive creditor calls, legal threats, or bank account levies -- what specific service and protection does Corporate Turnaround offer?",
+    "question": "creidtors threatening legal action on my 3 mcas what does corporate turnaround actually do to protect me from getting sued",
+    "style": "informal",
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 59.807092852s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-embedding-2', 'location': 'global'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '59s'}]}}"
+  },
+  {
+    "topic_id": "ct-creditor-harassment-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks if anything can be done to stop aggressive creditor calls, legal threats, or bank account levies -- what specific service and protection does Corporate Turnaround offer?",
+    "question": "i have 80 grand in mca debt and the funders are calling my landlords and texting my personal phone saying they gonna put a lien on everything how do i stop them from doing this can you guys step in and talk to them for me so they leave me alone",
+    "style": "informal",
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 58.339548453s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '58s'}]}}"
+  },
+  {
+    "topic_id": "ct-creditor-harassment-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks if anything can be done to stop aggressive creditor calls, legal threats, or bank account levies -- what specific service and protection does Corporate Turnaround offer?",
+    "question": "i owe 115k to 4 lenders and one of them just sent a legal threat to freeze my operating account how do i stop a bank levy do you guys handle the legal stuff or how does your service protect my cash",
+    "style": "informal",
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 56.470399646s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '56s'}]}}"
+  },
+  {
+    "topic_id": "ct-creditor-harassment-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks if anything can be done to stop aggressive creditor calls, legal threats, or bank account levies -- what specific service and protection does Corporate Turnaround offer?",
+    "question": "can corporate turnaround stop these people from calling my office non stop my employees are starting to hear them yell at me on the phone what do you actually do to get them off my back",
+    "style": "informal",
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 54.728957703s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '54s'}]}}"
+  },
+  {
+    "topic_id": "ct-creditor-harassment-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks if anything can be done to stop aggressive creditor calls, legal threats, or bank account levies -- what specific service and protection does Corporate Turnaround offer?",
+    "question": "how do i stop a creditor from freezing my bank account can you guys negotiate with them before they do it",
+    "style": "informal",
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 53.252659649s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-embedding-2', 'location': 'global'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '53s'}]}}"
+  },
+  {
+    "topic_id": "ct-creditor-harassment-bridge",
+    "category": "ct-process",
+    "topic_desc": "A business owner asks if anything can be done to stop aggressive creditor calls, legal threats, or bank account levies -- what specific service and protection does Corporate Turnaround offer?",
+    "question": "im getting sued by an mca company for 35000 dollars and im terrified they will empty my business bank account what does your service do to stop the lawsuit and settle this so i dont lose my business",
+    "style": "informal",
+    "reason": "error: Error embedding content (RESOURCE_EXHAUSTED): 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/embed_content_free_tier_requests, limit: 1000, model: gemini-embedding-2\\nPlease retry in 51.594807046s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/embed_content_free_tier_requests', 'quotaId': 'EmbedContentRequestsPerDayPerUserPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-embedding-2'}, 'quotaValue': '1000'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '51s'}]}}"
   }
 ]

@@ -814,5 +814,346 @@
       "whatwedo/businesstools",
       "whatwedo/typicalclient"
     ]
+  },
+  {
+    "id": "qa-mca-factor-rate-8",
+    "source_type": "qa_pair",
+    "topic": "mca-factor-rate",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: How do MCA factor rates work and what do they cost?",
+    "section_heading": "Q: i got offered a 50k mca with a 1.4 factor rate how much am i really paying is this a good deal or am i getting ripped off",
+    "chunk_text": "A: A factor rate of 1.4 means that for every dollar you borrowed, you'll pay back $1.40. This means if you borrowed $50,000, you'd pay back $70,000. Paying off the advance early won't reduce the fee, which can result in a high equivalent APR. To understand the specifics of your situation, I recommend calling 1-800-889-0232.",
+    "chunk_tokens": 71,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "mca-factor-rate",
+      "mca-factor-rate",
+      "mca-factor-rate"
+    ]
+  },
+  {
+    "id": "qa-mca-factor-rate-9",
+    "source_type": "qa_pair",
+    "topic": "mca-factor-rate",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: How do MCA factor rates work and what do they cost?",
+    "section_heading": "Q: my friend said factor rates are a total scam how much does a 1.49 factor rate really cost me on a 75k loan",
+    "chunk_text": "A: A factor rate of 1.49 means that for every dollar you borrowed, you'll pay back $1.49. This means if you borrowed $75,000, you'd pay back $112,250. Paying off the advance early won't reduce the fee, which can result in a high equivalent APR. To understand the specifics of your situation, I recommend calling 1-800-889-0232.",
+    "chunk_tokens": 71,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "mca-factor-rate",
+      "mca-factor-rate",
+      "mca-factor-rate"
+    ]
+  },
+  {
+    "id": "qa-mca-daily-ach-2",
+    "source_type": "qa_pair",
+    "topic": "mca-daily-ach",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: How do daily ACH debits from MCAs drain business cash flow?",
+    "section_heading": "Q: i gotta pay 300 a day to an mca and my cash flow is completely wrecked is there any way to stop this",
+    "chunk_text": "A: The daily ACH withdrawals from the MCA are causing your bank account to be empty due to the repayment mechanism of the MCA, where funds are withdrawn automatically from your business bank account. The amount withdrawn daily or weekly is typically a fixed percentage of your daily credit card sales or a fixed withdrawal amount. To stop them from taking more money, you can consider contacting the MCA provider to discuss possible alternatives or temporary payment suspensions.",
+    "chunk_tokens": 101,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "mca-negotiate",
+      "services",
+      "mca-daily-ach"
+    ]
+  },
+  {
+    "id": "qa-mca-daily-ach-3",
+    "source_type": "qa_pair",
+    "topic": "mca-daily-ach",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: How do daily ACH debits from MCAs drain business cash flow?",
+    "section_heading": "Q: mca daily debits means i have no working capital left what do i do",
+    "chunk_text": "A: It sounds like the daily ACH withdrawals from the MCA are causing your bank account to be empty. This is likely due to the repayment mechanism of the MCA, where funds are withdrawn automatically from your business bank account. The amount withdrawn daily or weekly is typically a fixed percentage of your daily credit card sales or a fixed withdrawal amount. We can discuss ways to renegotiate MCA terms, extend payback periods, and reduce factor rates to give your business room to breathe.",
+    "chunk_tokens": 109,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "mca-daily-ach",
+      "mca-daily-ach",
+      "services"
+    ]
+  },
+  {
+    "id": "qa-mca-stacking-0",
+    "source_type": "qa_pair",
+    "topic": "mca-stacking",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What is MCA stacking and why is it dangerous?",
+    "section_heading": "Q: whats mca stacking why is it so bad everyone says its bad",
+    "chunk_text": "A: MCA stacking refers to taking out multiple Merchant Cash Advances simultaneously. This can be problematic because MCAs are not federally regulated, which can lead to misleading marketing and confusing contracts. If a business owner is juggling multiple MCAs and can't keep up with payments, it can result in severe consequences, including aggressive collections and potential business bankruptcy.",
+    "chunk_tokens": 75,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "nerdwallet-article-small-business-merchant-cash-advance",
+      "mca-multi-debt",
+      "mca-vs-loan"
+    ]
+  },
+  {
+    "id": "qa-mca-stacking-1",
+    "source_type": "qa_pair",
+    "topic": "mca-stacking",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What is MCA stacking and why is it dangerous?",
+    "section_heading": "Q: my first mca lender is saying im in default now because i got a second one and now they want all 50 grand back what the hell",
+    "chunk_text": "A: It sounds like your first MCA lender is claiming you're in default because you got a second one. This can lead to aggressive collections and business bankruptcy. The MCA provider may attempt to enforce a Confession of Judgment (COJ) if allowed by state law, freeze bank accounts, or sue you personally if a personal guarantee was signed. \n\nFor more information on your specific situation and potential options, please call 1-800-889-0232.",
+    "chunk_tokens": 92,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "mca-basics",
+      "mca-vs-loan",
+      "mca-default"
+    ]
+  },
+  {
+    "id": "qa-mca-coj-2",
+    "source_type": "qa_pair",
+    "topic": "mca-coj",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What is a Confession of Judgment (COJ) in an MCA contract?",
+    "section_heading": "Q: i signed a coj with my mca and now im behind what do i do is it too late",
+    "chunk_text": "A: Signing a COJ with your MCA provider can make it more challenging to resolve your debt. If you're behind on payments, it's essential to address the situation as soon as possible. The MCA provider may attempt to enforce the COJ, which could lead to aggressive collections and business bankruptcy. For personalized guidance on your specific situation, please call 1-800-889-0232.",
+    "chunk_tokens": 78,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "mca-basics",
+      "mca-vs-loan",
+      "mca-coj"
+    ]
+  },
+  {
+    "id": "qa-mca-coj-3",
+    "source_type": "qa_pair",
+    "topic": "mca-coj",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What is a Confession of Judgment (COJ) in an MCA contract?",
+    "section_heading": "Q: this mca deal i did had a coj clause in it and my business is doing really bad like i owe 80k and im scared they will come after my personal house or car can they do that with that thing",
+    "chunk_text": "A: If your MCA contract includes a Confession of Judgment (COJ) clause and you default on the loan, the MCA provider may attempt to enforce it, which could lead to them freezing your business account. However, simply owing a debt does not give them the right to reach into your account on their own. They would need to sue you, win a court judgment, and obtain a legal order to direct your bank to turn over funds. \n\nTo discuss your specific situation and potential options, including protecting your personal assets, please call 1-800-889-0232.",
+    "chunk_tokens": 120,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "mca-basics",
+      "mca-coj",
+      "mca-coj"
+    ]
+  },
+  {
+    "id": "qa-mca-coj-4",
+    "source_type": "qa_pair",
+    "topic": "mca-coj",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What is a Confession of Judgment (COJ) in an MCA contract?",
+    "section_heading": "Q: they mentioned confession of judgement after i defaulted on my 40k mca what happens now",
+    "chunk_text": "A: If you defaulted on your MCA and the provider mentioned a Confession of Judgment, they may attempt to enforce it if allowed by state law. This could lead to them freezing your business account. However, simply owing a debt does not give them the right to reach into your account on their own. They would need to sue you, win a court judgment, and obtain a legal order to direct your bank to turn over funds.",
+    "chunk_tokens": 100,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "mca-basics",
+      "mca-default",
+      "mca-coj",
+      "mca-coj"
+    ]
+  },
+  {
+    "id": "qa-mca-default-5",
+    "source_type": "qa_pair",
+    "topic": "mca-default",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What happens when you default on a Merchant Cash Advance?",
+    "section_heading": "Q: this mca default is killing my credit and im so stressed out idk what to do first",
+    "chunk_text": "A: It sounds like the MCA default is taking a significant toll on your finances and causing stress. The repayment mechanism for MCAs can be automatic, either through a fixed percentage of daily credit card sales or fixed daily/weekly bank withdrawals, leading to a constant negative balance in your bank account. If you default, the MCA provider may attempt to enforce a Confession of Judgment (COJ) if allowed by state law, freeze bank accounts, or sue the business owner personally if a personal guarantee was signed. To discuss the specifics of your situation and potential next steps, I recommend calling 1-800-889-0232.",
+    "chunk_tokens": 131,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "mca-daily-ach",
+      "mca-vs-loan",
+      "mca-default"
+    ]
+  },
+  {
+    "id": "qa-mca-personal-guar-3",
+    "source_type": "qa_pair",
+    "topic": "mca-personal-guar",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: Do MCAs require a personal guarantee?",
+    "section_heading": "Q: i got 2 mca loans totaling 75k and now my business is failing will they come after my personal stuff like my house if i cant pay",
+    "chunk_text": "A: If you can't pay your MCA loans, the MCA provider may attempt to enforce a Confession of Judgment (COJ) if allowed by state law, which could lead to them freezing your business account. However, simply owing a debt does not give them the right to reach into your account on their own. They would need to sue you, win a court judgment, and obtain a legal order to direct your bank to turn over funds.",
+    "chunk_tokens": 98,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "mca-basics",
+      "mca-coj",
+      "mca-vs-loan"
+    ]
+  },
+  {
+    "id": "qa-mca-personal-guar-4",
+    "source_type": "qa_pair",
+    "topic": "mca-personal-guar",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: Do MCAs require a personal guarantee?",
+    "section_heading": "Q: im scared they gonna take my house for this mca debt did i personly garantee it",
+    "chunk_text": "A: If you personally guaranteed the MCA debt, the provider may attempt to collect the debt from you directly. This means they may try to seize assets, including your house, to satisfy the debt. The extent of your personal liability should be discussed with a debt relief advisor. Please call 1-800-889-0232 for further guidance.",
+    "chunk_tokens": 70,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "mca-default",
+      "mca-vs-loan",
+      "mca-personal-guar"
+    ]
+  },
+  {
+    "id": "qa-mca-personal-guar-5",
+    "source_type": "qa_pair",
+    "topic": "mca-personal-guar",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: Do MCAs require a personal guarantee?",
+    "section_heading": "Q: 3 mcas personal guarantee what happens now",
+    "chunk_text": "A: If you signed a personal guarantee on your MCA, the provider may attempt to collect the debt from you directly. They may also attempt to freeze your bank accounts or sue you personally. This can be a serious situation, and I recommend discussing the specifics of your situation and potential next steps by calling 1-800-889-0232.",
+    "chunk_tokens": 72,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "mca-personal-guar",
+      "mca-multi-debt",
+      "mca-default",
+      "mca-personal-guar",
+      "mca-basics"
+    ]
+  },
+  {
+    "id": "qa-mca-multi-debt-2",
+    "source_type": "qa_pair",
+    "topic": "mca-multi-debt",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What should a business owner do when juggling multiple simultaneous MCAs they can't keep up with?",
+    "section_heading": "Q: multiple mcas are killing my cash flow i cant breathe my business is going under",
+    "chunk_text": "A: It sounds like the MCA payments are taking a significant toll on your finances. The repayment mechanism for MCAs can be automatic, either through a fixed percentage of daily credit card sales or fixed daily/weekly bank withdrawals. This can lead to a constant negative balance in your bank account. I'd like to discuss ways to potentially reduce or restructure these payments to help alleviate your stress.",
+    "chunk_tokens": 87,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "mca-multi-debt",
+      "mca-multi-debt",
+      "services",
+      "mca-daily-ach"
+    ]
+  },
+  {
+    "id": "qa-mca-multi-debt-3",
+    "source_type": "qa_pair",
+    "topic": "mca-multi-debt",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What should a business owner do when juggling multiple simultaneous MCAs they can't keep up with?",
+    "section_heading": "Q: i got 5 mca loans now and they keep taking money from my bank account whats gonna happen to my personal stuff",
+    "chunk_text": "A: If you signed a personal guarantee on your MCA, the provider may attempt to collect the debt from you directly, freeze your bank accounts, or sue you personally. This can be a serious situation, and I recommend discussing the specifics of your situation and potential next steps by calling 1-800-889-0232.",
+    "chunk_tokens": 66,
+    "requires_disclaimer": true,
+    "grounded_source_ids": [
+      "mca-multi-debt",
+      "mca-negotiate",
+      "mca-personal-guar",
+      "mca-coj"
+    ]
+  },
+  {
+    "id": "qa-biz-sba-default-1",
+    "source_type": "qa_pair",
+    "topic": "biz-sba-default",
+    "category": "business-debt",
+    "topic_tags": [
+      "business-debt",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: What happens if you default on an SBA loan?",
+    "section_heading": "Q: i heard they can sue you for defaulting on an sba loan but i dont have any money to pay a lawyer is there like free help for this",
+    "chunk_text": "A: You can reach out to your lender to discuss possible options such as deferring payments for a period of time or restructuring your loan terms to make payments more manageable. You can also create an account in the SBA Loan Portal to monitor your loan status and discuss your situation with your lender. Additionally, you can contact your local SBA District Office for in-person, online, or telephone assistance.",
+    "chunk_tokens": 89,
+    "requires_disclaimer": false,
+    "grounded_source_ids": [
+      "biz-sba-default",
+      "sba-funding-programs-loans-7a-loans",
+      "biz-debt-types"
+    ]
   }
 ]
