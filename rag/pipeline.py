@@ -213,12 +213,18 @@ class RetrievalPipeline:
                     # (BM25 + semantic) independently ranked very early, even
                     # if the cross-encoder alone scored it low -- the
                     # cross-encoder has a formality bias against informal/
-                    # urgent phrasing that RRF fusion doesn't share.
+                    # urgent phrasing that RRF fusion doesn't share. The
+                    # rescue window is wider for canonical (hand-authored)
+                    # records -- see config.rerank_canonical_rescue_rrf_rank_cutoff.
                     passed_gate=(
                         float(score) >= self.config.rerank_score_threshold
                         or (
                             float(score) >= self.config.rerank_rescue_score_threshold
-                            and (i + 1) <= self.config.rerank_rescue_rrf_rank_cutoff
+                            and (i + 1) <= (
+                                self.config.rerank_canonical_rescue_rrf_rank_cutoff
+                                if doc.metadata.get("authority") == "canonical"
+                                else self.config.rerank_rescue_rrf_rank_cutoff
+                            )
                         )
                     ),
                 )
@@ -264,6 +270,26 @@ class RetrievalPipeline:
                     f"{text}\n\n[COMPLIANCE: This source states specific outcomes or "
                     f"regulated process details. Results vary by situation — do not "
                     f"present it as a promise or a typical result.]"
+                )
+
+            # KB v2 authority/policy tags (data/enriched_knowledge_base.json,
+            # built by scripts/build_kb_v2.py). Third-party background content
+            # must never be voiced as Corporate Turnaround's own advice, and
+            # deflection topics (fees, savings, legal/bankruptcy decisions)
+            # must not be answered beyond the canonical deflection text.
+            if c.document.metadata.get("authority") == "background":
+                text = (
+                    f"{text}\n\n[SOURCE: third-party educational material — use it "
+                    f"only to explain general concepts. Do not present it as "
+                    f"Corporate Turnaround's own policy, advice, or practice, and "
+                    f"do not quote its specific figures, forms, or legal "
+                    f"thresholds as recommendations.]"
+                )
+            if c.document.metadata.get("answer_policy") == "deflect":
+                text = (
+                    f"{text}\n\n[POLICY: Restricted topic. Answer with the substance "
+                    f"of this reference response only — no fees, percentages, "
+                    f"savings estimates, timeframes, or legal conclusions beyond it.]"
                 )
 
             if title.startswith("Q&A:"):

@@ -97,6 +97,62 @@ def test_compliance_marker_added_for_flagged_sources() -> None:
     assert "COMPLIANCE:" in out
 
 
+def test_background_sources_are_marked_third_party() -> None:
+    """
+    KB v2: 270 of 402 records are third-party educational/regulatory content.
+    Unmarked, the LLM voices consumer-finance articles and IRS form details as
+    Corporate Turnaround's own advice. authority=background must add framing.
+    """
+    from langchain_core.documents import Document
+    from rag.pipeline import RetrievalPipeline, RetrievedChunk
+
+    chunk = RetrievedChunk(
+        document=Document(
+            page_content="Title: T\nSection: S\n\nYou can send a written dispute within 30 days.",
+            metadata={"authority": "background"},
+        ),
+        rrf_rank=1,
+        rerank_score=1.0,
+    )
+    out = RetrievalPipeline.format_for_llm(None, [chunk])  # type: ignore[arg-type]
+    assert "third-party educational material" in out
+
+
+def test_deflect_policy_tag_is_emitted() -> None:
+    """Scope-guard records (fees, savings, legal/bankruptcy advice) carry
+    answer_policy=deflect; the LLM must see the restriction inline."""
+    from langchain_core.documents import Document
+    from rag.pipeline import RetrievalPipeline, RetrievedChunk
+
+    chunk = RetrievedChunk(
+        document=Document(
+            page_content="Title: Q&A: fees\nSection: S\n\nA: Fees depend on your situation.",
+            metadata={"answer_policy": "deflect"},
+        ),
+        rrf_rank=1,
+        rerank_score=1.0,
+    )
+    out = RetrievalPipeline.format_for_llm(None, [chunk])  # type: ignore[arg-type]
+    assert "[POLICY: Restricted topic." in out
+
+
+def test_kb_v2_has_no_untagged_records() -> None:
+    """Every KB record must carry authority + answer_policy so the format
+    layer can enforce voice and scope. A missing tag silently downgrades a
+    scope guard to an ordinary chunk."""
+    import json
+
+    path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                        "data", "enriched_knowledge_base.json")
+    with open(path, encoding="utf-8") as f:
+        records = json.load(f)
+    untagged = [r["id"] for r in records
+                if not r.get("authority") or not r.get("answer_policy")]
+    assert not untagged, f"untagged records: {untagged[:5]}"
+    guards = [r for r in records if r.get("answer_policy") == "deflect"]
+    assert len(guards) >= 8, "scope-guard records missing from KB"
+
+
 def _agent_response(rag_content: str | None) -> dict:
     """Minimal fake LangGraph response: one human turn, optionally one
     rag_search ToolMessage with the given content."""

@@ -1,0 +1,526 @@
+[
+  {
+    "id": "qa2-mca-ucc-lien-0",
+    "source_type": "qa_pair",
+    "topic": "mca-ucc-lien",
+    "category": "mca-education",
+    "topic_tags": ["mca-education", "ucc-lien", "qa", "distressed-phrasing"],
+    "title": "Q&A: What is a UCC-1 lien from an MCA lender and what does it mean for my business?",
+    "section_heading": "Q: what even is a ucc-1 lien this mca company keeps talking about it",
+    "variant_questions": [
+      "my mca lender filed a ucc-1 can they really take everything i own",
+      "cant pay my mca and they got a ucc-1 what do i do right now is it too late",
+      "help i signed a ucc-1 for a merchant cash advance are my assets safe",
+      "i got 3 mca loans and theyre all saying they got ucc-1 liens on my biz what happens if i cant pay"
+    ],
+    "chunk_text": "A: A UCC-1 is a public notice a lender files to claim a security interest in your business assets — it's how an MCA company stakes a claim on things like receivables, inventory, or equipment in case of default. A filing by itself doesn't mean anything is being seized today, but it raises the stakes and can complicate other financing. The good news: liens are something our negotiators account for every day — whether a lien exists on your property is one of the specific factors our settlement system weighs when structuring offers creditors will accept. Don't wait for it to escalate. Call 1-800-889-0232 for a free consultation and we'll walk through exactly where you stand.",
+    "requires_disclaimer": false,
+    "authority": "canonical",
+    "answer_policy": "answer",
+    "context_prefix": "Explanation of UCC-1 liens filed by Merchant Cash Advance lenders against business assets, and how Corporate Turnaround's negotiators handle liens during debt settlement."
+  },
+  {
+    "id": "qa2-biz-ucc-search-0",
+    "source_type": "qa_pair",
+    "topic": "biz-ucc-search",
+    "category": "business-debt",
+    "topic_tags": ["business-debt", "ucc-lien", "qa"],
+    "title": "Q&A: How do I check whether a UCC lien has been filed against my business?",
+    "section_heading": "Q: how do i see if there are any ucc filings on my business like a public record or something for free",
+    "variant_questions": [
+      "where to find ucc liens on my business",
+      "someone said they filed a ucc against my company how do i find that fast",
+      "i need to know how to search for ucc liens filed against my LLC what government office handles that",
+      "a lender mentioned a UCC filing on my company what website shows me that"
+    ],
+    "chunk_text": "A: UCC filings are public records kept by the Secretary of State in the state where your business is registered. Most states offer a free or low-cost online lookup — search for the \"UCC search\" page on your Secretary of State's website and enter your exact legal business name. If you find filings you didn't expect, or you're worried about what a lien means for your other debts, that's exactly the kind of thing we untangle in a free consultation: 1-800-889-0232.",
+    "requires_disclaimer": false,
+    "authority": "canonical",
+    "answer_policy": "answer",
+    "context_prefix": "How a business owner can search public UCC filing records through their Secretary of State, and when to bring lien findings to Corporate Turnaround."
+  },
+  {
+    "id": "qa2-biz-credit-score-0",
+    "source_type": "qa_pair",
+    "topic": "biz-credit-score",
+    "category": "business-debt",
+    "topic_tags": ["business-debt", "credit-score", "qa", "distressed-phrasing"],
+    "title": "Q&A: Will business debt or the restructuring program affect my personal credit?",
+    "section_heading": "Q: does business debt show up on my personal credit report",
+    "variant_questions": [
+      "i put my own money into the business and now its failing will my personal credit be ruined",
+      "business credit vs personal credit whats the difference",
+      "my business has debt but my personal credit is bad can i even get help or is it too late",
+      "how will the program affect my credit"
+    ],
+    "chunk_text": "A: It depends on how the debt is structured. Business debt can touch your personal credit when you've signed a personal guarantee or used personal credit cards for the business; otherwise it generally stays on the business's record. How a restructuring program affects credit also varies by situation — it's one of the questions we answer honestly and specifically in your free consultation, once we've seen your actual debts. One thing that surprises people: enrolling with us doesn't require a credit check at all, and bad personal credit doesn't disqualify you. Call 1-800-889-0232.",
+    "requires_disclaimer": true,
+    "authority": "canonical",
+    "answer_policy": "careful",
+    "context_prefix": "How business debt and debt restructuring relate to personal and business credit, and Corporate Turnaround's no-credit-check enrollment."
+  },
+  {
+    "id": "qa2-biz-personal-guar-0",
+    "source_type": "qa_pair",
+    "topic": "biz-personal-guar",
+    "category": "business-debt",
+    "topic_tags": ["business-debt", "personal-guarantee", "qa", "distressed-phrasing"],
+    "title": "Q&A: I signed a personal guarantee on a business loan — what happens to me if the business can't pay?",
+    "section_heading": "Q: i signed a personal guarantee what now if my business goes under",
+    "variant_questions": [
+      "can they take my house for business debt i signed a personal guarantee",
+      "pg for a business loan what happens to me if we cant pay",
+      "i got this sba loan and they made me sign some pg thing what does that even mean for my own money",
+      "my equipment loan has a personal guarantee attached and i cant make next month's payment is my personal bank account safe"
+    ],
+    "chunk_text": "A: A personal guarantee means you agreed to be personally responsible if the business can't pay — so the creditor can pursue you, not just the company. How exposed you actually are depends on the contract language, your state's laws, and how negotiations go, which is why no chatbot answer can tell you whether your house or savings are at risk. What we can tell you: personal guarantors are one of the specific factors our negotiators account for when structuring settlements, and acting before a creditor escalates gives you far more options. Call 1-800-889-0232 for a free consultation.",
+    "requires_disclaimer": true,
+    "authority": "canonical",
+    "answer_policy": "careful",
+    "context_prefix": "What a personal guarantee on a business loan means for the owner personally, and how Corporate Turnaround factors guarantors into settlement negotiations."
+  },
+  {
+    "id": "qa2-biz-out-of-court-0",
+    "source_type": "qa_pair",
+    "topic": "biz-out-of-court",
+    "category": "ct-process",
+    "topic_tags": ["ct-process", "out-of-court", "bankruptcy-alternative", "qa"],
+    "title": "Q&A: What is out-of-court debt restructuring and is it a real alternative to bankruptcy?",
+    "section_heading": "Q: whats the alternative to bankruptcy i keep hearing about settling debt outside of court but idk what it means",
+    "variant_questions": [
+      "i heard about something called out of court debt restructuring for my business is that even a real thing can it help me",
+      "my small business is in debt to like 5 different lenders can i sort this out without having to go to court",
+      "is it possible to restructure my business debts without all the legal fees and court stuff",
+      "how do i deal with all these creditors calling me all the time without filing for bankruptcy or going to court"
+    ],
+    "chunk_text": "A: Out-of-court debt restructuring is exactly what Corporate Turnaround does. Instead of filing bankruptcy, we take what your business can realistically afford each month and negotiate directly with your creditors, their collection agencies, and their attorneys — stretching settlements over time and/or reducing what you owe. There's no court process, and it's not a loan: no credit check, no real estate required. It isn't for everyone, but if you want to pay your creditors and simply can't meet what they're demanding right now, it's built for you. Free, no-obligation consultation: 1-800-889-0232.",
+    "requires_disclaimer": false,
+    "authority": "canonical",
+    "answer_policy": "answer",
+    "context_prefix": "Corporate Turnaround's out-of-court business debt restructuring program as the alternative to filing business bankruptcy."
+  },
+  {
+    "id": "qa2-biz-vendor-debt-0",
+    "source_type": "qa_pair",
+    "topic": "biz-vendor-debt",
+    "category": "business-debt",
+    "topic_tags": ["business-debt", "vendor-debt", "qa", "distressed-phrasing"],
+    "title": "Q&A: I can't pay my suppliers and vendors — can Corporate Turnaround help?",
+    "section_heading": "Q: i owe like 5 different suppliers and cant pay any of them next week what do i do",
+    "variant_questions": [
+      "my main supplier is gonna cut me off if i dont pay this invoice by friday and i just dont have the cash flow",
+      "i'm behind on a payment to my inventory vendor and they stopped shipping is there a way to fix this",
+      "what if i just ignore the invoices from my old vendors will they eventually give up",
+      "they stopped delivering my raw materials cuz i didnt pay last month now what"
+    ],
+    "chunk_text": "A: Vendor and supplier debt is one of the most common problems we handle — our program covers most business debts, including vendors, credit cards, and many leases and loans. Ignoring invoices usually makes things worse: vendors can cut off shipments, send your account to collections, or sue. Our approach is the opposite: we work out what you can genuinely afford monthly and negotiate affordable terms with your suppliers, so relationships and deliveries can be preserved wherever possible. Before you have to decide who gets paid first, call 1-800-889-0232 — the consultation is free.",
+    "requires_disclaimer": false,
+    "authority": "canonical",
+    "answer_policy": "answer",
+    "context_prefix": "How Corporate Turnaround handles unpaid supplier and vendor debt for small businesses, including negotiation of affordable payment terms."
+  },
+  {
+    "id": "qa2-ct-creditor-calls-0",
+    "source_type": "qa_pair",
+    "topic": "ct-creditor-calls",
+    "category": "ct-process",
+    "topic_tags": ["ct-process", "creditor-calls", "qa"],
+    "title": "Q&A: What do I say to creditors who call me while I'm in the program?",
+    "section_heading": "Q: creditors keep calling what's the official line to give them about the turnaround program",
+    "variant_questions": [
+      "what exactly do i say to creditors about being in this turnaround program",
+      "i just started the program but my landlord and vendors are still hounding me what do i tell them",
+      "is it safe to tell creditors im in corporate turnaround will they respect that or just get more aggressive",
+      "im in the turnaround program and a creditor just threatened to sue me what do i say to them right now"
+    ],
+    "chunk_text": "A: Once we represent you, you don't need a script — you simply refer the caller to us. Give any creditor, collector, or attorney our creditor inquiry line, 1-800-411-1113, and our negotiators take it from there. That's the point of the program: no more dodging calls, no more negotiating under pressure, and no risk of accidentally making things worse on the phone. If a creditor makes a serious threat — a lawsuit, a levy — tell your client service representative right away on the same number so our team can respond. Not enrolled yet and drowning in calls? Start with a free consultation: 1-800-889-0232.",
+    "requires_disclaimer": false,
+    "authority": "canonical",
+    "answer_policy": "route_client_line",
+    "context_prefix": "Guidance for Corporate Turnaround clients on referring creditor and collector calls to the creditor inquiry line instead of handling them alone."
+  },
+  {
+    "id": "qa2-ct-services-overview-0",
+    "source_type": "qa_pair",
+    "topic": "ct-services-overview",
+    "category": "ct-services",
+    "topic_tags": ["ct-services", "qa", "distressed-phrasing"],
+    "title": "Q&A: What can Corporate Turnaround actually do for my business? (services overview)",
+    "section_heading": "Q: my business is in a massive hole and payments are killing us what can you guys actually do for me to fix this",
+    "variant_questions": [
+      "im so overwhelmed my shop owes money to different lenders and suppliers i dont even know where to start looking for help what are my options",
+      "i got 4 business loans i cant pay anymore what do i do right now",
+      "what are my realistic options here besides just going bankrupt",
+      "im totally stuck with my business debt and dont know what to do next what are my actual options"
+    ],
+    "chunk_text": "A: Corporate Turnaround specializes in getting small businesses out of debt without bankruptcy. Our services include: business debt negotiation and settlement within a monthly budget you can afford; MCA debt relief for cash advances with crushing daily payments; full business restructuring; creditor harassment protection; SBA and bank loan workouts; and business tax debt resolution with specialists who negotiate directly with the IRS. If customers owe you money, we also offer collection help through vetted partners, plus free business tools and counseling through our SCORE alliance. Every path starts the same way: a free, no-obligation consultation where we review your situation and lay out realistic options — 1-800-889-0232.",
+    "requires_disclaimer": false,
+    "authority": "canonical",
+    "answer_policy": "answer",
+    "context_prefix": "Overview of every Corporate Turnaround service line: debt negotiation, MCA relief, restructuring, creditor harassment protection, SBA workouts, tax resolution, and collection help."
+  },
+  {
+    "id": "qa2-ct-mca-bridge-0",
+    "source_type": "qa_pair",
+    "topic": "ct-mca-services-bridge",
+    "category": "ct-services",
+    "topic_tags": ["ct-services", "mca-education", "qa", "distressed-phrasing"],
+    "title": "Q&A: Can Corporate Turnaround help with my MCA daily payments specifically?",
+    "section_heading": "Q: i got 3 mcas and they draining my account dry every day please what do i do right now",
+    "variant_questions": [
+      "my cash flow is completely dead because of daily drafts on my mcas i cant pay rent or payroll is there a way to lower the payments without going bankrupt",
+      "have multiple mca loans can i consolidate them or settle for less cash flow is gone",
+      "im drowning in mca payments they take money every day from my bank how do i stop this legally before i go under",
+      "my business cash flow is ruined from mca debts what can i do to get relief from these daily ACH withdrawals"
+    ],
+    "chunk_text": "A: Daily MCA debits are exactly the kind of cash-flow crisis our MCA debt relief service exists for. We renegotiate the terms of your advances — working to extend payback periods and reduce the burden — so the daily drain stops strangling your operating cash. If you have multiple stacked advances, they get folded into one realistic monthly plan across your creditors rather than each one hitting your account separately. The sooner our negotiators see your agreements, the more options you have. Call 1-800-889-0232 now — the consultation is free and confidential.",
+    "requires_disclaimer": true,
+    "authority": "canonical",
+    "answer_policy": "careful",
+    "context_prefix": "Corporate Turnaround's MCA debt relief service for business owners being drained by daily merchant cash advance ACH withdrawals."
+  },
+  {
+    "id": "qa2-ct-harassment-bridge-0",
+    "source_type": "qa_pair",
+    "topic": "ct-creditor-harassment-bridge",
+    "category": "ct-services",
+    "topic_tags": ["ct-services", "creditor-harassment", "qa", "distressed-phrasing"],
+    "title": "Q&A: Can you actually stop collectors from calling and threatening me?",
+    "section_heading": "Q: some collector keeps calling my cell like 10 times a day threatening to freeze my business account can you guys actually make them stop",
+    "variant_questions": [
+      "got a letter saying they are gonna levy my bank account if i dont pay can your program block this or is it too late",
+      "creditors threatening legal action what does corporate turnaround actually do to protect me from getting sued",
+      "how do i stop a creditor from freezing my bank account can you guys negotiate with them before they do it",
+      "can corporate turnaround stop these people from calling my office non stop what do you actually do to get them off my back"
+    ],
+    "chunk_text": "A: Standing between you and aggressive creditors is a core part of our program. Once we represent you, collectors get referred to our creditor inquiry line, 1-800-411-1113, where our team — which includes attorneys, former debt collectors, and professional negotiators — deals with them directly. Our creditor harassment protection is designed to stop predatory collection calls, legal threats, and bank levies by putting a formal shield between you and your creditors, while we negotiate settlements they'll accept. If you're facing a specific threat like a levy or lawsuit, time matters — call 1-800-889-0232 immediately for a free consultation.",
+    "requires_disclaimer": true,
+    "authority": "canonical",
+    "answer_policy": "careful",
+    "context_prefix": "Corporate Turnaround's creditor harassment protection: intervening against collection calls, legal threats, and bank levies on behalf of enrolled clients."
+  },
+  {
+    "id": "qa2-ct-track-record-0",
+    "source_type": "qa_pair",
+    "topic": "ct-company-facts",
+    "category": "ct-company",
+    "topic_tags": ["ct-company", "credibility", "qa"],
+    "title": "Q&A: What is Corporate Turnaround's track record?",
+    "section_heading": "Q: why should i trust you guys whats your actual track record",
+    "variant_questions": [
+      "how many businesses have you actually helped",
+      "are you guys even a real company or some fly by night operation",
+      "has anyone ever written about your company like news or press",
+      "what proof do you have that this works"
+    ],
+    "chunk_text": "A: Corporate Turnaround has been doing this since 1998: over 10,000 small business owners helped and more than 50,000 business debts resolved, with roughly $400 million of client debt currently under negotiation. We pay creditors about a million dollars a month — which is a big reason they take our settlement offers seriously. Client stories have been profiled by The New York Times, CNN, Forbes, US News & World Report, BusinessWeek, and the CBS Evening News. We're rated A+ with the Better Business Bureau and are an alliance partner of SCORE and the Association of Small Business Development Centers, both resource partners of the SBA. Judge for yourself in a free consultation: 1-800-889-0232.",
+    "requires_disclaimer": true,
+    "authority": "canonical",
+    "answer_policy": "careful",
+    "context_prefix": "Corporate Turnaround's published track record and credibility facts: founded 1998, 10,000+ businesses helped, 50,000+ debts resolved, A+ BBB rating, national media coverage, SCORE and ASBDC alliances."
+  },
+  {
+    "id": "qa2-ct-guarantee-0",
+    "source_type": "qa_pair",
+    "topic": "ct-guarantee",
+    "category": "ct-company",
+    "topic_tags": ["ct-company", "guarantee", "qa"],
+    "title": "Q&A: Does Corporate Turnaround offer a guarantee?",
+    "section_heading": "Q: do you have any kind of guarantee that this will actually work",
+    "variant_questions": [
+      "whats your guarantee if the program doesnt save me money",
+      "is there a money back guarantee or something",
+      "how do i know i wont end up paying more with your fees added"
+    ],
+    "chunk_text": "A: We do. If you qualify for our guarantee, the total amount you pay back over time — including our fees — will be less than what you actually owe today. Whether you qualify depends on your specific situation, and that's exactly what the free consultation figures out: 1-800-889-0232, no obligation.",
+    "requires_disclaimer": true,
+    "authority": "canonical",
+    "answer_policy": "careful",
+    "context_prefix": "Corporate Turnaround's guarantee: for qualifying clients, total payback including fees is less than the debt owed."
+  },
+  {
+    "id": "qa2-ct-how-it-works-0",
+    "source_type": "qa_pair",
+    "topic": "ct-how-it-works",
+    "category": "ct-process",
+    "topic_tags": ["ct-process", "qa"],
+    "title": "Q&A: How does the Corporate Turnaround program work step by step?",
+    "section_heading": "Q: how does your program actually work like step by step what happens",
+    "variant_questions": [
+      "walk me through the process what do i do first",
+      "what happens after i sign up with you guys",
+      "how do you negotiate with my creditors whats the actual mechanics",
+      "what kind of reporting do i get do i just trust you with my money"
+    ],
+    "chunk_text": "A: It's straightforward. You give us a list of your problem creditors and decide how much you can realistically afford each month. We then negotiate with those creditors — and their collection agencies and attorneys — stretching your settlements over time and/or reducing the amount you owe. Throughout the program you get full transparency: a comprehensive creditor report detailing the status of every negotiation and settlement, a monthly transaction statement showing where every penny goes, and progress tracking that shows how much debt remains to the finish line. Our negotiators work with Payoff, proprietary software built on data from thousands of settlements, to structure offers your budget can actually support. Start with a free consultation: 1-800-889-0232.",
+    "requires_disclaimer": false,
+    "authority": "canonical",
+    "answer_policy": "answer",
+    "context_prefix": "Step-by-step mechanics of the Corporate Turnaround debt restructuring program, including creditor negotiation, reporting, and the Payoff settlement software."
+  },
+  {
+    "id": "qa2-ct-who-its-for-0",
+    "source_type": "qa_pair",
+    "topic": "ct-who-its-for",
+    "category": "ct-process",
+    "topic_tags": ["ct-process", "qualification", "qa"],
+    "title": "Q&A: Is Corporate Turnaround right for my business? Who is the typical client?",
+    "section_heading": "Q: is this for me like does my company actually need restructuring",
+    "variant_questions": [
+      "whats your typical client look like am i a fit",
+      "how do i know if my business needs debt help or if im overreacting",
+      "what are the warning signs that a business needs restructuring",
+      "is my situation bad enough to call you guys"
+    ],
+    "chunk_text": "A: Our typical client wants to pay their creditors but can't afford what's being demanded. The warning signs we see most: revenues below break-even, past-due loans, using credit cards to keep the business running, and collection calls or letters starting to arrive. A rule of thumb from our team: if more than 30% of your payables are over 90 days old, you're taking chances with your company's future unless you have a realistic plan to satisfy creditors. Our program isn't for everyone — and we'll tell you honestly if it isn't for you. That's what the free consultation is for: 1-800-889-0232.",
+    "requires_disclaimer": false,
+    "authority": "canonical",
+    "answer_policy": "answer",
+    "context_prefix": "Profile of Corporate Turnaround's typical client and the warning signs that a small business needs debt restructuring."
+  },
+  {
+    "id": "qa2-ct-why-not-diy-0",
+    "source_type": "qa_pair",
+    "topic": "ct-why-not-diy",
+    "category": "ct-process",
+    "topic_tags": ["ct-process", "diy-negotiation", "qa"],
+    "title": "Q&A: Why use Corporate Turnaround instead of negotiating with creditors myself?",
+    "section_heading": "Q: why should i use you instead of just negotiating with my creditors myself",
+    "variant_questions": [
+      "cant i just call my creditors and work out a deal on my own",
+      "what do you do that i cant do myself for free",
+      "ive already tried negotiating with them myself and got nowhere",
+      "whats the point of paying you when i can settle my own debts"
+    ],
+    "chunk_text": "A: You can try — some owners do. The hard part isn't getting a discount; it's settling within what your cash flow can actually support. Even a spectacular do-it-yourself deal can still cost more per month than you have. Our advantages are structural: creditors know us because we pay creditors about a million dollars a month and they don't have to chase us after a settlement; our staff includes attorneys, former debt collectors, and professional negotiators; and our clients commit to a binding payment plan, which gives them credibility with creditors that a solo caller under pressure can't match. We also give creditors flexible settlement options instead of forcing one — cooperation produces better terms. Hear what that would look like for your debts: 1-800-889-0232, free.",
+    "requires_disclaimer": true,
+    "authority": "canonical",
+    "answer_policy": "careful",
+    "context_prefix": "Why negotiating business debts through Corporate Turnaround differs from do-it-yourself creditor negotiation: credibility, expertise, and budget-based settlements."
+  },
+  {
+    "id": "qa2-ct-not-a-loan-0",
+    "source_type": "qa_pair",
+    "topic": "ct-not-a-loan",
+    "category": "ct-process",
+    "topic_tags": ["ct-process", "qa"],
+    "title": "Q&A: Is this a loan? Do you check credit or need collateral?",
+    "section_heading": "Q: is your program a loan do you check my credit or need collateral",
+    "variant_questions": [
+      "do i need good credit to qualify for your program",
+      "is this like a debt consolidation loan",
+      "do you need my house or property as collateral",
+      "will you run a credit check on me"
+    ],
+    "chunk_text": "A: No on all counts. Our debt restructuring program is not a loan, no real estate or collateral is required, and we don't even have to check your credit to enroll you. We simply take what your business can afford monthly and use it to negotiate with your creditors. If a lender has been pushing you toward another loan to fix a debt problem, this is the alternative: 1-800-889-0232.",
+    "requires_disclaimer": false,
+    "authority": "canonical",
+    "answer_policy": "answer",
+    "context_prefix": "Clarification that Corporate Turnaround's restructuring program is not a loan and requires no credit check or collateral."
+  },
+  {
+    "id": "qa2-ct-contact-0",
+    "source_type": "qa_pair",
+    "topic": "ct-contact",
+    "category": "ct-company",
+    "topic_tags": ["ct-company", "contact", "qa"],
+    "title": "Q&A: How do I contact Corporate Turnaround and where are you located?",
+    "section_heading": "Q: where are you guys located and how do i reach you",
+    "variant_questions": [
+      "whats your phone number",
+      "what is your address are you a real office",
+      "how do i get in touch with someone there",
+      "do you have an office i can visit"
+    ],
+    "chunk_text": "A: New customers: call 1-800-889-0232 for a free, no-obligation consultation, or request one through the website. Existing clients and creditor inquiries: 1-800-411-1113. Our mailing address is Corporate Turnaround, 95 Route 17 South, Paramus, NJ 07652. We work with small businesses across the country by phone.",
+    "requires_disclaimer": false,
+    "authority": "canonical",
+    "answer_policy": "answer",
+    "context_prefix": "Corporate Turnaround contact information: new-customer line, client service and creditor inquiry line, and Paramus, New Jersey mailing address."
+  },
+  {
+    "id": "qa2-ct-confidential-0",
+    "source_type": "qa_pair",
+    "topic": "ct-consultation",
+    "category": "ct-process",
+    "topic_tags": ["ct-process", "consultation", "qa"],
+    "title": "Q&A: Is the free consultation confidential?",
+    "section_heading": "Q: is that corporate turnaround free chat thing confidential i don't want my partners to know im calling",
+    "variant_questions": [
+      "will anyone find out i talked to you guys",
+      "is my information kept private if i call",
+      "i dont want my employees or creditors knowing im looking at this"
+    ],
+    "chunk_text": "A: Yes — your free consultation is confidential. It's a private conversation about your situation and your realistic options, with no obligation to sign up and no need for your partners, employees, or creditors to know you called. When you're ready: 1-800-889-0232.",
+    "requires_disclaimer": false,
+    "authority": "canonical",
+    "answer_policy": "answer",
+    "context_prefix": "Confidentiality of Corporate Turnaround's free consultation for business owners exploring debt relief."
+  },
+  {
+    "id": "qa2-scope-fees-0",
+    "source_type": "qa_pair",
+    "topic": "scope-fees",
+    "category": "ct-scope",
+    "topic_tags": ["scope-guard", "fees", "qa"],
+    "title": "Q&A: How much does Corporate Turnaround cost? (fees)",
+    "section_heading": "Q: how much does it cost me to restructure my debt what do you charge",
+    "variant_questions": [
+      "what are your fees",
+      "what do you charge",
+      "how much do you charge for your services",
+      "whats this gonna cost me",
+      "how much does it cost",
+      "how much is this going to cost me",
+      "do you charge a percentage or a flat fee",
+      "do you charge upfront",
+      "whats your price whats the pricing",
+      "how much money do you take"
+    ],
+    "chunk_text": "A: Fees depend entirely on your specific debts and budget, so there's no honest one-size-fits-all number — and quoting one here would be doing you a disservice. What can be said for certain: the consultation itself is completely free with no obligation, the full cost structure is laid out clearly before you decide anything, and if you qualify for our guarantee, your total payback including our fees comes out to less than what you owe today. Get your real numbers at 1-800-889-0232.",
+    "requires_disclaimer": true,
+    "authority": "canonical",
+    "answer_policy": "deflect",
+    "context_prefix": "Scope guard: how to respond when a visitor asks about Corporate Turnaround's fees or pricing — no specific numbers, free consultation, guarantee framing."
+  },
+  {
+    "id": "qa2-scope-savings-time-0",
+    "source_type": "qa_pair",
+    "topic": "scope-savings-time",
+    "category": "ct-scope",
+    "topic_tags": ["scope-guard", "savings", "timeframe", "qa"],
+    "title": "Q&A: How much will I save and how long does the program take?",
+    "section_heading": "Q: how much will i save and how long will it take to complete the program",
+    "variant_questions": [
+      "what percentage of my debt can you get rid of",
+      "how long does debt settlement usually take",
+      "how long does the program take to complete",
+      "whats the average savings for your clients",
+      "how much can you reduce my debt by",
+      "can you settle my debt for half"
+    ],
+    "chunk_text": "A: Both depend on your creditors, your specific debts, and what you can afford monthly — any universal number or timeline would be a guess, and guessing with your business isn't something we do. In your free consultation we review your actual debts and give you a realistic picture of settlement terms, timing, and what the program would look like on your budget. Once enrolled, you can track your net savings, costs, and projected finish line month by month in your reports. Call 1-800-889-0232.",
+    "requires_disclaimer": true,
+    "authority": "canonical",
+    "answer_policy": "deflect",
+    "context_prefix": "Scope guard: how to respond when a visitor asks how much they will save or how long the Corporate Turnaround program takes — no figures or timeframes, route to free consultation."
+  },
+  {
+    "id": "qa2-scope-personal-debt-0",
+    "source_type": "qa_pair",
+    "topic": "scope-personal-debt",
+    "category": "ct-scope",
+    "topic_tags": ["scope-guard", "personal-debt", "qa"],
+    "title": "Q&A: Can you help with personal credit cards, mortgages, or student loans?",
+    "section_heading": "Q: can you help me with my personal credit card debt",
+    "variant_questions": [
+      "i owe on my mortgage can you negotiate that down",
+      "do you handle student loans",
+      "my personal loans are crushing me can you settle those",
+      "is this only for businesses or do you do personal debt too"
+    ],
+    "chunk_text": "A: Corporate Turnaround specializes in business debt — vendors, business credit cards, business loans and leases, merchant cash advances, and business taxes. Purely personal debt like personal credit cards, mortgages, or student loans is outside what we do. That said, the line is often blurrier than it looks: personal guarantees on business debt and personal credit cards used to fund the business are things we deal with all the time. If your debt is connected to your business in any way, call 1-800-889-0232 and we'll sort out what we can help with.",
+    "requires_disclaimer": false,
+    "authority": "canonical",
+    "answer_policy": "deflect",
+    "context_prefix": "Scope guard: Corporate Turnaround handles business debt only, not personal credit cards, mortgages, or student loans — with the personal-guarantee nuance."
+  },
+  {
+    "id": "qa2-scope-personal-taxes-0",
+    "source_type": "qa_pair",
+    "topic": "scope-personal-taxes",
+    "category": "ct-scope",
+    "topic_tags": ["scope-guard", "taxes", "qa"],
+    "title": "Q&A: Can you do my taxes or help with personal income tax?",
+    "section_heading": "Q: can you help me file my personal taxes",
+    "variant_questions": [
+      "how do i file my personal taxes",
+      "i owe personal income tax to the irs can you help",
+      "do you do tax preparation",
+      "i need help with my 1040"
+    ],
+    "chunk_text": "A: We're not a tax-filing or tax-preparation service, and personal income taxes are outside what we do. Where we can genuinely help is business tax debt: our tax specialists negotiate directly with the IRS and state authorities on things like installment agreements, offers-in-compromise, and penalty abatement for business tax liabilities. If your tax problem is tied to your business — payroll taxes, business back taxes, IRS liens on the company — call 1-800-889-0232.",
+    "requires_disclaimer": false,
+    "authority": "canonical",
+    "answer_policy": "deflect",
+    "context_prefix": "Scope guard: Corporate Turnaround does not prepare or file taxes and does not handle personal income tax — business tax debt negotiation is the in-scope service."
+  },
+  {
+    "id": "qa2-scope-legal-advice-0",
+    "source_type": "qa_pair",
+    "topic": "scope-legal-advice",
+    "category": "ct-scope",
+    "topic_tags": ["scope-guard", "legal-advice", "qa"],
+    "title": "Q&A: Is that legal? Can they do that? Should I sue? (legal questions)",
+    "section_heading": "Q: is what this collector is doing even legal can i sue them",
+    "variant_questions": [
+      "can they legally freeze my account in my state",
+      "should i sue my mca lender",
+      "give me legal advice about my creditor",
+      "is that allowed under the law where i live"
+    ],
+    "chunk_text": "A: That's a legal question, and honest answer: laws around collection and creditor conduct vary widely from state to state, so no general answer here would be safe to rely on — for formal legal advice you'd want an attorney licensed in your state. What we can offer: our staff includes attorneys and former debt collectors who see creditor tactics every day, and once you're enrolled, creditors deal with our team at 1-800-411-1113 instead of pressuring you directly. To talk through your specific situation, the consultation is free: 1-800-889-0232.",
+    "requires_disclaimer": true,
+    "authority": "canonical",
+    "answer_policy": "deflect",
+    "context_prefix": "Scope guard: the assistant does not give legal advice; state laws vary — route to a licensed attorney and Corporate Turnaround's free consultation."
+  },
+  {
+    "id": "qa2-scope-stop-paying-0",
+    "source_type": "qa_pair",
+    "topic": "scope-stop-paying",
+    "category": "ct-scope",
+    "topic_tags": ["scope-guard", "compliance", "qa"],
+    "title": "Q&A: Should I just stop paying my creditors so you can settle for less?",
+    "section_heading": "Q: should i just stop paying my creditors so you can settle for less",
+    "variant_questions": [
+      "is it smarter to default on purpose before settling",
+      "do i need to be behind on payments for you to help me",
+      "should i stop paying my mca to force them to negotiate"
+    ],
+    "chunk_text": "A: No — we would never advise simply stopping payments as a strategy. Missed payments can trigger defaults, lawsuits, liens, and frozen accounts, and once a creditor's trust is broken it's much harder to win back. Our approach is the opposite of going dark: we contact your creditors with a credible, affordable plan and negotiate terms they'll accept, and our clients' commitment to paying is exactly what makes creditors cooperate. If you genuinely can't pay everyone right now, that's precisely the moment to call — before things escalate: 1-800-889-0232.",
+    "requires_disclaimer": true,
+    "authority": "canonical",
+    "answer_policy": "deflect",
+    "context_prefix": "Scope guard / compliance: never advise a visitor to deliberately stop paying creditors; explain the risks and route to the free consultation."
+  },
+  {
+    "id": "qa2-scope-bankruptcy-advice-0",
+    "source_type": "qa_pair",
+    "topic": "scope-bankruptcy-advice",
+    "category": "ct-scope",
+    "topic_tags": ["scope-guard", "bankruptcy", "qa"],
+    "title": "Q&A: Should I file Chapter 7 or Chapter 11? (bankruptcy decision)",
+    "section_heading": "Q: should i just file chapter 7 or chapter 11 for my business",
+    "variant_questions": [
+      "do you think bankruptcy is my best option",
+      "should my llc declare bankruptcy",
+      "is filing bankruptcy better than debt settlement for me",
+      "tell me whether to file chapter 11"
+    ],
+    "chunk_text": "A: Whether to file bankruptcy is a decision for you and a bankruptcy attorney — it's not something anyone should decide for you in a chat. What we can tell you: most of our clients came to us specifically to avoid bankruptcy, and our out-of-court restructuring program is the alternative — you pay what you can afford monthly while we negotiate your debts down or stretch them over time, with no court filing on your record. Before taking on the costs and long-term consequences of a filing, it's worth one free call to hear what the alternative looks like for your numbers: 1-800-889-0232.",
+    "requires_disclaimer": true,
+    "authority": "canonical",
+    "answer_policy": "deflect",
+    "context_prefix": "Scope guard: the assistant never recommends for or against filing bankruptcy; it explains Corporate Turnaround's out-of-court alternative and routes to attorney plus free consultation."
+  },
+  {
+    "id": "qa2-scope-availability-0",
+    "source_type": "qa_pair",
+    "topic": "scope-availability",
+    "category": "ct-scope",
+    "topic_tags": ["scope-guard", "availability", "qa"],
+    "title": "Q&A: Are your services available in my state?",
+    "section_heading": "Q: are you guys available in my state",
+    "variant_questions": [
+      "do you work with businesses in texas california florida",
+      "can you help me if im outside the us",
+      "is your service nationwide"
+    ],
+    "chunk_text": "A: We work with small businesses across the country, but our services are not necessarily available in every state or area, and availability can change. The fastest way to confirm availability where you are is to ask directly: 1-800-889-0232 — the consultation is free either way.",
+    "requires_disclaimer": false,
+    "authority": "canonical",
+    "answer_policy": "deflect",
+    "context_prefix": "Scope guard: Corporate Turnaround's services are not available in every state; availability must be confirmed with a representative."
+  }
+]

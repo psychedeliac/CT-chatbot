@@ -186,6 +186,17 @@ class AgentConfig:
     rerank_rescue_score_threshold: float = -7.0
     rerank_rescue_rrf_rank_cutoff: int = 3
 
+    # ── Authority-aware rescue (KB v2) ────────────────────────────────────────
+    # Records with authority == "canonical" are hand-authored answers that are
+    # safe by construction — their text IS the approved response (including
+    # scope guards whose "answer" is the correct deflection for fee/savings/
+    # legal questions). Missing one costs a correct answer; admitting one can't
+    # produce a wrong answer. They therefore get a wider RRF rescue window than
+    # third-party background content ("what do you charge" put the fee guard at
+    # RRF rank 8 behind six loan-charge-off chunks — inside no sane cutoff for
+    # background content, but exactly what this wider cutoff is for).
+    rerank_canonical_rescue_rrf_rank_cutoff: int = 10
+
     # Allow the pipeline to start with BM25 missing (semantic-only retrieval).
     # Off by default: silent degradation is how a missing rank_bm25 install went
     # unnoticed for a whole commit while the system advertised hybrid search.

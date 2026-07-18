@@ -81,6 +81,11 @@ class EnrichedLoader(BaseDataLoader):
                         "title": title,
                         "section_heading": section,
                         "requires_disclaimer": requires_disclaimer,
+                        # KB v2 tiering (scripts/build_kb_v2.py): authority tells
+                        # the LLM whose voice a chunk speaks in; answer_policy
+                        # tells it how far it may go beyond the chunk.
+                        "authority": item.get("authority", ""),
+                        "answer_policy": item.get("answer_policy", ""),
                     }
                     documents.append(Document(page_content=page_content, metadata=metadata))
         else:
