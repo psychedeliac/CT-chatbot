@@ -37,9 +37,20 @@ def _setup_rag_tool(config: AgentConfig) -> None:
     VECTOR_STORE_BACKENDS = {"chroma": ChromaBackend}
 
     # Check collection exists before wiring the retriever
-    emb_cls = EMBEDDING_PROVIDERS.get(config.embedding_provider)
+    if config.embedding_provider not in EMBEDDING_PROVIDERS:
+        raise ValueError(
+            f"Unknown embedding_provider '{config.embedding_provider}'. "
+            f"Available: {list(EMBEDDING_PROVIDERS)}"
+        )
+    if config.vector_store_backend not in VECTOR_STORE_BACKENDS:
+        raise ValueError(
+            f"Unknown vector_store_backend '{config.vector_store_backend}'. "
+            f"Available: {list(VECTOR_STORE_BACKENDS)}"
+        )
+
+    emb_cls = EMBEDDING_PROVIDERS[config.embedding_provider]
     embeddings = emb_cls(model_name=config.embedding_model).get_embeddings()
-    vs_cls = VECTOR_STORE_BACKENDS.get(config.vector_store_backend)
+    vs_cls = VECTOR_STORE_BACKENDS[config.vector_store_backend]
     vector_store = vs_cls(
         embeddings=embeddings,
         persist_dir=config.vector_store_persist_dir,
@@ -49,7 +60,7 @@ def _setup_rag_tool(config: AgentConfig) -> None:
         print(
             f"\n[Warning] Vector store collection '{config.rag_collection}' not found.\n"
             f"  Run ingestion first:\n"
-            f"    python scripts/ingest.py --loader corporate_turnaround\n"
+            f"    python scripts/ingest.py --loader enriched\n"
         )
 
     rag_tool = build_rag_tool(config)
@@ -72,7 +83,7 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Quick start:
-  python scripts/ingest.py --loader corporate_turnaround
+  python scripts/ingest.py --loader enriched
   python main.py
         """,
     )

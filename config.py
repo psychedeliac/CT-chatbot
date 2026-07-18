@@ -61,7 +61,9 @@ class AgentConfig:
     # Supported: "gemini"
     # Future: "openai" | "anthropic" | "ollama"
     llm_provider: str = "gemini"
-    llm_model: str = "gemini-2.5-flash"
+    # Alias rather than a pinned version: Google retires specific versions for
+    # new API keys (gemini-2.5-flash now 404s), which breaks the app silently.
+    llm_model: str = "gemini-flash-latest"
     llm_temperature: float = 0.0
 
     # ── Embeddings ────────────────────────────────────────────────────────────

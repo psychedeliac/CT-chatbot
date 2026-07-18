@@ -5,6 +5,9 @@ langchain-community>=0.3.0
 langchain-classic>=1.0.0
 langchain-google-genai>=2.0.0
 langchain-chroma>=0.2.0
+langchain-huggingface>=0.1.0
+# Only needed if LLM_PROVIDER=groq (imported lazily by core/llms.py):
+# langchain-groq>=0.2.0
 langchain-text-splitters>=0.3.0
 langgraph>=0.2.0
 
@@ -12,6 +15,7 @@ langgraph>=0.2.0
 chromadb>=0.5.0
 
 # ── Retrieval Pipeline (RRF fusion + cross-encoder rerank) ────────────────────
+rank-bm25>=0.2.2
 sentence-transformers>=5.0.0
 torch>=2.0.0
 
@@ -20,6 +24,9 @@ torch>=2.0.0
 presidio-analyzer>=2.2.0
 presidio-anonymizer>=2.2.0
 spacy>=3.7.0
+
+# ── UI ────────────────────────────────────────────────────────────────────────
+streamlit>=1.40.0
 
 # ── Data Handling ─────────────────────────────────────────────────────────────
 pandas>=2.0.0

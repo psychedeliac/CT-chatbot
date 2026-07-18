@@ -11,6 +11,12 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 from rag.vector_store.base import VectorStoreBackend
 
+# Remote embedding APIs with per-minute quotas need batch throttling.
+# Local providers (HuggingFace/sentence-transformers) do not — throttling them
+# just makes ingestion take minutes longer for no reason.
+_RATE_LIMITED_EMBEDDINGS = ("GoogleGenerativeAIEmbeddings",)
+_THROTTLE_SECONDS = 65
+
 
 class ChromaBackend(VectorStoreBackend):
     """
@@ -60,6 +66,7 @@ class ChromaBackend(VectorStoreBackend):
         # Batch write to stay strictly below the 100 requests per minute free quota
         # (each chunk in a batch counts as 1 request toward the 100/min ceiling)
         batch_size = 80
+        is_rate_limited = type(self.embeddings).__name__ in _RATE_LIMITED_EMBEDDINGS
         store = None
         
         for i in range(0, len(chunks), batch_size):
@@ -76,9 +83,9 @@ class ChromaBackend(VectorStoreBackend):
             else:
                 store.add_documents(batch)
                 
-            if i + batch_size < len(chunks):
-                print("     Sleeping 65 seconds to reset Google free-tier rate limits...")
-                time.sleep(65)
+            if is_rate_limited and i + batch_size < len(chunks):
+                print(f"     Sleeping {_THROTTLE_SECONDS}s to reset embedding API rate limits...")
+                time.sleep(_THROTTLE_SECONDS)
 
         print(f"  -> Persisted to '{self.persist_dir}' (collection: '{collection_name}').")
 
