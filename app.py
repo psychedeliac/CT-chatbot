@@ -179,6 +179,29 @@ with st.sidebar:
 
 st.title("💬 Chat Assistant")
 
+# Suggested starter questions, shown only on the empty state. A button click
+# triggers a Streamlit rerun on which it returns True; the prompt then flows
+# through the same path as typed chat input below.
+STARTER_PROMPTS = (
+    "What does Corporate Turnaround do?",
+    "I'm behind on my merchant cash advance payments — what are my options?",
+    "How is debt restructuring different from bankruptcy?",
+    "Is the consultation really free?",
+)
+
+queued_prompt = None
+if not st.session_state.messages:
+    st.markdown(
+        "#### 👋 Welcome!\n"
+        "I'm Corporate Turnaround's AI assistant. Since 1998 we've helped over "
+        "10,000 small business owners work through business debt. Tell me what's "
+        "going on with your business, or start with one of these:"
+    )
+    starter_cols = st.columns(2)
+    for i, prompt_text in enumerate(STARTER_PROMPTS):
+        if starter_cols[i % 2].button(prompt_text, use_container_width=True):
+            queued_prompt = prompt_text
+
 # Display conversation
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
@@ -193,8 +216,8 @@ for msg in st.session_state.messages:
                     st.markdown(escape_dollars(chunk["text"]))
                     st.markdown("---")
 
-# User Input
-if user_input := st.chat_input("Ask a question about business debt or Corporate Turnaround..."):
+# User Input (typed, or a starter prompt clicked above)
+if user_input := (st.chat_input("Ask a question about business debt or Corporate Turnaround...") or queued_prompt):
     # Add user message to UI
     st.session_state.messages.append({"role": "user", "content": user_input})
     with st.chat_message("user"):
@@ -202,7 +225,7 @@ if user_input := st.chat_input("Ask a question about business debt or Corporate 
         
     # Query LangGraph Agent
     with st.chat_message("assistant"):
-        with st.spinner("Searching knowledge base and thinking..."):
+        with st.spinner("Looking into that for you..."):
             from core.utils import (
                 build_user_query,
                 wrap_user_query,
