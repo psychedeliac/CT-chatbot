@@ -2,23 +2,47 @@ import json
 import re
 
 REFUSAL_MESSAGE = (
-    "That's not something I have information on in our knowledge base. "
-    "For direct help, please call us at 1-800-889-0232."
+    "I don't have the specifics on that one, but I'd hate to leave you guessing. "
+    "Our specialists can answer directly at 1-800-889-0232 -- the consultation is "
+    "free. And if it's about business debt, ask away, that's what I'm here for."
 )
+
+# The two published numbers the assistant is allowed to give out; stripped
+# before the digit check in _is_safe_deflection so a legitimate handoff
+# ("call us at 1-800-889-0232") isn't mistaken for a factual claim.
+ALLOWED_PHONE_PATTERN = re.compile(r"1?[-.\s]?800[-.\s]?(?:889[-.\s]?0232|411[-.\s]?1113)")
+
+# An ungrounded reply is acceptable only as a short deflection: a greeting,
+# an off-topic dodge, or a phone handoff. Substantive parametric answers are
+# longer and/or carry figures. 600 chars is ~100 words -- comfortably above
+# the prompt's 60-word cap on empty-result replies, well below an essay.
+MAX_DEFLECTION_CHARS = 600
+
+
+def _is_safe_deflection(text: str) -> bool:
+    """True if an ungrounded reply looks like a deflection (greeting, dodge,
+    phone handoff) rather than a substantive answer smuggling in facts."""
+    stripped = ALLOWED_PHONE_PATTERN.sub("", text)
+    if len(stripped) > MAX_DEFLECTION_CHARS:
+        return False
+    # Any remaining digit means a figure the KB didn't ground (a year, a
+    # dollar amount, a percentage, an unapproved phone number).
+    return not re.search(r"\d", stripped)
 
 
 def enforce_grounding_refusal(response: dict, final_message: str) -> str:
     """
     Deterministic backstop for the system prompt's grounding requirement.
 
-    The LLM is instructed to refuse when rag_search finds nothing, but
-    instruction-following isn't guaranteed -- models will sometimes answer
-    a well-known factual question (e.g. "what is islam") from their own
-    parametric knowledge even after the tool call correctly returned no
-    hits. Rather than relying on the prompt alone, inspect this turn's
-    rag_search ToolMessage(s) directly: if every rag_search call in the
-    current turn came back empty, the answer is not grounded in our KB
-    regardless of what the LLM said, so replace it with a canned refusal.
+    The LLM is instructed to deflect (not answer) when rag_search finds
+    nothing, but instruction-following isn't guaranteed -- models will
+    sometimes answer a well-known factual question (e.g. "what is islam")
+    from their own parametric knowledge even after the tool call correctly
+    returned no hits. Inspect this turn's rag_search ToolMessage(s): if every
+    call came back empty, the reply is ungrounded. A short, figure-free
+    deflection (greeting, off-topic dodge, phone handoff -- exactly what the
+    prompt asks for) is allowed through so users don't get a robotic canned
+    refusal; anything that looks like a substantive answer is replaced.
     """
     from langchain_core.messages import ToolMessage
     from rag.retriever import NO_RESULTS_MESSAGE
@@ -36,7 +60,8 @@ def enforce_grounding_refusal(response: dict, final_message: str) -> str:
     ]
 
     if rag_results and all(content == NO_RESULTS_MESSAGE for content in rag_results):
-        return REFUSAL_MESSAGE
+        if not _is_safe_deflection(final_message):
+            return REFUSAL_MESSAGE
 
     return final_message
 
