@@ -521,21 +521,6 @@
     "context_prefix": "A free and confidential consultation with a senior debt specialist to review a business's situation and outline realistic options within 24 hours, as part of the Corporate Turnaround services."
   },
   {
-    "id": "gov-sba-funding-programs-loans-7a-loans-0",
-    "source_type": "regulatory",
-    "topic": "sba-funding-programs-loans-7a-loans",
-    "category": "business-debt",
-    "topic_tags": [
-      "sba"
-    ],
-    "title": "7(a) loans | U.S. Small Business Administration",
-    "section_heading": "7(a) loans | U.S. Small Business Administration",
-    "chunk_text": "Official websites use .gov A .gov website belongs to an official government organization in the United States. Secure .gov websites use HTTPS A lock ( Lock Locked padlock ) or https:// means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites.",
-    "chunk_tokens": 61,
-    "requires_disclaimer": false,
-    "context_prefix": "The general guidelines for accessing official government websites, specifically in the context of the SBA's 7(a) Loan Program."
-  },
-  {
     "id": "gov-sba-funding-programs-loans-7a-loans-1",
     "source_type": "regulatory",
     "topic": "sba-funding-programs-loans-7a-loans",
@@ -759,21 +744,6 @@
     "chunk_tokens": 92,
     "requires_disclaimer": false,
     "context_prefix": "Managing your business finances with a balance sheet may require professional assistance, and this chunk refers to hiring a certified public accountant (CPA), bookkeeper, or using an online service for accounting help."
-  },
-  {
-    "id": "gov-treasury-top-0",
-    "source_type": "regulatory",
-    "topic": "treasury-top",
-    "category": "business-debt",
-    "topic_tags": [
-      "treasury"
-    ],
-    "title": "Treasury Offset Program | Bureau of the Fiscal Service",
-    "section_heading": "Treasury Offset Program | Bureau of the Fiscal Service",
-    "chunk_text": "Federal government websites often end in .gov or .mil. Before sharing sensitive information, make sure you’re on a federal government site. The https:// ensures that you are connecting to the official website and that any information you provide is encrypted and transmitted securely.",
-    "chunk_tokens": 55,
-    "requires_disclaimer": false,
-    "context_prefix": "Information on how to verify the authenticity of federal government websites, a crucial step in understanding the Treasury Offset Program (TOP), which is a process for collecting past-due debts."
   },
   {
     "id": "gov-treasury-top-1",
@@ -1194,21 +1164,6 @@
     "chunk_tokens": 196,
     "requires_disclaimer": false,
     "context_prefix": "The consequences of an IRS Offer in Compromise being accepted, rejected, or returned, specifically detailing what happens if the offer is not accepted."
-  },
-  {
-    "id": "gov-irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs-16",
-    "source_type": "regulatory",
-    "topic": "irs-businesses-small-businesses-self-employed-offer-in-compromise-faqs",
-    "category": "business-debt",
-    "topic_tags": [
-      "irs"
-    ],
-    "title": "Offer in compromise FAQs | Internal Revenue Service",
-    "section_heading": "Related topic",
-    "chunk_text": "Looking to settle for less with the IRS? Share Facebook Twitter Linkedin",
-    "chunk_tokens": 15,
-    "requires_disclaimer": false,
-    "context_prefix": "The IRS Offer in Compromise, a program that allows taxpayers to settle their tax debt for less than the full amount owed."
   },
   {
     "id": "edu-nerdwallet-article-small-business-merchant-cash-advance-0",
@@ -2591,21 +2546,6 @@
     "context_prefix": "The process of obtaining a \"hardship discharge\" in a Chapter 13 bankruptcy proceeding, specifically discussing the circumstances under which a debtor may be eligible for such a discharge."
   },
   {
-    "id": "edu-uscourts-court-programs-bankruptcy-bankruptcy-basics-chapter-13-bankruptcy-basics-17",
-    "source_type": "educational",
-    "topic": "uscourts-court-programs-bankruptcy-bankruptcy-basics-chapter-13-bankruptcy-basics",
-    "category": "business-bankruptcy",
-    "topic_tags": [
-      "uscourts"
-    ],
-    "title": "Chapter 13 - Bankruptcy Basics",
-    "section_heading": "Notes",
-    "chunk_text": "The \"current monthly income\" received by the debtor is a defined term in the Bankruptcy Code and means the average monthly income received over the six calendar months before commencement of the bankruptcy case, including regular contributions to household expenses from nondebtors and including income from the debtor's spouse if the petition is a joint petition, but not including social security income or certain payments made because the debtor is the victim of certain crimes. 11 U.S.C. § 101(10A). In North Carolina and Alabama, bankruptcy administrators perform similar functions that U.S. trustees perform in the remaining forty-eight states. The bankruptcy administrator program is administered by the Administrative Office of the United States Courts, while the U.S. trustee program is administered by the Department of Justice. For purposes of this publication, references to U.S. trustees are also applicable to bankruptcy administrators. Section 507 sets forth 10 categories of unsecured claims which Congress has, for public policy reasons, given priority of distribution over other unsecured claims. A fee of $25 is charged for converting a case under chapter 13 to a case under chapter 7.",
-    "chunk_tokens": 237,
-    "requires_disclaimer": false,
-    "context_prefix": "Definitions and information about the \"current monthly income\" and bankruptcy administrators, which are relevant to Chapter 13 bankruptcy proceedings."
-  },
-  {
     "id": "qa-mca-basics-0",
     "source_type": "qa_pair",
     "topic": "mca-basics",
@@ -3457,28 +3397,6 @@
       "mca-factor-rate"
     ],
     "context_prefix": "The specifics of Merchant Cash Advance (MCA) repayment terms, specifically the calculation of repayment amounts based on factor rates, and is part of a customer support document for an MCA program."
-  },
-  {
-    "id": "qa-mca-daily-ach-3",
-    "source_type": "qa_pair",
-    "topic": "mca-daily-ach",
-    "category": "mca-education",
-    "topic_tags": [
-      "mca-education",
-      "qa",
-      "distressed-phrasing"
-    ],
-    "title": "Q&A: How do daily ACH debits from MCAs drain business cash flow?",
-    "section_heading": "Q: mca daily debits means i have no working capital left what do i do",
-    "chunk_text": "A: It sounds like the daily ACH withdrawals from the MCA are causing your bank account to be empty. This is likely due to the repayment mechanism of the MCA, where funds are withdrawn automatically from your business bank account. The amount withdrawn daily or weekly is typically a fixed percentage of your daily credit card sales or a fixed withdrawal amount. We can discuss ways to renegotiate MCA terms, extend payback periods, and reduce factor rates to give your business room to breathe.",
-    "chunk_tokens": 109,
-    "requires_disclaimer": true,
-    "grounded_source_ids": [
-      "mca-daily-ach",
-      "mca-daily-ach",
-      "services"
-    ],
-    "context_prefix": "A merchant cash advance (MCA) and discusses ways to renegotiate its terms to alleviate financial stress. The text provides information on the repayment mechanism of MCAs and potential strategies for restructuring payments."
   },
   {
     "id": "qa-mca-stacking-0",
@@ -9653,5 +9571,111 @@
     "topic": "client-outcomes",
     "requires_disclaimer": true,
     "context_prefix": "A case study of Corporate Turnaround, a debt settlement and management service, showcasing its ability to help clients overcome overwhelming debt and financial struggles through negotiation and settlement with creditors."
+  },
+  {
+    "id": "qa-ct-legitimacy-0",
+    "source_type": "qa_pair",
+    "topic": "ct-company-facts",
+    "category": "ct-company",
+    "topic_tags": [
+      "ct-company",
+      "qa",
+      "trust",
+      "legitimacy"
+    ],
+    "title": "Q&A: Is Corporate Turnaround legitimate?",
+    "section_heading": "Q: are you guys legit or is this a scam, whats your BBB rating, do you have reviews",
+    "chunk_text": "A: Corporate Turnaround is rated A+ with the Better Business Bureau and has worked with over 10,000 small business owners since 1998. We are a business debt negotiation and restructuring firm, not a lender. The initial consultation is free and carries no obligation to sign up, so owners can evaluate us before committing to anything.",
+    "chunk_tokens": 68,
+    "requires_disclaimer": false,
+    "context_prefix": "Company credentials and trust signals for Corporate Turnaround: Better Business Bureau rating, years in business, and number of clients served."
+  },
+  {
+    "id": "qa-ct-history-0",
+    "source_type": "qa_pair",
+    "topic": "ct-company-facts",
+    "category": "ct-company",
+    "topic_tags": [
+      "ct-company",
+      "qa",
+      "history"
+    ],
+    "title": "Q&A: How long has Corporate Turnaround been in business?",
+    "section_heading": "Q: how long have you been in business, how long have you been around, when were you founded",
+    "chunk_text": "A: Corporate Turnaround has been helping small business owners resolve business debt since 1998 — more than 25 years. In that time we have worked with over 10,000 small business owners and maintain an A+ rating with the Better Business Bureau.",
+    "chunk_tokens": 55,
+    "requires_disclaimer": false,
+    "context_prefix": "Corporate Turnaround's founding year and track record, answering questions about company history and experience."
+  },
+  {
+    "id": "qa-ct-existing-client-0",
+    "source_type": "qa_pair",
+    "topic": "ct-client-service",
+    "category": "ct-company",
+    "topic_tags": [
+      "ct-company",
+      "qa",
+      "existing-client",
+      "client-service"
+    ],
+    "title": "Q&A: I'm already a client — who do I contact?",
+    "section_heading": "Q: im already a client who do i call about my account or my program status",
+    "chunk_text": "A: Existing Corporate Turnaround clients with questions about their own account, program status, or settlements should call our client service line at 1-800-411-1113. This is also the number creditors should use for inquiries about an enrolled account. New enquiries and free consultations use 1-800-889-0232 instead.",
+    "chunk_tokens": 66,
+    "requires_disclaimer": false,
+    "context_prefix": "Contact routing for existing Corporate Turnaround clients and creditor inquiries versus new customer enquiries."
+  },
+  {
+    "id": "qa-ct-creditor-contact-0",
+    "source_type": "qa_pair",
+    "topic": "ct-client-service",
+    "category": "ct-company",
+    "topic_tags": [
+      "ct-company",
+      "qa",
+      "existing-client",
+      "creditor-calls"
+    ],
+    "title": "Q&A: A creditor contacted me directly while enrolled — what do I do?",
+    "section_heading": "Q: a creditor called me directly even though im enrolled in your program what do i do",
+    "chunk_text": "A: If you are enrolled in our program and a creditor or collector contacts you directly, you do not have to handle it alone. Refer them to Corporate Turnaround and give them our creditor inquiry line, 1-800-411-1113, so our negotiators can deal with them on your behalf. If you have questions about the contact or your account, call the same client service line and we will walk you through it.",
+    "chunk_tokens": 80,
+    "requires_disclaimer": false,
+    "context_prefix": "Guidance for enrolled Corporate Turnaround clients who are contacted directly by a creditor or collector during the program."
+  },
+  {
+    "id": "qa-mca-payroll-crisis-0",
+    "source_type": "qa_pair",
+    "topic": "mca-hardship",
+    "category": "mca-education",
+    "topic_tags": [
+      "mca-education",
+      "qa",
+      "distressed-phrasing",
+      "cashflow"
+    ],
+    "title": "Q&A: Daily debits are about to make my payroll bounce",
+    "section_heading": "Q: my payroll bounces friday if they take another payment, daily withdrawals are draining my account",
+    "chunk_text": "A: When daily or weekly debits are about to cause payroll or essential expenses to bounce, the situation is urgent but not hopeless. Lenders and advance providers can sometimes agree to restructured or reduced payment schedules when a business demonstrates genuine hardship, and negotiating before a missed payment generally preserves more options than after a default. Because timing matters when a deadline is days away, speak with a debt specialist immediately rather than waiting — call 1-800-889-0232 for a free consultation.",
+    "chunk_tokens": 94,
+    "requires_disclaimer": true,
+    "context_prefix": "Urgent cash-flow hardship where MCA or loan debits threaten payroll, and why immediate negotiation preserves options."
+  },
+  {
+    "id": "qa-ct-crisis-help-0",
+    "source_type": "qa_pair",
+    "topic": "ct-services",
+    "category": "ct-company",
+    "topic_tags": [
+      "ct-company",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: I'm overwhelmed and afraid of losing my business",
+    "section_heading": "Q: im gonna lose everything please help, im drowning and dont know what to do",
+    "chunk_text": "A: Feeling overwhelmed by business debt is more common than most owners realize, and there are established ways forward. Corporate Turnaround has worked with over 10,000 small business owners since 1998 facing exactly this kind of pressure — including owners who feared losing everything. Typical options include negotiating reduced or restructured payments with creditors within a budget the business can actually afford. The first step is a free, no-obligation consultation at 1-800-889-0232 where a specialist reviews the specific situation.",
+    "chunk_tokens": 92,
+    "requires_disclaimer": true,
+    "context_prefix": "Reassurance and first steps for business owners in acute distress about overwhelming debt, and how Corporate Turnaround's process starts."
   }
 ]
