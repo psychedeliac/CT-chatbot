@@ -124,7 +124,7 @@ Examples:
 
     # ── Step 5: PII sanitization ───────────────────────────────────────────────
     n_redacted = 0
-    if config.pii.enabled:
+    if config.pii.enabled and config.pii.scrub_on_ingest:
         print(f"[Step 2/3] Running PII guardrail on {len(documents)} documents...")
         guardrail = PIIGuardrail(config.pii)
         documents, n_redacted = guardrail.sanitize_documents(documents)

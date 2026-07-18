@@ -140,10 +140,8 @@ Quick start:
                 continue
 
             # Checkpoint 2: Query-time PII scrub
-            if config.pii.enabled:
-                from rag.guardrails.pii_detector import PIIGuardrail
-                guardrail = PIIGuardrail(config.pii)
-                user_input = guardrail.sanitize_query(user_input)
+            from core.utils import apply_pii_query_guard, apply_pii_response_guard
+            user_input = apply_pii_query_guard(user_input, config)
 
             from core.utils import build_user_query, wrap_user_query
             session_config = {"configurable": {"thread_id": "session_1"}}
@@ -169,10 +167,7 @@ Quick start:
             final_message = enforce_grounding_refusal(response, final_message)
 
             # Checkpoint 3: Output-time PII scrub
-            if config.pii.enabled:
-                from rag.guardrails.pii_detector import PIIGuardrail
-                guardrail = PIIGuardrail(config.pii)
-                final_message = guardrail.scrub_response(final_message)
+            final_message = apply_pii_response_guard(final_message, config)
 
             print(f"\nAgent: {final_message}")
 

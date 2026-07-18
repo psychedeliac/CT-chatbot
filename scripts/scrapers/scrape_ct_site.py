@@ -1,7 +1,7 @@
 import os
 from urllib.parse import urljoin, urlparse
 from bs4 import BeautifulSoup
-from scripts.scrapers.utils import fetch, parse_body, split_into_chunks, make_chunk, save_raw, logger, is_boilerplate
+from scripts.scrapers.utils import iter_content_tags, fetch, parse_body, split_into_chunks, make_chunk, save_raw, logger, is_boilerplate
 
 CT_SEED_URLS = [
     "https://www.corporateturnaround.com/",
@@ -34,21 +34,21 @@ def extract_chunks_from_html(html: str, url: str) -> list[dict]:
     
     # Try to get page title
     title_tag = soup.find('title')
-    page_title = title_tag.get_text(strip=True) if title_tag else "Corporate Turnaround"
+    page_title = title_tag.get_text(" ", strip=True) if title_tag else "Corporate Turnaround"
     
     chunks = []
     sections = []
     current_heading = page_title
     current_text = []
     
-    for tag in soup.find_all(["h1", "h2", "h3", "p", "li"]):
+    for tag in iter_content_tags(soup):
         if tag.name in ["h1", "h2", "h3"]:
             if current_text:
                 sections.append((current_heading, " ".join(current_text)))
-            current_heading = tag.get_text(strip=True)
+            current_heading = tag.get_text(" ", strip=True)
             current_text = []
         else:
-            text = tag.get_text(strip=True)
+            text = tag.get_text(" ", strip=True)
             if len(text) > 30:
                 current_text.append(text)
                 

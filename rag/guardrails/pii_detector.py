@@ -98,12 +98,37 @@ class PIIGuardrail:
 
     def _detect_and_anonymize(self, text: str) -> Tuple[str, int]:
         """
-        Detect PII entities and replace them with [REDACTED_<TYPE>] tokens.
-        Returns (cleaned_text, n_entities_found).
+        Detect PII entities and replace them with [REDACTED_<TYPE>] tokens,
+        while never touching allowlisted strings.
 
-        Always anonymizes — the caller decides what to do with the count
-        (e.g. block the document if n_entities > 0 and strategy == "block").
+        The allowlist exists because the phone detector cannot tell Corporate
+        Turnaround's own published contact line from a private number. Without
+        it, the assistant's answers came out reading "call us at
+        [REDACTED_PHONE_NUMBER]" -- redacting the single call to action the
+        system prompt requires every answer to end with.
+
+        Allowlisted terms are swapped for inert placeholders before detection
+        and restored afterwards, so the guard applies at all three checkpoints
+        (ingest, query, output) without special-casing any of them.
         """
+        if not text or not text.strip():
+            return text, 0
+
+        protected: dict[str, str] = {}
+        for i, term in enumerate(self.config.allowlist):
+            if term and term in text:
+                placeholder = f"ZZALLOWLISTZZ{i}ZZ"
+                protected[placeholder] = term
+                text = text.replace(term, placeholder)
+
+        cleaned, count = self._detect_and_anonymize_inner(text)
+
+        for placeholder, term in protected.items():
+            cleaned = cleaned.replace(placeholder, term)
+        return cleaned, count
+
+    def _detect_and_anonymize_inner(self, text: str) -> Tuple[str, int]:
+        """Detection proper. See _detect_and_anonymize for the allowlist wrapper."""
         if not text or not text.strip():
             return text, 0
 

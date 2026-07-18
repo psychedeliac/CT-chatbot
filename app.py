@@ -2,6 +2,7 @@ import streamlit as st
 import os
 import sys
 import json
+import uuid
 from datetime import datetime, timezone
 from dotenv import load_dotenv
 
@@ -13,6 +14,7 @@ load_dotenv()
 from config import load_config
 from core.factory import AgentFactory
 from main import _setup_rag_tool, MODE_PRESETS
+from rag.retriever import NO_RESULTS_MESSAGE
 from langchain_core.messages import ToolMessage
 
 # Streamlit App Setup
@@ -23,45 +25,86 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+@st.cache_resource(show_spinner="Loading knowledge base and retrieval models...")
+def build_shared_config():
+    """
+    Build config and register the RAG tool ONCE per server process.
+
+    RetrievalPipeline construction is the expensive part of startup: it builds a
+    BM25 index over the whole corpus and loads a cross-encoder, ~40s. That was
+    happening per browser session, which is fine for a demo and untenable under
+    real traffic. st.cache_resource shares one instance across sessions.
+
+    Only the retrieval machinery is shared. The agent itself stays per-session
+    below, because its MemorySaver holds conversation state -- sharing that
+    would leak one user's conversation into another's.
+    """
+    config = load_config()
+    config.tools = MODE_PRESETS["rag"]["tools"]
+    _setup_rag_tool(config)
+    return config
+
+
 # Initialize Session State
 if "messages" not in st.session_state:
     st.session_state.messages = []
+if "thread_id" not in st.session_state:
+    # Distinct per browser session. The previous hard-coded "session_streamlit"
+    # was only safe by accident -- it relied on each session happening to build
+    # its own MemorySaver.
+    st.session_state.thread_id = f"session_{uuid.uuid4().hex[:12]}"
 if "agent_executor" not in st.session_state:
-    # Build the agent
-    config = load_config()
-    preset = MODE_PRESETS["rag"]
-    config.tools = preset["tools"]
-    
-    # Setup RAG tool
-    _setup_rag_tool(config)
-    
-    # Build executor
+    config = build_shared_config()
     st.session_state.agent_executor = AgentFactory.create(config)
     st.session_state.config = config
 
 # Helper to parse chunks
+# Q&A chunks use a "Similar past case" label instead of "Section" (see
+# RetrievalPipeline.format_for_llm), which the old Section-only parser failed
+# on -- those chunks rendered as "Unknown Source / Unknown Section".
+SECTION_PREFIXES = ("Section: ", "Similar past case (NOT the current user): ")
+
+
+def escape_dollars(text: str) -> str:
+    """
+    Streamlit's markdown reads a pair of '$' as LaTeX math, so "saved $207,000
+    of $262,000" renders as garbled math instead of two dollar amounts. In a
+    business-debt assistant nearly every substantive answer contains at least
+    two dollar figures, so this has to be escaped everywhere text is displayed.
+    """
+    return text.replace("$", r"\$") if text else text
+
+
 def parse_retrieved_chunks(content: str) -> list:
-    if not content or content == "No relevant information found in the knowledge base for this query.":
+    if not content or content == NO_RESULTS_MESSAGE:
         return []
-    chunks = content.split("\n\n---\n\n")
+
+    # Strip the <retrieved_context> wrapper the pipeline adds for the LLM.
+    body = content.split("</retrieved_context>")[0]
+    if "<retrieved_context>" in body:
+        body = body.split("\n\n", 1)[-1]
+
     parsed_chunks = []
-    for chunk in chunks:
+    for chunk in body.split("\n\n---\n\n"):
         lines = chunk.strip().split("\n")
         title = "Unknown Source"
         section = "Unknown Section"
         score = "Keyword Match"
         text = chunk
-        
-        if len(lines) >= 3 and lines[0].startswith("Title: ") and lines[1].startswith("Section: ") and lines[2].startswith("Score: "):
+
+        section_prefix = next(
+            (p for p in SECTION_PREFIXES if len(lines) >= 2 and lines[1].startswith(p)),
+            None,
+        )
+        if lines and lines[0].startswith("Title: ") and section_prefix:
             title = lines[0].replace("Title: ", "").strip()
-            section = lines[1].replace("Section: ", "").strip()
-            score = lines[2].replace("Score: ", "").strip()
-            text = "\n".join(lines[3:]).strip()
-        elif len(lines) >= 2 and lines[0].startswith("Title: ") and lines[1].startswith("Section: "):
-            title = lines[0].replace("Title: ", "").strip()
-            section = lines[1].replace("Section: ", "").strip()
-            text = "\n".join(lines[2:]).strip()
-            
+            section = lines[1][len(section_prefix):].strip().strip('"')
+            if len(lines) >= 3 and lines[2].startswith("Score: "):
+                score = lines[2].replace("Score: ", "").strip()
+                text = "\n".join(lines[3:]).strip()
+            else:
+                text = "\n".join(lines[2:]).strip()
+
         parsed_chunks.append({
             "title": title,
             "section": section,
@@ -139,7 +182,7 @@ st.title("💬 Chat Assistant")
 # Display conversation
 for msg in st.session_state.messages:
     with st.chat_message(msg["role"]):
-        st.write(msg["content"])
+        st.write(escape_dollars(msg["content"]))
         
         # Display chunks if retrieved for this message
         if msg.get("chunks"):
@@ -147,7 +190,7 @@ for msg in st.session_state.messages:
                 for idx, chunk in enumerate(msg["chunks"]):
                     score_info = f" | Score: `{chunk['score']}`" if chunk.get("score") else ""
                     st.markdown(f"**Chunk {idx+1}: {chunk['title']}** (Section: *{chunk['section']}*{score_info})")
-                    st.markdown(chunk["text"])
+                    st.markdown(escape_dollars(chunk["text"]))
                     st.markdown("---")
 
 # User Input
@@ -160,13 +203,38 @@ if user_input := st.chat_input("Ask a question about business debt or Corporate 
     # Query LangGraph Agent
     with st.chat_message("assistant"):
         with st.spinner("Searching knowledge base and thinking..."):
-            from core.utils import build_user_query, wrap_user_query
-            session_config = {"configurable": {"thread_id": "session_streamlit"}}
-            response = st.session_state.agent_executor.invoke(
-                {"messages": [("user", wrap_user_query(build_user_query(user_input)))]},
-                config=session_config,
+            from core.utils import (
+                build_user_query,
+                wrap_user_query,
+                apply_pii_query_guard,
+                apply_pii_response_guard,
             )
-            
+
+            config = st.session_state.config
+            scrubbed_input = apply_pii_query_guard(user_input, config)
+
+            session_config = {"configurable": {"thread_id": st.session_state.thread_id}}
+            try:
+                response = st.session_state.agent_executor.invoke(
+                    {"messages": [("user", wrap_user_query(build_user_query(scrubbed_input)))]},
+                    config=session_config,
+                )
+            except Exception as exc:
+                # A raw Streamlit traceback is a poor thing to show someone who
+                # came here about their debt -- and it leaks internals. Log the
+                # detail server-side, show a calm, actionable message.
+                print(f"[Error] Agent invocation failed: {type(exc).__name__}: {exc}")
+                error_text = (
+                    "Sorry — something went wrong on our end while looking that up. "
+                    "Please try again in a moment, or call us at 1-800-889-0232 and "
+                    "we can help you directly."
+                )
+                st.error(error_text)
+                st.session_state.messages.append(
+                    {"role": "assistant", "content": error_text, "chunks": []}
+                )
+                st.stop()
+
             # Find RAG Tool Messages from the CURRENT turn only (and deduplicate them)
             retrieved_chunks = []
             seen_texts = set()
@@ -202,7 +270,10 @@ if user_input := st.chat_input("Ask a question about business debt or Corporate 
             # don't trust the LLM to have actually refused as instructed.
             final_message = enforce_grounding_refusal(response, final_message)
 
-            st.write(final_message)
+            # Checkpoint 3: Output-time PII scrub (parity with main.py).
+            final_message = apply_pii_response_guard(final_message, config)
+
+            st.write(escape_dollars(final_message))
             
             # Show chunks
             if retrieved_chunks:
@@ -210,7 +281,7 @@ if user_input := st.chat_input("Ask a question about business debt or Corporate 
                     for idx, chunk in enumerate(retrieved_chunks):
                         score_info = f" | Score: `{chunk['score']}`" if chunk.get("score") else ""
                         st.markdown(f"**Chunk {idx+1}: {chunk['title']}** (Section: *{chunk['section']}*{score_info})")
-                        st.markdown(chunk["text"])
+                        st.markdown(escape_dollars(chunk["text"]))
                         st.markdown("---")
             
             # Save to history

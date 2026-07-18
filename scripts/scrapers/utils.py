@@ -47,16 +47,58 @@ def parse_body(html: str) -> BeautifulSoup:
         tag.decompose()
     return soup
 
-def split_into_chunks(text: str, max_tokens: int = 120) -> List[str]:
-    """Splits text into chunks, respecting a rough max token limit."""
-    words = text.split()
-    max_words = int(max_tokens / 1.3)
-    
-    chunks = []
-    for i in range(0, len(words), max_words):
-        chunk = " ".join(words[i:i + max_words])
-        if chunk:
-            chunks.append(chunk)
+CONTENT_TAGS = ["h1", "h2", "h3", "p", "li"]
+
+
+def iter_content_tags(soup):
+    """
+    Yield content tags, skipping any nested inside another content tag.
+
+    A bare find_all(CONTENT_TAGS) returns a <p> wrapped in an <li> twice -- once
+    when the <li> is visited and its full text taken, and again for the <p>
+    itself. That duplicated ~7% of all sentences in the scraped corpus, which
+    both wastes context and biases BM25 term frequencies toward whatever the
+    site happens to mark up with nested tags.
+    """
+    for tag in soup.find_all(CONTENT_TAGS):
+        if tag.find_parent(CONTENT_TAGS) is None:
+            yield tag
+
+
+def split_into_chunks(text: str, max_tokens: int = 400, overlap_ratio: float = 0.15) -> List[str]:
+    """
+    Split text into chunks on sentence boundaries, with overlap between them.
+
+    The previous implementation hard-cut every N words with no regard for
+    punctuation and no overlap, which left ~48% of the shipped corpus ending
+    mid-sentence and ~27% starting mid-sentence (chunks trailing off like
+    "...creditors seize your assets and"). Both halves of a split sentence
+    then embed poorly and read badly when handed to the LLM.
+
+    Defaults follow current RAG practice: ~300-500 tokens per chunk with
+    10-15% overlap so a fact spanning a boundary survives in one piece.
+    """
+    sentences = [s for s in re.split(r'(?<=[.!?])\s+', text.strip()) if s.strip()]
+    max_words = max(1, int(max_tokens / 1.3))
+    overlap_words = int(max_words * overlap_ratio)
+
+    chunks: List[str] = []
+    current: List[str] = []
+
+    for sentence in sentences:
+        words = sentence.split()
+        if not words:
+            continue
+        # ponytail: an individual sentence longer than max_words becomes its own
+        # oversized chunk rather than being cut mid-thought. Split long sentences
+        # on clause boundaries only if such sentences actually show up.
+        if current and len(current) + len(words) > max_words:
+            chunks.append(" ".join(current))
+            current = current[-overlap_words:] if overlap_words else []
+        current.extend(words)
+
+    if current:
+        chunks.append(" ".join(current))
     return chunks
 
 BOILERPLATE_REGEXES = [
@@ -112,7 +154,11 @@ def make_chunk(id: str, source_type: str, topic: str, category: str, tags: List[
         "requires_disclaimer": requires_disclaimer
     }
 
-def merge_with_existing(new_chunks: List[Dict[str, Any]], path: str) -> List[Dict[str, Any]]:
+def merge_with_existing(
+    new_chunks: List[Dict[str, Any]],
+    path: str,
+    fresh_topics: bool = False,
+) -> List[Dict[str, Any]]:
     """
     Unions freshly-scraped chunks with whatever is already on disk, deduped
     by exact chunk_text, instead of letting a full-overwrite save silently
@@ -132,12 +178,29 @@ def merge_with_existing(new_chunks: List[Dict[str, Any]], path: str) -> List[Dic
     with open(path, "r", encoding="utf-8") as f:
         existing = json.load(f)
 
+    if fresh_topics:
+        # Deliberate re-chunk: any topic reproduced this run is replaced wholesale.
+        # Exact-text dedup cannot collapse a re-chunk, because new chunk
+        # boundaries never match the old ones -- so the default union would keep
+        # BOTH chunkings of the same page (a re-scrape of chapter-11 went from 43
+        # fresh chunks to 140 total). Topics that failed to scrape at all are
+        # still carried over, preserving the transient-failure protection.
+        fresh = {c.get("topic") for c in new_chunks}
+        carried_over = [c for c in existing if c.get("topic") not in fresh]
+        if carried_over:
+            logger.warning(
+                f"fresh_topics: replaced {len(fresh)} reproduced topic(s); "
+                f"carried over {len(carried_over)} chunk(s) from topics that did not scrape."
+            )
+        return new_chunks + carried_over
+
     seen_texts = {c["chunk_text"].strip() for c in new_chunks}
     carried_over = [c for c in existing if c["chunk_text"].strip() not in seen_texts]
     if carried_over:
         logger.warning(
             f"Carrying over {len(carried_over)} chunk(s) from the previous run "
-            f"not reproduced by this run's scrape."
+            f"not reproduced by this run's scrape. If this was an intentional "
+            f"re-chunk, pass fresh_topics=True -- otherwise both chunkings persist."
         )
     return new_chunks + carried_over
 

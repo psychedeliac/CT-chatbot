@@ -2,17 +2,17 @@
   {
     "url": "https://www.nerdwallet.com/article/small-business/merchant-cash-advance",
     "http_ok": true,
-    "n_chunks": 7
+    "n_chunks": 5
   },
   {
     "url": "https://www.nerdwallet.com/article/small-business/ucc-filing",
     "http_ok": true,
-    "n_chunks": 5
+    "n_chunks": 4
   },
   {
     "url": "https://www.nerdwallet.com/article/small-business/personal-guarantee-business-loan",
     "http_ok": true,
-    "n_chunks": 6
+    "n_chunks": 3
   },
   {
     "url": "https://www.nerdwallet.com/article/small-business/business-loan-default",
@@ -22,16 +22,16 @@
   {
     "url": "https://www.uscourts.gov/court-programs/bankruptcy/bankruptcy-basics/chapter-7-bankruptcy-basics",
     "http_ok": true,
-    "n_chunks": 50
+    "n_chunks": 23
   },
   {
     "url": "https://www.uscourts.gov/court-programs/bankruptcy/bankruptcy-basics/chapter-11-bankruptcy-basics",
     "http_ok": true,
-    "n_chunks": 102
+    "n_chunks": 43
   },
   {
     "url": "https://www.uscourts.gov/court-programs/bankruptcy/bankruptcy-basics/chapter-13-bankruptcy-basics",
     "http_ok": true,
-    "n_chunks": 46
+    "n_chunks": 19
   }
 ]

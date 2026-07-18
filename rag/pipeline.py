@@ -135,14 +135,30 @@ class RetrievalPipeline:
             from langchain_community.retrievers import BM25Retriever
 
             documents = EnrichedLoader().load()
-            if documents:
-                self.bm25_retriever = BM25Retriever.from_documents(
-                    documents, preprocess_func=preprocess_func
-                )
-                self.bm25_retriever.k = pool_k
-                filtered_bm25 = FilteredBM25Retriever(inner=self.bm25_retriever)
+            if not documents:
+                raise RuntimeError("EnrichedLoader returned no documents")
+
+            self.bm25_retriever = BM25Retriever.from_documents(
+                documents, preprocess_func=preprocess_func
+            )
+            self.bm25_retriever.k = pool_k
+            filtered_bm25 = FilteredBM25Retriever(inner=self.bm25_retriever)
         except Exception as e:
-            print(f"[Warning] Failed to initialize BM25 retriever: {e}. Falling back to semantic search only.")
+            # This used to print a warning and continue. That is exactly how the
+            # missing rank_bm25 dependency went unnoticed: "hybrid retrieval with
+            # RRF fusion" silently ran semantic-only for an entire commit, fusing
+            # the dense results against an empty set. A degraded retriever is a
+            # different product, not a warning -- fail unless it is opted into.
+            message = (
+                f"BM25 retriever failed to initialize: {e}\n"
+                f"Hybrid retrieval is unavailable, so results would be semantic-only "
+                f"and measurably worse. Fix the cause (a missing rank_bm25 install is "
+                f"the usual one), or set allow_degraded_retrieval=True / "
+                f"ALLOW_DEGRADED_RETRIEVAL=true to run without it deliberately."
+            )
+            if not config.allow_degraded_retrieval:
+                raise RuntimeError(message) from e
+            print(f"[Warning] {message}")
 
         from langchain_classic.retrievers import EnsembleRetriever
         retrievers = [chroma_retriever] + ([filtered_bm25] if filtered_bm25 else [])
@@ -238,6 +254,18 @@ class RetrievalPipeline:
                 text = content
 
             score_str = f"{c.rerank_score:.4f}" if c.rerank_score is not None else "N/A (reranking disabled)"
+
+            # Surface the corpus's own compliance flag. It was collected by the
+            # scrapers for every chunk and then never read by anything, so
+            # outcome claims and regulated-process descriptions reached the LLM
+            # indistinguishable from general explanatory content.
+            if c.document.metadata.get("requires_disclaimer"):
+                text = (
+                    f"{text}\n\n[COMPLIANCE: This source states specific outcomes or "
+                    f"regulated process details. Results vary by situation — do not "
+                    f"present it as a promise or a typical result.]"
+                )
+
             if title.startswith("Q&A:"):
                 # section_heading for qa_pair chunks is a first-person hypothetical
                 # question ("i got three mca...sales dropped hard"), not a neutral
@@ -250,4 +278,16 @@ class RetrievalPipeline:
             else:
                 formatted.append(f"Title: {title}\nSection: {section}\nScore: {score_str}\n\n{text}")
 
-        return "\n\n---\n\n".join(formatted)
+        # The system prompt and wrap_user_query() both tell the model that
+        # background material arrives under <retrieved_context>. Without this
+        # wrapper that instruction referred to a tag nothing ever emitted, so
+        # first-person source text (testimonials, Q&A cases) could be read as
+        # the current user's own words.
+        return (
+            "<retrieved_context>\n"
+            "Background reference material retrieved from the knowledge base. "
+            "This is NOT the current user's own words or history, even where it "
+            "is phrased in the first person.\n\n"
+            + "\n\n---\n\n".join(formatted)
+            + "\n</retrieved_context>"
+        )

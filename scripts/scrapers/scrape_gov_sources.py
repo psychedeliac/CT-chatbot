@@ -1,7 +1,7 @@
 import os
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse
-from scripts.scrapers.utils import fetch, parse_body, split_into_chunks, make_chunk, save_raw, logger, is_boilerplate
+from scripts.scrapers.utils import iter_content_tags, fetch, parse_body, split_into_chunks, make_chunk, save_raw, logger, is_boilerplate
 
 GOV_URLS = [
     # FTC — FDCPA & debt rights, plus real MCA enforcement actions (the old
@@ -36,7 +36,7 @@ def extract_chunks_from_html(html: str, url: str, agency: str) -> list[dict]:
     soup = parse_body(html)
     
     title_tag = soup.find('title')
-    page_title = title_tag.get_text(strip=True) if title_tag else f"{agency.upper()} Resource"
+    page_title = title_tag.get_text(" ", strip=True) if title_tag else f"{agency.upper()} Resource"
     
     chunks = []
     sections = []
@@ -44,14 +44,14 @@ def extract_chunks_from_html(html: str, url: str, agency: str) -> list[dict]:
     current_text = []
     
     # Simple extraction heuristic
-    for tag in soup.find_all(["h1", "h2", "h3", "p", "li"]):
+    for tag in iter_content_tags(soup):
         if tag.name in ["h1", "h2", "h3"]:
             if current_text:
                 sections.append((current_heading, " ".join(current_text)))
-            current_heading = tag.get_text(strip=True)
+            current_heading = tag.get_text(" ", strip=True)
             current_text = []
         else:
-            text = tag.get_text(strip=True)
+            text = tag.get_text(" ", strip=True)
             if len(text) > 30:
                 current_text.append(text)
                 

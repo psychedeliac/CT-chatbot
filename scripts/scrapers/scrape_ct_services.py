@@ -14,9 +14,13 @@ Usage:
     python -m scripts.scrapers.scrape_ct_services
 """
 import os
+import sys
+
+# --fresh: replace reproduced topics wholesale (use after changing the chunker)
+FRESH = "--fresh" in sys.argv
 import re
 from bs4 import BeautifulSoup
-from scripts.scrapers.utils import fetch, parse_body, split_into_chunks, make_chunk, save_raw, merge_with_existing, logger, is_boilerplate
+from scripts.scrapers.utils import iter_content_tags, fetch, parse_body, split_into_chunks, make_chunk, save_raw, merge_with_existing, logger, is_boilerplate
 
 SERVICES_URL = "https://corpo-nine.vercel.app/services"
 
@@ -31,7 +35,7 @@ def extract_chunks_from_html(html: str, url: str) -> list[dict]:
     soup = parse_body(html)
 
     title_tag = soup.find("title")
-    page_title = title_tag.get_text(strip=True) if title_tag else "Corporate Turnaround Services"
+    page_title = title_tag.get_text(" ", strip=True) if title_tag else "Corporate Turnaround Services"
     # Site's <title> has a mangled separator glyph (encoding artifact) -- normalize it.
     page_title = page_title.split("�")[0].strip() or "Corporate Turnaround Services"
 
@@ -40,14 +44,14 @@ def extract_chunks_from_html(html: str, url: str) -> list[dict]:
     current_heading = page_title
     current_text = []
 
-    for tag in soup.find_all(["h1", "h2", "h3", "p", "li"]):
+    for tag in iter_content_tags(soup):
         if tag.name in ["h1", "h2", "h3"]:
             if current_text:
                 sections.append((current_heading, " ".join(current_text)))
-            current_heading = tag.get_text(strip=True)
+            current_heading = tag.get_text(" ", strip=True)
             current_text = []
         else:
-            text = tag.get_text(strip=True)
+            text = tag.get_text(" ", strip=True)
             if len(text) > 30:
                 current_text.append(text)
 
@@ -93,7 +97,7 @@ def run():
     save_path = os.path.join(
         os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "data", "raw", "ct_services.json"
     )
-    merged = merge_with_existing(new_chunks, save_path)
+    merged = merge_with_existing(new_chunks, save_path, fresh_topics=FRESH)
     save_raw(merged, save_path)
 
 

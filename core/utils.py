@@ -41,6 +41,30 @@ def enforce_grounding_refusal(response: dict, final_message: str) -> str:
     return final_message
 
 
+def apply_pii_query_guard(text: str, config) -> str:
+    """
+    Checkpoint 2 -- scrub PII out of the user's query before it reaches the
+    LLM/retriever. No-ops when PII guarding is disabled.
+
+    Shared by every front end (main.py CLI, app.py Streamlit). Previously the
+    Streamlit path simply omitted PII scrubbing, so enabling PII_ENABLED
+    protected the CLI only.
+    """
+    if not config.pii.enabled:
+        return text
+    from rag.guardrails.pii_detector import PIIGuardrail
+    return PIIGuardrail(config.pii).sanitize_query(text)
+
+
+def apply_pii_response_guard(text: str, config) -> str:
+    """Checkpoint 3 -- scrub PII out of the model's answer. See
+    apply_pii_query_guard for why this is shared."""
+    if not config.pii.enabled:
+        return text
+    from rag.guardrails.pii_detector import PIIGuardrail
+    return PIIGuardrail(config.pii).scrub_response(text)
+
+
 def build_user_query(text: str, **extra) -> dict:
     """
     Canonical, loosely-schemed representation of what the current user

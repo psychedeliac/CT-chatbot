@@ -49,16 +49,38 @@ class EnrichedLoader(BaseDataLoader):
                         else:
                             text = item.get("content", "")
 
-                    page_content = f"Title: {title}\nSection: {section}\n\n{text}"
+                    # Contextual Retrieval: a generated sentence situating this
+                    # chunk in its parent document (scripts/contextualize_kb.py).
+                    # Prepended before embedding AND before BM25 indexing, so a
+                    # chunk that never names its own subject ("you repay it daily
+                    # using a percentage of card sales") still carries the terms
+                    # a searcher would actually type.
+                    context_prefix = str(item.get("context_prefix", "")).strip()
+                    body = f"{context_prefix}\n\n{text}" if context_prefix else text
+
+                    page_content = f"Title: {title}\nSection: {section}\n\n{body}"
 
                     if self._is_low_quality(page_content):
                         skipped += 1
                         continue
 
+                    # title/section_heading were previously dropped here, so the
+                    # only copy of them was the "Title:"/"Section:" prefix baked
+                    # into page_content -- leaving no fallback when that parse
+                    # failed. requires_disclaimer was collected by the scrapers
+                    # and then read by nothing at all.
+                    raw_flag = item.get("requires_disclaimer")
+                    requires_disclaimer = (
+                        str(raw_flag).strip().lower() == "true" if raw_flag is not None else False
+                    )
+
                     metadata = {
                         "source": item.get("source_type", "unknown"),
                         "topic": item.get("topic", ""),
-                        "category": item.get("category", "")
+                        "category": item.get("category", ""),
+                        "title": title,
+                        "section_heading": section,
+                        "requires_disclaimer": requires_disclaimer,
                     }
                     documents.append(Document(page_content=page_content, metadata=metadata))
         else:

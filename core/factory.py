@@ -63,19 +63,3 @@ class AgentFactory:
             checkpointer=memory,
         )
         return agent_executor
-
-    # ── Backward-compatible shim ───────────────────────────────────────────────
-    @staticmethod
-    def create_agent(tools: list, system_prompt: str, model_name: str = "gemini-2.5-flash"):
-        """
-        Backward-compatible entry point. Prefer AgentFactory.create(config) for new code.
-        """
-        from core.llms import GeminiProvider
-        llm = GeminiProvider(model_name=model_name).get_llm()
-        memory = MemorySaver()
-        return create_react_agent(
-            llm,
-            tools=tools,
-            prompt=system_prompt,
-            checkpointer=memory,
-        )

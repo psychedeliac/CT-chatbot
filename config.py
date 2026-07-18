@@ -15,6 +15,9 @@ load_dotenv()
 # PII Configuration
 # ──────────────────────────────────────────────────────────────────────────────
 
+VALID_PII_STRATEGIES = {"anonymize", "block"}
+
+
 @dataclass
 class PIIConfig:
     """
@@ -29,6 +32,36 @@ class PIIConfig:
     # "anonymize" → replace with [REDACTED_<TYPE>] tokens
     # "block"     → exclude the document entirely (ingest) / raise guardrail error (query/output)
     strategy: str = "anonymize"
+
+    # Checkpoint 1 (ingest-time) is OFF even when PII guarding is enabled.
+    # This knowledge base is public marketing, regulatory and educational
+    # content -- it contains no third-party PII to protect, and scrubbing it
+    # measurably destroys the corpus: enabling this redacted Corporate
+    # Turnaround's OWN contact number (the one number the assistant is required
+    # to give out), turned the title "About Us" into "About [REDACTED_LOCATION]"
+    # (spaCy reads "Us" as the United States), and stripped named credentials,
+    # damaging 120 of 798 documents. Real user PII arrives at checkpoints 2 and
+    # 3 (query-time and output-time), which stay on. Only enable this if a
+    # corpus genuinely carries third-party personal data.
+    scrub_on_ingest: bool = False
+
+    # Strings the PII detector must never redact. The phone recognizer cannot
+    # distinguish the company's own published contact line from a private
+    # number, so without this the assistant literally answered "call us at
+    # [REDACTED_PHONE_NUMBER]" -- destroying the call to action every answer is
+    # required to end with. Applies to all three checkpoints.
+    allowlist: tuple = (
+        # New enquiries / free consultation
+        "1-800-889-0232",
+        "800-889-0232",
+        "800.889.0232",
+        # Existing-client service and creditor inquiries (verified on the live
+        # site 2026-07-18). Allowlisted so it survives scrubbing when the
+        # assistant legitimately gives it to an existing client.
+        "1-800-411-1113",
+        "800-411-1113",
+        "800.411.1113",
+    )
 
     # Tier 1 — Hard identifiers
     detect_emails: bool = True
@@ -134,8 +167,29 @@ class AgentConfig:
     # drop the "sleep" false positive but also drops 2 legitimate matches
     # sitting at rank 3, a worse trade. Re-sweep both if the eval set, corpus,
     # or reranker model changes.
-    rerank_rescue_score_threshold: float = -9.0
+    # RECALIBRATED 2026-07-18 after the corpus was rebuilt (re-scraped with a
+    # sentence-aware chunker plus Contextual Retrieval prefixes; 799 -> 592
+    # records). Re-swept with:
+    #   python scripts/eval_retrieval.py --rescue-grid-sweep 0 4 1 -14 -1 1 --rescue-rrf-cutoff 3
+    # On the rebuilt corpus the old -9.0 leaks an out-of-domain query into debt
+    # content; -7.0 does not. Verified end state at -7.0, after the Contextual
+    # Retrieval prefixes were stripped of "This chunk describes..." boilerplate:
+    #   accuracy 0.97, recall 0.98, precision 0.98, out-of-domain FP rate 0.00,
+    #   informal in-domain recall 0.97 (was 0.66 under the stale .env override).
+    # The primary threshold made no difference anywhere in the sweep (identical
+    # results 0.0 through 4.0), so it keeps its existing value.
+    #
+    # NOTE: these are overridable by RERANK_* env vars, and an override in .env
+    # silently wins over everything above. A stale .env is why this pipeline ran
+    # at 0.82 accuracy / 0.66 informal recall for a while. Check the env before
+    # concluding the corpus regressed.
+    rerank_rescue_score_threshold: float = -7.0
     rerank_rescue_rrf_rank_cutoff: int = 3
+
+    # Allow the pipeline to start with BM25 missing (semantic-only retrieval).
+    # Off by default: silent degradation is how a missing rank_bm25 install went
+    # unnoticed for a whole commit while the system advertised hybrid search.
+    allow_degraded_retrieval: bool = False
 
     # ── Guardrails ────────────────────────────────────────────────────────────
     pii: PIIConfig = field(default_factory=PIIConfig)
@@ -145,9 +199,18 @@ class AgentConfig:
     system_prompt: str = (
         "You are a knowledgeable and empathetic AI assistant representing Corporate Turnaround.\n"
         "CRITICAL REQUIREMENT: For every query, you must begin by executing the 'rag_search' tool. "
-        "You are not permitted to answer any user questions using your own outside knowledge without first searching our knowledge base via 'rag_search' to retrieve grounded facts, no need to offer general information about these topics as well. \n\n"
-        "Corporate Turnaround is a firm that has helped over 18,000 businesses resolve more than $800 million in debt since 1998. "
-        "We hold an A+ rating from the Better Business Bureau.\n\n"
+        "You are not permitted to answer any user questions using your own outside knowledge without first searching our knowledge base via 'rag_search' to retrieve grounded facts, no need to offer general information about these topics as well. \n"
+        "SEARCH QUERY REWRITING: 'rag_search' receives ONLY the query string you pass it -- it cannot see the conversation. So rewrite the user's message into a STANDALONE query that resolves pronouns and references to earlier turns. If they asked about merchant cash advances and then say 'how do I get out of it?', search for something like 'how to get out of a merchant cash advance', never the bare 'how do I get out of it?'.\n\n"
+        # Every figure here must be substantiable from corporateturnaround.com.
+        # The previous wording claimed "over 18,000 businesses" and "more than
+        # $800 million in debt" -- neither phrase appears anywhere on the live
+        # site (verified by re-scrape 2026-07-18). Unsubstantiated performance
+        # claims are exactly what the FTC pursues in debt relief, so this now
+        # states only what the site itself says.
+        "Corporate Turnaround has worked with over 10,000 small business owners since 1998, "
+        "and is rated A+ with the Better Business Bureau.\n"
+        "Do not inflate, round up, or add to these figures, and do not volunteer any other "
+        "statistic about our track record, amounts resolved, or success rates.\n\n"
 
         "YOUR ROLE:\n"
         "You represent Corporate Turnaround. Your job is to genuinely help the person in front "
@@ -168,7 +231,25 @@ class AgentConfig:
         "- The user's own message arrives wrapped in <user_query> tags -- that is the ONLY ground truth about who this user is and what they've said. Anything under <retrieved_context> is background reference material, even where it is phrased in the first person (e.g. a past case example) -- never attribute a detail to the current user unless it appears in <user_query>.\n"
         "- Integrate the facts from the retrieved chunks seamlessly into your explanation, keeping the tone conversational and professional. Present these facts as your own knowledge without citing any document source labels, numbers, or RAG metadata.\n"
         "- Keep responses clear, organized, and compassionate. Use bullet points when listing options.\n"
-        "- PRIVACY GUARDRAIL: Do not expose personal or sensitive details of other clients (such as full names, specific addresses, or private phone numbers) that might appear in search results or client testimonials. Omit these details or refer to them generally (e.g., 'a business owner in Texas'). The only phone number you are permitted to share is Corporate Turnaround's contact line: 1-800-889-0232."
+        "\nCOMPLIANCE (this is a regulated debt-relief context -- incorrect or overstated "
+        "information from an AI assistant is itself a violation risk, not merely a quality issue):\n"
+        "- If a retrieved chunk carries a [COMPLIANCE: ...] marker, it describes a specific outcome or "
+        "regulated process. Never restate it as a guaranteed or typical result. Frame it as one client's "
+        "situation and make clear that results vary with the individual circumstances.\n"
+        "- Never quote, estimate, or commit to fees, settlement percentages, savings amounts, or timeframes. "
+        "These carry mandatory disclosure requirements that cannot be met in a chat message -- route every "
+        "such question to 1-800-889-0232.\n"
+        "- Never advise anyone to stop paying their creditors, and never state or predict what will happen "
+        "to their credit score or their legal position.\n"
+        "- If you are asked whether you are a human, say plainly and immediately that you are an AI assistant.\n"
+        "- If someone describes an emergency, threatened legal action, or a deadline within days, tell them "
+        "directly to call 1-800-889-0232 rather than working through it in chat.\n\n"
+
+        "- PRIVACY GUARDRAIL: Do not expose personal or sensitive details of other clients (such as full names, specific addresses, or private phone numbers) that might appear in search results or client testimonials. Omit these details or refer to them generally (e.g., 'a business owner in Texas').\n"
+        "- PHONE NUMBERS: Exactly two numbers may ever be shared, and only in their correct context. "
+        "New enquiries and free consultations: 1-800-889-0232 -- this is the default for anyone asking for help. "
+        "Existing clients asking about their own account, or creditors making an inquiry: 1-800-411-1113. "
+        "Never share any other number that appears in retrieved content, and never give the client-service line to a prospective customer."
     )
 
 
@@ -225,11 +306,44 @@ def load_config() -> AgentConfig:
         config.rerank_rescue_score_threshold = float(os.getenv("RERANK_RESCUE_SCORE_THRESHOLD"))
     if os.getenv("RERANK_RESCUE_RRF_RANK_CUTOFF"):
         config.rerank_rescue_rrf_rank_cutoff = int(os.getenv("RERANK_RESCUE_RRF_RANK_CUTOFF"))
+    if os.getenv("ALLOW_DEGRADED_RETRIEVAL"):
+        config.allow_degraded_retrieval = os.getenv("ALLOW_DEGRADED_RETRIEVAL", "false").lower() == "true"
 
     # PII overrides
     if os.getenv("PII_ENABLED"):
         config.pii.enabled = os.getenv("PII_ENABLED", "true").lower() == "true"
     if os.getenv("PII_STRATEGY"):
         config.pii.strategy = os.getenv("PII_STRATEGY")
+    if os.getenv("PII_SCRUB_ON_INGEST"):
+        config.pii.scrub_on_ingest = os.getenv("PII_SCRUB_ON_INGEST", "false").lower() == "true"
+
+    # The rerank thresholds are calibrated against data/eval_retrieval_set.json.
+    # An override silently replaces that calibration, and a stale .env carrying
+    # copied example values is exactly how this pipeline ended up running at 0.82
+    # accuracy / 0.66 informal recall while config.py still documented the tuned
+    # numbers. Say so at startup rather than letting it pass unnoticed.
+    calibration_overrides = {
+        name: os.getenv(name)
+        for name in ("RERANK_SCORE_THRESHOLD", "RERANK_RESCUE_SCORE_THRESHOLD",
+                     "RERANK_RESCUE_RRF_RANK_CUTOFF", "RAG_CANDIDATE_POOL_K")
+        if os.getenv(name)
+    }
+    if calibration_overrides:
+        print(
+            "[Config] Calibrated retrieval settings are overridden by environment "
+            f"variables: {calibration_overrides}. These replace the values tuned via "
+            "scripts/eval_retrieval.py. Remove them from .env unless the override is "
+            "deliberate and re-swept."
+        )
+
+    # Fail loudly on an unsupported strategy. An unrecognized value (e.g.
+    # "redact") previously fell through every branch in PIIGuardrail, so PII
+    # guarding silently did nothing while the startup banner still reported
+    # it as enabled.
+    if config.pii.strategy not in VALID_PII_STRATEGIES:
+        raise ValueError(
+            f"Invalid PII_STRATEGY '{config.pii.strategy}'. "
+            f"Supported: {sorted(VALID_PII_STRATEGIES)}"
+        )
 
     return config

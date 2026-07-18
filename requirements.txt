@@ -20,7 +20,11 @@ sentence-transformers>=5.0.0
 torch>=2.0.0
 
 # ── PII Guardrails ────────────────────────────────────────────────────────────
-# Install spacy model after: python -m spacy download en_core_web_lg
+# Required ONLY when PII_ENABLED=true. Without the spaCy model, presidio tries
+# to auto-download it at startup and the process dies with exit code 2 and no
+# traceback. `python -m spacy download` can fail behind a uv-backed pip shim,
+# so install the wheel directly:
+#   pip install https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-3.8.0/en_core_web_lg-3.8.0-py3-none-any.whl
 presidio-analyzer>=2.2.0
 presidio-anonymizer>=2.2.0
 spacy>=3.7.0
@@ -36,3 +40,4 @@ tqdm>=4.66.0
 python-dotenv>=1.0.0
 requests>=2.31.0
 beautifulsoup4>=4.12.0
+lxml>=5.0.0          # BeautifulSoup(html, "lxml") in every scraper needs this

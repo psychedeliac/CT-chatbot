@@ -1,8 +1,12 @@
 import json
 import os
+import sys
+
+# --fresh: replace reproduced topics wholesale (use after changing the chunker)
+FRESH = "--fresh" in sys.argv
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse
-from scripts.scrapers.utils import fetch, parse_body, split_into_chunks, make_chunk, save_raw, logger, is_boilerplate, merge_with_existing
+from scripts.scrapers.utils import iter_content_tags, fetch, parse_body, split_into_chunks, make_chunk, save_raw, logger, is_boilerplate, merge_with_existing
 
 BLOG_SOURCES = [
     # NerdWallet — confirmed accessible. Several 2024-era URLs in this list
@@ -50,7 +54,7 @@ def extract_chunks_from_html(html: str, url: str, source: dict) -> list[dict]:
     soup = parse_body(html)
     
     title_tag = soup.find('title')
-    page_title = title_tag.get_text(strip=True) if title_tag else f"{source['domain']} Article"
+    page_title = title_tag.get_text(" ", strip=True) if title_tag else f"{source['domain']} Article"
     
     chunks = []
     sections = []
@@ -67,14 +71,14 @@ def extract_chunks_from_html(html: str, url: str, source: dict) -> list[dict]:
     if not content_area:
         content_area = soup  # Fallback to whole body if selector fails
     
-    for tag in content_area.find_all(["h1", "h2", "h3", "p", "li"]):
+    for tag in iter_content_tags(content_area):
         if tag.name in ["h1", "h2", "h3"]:
             if current_text:
                 sections.append((current_heading, " ".join(current_text)))
-            current_heading = tag.get_text(strip=True)
+            current_heading = tag.get_text(" ", strip=True)
             current_text = []
         else:
-            text = tag.get_text(strip=True)
+            text = tag.get_text(" ", strip=True)
             if len(text) > 30:
                 current_text.append(text)
                 
@@ -143,7 +147,7 @@ def run():
 
     base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
     save_path = os.path.join(base_dir, "data", "raw", "industry_blogs.json")
-    save_raw(merge_with_existing(all_chunks, save_path), save_path)
+    save_raw(merge_with_existing(all_chunks, save_path, fresh_topics=FRESH), save_path)
 
     manifest_path = os.path.join(base_dir, "data", "raw", "industry_blogs_manifest.json")
     with open(manifest_path, "w", encoding="utf-8") as f:
