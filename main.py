@@ -175,7 +175,15 @@ Quick start:
             print("\nGoodbye!")
             break
         except Exception as e:
-            print(f"\n[Error] {e}")
+            # Never surface the raw provider error to the user: it can carry
+            # internal details (a 400 from a malformed tool call echoes the
+            # tool schema). Log the detail, show a calm, actionable message.
+            import sys
+            print(f"[Error] Agent invocation failed: {type(e).__name__}: {e}", file=sys.stderr)
+            print(
+                "\nAgent: Sorry -- something went wrong on our end while looking that up. "
+                "Please try again in a moment, or call us at 1-800-889-0232 and we can help you directly."
+            )
 
 
 if __name__ == "__main__":
