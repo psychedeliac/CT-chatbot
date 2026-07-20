@@ -42,6 +42,20 @@ def build_shared_config():
     config = load_config()
     config.tools = MODE_PRESETS["rag"]["tools"]
     _setup_rag_tool(config)
+
+    # Warm the cross-encoder. RetrievalPipeline loads it lazily on first rerank
+    # (rag/pipeline.py:_get_cross_encoder), which cost ~14s -- paid by whichever
+    # real user happened to ask the first question after a deploy or restart.
+    # Running one throwaway query here moves that cost into server boot, where
+    # nobody is waiting on it.
+    from core.tools.registry import get_tools
+    try:
+        get_tools(["rag"])[0].invoke({"query": "warmup"})
+    except Exception as exc:
+        # A failed warmup must not take the app down -- the model still loads
+        # lazily on the first real query, just slowly.
+        print(f"[Warning] Retrieval warmup failed (first query will be slow): {exc}")
+
     return config
 
 
@@ -237,12 +251,50 @@ if user_input := (st.chat_input("Ask a question about business debt or Corporate
             scrubbed_input = apply_pii_query_guard(user_input, config)
 
             session_config = {"configurable": {"thread_id": st.session_state.thread_id}}
+
+            # Stream rather than invoke. The work takes the same ~6-10s either
+            # way, but invoke() showed a blank spinner for all of it; streaming
+            # puts words on screen at ~2s.
+            #
+            # Tokens go into a placeholder, NOT straight to the page, because
+            # the post-processing chain below (clean_response_prefix ->
+            # enforce_grounding_refusal -> PII guard) can rewrite or wholly
+            # replace the text. Streaming it directly would let an ungrounded
+            # answer finish typing out before the backstop swapped it.
+            #
+            # stream_mode=["messages", "values"] gives both: "messages" for
+            # per-token chunks, "values" for the full final state that the
+            # chunk-parsing and grounding backstop below still need.
+            stream_placeholder = st.empty()
+            streamed_text = ""
+            response = None
             try:
-                response = st.session_state.agent_executor.invoke(
+                for mode, payload in st.session_state.agent_executor.stream(
                     {"messages": [("user", wrap_user_query(build_user_query(scrubbed_input)))]},
                     config=session_config,
-                )
+                    stream_mode=["messages", "values"],
+                ):
+                    if mode == "values":
+                        response = payload
+                    elif mode == "messages":
+                        chunk, _metadata = payload
+                        # Only the assistant's prose. Tool-call argument chunks
+                        # and ToolMessage results must not reach the user.
+                        if isinstance(chunk, ToolMessage) or not chunk.content:
+                            continue
+                        text = chunk.content
+                        if isinstance(text, list):
+                            text = "".join(
+                                part["text"] if isinstance(part, dict) and "text" in part else str(part)
+                                for part in text
+                            )
+                        streamed_text += text
+                        stream_placeholder.markdown(escape_dollars(streamed_text))
+
+                if response is None:
+                    raise RuntimeError("Agent stream ended without emitting final state")
             except Exception as exc:
+                stream_placeholder.empty()
                 # A raw Streamlit traceback is a poor thing to show someone who
                 # came here about their debt -- and it leaks internals. Log the
                 # detail server-side, show a calm, actionable message.
@@ -296,8 +348,11 @@ if user_input := (st.chat_input("Ask a question about business debt or Corporate
             # Checkpoint 3: Output-time PII scrub (parity with main.py).
             final_message = apply_pii_response_guard(final_message, config)
 
-            st.write(escape_dollars(final_message))
-            
+            # Overwrite the streamed text with the post-processed version. Same
+            # content in the common case; the swap only shows when a guard
+            # above actually rewrote the answer.
+            stream_placeholder.markdown(escape_dollars(final_message))
+
             # Show chunks
             if retrieved_chunks:
                 with st.expander("🔍 View Retrieved Context Chunks", expanded=True):

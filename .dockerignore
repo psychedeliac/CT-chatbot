@@ -1,0 +1,11 @@
+venv/
+__pycache__/
+*.pyc
+.env
+chroma_db/
+.git/
+.pytest_cache/
+scratch/
+*.egg-info/
+.claude/
+.playwright-mcp/
