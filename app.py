@@ -11,10 +11,9 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 load_dotenv()
 
-from config import load_config
 from core.factory import AgentFactory
-from main import _setup_rag_tool, MODE_PRESETS
 from rag.retriever import NO_RESULTS_MESSAGE
+from warmup import build_shared_config
 from langchain_core.messages import ToolMessage
 
 # Streamlit App Setup
@@ -24,40 +23,6 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="expanded"
 )
-
-@st.cache_resource(show_spinner="Loading knowledge base and retrieval models...")
-def build_shared_config():
-    """
-    Build config and register the RAG tool ONCE per server process.
-
-    RetrievalPipeline construction is the expensive part of startup: it builds a
-    BM25 index over the whole corpus and loads a cross-encoder, ~40s. That was
-    happening per browser session, which is fine for a demo and untenable under
-    real traffic. st.cache_resource shares one instance across sessions.
-
-    Only the retrieval machinery is shared. The agent itself stays per-session
-    below, because its MemorySaver holds conversation state -- sharing that
-    would leak one user's conversation into another's.
-    """
-    config = load_config()
-    config.tools = MODE_PRESETS["rag"]["tools"]
-    _setup_rag_tool(config)
-
-    # Warm the cross-encoder. RetrievalPipeline loads it lazily on first rerank
-    # (rag/pipeline.py:_get_cross_encoder), which cost ~14s -- paid by whichever
-    # real user happened to ask the first question after a deploy or restart.
-    # Running one throwaway query here moves that cost into server boot, where
-    # nobody is waiting on it.
-    from core.tools.registry import get_tools
-    try:
-        get_tools(["rag"])[0].invoke({"query": "warmup"})
-    except Exception as exc:
-        # A failed warmup must not take the app down -- the model still loads
-        # lazily on the first real query, just slowly.
-        print(f"[Warning] Retrieval warmup failed (first query will be slow): {exc}")
-
-    return config
-
 
 # Initialize Session State
 if "messages" not in st.session_state:

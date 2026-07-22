@@ -15,7 +15,8 @@ source venv/bin/activate                      # local venv at ./venv
 python scripts/ingest.py --loader enriched --force
 
 # Run
-streamlit run app.py                          # web UI (primary)
+uvicorn api.main:app --port 8000              # HTTP API (production; backs the website widget)
+python warmup.py                              # Streamlit UI, retrieval warmed before the port opens
 python main.py                                # CLI chat loop
 
 # Tests / eval
@@ -48,7 +49,9 @@ Two independent phases: **ingestion** (offline, `scripts/ingest.py`) and **infer
 - `core/utils.py` — response post-processing chain used by both UIs: `build_user_query`/`wrap_user_query` → PII query guard → `clean_response_prefix` → `enforce_grounding_refusal` (deterministic refusal backstop when rag_search returns nothing) → PII response guard.
 - `data_handlers/` — loader registry pattern; `enriched_loader.py` reads `data/enriched_knowledge_base.json` and carries `authority`/`answer_policy` metadata into Chroma.
 - `rag/guardrails/pii_detector.py` — Presidio-based, three checkpoints (ingest/query/output).
-- `app.py` — Streamlit. Retrieval machinery is shared process-wide via `st.cache_resource` (BM25 build + cross-encoder load ≈ 40s); the agent stays per-session because its MemorySaver holds conversation state.
+- `warmup.py` — `build_shared_config()` (lru_cached, process-global) builds config + registers the RAG tool + warms the cross-encoder. Every entrypoint calls it; `python warmup.py` also boots Streamlit *after* warming so the first visitor doesn't wait ~40s.
+- `api/` — FastAPI service for the website chat widget. `api/chat.py` runs **one shared agent** with conversations separated by LangGraph `thread_id` (Streamlit's agent-per-session model doesn't scale), and bounds everything a public deployment must bound: session TTL + count (MemorySaver would otherwise grow until OOM), first-turn answer cache, concurrent-turn semaphore, per-turn timeout. `api/main.py` adds per-IP rate limiting (slowapi), CORS allowlist, request ids, and sanitized errors. Knobs live in `APIConfig` in `config.py`. Single-instance assumptions are marked there — multi-instance needs `RATE_LIMIT_STORAGE_URI=redis://…` plus sticky sessions or externalized memory.
+- `app.py` — Streamlit, now an internal/QA UI. Retrieval is shared process-wide; the agent stays per-session because its MemorySaver holds conversation state.
 
 ## Knowledge base (v2)
 

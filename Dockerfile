@@ -56,9 +56,26 @@ RUN python scripts/ingest.py --loader enriched --force
 
 # Railway injects $PORT and expects the app to bind it on 0.0.0.0. Shell form
 # (not exec form) so the variable actually expands; the fallback keeps
-# `docker run -p 8501:8501` working locally.
-CMD streamlit run app.py \
-    --server.port=${PORT:-8501} \
-    --server.address=0.0.0.0 \
-    --server.headless=true \
-    --browser.gatherUsageStats=false
+# `docker run -p 8000:8000` working locally.
+#
+# The API is the production entrypoint (the website widget talks to it).
+# One worker on purpose: the embedding model, BM25 index, cross-encoder and
+# conversation memory are all in-process, so a second worker doubles ~1GB of
+# RAM and splits session state across processes. Scale with more containers
+# plus sticky sessions, or externalize memory first.
+#
+# For the internal Streamlit UI instead:
+#   docker run -e APP_MODE=streamlit ...
+CMD if [ "$APP_MODE" = "streamlit" ]; then \
+      streamlit run app.py \
+        --server.port=${PORT:-8501} \
+        --server.address=0.0.0.0 \
+        --server.headless=true \
+        --browser.gatherUsageStats=false; \
+    else \
+      uvicorn api.main:app \
+        --host 0.0.0.0 \
+        --port ${PORT:-8000} \
+        --workers 1 \
+        --timeout-keep-alive 65; \
+    fi

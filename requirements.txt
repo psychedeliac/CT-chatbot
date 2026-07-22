@@ -32,6 +32,14 @@ spacy>=3.7.0
 # ── UI ────────────────────────────────────────────────────────────────────────
 streamlit>=1.40.0
 
+# ── HTTP API (api/) ───────────────────────────────────────────────────────────
+# Serves the website chat widget. slowapi does per-IP rate limiting; its
+# storage_uri swaps from in-process memory to Redis for multi-instance deploys.
+fastapi>=0.115.0
+uvicorn>=0.30.0
+slowapi>=0.1.9
+cachetools>=5.3.0
+
 # ── Data Handling ─────────────────────────────────────────────────────────────
 pandas>=2.0.0
 tqdm>=4.66.0

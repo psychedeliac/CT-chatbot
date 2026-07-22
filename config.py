@@ -80,6 +80,111 @@ class PIIConfig:
 
 
 # ──────────────────────────────────────────────────────────────────────────────
+# HTTP API Configuration (api/)
+# ──────────────────────────────────────────────────────────────────────────────
+
+def _csv_env(name: str) -> tuple:
+    raw = os.getenv(name, "")
+    return tuple(item.strip() for item in raw.split(",") if item.strip())
+
+
+@dataclass(frozen=True)
+class APIConfig:
+    """
+    Settings for the public HTTP API that backs the website chat widget.
+
+    Every field is env-overridable via load_api_config() so the same image can
+    run in dev and prod. Defaults are the safe/dev values: CORS closed to
+    everything except localhost, conservative rate limits.
+    """
+
+    # ── CORS ──────────────────────────────────────────────────────────────────
+    # Exact origins allowed to call the API from a browser. A public widget is
+    # embedded on known domains, so this is an allowlist, never "*" -- "*" plus
+    # credentials is rejected by browsers anyway, and without it any site could
+    # burn the LLM quota from a visitor's IP.
+    allowed_origins: tuple = ("http://localhost:3000", "http://localhost:8501")
+
+    # ── Rate limiting (per client IP) ─────────────────────────────────────────
+    # Two windows: a burst allowance for a human typing quickly, and an hourly
+    # cap so a single IP cannot drain the daily LLM quota.
+    rate_limit_burst: str = "10/minute"
+    rate_limit_sustained: str = "100/hour"
+    # "memory://" keeps counters in-process -- correct for ONE instance only.
+    # Multi-instance deployments must point this at Redis
+    # (RATE_LIMIT_STORAGE_URI=redis://host:6379) or each replica enforces its
+    # own separate limit.
+    rate_limit_storage_uri: str = "memory://"
+    # Header naming the real client IP when running behind a proxy/CDN. Left
+    # unset by default: trusting X-Forwarded-For when nothing strips it lets a
+    # caller spoof their IP and bypass rate limiting entirely.
+    client_ip_header: str = ""
+
+    # ── Input limits ──────────────────────────────────────────────────────────
+    max_message_chars: int = 2000
+
+    # ── Concurrency & timeouts ────────────────────────────────────────────────
+    # Bounds how many LLM/retrieval turns run at once. Past this, requests wait;
+    # past the queue timeout they get 503 rather than piling up until the box
+    # dies. Sized for the LLM provider's rate limit, not the CPU.
+    max_concurrent_turns: int = 8
+    queue_timeout_seconds: float = 10.0
+    turn_timeout_seconds: float = 90.0
+
+    # ── Sessions ──────────────────────────────────────────────────────────────
+    # Conversation state lives in LangGraph's in-process MemorySaver, so it is
+    # bounded here or it grows until the process is OOM-killed.
+    session_ttl_seconds: int = 3600
+    max_sessions: int = 5000
+
+    # ── Answer cache ──────────────────────────────────────────────────────────
+    # First-turn answers only (see api/chat.py). On a public site the same
+    # handful of questions dominate traffic; caching them cuts both latency and
+    # LLM spend. Follow-up turns are never cached -- they depend on history.
+    answer_cache_enabled: bool = True
+    answer_cache_size: int = 512
+    answer_cache_ttl_seconds: int = 1800
+
+
+def load_api_config() -> APIConfig:
+    """Build APIConfig from env vars, falling back to the dataclass defaults."""
+    defaults = APIConfig()
+    origins = _csv_env("CORS_ALLOWED_ORIGINS") or defaults.allowed_origins
+
+    def _int(name: str, fallback: int) -> int:
+        raw = os.getenv(name)
+        return int(raw) if raw else fallback
+
+    def _float(name: str, fallback: float) -> float:
+        raw = os.getenv(name)
+        return float(raw) if raw else fallback
+
+    config = APIConfig(
+        allowed_origins=origins,
+        rate_limit_burst=os.getenv("RATE_LIMIT_BURST", defaults.rate_limit_burst),
+        rate_limit_sustained=os.getenv("RATE_LIMIT_SUSTAINED", defaults.rate_limit_sustained),
+        rate_limit_storage_uri=os.getenv("RATE_LIMIT_STORAGE_URI", defaults.rate_limit_storage_uri),
+        client_ip_header=os.getenv("CLIENT_IP_HEADER", defaults.client_ip_header),
+        max_message_chars=_int("MAX_MESSAGE_CHARS", defaults.max_message_chars),
+        max_concurrent_turns=_int("MAX_CONCURRENT_TURNS", defaults.max_concurrent_turns),
+        queue_timeout_seconds=_float("QUEUE_TIMEOUT_SECONDS", defaults.queue_timeout_seconds),
+        turn_timeout_seconds=_float("TURN_TIMEOUT_SECONDS", defaults.turn_timeout_seconds),
+        session_ttl_seconds=_int("SESSION_TTL_SECONDS", defaults.session_ttl_seconds),
+        max_sessions=_int("MAX_SESSIONS", defaults.max_sessions),
+        answer_cache_enabled=os.getenv("ANSWER_CACHE_ENABLED", "true").lower() == "true",
+        answer_cache_size=_int("ANSWER_CACHE_SIZE", defaults.answer_cache_size),
+        answer_cache_ttl_seconds=_int("ANSWER_CACHE_TTL_SECONDS", defaults.answer_cache_ttl_seconds),
+    )
+
+    if "*" in config.allowed_origins:
+        raise ValueError(
+            "CORS_ALLOWED_ORIGINS must list explicit origins, not '*'. A wildcard "
+            "lets any site drive this API from a visitor's browser and IP."
+        )
+    return config
+
+
+# ──────────────────────────────────────────────────────────────────────────────
 # Agent Configuration
 # ──────────────────────────────────────────────────────────────────────────────
 
