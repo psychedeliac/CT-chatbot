@@ -5,13 +5,14 @@ Defines the LLMProvider ABC and the concrete GeminiProvider.
 To add a new LLM (e.g. OpenAI), create a class that inherits LLMProvider
 and implement get_llm(). Register it in the LLM_PROVIDERS dict in factory.py.
 """
+import itertools
 import os
 from abc import ABC, abstractmethod
 from typing import Any, Optional, Sequence
 
 from langchain_core.language_models import BaseChatModel
 from langchain_core.messages import BaseMessage
-from langchain_core.outputs import ChatGeneration, ChatResult
+from langchain_core.outputs import ChatGeneration, ChatGenerationChunk, ChatResult
 from pydantic import PrivateAttr
 
 
@@ -34,6 +35,24 @@ def _gemini_api_keys() -> list[str]:
             keys.append(k)
         i += 1
     return keys
+
+
+def _first_chunk_and_rest(stream):
+    """
+    Pull the first chunk eagerly, then hand back an iterator replaying it
+    followed by the remainder.
+
+    A generator is lazy: calling client.stream() does no work and raises
+    nothing, so a quota error would surface only later, outside the failover
+    loop. Forcing the first chunk makes the 429 happen while another key can
+    still be tried. next(..., None) rather than bare next() because a
+    StopIteration crossing a generator frame becomes a RuntimeError (PEP 479).
+    """
+    iterator = iter(stream)
+    first = next(iterator, None)
+    if first is None:
+        return iter(())
+    return itertools.chain([first], iterator)
 
 
 def _is_failover_error(exc: Exception) -> bool:
@@ -73,6 +92,14 @@ class RotatingGeminiLLM(BaseChatModel):
                 model=self.model_name,
                 temperature=self.temperature,
                 google_api_key=key,
+                # The SDK defaults to 6 retries with backoff. On a 429 that
+                # means sitting on an exhausted key for tens of seconds before
+                # this class even gets the chance to rotate -- a measured 47s
+                # for one answer. Rotating to the next key is both the faster
+                # and the more likely fix, so retrying here is pure latency.
+                # Transient non-quota errors now surface immediately; the API
+                # layer turns those into a retryable message for the client.
+                max_retries=0,
             )
             if self._bound_tools is not None:
                 client = client.bind_tools(self._bound_tools, **self._bound_kwargs)
@@ -89,7 +116,9 @@ class RotatingGeminiLLM(BaseChatModel):
         clone._bound_kwargs = kwargs
         return clone
 
-    def _generate(self, messages: list[BaseMessage], stop=None, run_manager=None, **kwargs) -> ChatResult:
+    def _try_each_key(self, call):
+        """Run `call(client)` against each key in turn, rotating past quota/denied
+        keys. Shared by _generate and _stream so both fail over identically."""
         if not self.api_keys:
             raise ValueError("No Gemini API keys configured (set GEMINI_API_KEY).")
         n = len(self.api_keys)
@@ -97,14 +126,44 @@ class RotatingGeminiLLM(BaseChatModel):
         for offset in range(n):
             idx = (self._next + offset) % n
             try:
-                msg = self._client(self.api_keys[idx]).invoke(messages, stop=stop, **kwargs)
+                result = call(self._client(self.api_keys[idx]))
                 self._next = (idx + 1) % n
-                return ChatResult(generations=[ChatGeneration(message=msg)])
+                return result
             except Exception as exc:
                 if not _is_failover_error(exc):
                     raise
                 last_exc = exc  # quota/denied key: try the next key
         raise last_exc  # every key exhausted
+
+    def _generate(self, messages: list[BaseMessage], stop=None, run_manager=None, **kwargs) -> ChatResult:
+        msg = self._try_each_key(lambda client: client.invoke(messages, stop=stop, **kwargs))
+        return ChatResult(generations=[ChatGeneration(message=msg)])
+
+    def _stream(self, messages: list[BaseMessage], stop=None, run_manager=None, **kwargs):
+        """
+        Real token-by-token streaming.
+
+        Without this, BaseChatModel's default streaming emits the entire answer
+        as a single chunk once generation has finished -- so a UI that "streams"
+        still shows nothing until the last token, and time-to-first-token equals
+        full response time (seconds). Async callers get this for free:
+        langchain_core's default _astream runs _stream in an executor.
+
+        Failover happens on the FIRST chunk only. Once tokens have been handed
+        to the caller, switching keys mid-answer would replay the reply from the
+        start, so a mid-stream failure propagates instead.
+        """
+        stream = self._try_each_key(
+            lambda client: _first_chunk_and_rest(client.stream(messages, stop=stop, **kwargs))
+        )
+        for message_chunk in stream:
+            # The _stream contract is ChatGenerationChunk, not the raw
+            # AIMessageChunk the underlying client yields. Passing the message
+            # straight through blows up downstream in _generate_with_cache.
+            chunk = ChatGenerationChunk(message=message_chunk)
+            if run_manager and chunk.text:
+                run_manager.on_llm_new_token(chunk.text, chunk=chunk)
+            yield chunk
 
     @property
     def _llm_type(self) -> str:

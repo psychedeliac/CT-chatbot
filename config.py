@@ -201,7 +201,14 @@ class AgentConfig:
     llm_provider: str = "gemini"
     # Alias rather than a pinned version: Google retires specific versions for
     # new API keys (gemini-2.5-flash now 404s), which breaks the app silently.
-    llm_model: str = "gemini-flash-latest"
+    # flash-lite over flash: measured 1.80s vs 5.70s for the same grounded
+    # answer, and generation is the largest single component of response time.
+    # The tradeoff is weaker instruction-following, which matters here because
+    # the compliance rules in system_prompt are instructions -- so this leans on
+    # the deterministic backstops (enforce_grounding_refusal, the PII guards)
+    # rather than on the model behaving. Set LLM_MODEL=gemini-flash-latest to
+    # revert if answer quality regresses.
+    llm_model: str = "gemini-flash-lite-latest"
     llm_temperature: float = 0.0
 
     # ── Embeddings ────────────────────────────────────────────────────────────
