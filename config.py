@@ -241,6 +241,19 @@ class AgentConfig:
     # positives reaching the LLM) since recall only starts dropping past 5.0.
     # Re-run the sweep if the embedding model, corpus, or eval set changes.
     rerank_score_threshold: float = 2.0
+    # Tokens of each candidate the cross-encoder actually reads. This is the
+    # single biggest lever on answer latency: reranking ~28 candidates costs
+    # ~3.0s at 512 tokens and ~0.8s at 128 on a 4-thread CPU, and it sits
+    # directly in the user's wait. Lowering it truncates each chunk, which can
+    # change scores -- validate any change with scripts/eval_retrieval.py
+    # rather than by eye. Measured 2026-07-22 with scripts/eval_retrieval.py
+    # over the 77-query eval set: accuracy/precision/recall all 1.00 and
+    # out-of-domain FP rate 0.00 at 512, 256, 192 AND 128 -- identical results,
+    # so the shorter window costs nothing measurable here. Chunks average ~860
+    # chars (~215 tokens) and carry their Contextual Retrieval prefix up front,
+    # which is why truncating the tail does not change what they score as.
+    # Re-run the eval if the chunker, corpus, or reranker model changes.
+    rerank_max_length: int = 128
 
     # ── Rerank rescue path (formality-bias mitigation) ────────────────────────
     # The cross-encoder scores informal/urgent phrasing (e.g. "i am behind on
@@ -327,6 +340,19 @@ class AgentConfig:
         "and is rated A+ with the Better Business Bureau.\n"
         "Do not inflate, round up, or add to these figures, and do not volunteer any other "
         "statistic about our track record, amounts resolved, or success rates.\n\n"
+
+        # Length is a latency setting, not just a style one: this assistant
+        # answers in a chat widget on a website, where every extra sentence is
+        # another second the person watches a cursor blink. Generation is the
+        # single largest component of response time (~60 tokens/sec), so an
+        # unbounded "comprehensive" answer costs 5s+ where a focused one costs
+        # under 2s. It also reads better in a narrow chat column.
+        "LENGTH — THIS IS A HARD RULE:\n"
+        "- Keep every reply under 110 words. Shorter is better.\n"
+        "- Lead with the direct answer in one or two sentences. No preamble.\n"
+        "- Use at most 3 short bullets, and only when genuinely listing options.\n"
+        "- Answer what was actually asked. Do not pre-empt follow-up questions or "
+        "explain adjacent topics -- invite them to ask instead.\n\n"
 
         "YOUR ROLE:\n"
         "You represent Corporate Turnaround. Your job is to genuinely help the person in front "
@@ -440,6 +466,8 @@ def load_config() -> AgentConfig:
         config.rerank_model = os.getenv("RERANK_MODEL")
     if os.getenv("RERANK_SCORE_THRESHOLD"):
         config.rerank_score_threshold = float(os.getenv("RERANK_SCORE_THRESHOLD"))
+    if os.getenv("RERANK_MAX_LENGTH"):
+        config.rerank_max_length = int(os.getenv("RERANK_MAX_LENGTH"))
     if os.getenv("RERANK_RESCUE_SCORE_THRESHOLD"):
         config.rerank_rescue_score_threshold = float(os.getenv("RERANK_RESCUE_SCORE_THRESHOLD"))
     if os.getenv("RERANK_RESCUE_RRF_RANK_CUTOFF"):

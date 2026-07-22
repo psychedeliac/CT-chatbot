@@ -168,28 +168,42 @@ class RetrievalPipeline:
     def _get_cross_encoder(self):
         if self._cross_encoder is None:
             from sentence_transformers import CrossEncoder
-            self._cross_encoder = CrossEncoder(self.config.rerank_model)
+            self._cross_encoder = CrossEncoder(
+                self.config.rerank_model, max_length=self.config.rerank_max_length
+            )
         return self._cross_encoder
 
-    def retrieve_with_trace(self, query: str, k: Optional[int] = None) -> RetrievalTrace:
+    def retrieve_with_trace(
+        self, query: str, k: Optional[int] = None, with_raw: bool = True
+    ) -> RetrievalTrace:
+        """
+        Full retrieval, optionally including per-retriever visibility.
+
+        with_raw=True populates chroma_raw/bm25_raw by querying Chroma and BM25
+        directly. Those fields exist for diagnostics and eval only -- the
+        ensemble below queries both retrievers again for the fusion that
+        actually produces the answer. Leaving them on in the live path made
+        every user question run two Chroma searches and two BM25 searches, of
+        which half were thrown away. retrieve() therefore passes False.
+        """
         k = k or self.config.rag_k
         trace = RetrievalTrace()
 
-        # Raw per-retriever visibility (for diagnostics; not used for fusion itself).
-        try:
-            trace.chroma_raw = self.chroma_store.similarity_search_with_score(
-                query, k=self.config.rag_candidate_pool_k
-            )
-        except Exception as e:
-            print(f"[Warning] Chroma search failed: {e}")
+        if with_raw:
+            try:
+                trace.chroma_raw = self.chroma_store.similarity_search_with_score(
+                    query, k=self.config.rag_candidate_pool_k
+                )
+            except Exception as e:
+                print(f"[Warning] Chroma search failed: {e}")
 
-        if self.bm25_retriever:
-            trace.bm25_raw = self.bm25_retriever.invoke(query)[: self.config.rag_candidate_pool_k]
-            query_tokens = preprocess_func(query)
-            trace.bm25_filtered = [
-                doc for doc in trace.bm25_raw
-                if not query_tokens or any(tok in doc.page_content.lower() for tok in query_tokens)
-            ]
+            if self.bm25_retriever:
+                trace.bm25_raw = self.bm25_retriever.invoke(query)[: self.config.rag_candidate_pool_k]
+                query_tokens = preprocess_func(query)
+                trace.bm25_filtered = [
+                    doc for doc in trace.bm25_raw
+                    if not query_tokens or any(tok in doc.page_content.lower() for tok in query_tokens)
+                ]
 
         # RRF fusion.
         trace.rrf_fused = self.ensemble.invoke(query)
@@ -237,8 +251,12 @@ class RetrievalPipeline:
 
     def retrieve(self, query: str, k: Optional[int] = None) -> list[RetrievedChunk]:
         """Thin wrapper around retrieve_with_trace().final — guarantees the
-        tool path and the diagnostic/eval path can never drift apart."""
-        return self.retrieve_with_trace(query, k=k).final
+        tool path and the diagnostic/eval path can never drift apart.
+
+        Skips the diagnostic-only raw pools: identical results, roughly half the
+        work. Ranking and gating are shared, so the two paths still cannot drift.
+        """
+        return self.retrieve_with_trace(query, k=k, with_raw=False).final
 
     def format_for_llm(self, chunks: list[RetrievedChunk]) -> str:
         """Format chunks as Title/Section/Score blocks for the LLM. Returns
