@@ -16,6 +16,7 @@ Fallback: pure-regex patterns used if presidio is not installed.
 """
 import re
 import warnings
+from functools import lru_cache
 from typing import List, Tuple
 
 from langchain_core.documents import Document
@@ -48,6 +49,20 @@ except ImportError:
     )
 
 
+@lru_cache(maxsize=1)
+def _shared_engines():
+    """
+    One AnalyzerEngine/AnonymizerEngine pair per process.
+
+    AnalyzerEngine() loads spaCy en_core_web_lg on construction (~2.5s). The
+    callers in core/utils.py build a PIIGuardrail per checkpoint, so a chat
+    turn paid that twice -- ~5s, more than the LLM and retrieval combined.
+    Neither engine holds per-config state (entities are passed to analyze()),
+    so they are shared rather than rebuilt.
+    """
+    return AnalyzerEngine(), AnonymizerEngine()
+
+
 class PIIGuardrail:
     """
     PII detection and anonymization engine.
@@ -59,8 +74,7 @@ class PIIGuardrail:
         self._entities = self._resolve_entities()
 
         if _PRESIDIO_AVAILABLE:
-            self._analyzer = AnalyzerEngine()
-            self._anonymizer = AnonymizerEngine()
+            self._analyzer, self._anonymizer = _shared_engines()
 
     # ── Entity Resolution ──────────────────────────────────────────────────────
 

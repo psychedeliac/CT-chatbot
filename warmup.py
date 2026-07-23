@@ -45,6 +45,15 @@ def build_shared_config():
         # lazily on the first real query, just slowly.
         print(f"[Warning] Retrieval warmup failed (first query will be slow): {exc}")
 
+    # Warm the PII engines too: the first sanitize_query() otherwise loads
+    # spaCy en_core_web_lg (~2.5s) inside a user's turn.
+    if config.pii.enabled:
+        from core.utils import apply_pii_query_guard
+        try:
+            apply_pii_query_guard("warmup", config)
+        except Exception as exc:
+            print(f"[Warning] PII warmup failed (first query will be slow): {exc}")
+
     return config
 
 
