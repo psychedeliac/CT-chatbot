@@ -88,8 +88,7 @@ class RagChat:
         caching keys on the longest shared prefix, so anything variable placed
         ahead of it would forfeit the discount and the prefill saving.
         """
-        prompt = self._config.inline_retrieval_contract + self._config.system_prompt
-        messages: list = [SystemMessage(content=prompt)]
+        messages: list = [SystemMessage(content=self._config.system_prompt)]
         for turn in history[-MAX_HISTORY_TURNS:]:
             messages.append(HumanMessage(content=turn.user))
             messages.append(AIMessage(content=turn.assistant))
@@ -108,12 +107,18 @@ class RagChat:
 
     async def stream(self, history: list[Turn], message: str):
         """
-        Yields ("delta", text) as tokens arrive, then ("done", Answer).
+        Yields, in order:
+          ("context", str)  the retrieved block, once, before generation
+          ("delta",   str)  answer tokens as they arrive
+          ("done",    Answer)
 
         Deltas are provisional: enforce_grounding can replace the whole answer,
         so the caller must render the final Answer over whatever it streamed.
+        The context event exists so a QA UI can show what was retrieved without
+        running retrieval a second time.
         """
         context, grounded = await self.retrieve(history, message)
+        yield "context", context
         messages = self._messages(history, message, context)
 
         parts: list[str] = []

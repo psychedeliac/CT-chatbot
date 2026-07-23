@@ -7761,5 +7761,35 @@
     "answer_policy": "deflect",
     "context_prefix": "Scope guard: Corporate Turnaround's services are not available in every state; availability must be confirmed with a representative.",
     "chunk_tokens": 109
+  },
+  {
+    "id": "qa2-ct-sba-loans-0",
+    "source_type": "qa_pair",
+    "topic": "ct-sba-loans",
+    "category": "ct-services",
+    "topic_tags": [
+      "ct-services",
+      "sba",
+      "bank-loans",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: Do you handle SBA loans and bank loan workouts?",
+    "section_heading": "Q: do you handle sba loans",
+    "variant_questions": [
+      "can you help with an sba loan im behind on",
+      "do you deal with sba 7a loan defaults",
+      "im in default on my sba loan can you negotiate with the bank",
+      "does corporate turnaround do bank loan workouts",
+      "my sba lender is threatening to foreclose can you help",
+      "i defaulted on a bank term loan and they want the collateral what do i do",
+      "the sba sent my loan to treasury what happens now"
+    ],
+    "chunk_text": "A: Yes — SBA loan defaults and bank loan workouts are one of the areas we specialize in. We negotiate directly with the lender on workout terms and loan modifications, with the goal of preventing foreclosure on business or personal assets pledged against the loan. Because an SBA or bank loan usually sits alongside a personal guarantee and other business debt, we look at the whole picture rather than that one loan on its own. What can actually be arranged depends on your lender, where the loan is in the default process, and what your business can afford — which is exactly what the free consultation works out. Call 1-800-889-0232.\n\nAlso asked: can you help with an sba loan im behind on\nAlso asked: do you deal with sba 7a loan defaults\nAlso asked: im in default on my sba loan can you negotiate with the bank\nAlso asked: does corporate turnaround do bank loan workouts\nAlso asked: my sba lender is threatening to foreclose can you help\nAlso asked: i defaulted on a bank term loan and they want the collateral what do i do\nAlso asked: the sba sent my loan to treasury what happens now",
+    "requires_disclaimer": false,
+    "authority": "canonical",
+    "answer_policy": "answer",
+    "context_prefix": "Corporate Turnaround's SBA and bank loan workout service: negotiating loan modifications and workout terms directly with lenders on defaulted SBA and business bank loans to prevent foreclosure on business or personal assets.",
+    "chunk_tokens": 272
   }
 ]

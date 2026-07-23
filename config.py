@@ -228,10 +228,6 @@ class AgentConfig:
     vector_store_backend: str = "chroma"
     vector_store_persist_dir: str = "./chroma_db"
 
-    # ── Tools (resolved by name from tool registry) ───────────────────────────
-    # Available names: "rag"
-    tools: list = field(default_factory=lambda: ["rag"])
-
     # ── RAG Settings ──────────────────────────────────────────────────────────
     rag_collection: str = "enriched_knowledge_base"
     rag_k: int = 5               # top-k documents returned to the agent per query
@@ -337,30 +333,19 @@ class AgentConfig:
     pii: PIIConfig = field(default_factory=PIIConfig)
 
     # ── Agent Persona ─────────────────────────────────────────────────────────
-    # Editable without touching any implementation file
-    # How the assistant is told to obtain grounded facts. This differs by
-    # answer path and NOTHING else does -- both contracts are prepended to the
-    # one system_prompt below, so persona, length, and compliance rules can
-    # never drift between the ReAct agent and the single-pass path.
+    # Editable without touching any implementation file.
     #
-    # Getting this wrong is not cosmetic: run the single-pass path with the
-    # tool contract and the model replies "I'll execute the `rag_search` tool
-    # first" to the user, because it is obeying an instruction about a tool
-    # that isn't there.
-    tool_retrieval_contract: str = (
-        "CRITICAL REQUIREMENT: For every query, you must begin by executing the 'rag_search' tool. "
-        "You are not permitted to answer any user questions using your own outside knowledge without first searching our knowledge base via 'rag_search' to retrieve grounded facts, no need to offer general information about these topics as well. \n"
-        "SEARCH QUERY REWRITING: 'rag_search' receives ONLY the query string you pass it -- it cannot see the conversation. So rewrite the user's message into a STANDALONE query that resolves pronouns and references to earlier turns. If they asked about merchant cash advances and then say 'how do I get out of it?', search for something like 'how to get out of a merchant cash advance', never the bare 'how do I get out of it?'.\n\n"
-    )
-    inline_retrieval_contract: str = (
+    # Retrieval has ALREADY run by the time this prompt is used (core/rag_chat.py
+    # searches, then calls the model once). Never write tool instructions in
+    # here: an earlier version ordered the model to "begin by executing the
+    # rag_search tool", and with no tool bound it answered users with "I'll
+    # execute the `rag_search` tool first".
+    system_prompt: str = (
+        "You are a knowledgeable and empathetic AI assistant representing Corporate Turnaround.\n"
         "CRITICAL REQUIREMENT: The knowledge base has ALREADY been searched for this message. The "
         "results are supplied to you under <retrieved_context>. Answer ONLY from what is there. You "
         "have no search tool and no way to search again -- never say you will search, never mention "
         "searching, tools, or context, just answer.\n\n"
-    )
-
-    system_prompt: str = (
-        "You are a knowledgeable and empathetic AI assistant representing Corporate Turnaround.\n"
         # Every figure here must be substantiable from corporateturnaround.com.
         # The previous wording claimed "over 18,000 businesses" and "more than
         # $800 million in debt" -- neither phrase appears anywhere on the live

@@ -4,7 +4,12 @@
     "source_type": "qa_pair",
     "topic": "mca-ucc-lien",
     "category": "mca-education",
-    "topic_tags": ["mca-education", "ucc-lien", "qa", "distressed-phrasing"],
+    "topic_tags": [
+      "mca-education",
+      "ucc-lien",
+      "qa",
+      "distressed-phrasing"
+    ],
     "title": "Q&A: What is a UCC-1 lien from an MCA lender and what does it mean for my business?",
     "section_heading": "Q: what even is a ucc-1 lien this mca company keeps talking about it",
     "variant_questions": [
@@ -24,7 +29,11 @@
     "source_type": "qa_pair",
     "topic": "biz-ucc-search",
     "category": "business-debt",
-    "topic_tags": ["business-debt", "ucc-lien", "qa"],
+    "topic_tags": [
+      "business-debt",
+      "ucc-lien",
+      "qa"
+    ],
     "title": "Q&A: How do I check whether a UCC lien has been filed against my business?",
     "section_heading": "Q: how do i see if there are any ucc filings on my business like a public record or something for free",
     "variant_questions": [
@@ -44,7 +53,12 @@
     "source_type": "qa_pair",
     "topic": "biz-credit-score",
     "category": "business-debt",
-    "topic_tags": ["business-debt", "credit-score", "qa", "distressed-phrasing"],
+    "topic_tags": [
+      "business-debt",
+      "credit-score",
+      "qa",
+      "distressed-phrasing"
+    ],
     "title": "Q&A: Will business debt or the restructuring program affect my personal credit?",
     "section_heading": "Q: does business debt show up on my personal credit report",
     "variant_questions": [
@@ -64,7 +78,12 @@
     "source_type": "qa_pair",
     "topic": "biz-personal-guar",
     "category": "business-debt",
-    "topic_tags": ["business-debt", "personal-guarantee", "qa", "distressed-phrasing"],
+    "topic_tags": [
+      "business-debt",
+      "personal-guarantee",
+      "qa",
+      "distressed-phrasing"
+    ],
     "title": "Q&A: I signed a personal guarantee on a business loan — what happens to me if the business can't pay?",
     "section_heading": "Q: i signed a personal guarantee what now if my business goes under",
     "variant_questions": [
@@ -84,7 +103,12 @@
     "source_type": "qa_pair",
     "topic": "biz-out-of-court",
     "category": "ct-process",
-    "topic_tags": ["ct-process", "out-of-court", "bankruptcy-alternative", "qa"],
+    "topic_tags": [
+      "ct-process",
+      "out-of-court",
+      "bankruptcy-alternative",
+      "qa"
+    ],
     "title": "Q&A: What is out-of-court debt restructuring and is it a real alternative to bankruptcy?",
     "section_heading": "Q: whats the alternative to bankruptcy i keep hearing about settling debt outside of court but idk what it means",
     "variant_questions": [
@@ -104,7 +128,12 @@
     "source_type": "qa_pair",
     "topic": "biz-vendor-debt",
     "category": "business-debt",
-    "topic_tags": ["business-debt", "vendor-debt", "qa", "distressed-phrasing"],
+    "topic_tags": [
+      "business-debt",
+      "vendor-debt",
+      "qa",
+      "distressed-phrasing"
+    ],
     "title": "Q&A: I can't pay my suppliers and vendors — can Corporate Turnaround help?",
     "section_heading": "Q: i owe like 5 different suppliers and cant pay any of them next week what do i do",
     "variant_questions": [
@@ -124,7 +153,11 @@
     "source_type": "qa_pair",
     "topic": "ct-creditor-calls",
     "category": "ct-process",
-    "topic_tags": ["ct-process", "creditor-calls", "qa"],
+    "topic_tags": [
+      "ct-process",
+      "creditor-calls",
+      "qa"
+    ],
     "title": "Q&A: What do I say to creditors who call me while I'm in the program?",
     "section_heading": "Q: creditors keep calling what's the official line to give them about the turnaround program",
     "variant_questions": [
@@ -144,7 +177,11 @@
     "source_type": "qa_pair",
     "topic": "ct-services-overview",
     "category": "ct-services",
-    "topic_tags": ["ct-services", "qa", "distressed-phrasing"],
+    "topic_tags": [
+      "ct-services",
+      "qa",
+      "distressed-phrasing"
+    ],
     "title": "Q&A: What can Corporate Turnaround actually do for my business? (services overview)",
     "section_heading": "Q: my business is in a massive hole and payments are killing us what can you guys actually do for me to fix this",
     "variant_questions": [
@@ -164,7 +201,12 @@
     "source_type": "qa_pair",
     "topic": "ct-mca-services-bridge",
     "category": "ct-services",
-    "topic_tags": ["ct-services", "mca-education", "qa", "distressed-phrasing"],
+    "topic_tags": [
+      "ct-services",
+      "mca-education",
+      "qa",
+      "distressed-phrasing"
+    ],
     "title": "Q&A: Can Corporate Turnaround help with my MCA daily payments specifically?",
     "section_heading": "Q: i got 3 mcas and they draining my account dry every day please what do i do right now",
     "variant_questions": [
@@ -184,7 +226,12 @@
     "source_type": "qa_pair",
     "topic": "ct-creditor-harassment-bridge",
     "category": "ct-services",
-    "topic_tags": ["ct-services", "creditor-harassment", "qa", "distressed-phrasing"],
+    "topic_tags": [
+      "ct-services",
+      "creditor-harassment",
+      "qa",
+      "distressed-phrasing"
+    ],
     "title": "Q&A: Can you actually stop collectors from calling and threatening me?",
     "section_heading": "Q: some collector keeps calling my cell like 10 times a day threatening to freeze my business account can you guys actually make them stop",
     "variant_questions": [
@@ -204,7 +251,11 @@
     "source_type": "qa_pair",
     "topic": "ct-company-facts",
     "category": "ct-company",
-    "topic_tags": ["ct-company", "credibility", "qa"],
+    "topic_tags": [
+      "ct-company",
+      "credibility",
+      "qa"
+    ],
     "title": "Q&A: What is Corporate Turnaround's track record?",
     "section_heading": "Q: why should i trust you guys whats your actual track record",
     "variant_questions": [
@@ -224,7 +275,11 @@
     "source_type": "qa_pair",
     "topic": "ct-guarantee",
     "category": "ct-company",
-    "topic_tags": ["ct-company", "guarantee", "qa"],
+    "topic_tags": [
+      "ct-company",
+      "guarantee",
+      "qa"
+    ],
     "title": "Q&A: Does Corporate Turnaround offer a guarantee?",
     "section_heading": "Q: do you have any kind of guarantee that this will actually work",
     "variant_questions": [
@@ -243,7 +298,10 @@
     "source_type": "qa_pair",
     "topic": "ct-how-it-works",
     "category": "ct-process",
-    "topic_tags": ["ct-process", "qa"],
+    "topic_tags": [
+      "ct-process",
+      "qa"
+    ],
     "title": "Q&A: How does the Corporate Turnaround program work step by step?",
     "section_heading": "Q: how does your program actually work like step by step what happens",
     "variant_questions": [
@@ -263,7 +321,11 @@
     "source_type": "qa_pair",
     "topic": "ct-who-its-for",
     "category": "ct-process",
-    "topic_tags": ["ct-process", "qualification", "qa"],
+    "topic_tags": [
+      "ct-process",
+      "qualification",
+      "qa"
+    ],
     "title": "Q&A: Is Corporate Turnaround right for my business? Who is the typical client?",
     "section_heading": "Q: is this for me like does my company actually need restructuring",
     "variant_questions": [
@@ -283,7 +345,11 @@
     "source_type": "qa_pair",
     "topic": "ct-why-not-diy",
     "category": "ct-process",
-    "topic_tags": ["ct-process", "diy-negotiation", "qa"],
+    "topic_tags": [
+      "ct-process",
+      "diy-negotiation",
+      "qa"
+    ],
     "title": "Q&A: Why use Corporate Turnaround instead of negotiating with creditors myself?",
     "section_heading": "Q: why should i use you instead of just negotiating with my creditors myself",
     "variant_questions": [
@@ -303,7 +369,10 @@
     "source_type": "qa_pair",
     "topic": "ct-not-a-loan",
     "category": "ct-process",
-    "topic_tags": ["ct-process", "qa"],
+    "topic_tags": [
+      "ct-process",
+      "qa"
+    ],
     "title": "Q&A: Is this a loan? Do you check credit or need collateral?",
     "section_heading": "Q: is your program a loan do you check my credit or need collateral",
     "variant_questions": [
@@ -323,7 +392,11 @@
     "source_type": "qa_pair",
     "topic": "ct-contact",
     "category": "ct-company",
-    "topic_tags": ["ct-company", "contact", "qa"],
+    "topic_tags": [
+      "ct-company",
+      "contact",
+      "qa"
+    ],
     "title": "Q&A: How do I contact Corporate Turnaround and where are you located?",
     "section_heading": "Q: where are you guys located and how do i reach you",
     "variant_questions": [
@@ -343,7 +416,11 @@
     "source_type": "qa_pair",
     "topic": "ct-consultation",
     "category": "ct-process",
-    "topic_tags": ["ct-process", "consultation", "qa"],
+    "topic_tags": [
+      "ct-process",
+      "consultation",
+      "qa"
+    ],
     "title": "Q&A: Is the free consultation confidential?",
     "section_heading": "Q: is that corporate turnaround free chat thing confidential i don't want my partners to know im calling",
     "variant_questions": [
@@ -362,7 +439,11 @@
     "source_type": "qa_pair",
     "topic": "scope-fees",
     "category": "ct-scope",
-    "topic_tags": ["scope-guard", "fees", "qa"],
+    "topic_tags": [
+      "scope-guard",
+      "fees",
+      "qa"
+    ],
     "title": "Q&A: How much does Corporate Turnaround cost? (fees)",
     "section_heading": "Q: how much does it cost me to restructure my debt what do you charge",
     "variant_questions": [
@@ -388,7 +469,12 @@
     "source_type": "qa_pair",
     "topic": "scope-savings-time",
     "category": "ct-scope",
-    "topic_tags": ["scope-guard", "savings", "timeframe", "qa"],
+    "topic_tags": [
+      "scope-guard",
+      "savings",
+      "timeframe",
+      "qa"
+    ],
     "title": "Q&A: How much will I save and how long does the program take?",
     "section_heading": "Q: how much will i save and how long will it take to complete the program",
     "variant_questions": [
@@ -410,7 +496,11 @@
     "source_type": "qa_pair",
     "topic": "scope-personal-debt",
     "category": "ct-scope",
-    "topic_tags": ["scope-guard", "personal-debt", "qa"],
+    "topic_tags": [
+      "scope-guard",
+      "personal-debt",
+      "qa"
+    ],
     "title": "Q&A: Can you help with personal credit cards, mortgages, or student loans?",
     "section_heading": "Q: can you help me with my personal credit card debt",
     "variant_questions": [
@@ -430,7 +520,11 @@
     "source_type": "qa_pair",
     "topic": "scope-personal-taxes",
     "category": "ct-scope",
-    "topic_tags": ["scope-guard", "taxes", "qa"],
+    "topic_tags": [
+      "scope-guard",
+      "taxes",
+      "qa"
+    ],
     "title": "Q&A: Can you do my taxes or help with personal income tax?",
     "section_heading": "Q: can you help me file my personal taxes",
     "variant_questions": [
@@ -450,7 +544,11 @@
     "source_type": "qa_pair",
     "topic": "scope-legal-advice",
     "category": "ct-scope",
-    "topic_tags": ["scope-guard", "legal-advice", "qa"],
+    "topic_tags": [
+      "scope-guard",
+      "legal-advice",
+      "qa"
+    ],
     "title": "Q&A: Is that legal? Can they do that? Should I sue? (legal questions)",
     "section_heading": "Q: is what this collector is doing even legal can i sue them",
     "variant_questions": [
@@ -470,7 +568,11 @@
     "source_type": "qa_pair",
     "topic": "scope-stop-paying",
     "category": "ct-scope",
-    "topic_tags": ["scope-guard", "compliance", "qa"],
+    "topic_tags": [
+      "scope-guard",
+      "compliance",
+      "qa"
+    ],
     "title": "Q&A: Should I just stop paying my creditors so you can settle for less?",
     "section_heading": "Q: should i just stop paying my creditors so you can settle for less",
     "variant_questions": [
@@ -489,7 +591,11 @@
     "source_type": "qa_pair",
     "topic": "scope-bankruptcy-advice",
     "category": "ct-scope",
-    "topic_tags": ["scope-guard", "bankruptcy", "qa"],
+    "topic_tags": [
+      "scope-guard",
+      "bankruptcy",
+      "qa"
+    ],
     "title": "Q&A: Should I file Chapter 7 or Chapter 11? (bankruptcy decision)",
     "section_heading": "Q: should i just file chapter 7 or chapter 11 for my business",
     "variant_questions": [
@@ -509,7 +615,11 @@
     "source_type": "qa_pair",
     "topic": "scope-availability",
     "category": "ct-scope",
-    "topic_tags": ["scope-guard", "availability", "qa"],
+    "topic_tags": [
+      "scope-guard",
+      "availability",
+      "qa"
+    ],
     "title": "Q&A: Are your services available in my state?",
     "section_heading": "Q: are you guys available in my state",
     "variant_questions": [
@@ -522,5 +632,34 @@
     "authority": "canonical",
     "answer_policy": "deflect",
     "context_prefix": "Scope guard: Corporate Turnaround's services are not available in every state; availability must be confirmed with a representative."
+  },
+  {
+    "id": "qa2-ct-sba-loans-0",
+    "source_type": "qa_pair",
+    "topic": "ct-sba-loans",
+    "category": "ct-services",
+    "topic_tags": [
+      "ct-services",
+      "sba",
+      "bank-loans",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: Do you handle SBA loans and bank loan workouts?",
+    "section_heading": "Q: do you handle sba loans",
+    "variant_questions": [
+      "can you help with an sba loan im behind on",
+      "do you deal with sba 7a loan defaults",
+      "im in default on my sba loan can you negotiate with the bank",
+      "does corporate turnaround do bank loan workouts",
+      "my sba lender is threatening to foreclose can you help",
+      "i defaulted on a bank term loan and they want the collateral what do i do",
+      "the sba sent my loan to treasury what happens now"
+    ],
+    "chunk_text": "A: Yes — SBA loan defaults and bank loan workouts are one of the areas we specialize in. We negotiate directly with the lender on workout terms and loan modifications, with the goal of preventing foreclosure on business or personal assets pledged against the loan. Because an SBA or bank loan usually sits alongside a personal guarantee and other business debt, we look at the whole picture rather than that one loan on its own. What can actually be arranged depends on your lender, where the loan is in the default process, and what your business can afford — which is exactly what the free consultation works out. Call 1-800-889-0232.",
+    "requires_disclaimer": false,
+    "authority": "canonical",
+    "answer_policy": "answer",
+    "context_prefix": "Corporate Turnaround's SBA and bank loan workout service: negotiating loan modifications and workout terms directly with lenders on defaulted SBA and business bank loans to prevent foreclosure on business or personal assets."
   }
 ]

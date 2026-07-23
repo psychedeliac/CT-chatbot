@@ -46,55 +46,21 @@ def enforce_grounding(grounded: bool, final_message: str) -> str:
     figure-free deflection (greeting, off-topic dodge, phone handoff).
     Anything longer is replaced with the canned refusal.
 
-    Both answer paths route through here -- the agent (which infers
-    `grounded` from its ToolMessages, see enforce_grounding_refusal) and the
-    single-pass path in core/rag_chat.py (which knows directly whether
-    retrieval returned anything). One implementation, so the public endpoint
-    can never enforce a weaker rule than the internal UIs.
+    This is a deterministic backstop for the prompt's grounding requirement:
+    the model is told to deflect rather than answer when retrieval comes back
+    empty, but instruction-following is not guaranteed. Every entrypoint (API,
+    Streamlit, CLI) answers through core/rag_chat.py, which knows directly
+    whether retrieval returned anything and calls this on every turn -- so the
+    public endpoint can never enforce a weaker rule than the internal UIs.
+
+    A short, figure-free deflection (greeting, off-topic dodge, phone handoff
+    -- exactly what the prompt asks for) is allowed through so users don't get
+    a robotic canned refusal; anything that looks like a substantive answer is
+    replaced.
     """
     if not grounded and not _is_safe_deflection(final_message):
         return REFUSAL_MESSAGE
     return final_message
-
-
-def enforce_grounding_refusal(response: dict, final_message: str) -> str:
-    """
-    Deterministic backstop for the system prompt's grounding requirement.
-
-    The LLM is instructed to always call rag_search first and to deflect (not
-    answer) when it finds nothing, but instruction-following isn't guaranteed.
-    Two ways a reply ends up ungrounded:
-      1. rag_search was called but every call came back empty (the model
-         answered a well-known question from parametric knowledge anyway); or
-      2. the model skipped rag_search entirely this turn -- the mandatory-tool
-         instruction is prompt-level, not enforced, so a model that ignores it
-         (or that a prompt injection talks out of it) produces an answer with
-         zero grounding. The previous version only caught case 1, so a
-         no-tool-call answer sailed straight through.
-    In both cases the reply is ungrounded. A short, figure-free deflection
-    (greeting, off-topic dodge, phone handoff -- exactly what the prompt asks
-    for) is allowed through so users don't get a robotic canned refusal;
-    anything that looks like a substantive answer is replaced.
-    """
-    from langchain_core.messages import ToolMessage
-    from rag.retriever import NO_RESULTS_MESSAGE
-
-    messages = response.get("messages", [])
-
-    last_human_idx = 0
-    for idx, msg in enumerate(messages):
-        if msg.type == "human" or (hasattr(msg, "role") and msg.role == "user"):
-            last_human_idx = idx
-
-    rag_results = [
-        msg.content for msg in messages[last_human_idx:]
-        if isinstance(msg, ToolMessage) and msg.name == "rag_search"
-    ]
-
-    # Grounded only if rag_search ran this turn AND at least one call returned
-    # real content. No tool call at all (empty list) is ungrounded too.
-    grounded = any(content != NO_RESULTS_MESSAGE for content in rag_results)
-    return enforce_grounding(grounded, final_message)
 
 
 def apply_pii_query_guard(text: str, config) -> str:

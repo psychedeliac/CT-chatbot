@@ -80,7 +80,7 @@ def test_stream_yields_deltas_then_final_answer():
         return [event async for event in chat.stream([], "Do you handle SBA loans?")]
 
     events = asyncio.run(drain())
-    assert [kind for kind, _ in events] == ["delta", "delta", "done"]
+    assert [kind for kind, _ in events] == ["context", "delta", "delta", "done"]
     final = events[-1][1]
     assert isinstance(final, Answer)
     assert final.text == "We negotiate SBA workouts."

@@ -22,24 +22,23 @@ load_dotenv()
 @lru_cache(maxsize=1)
 def build_shared_config():
     """
-    Build config and register the RAG tool ONCE per server process.
+    Build config and the shared RetrievalPipeline ONCE per server process.
 
-    Only the retrieval machinery is shared. The agent itself stays per-session
-    in app.py, because its MemorySaver holds conversation state -- sharing that
-    would leak one user's conversation into another's.
+    Retrieval is the expensive part (BM25 index + cross-encoder) and holds no
+    per-conversation state, so every entrypoint shares one copy. Conversation
+    history lives with whoever owns the session (api/chat.py, app.py).
     """
     from config import load_config
-    from main import _setup_rag_tool, MODE_PRESETS
+    from main import _setup_rag_tool
 
     config = load_config()
-    config.tools = MODE_PRESETS["rag"]["tools"]
     _setup_rag_tool(config)
 
     # Warm the cross-encoder. RetrievalPipeline loads it lazily on first rerank
     # (rag/pipeline.py:_get_cross_encoder), ~14s. One throwaway query pays it here.
-    from core.tools.registry import get_tools
+    from rag.pipeline import get_pipeline
     try:
-        get_tools(["rag"])[0].invoke({"query": "warmup"})
+        get_pipeline(config).retrieve("warmup")
     except Exception as exc:
         # A failed warmup must not take the app down -- the model still loads
         # lazily on the first real query, just slowly.

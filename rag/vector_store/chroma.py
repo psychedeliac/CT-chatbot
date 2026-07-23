@@ -47,6 +47,15 @@ class ChromaBackend(VectorStoreBackend):
         from langchain_chroma import Chroma
         import time
 
+        # Canonical records are split like everything else, deliberately. They
+        # carry a block of "Also asked:" phrasings for recall, and a long one
+        # splits off into its own chunk. That chunk looks like dead weight --
+        # questions, no answer -- but it is the vector informal phrasings
+        # actually match on: keeping canonical records whole instead dropped
+        # eval accuracy from 1.00 to 0.97 (2 informal in-domain queries went
+        # unanswered), because all-MiniLM-L6-v2 truncates at 256 tokens and
+        # the variants fall outside the window. Measured 2026-07-23; re-check
+        # with scripts/eval_retrieval.py before changing this.
         print(f"  -> Splitting {len(documents)} documents into chunks "
               f"(chunk_size={self.chunk_size}, overlap={self.chunk_overlap})...")
         chunks = self._splitter.split_documents(documents)

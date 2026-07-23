@@ -7,25 +7,26 @@ Usage:
 All agent parameters are driven by config.py (or env var overrides).
 No implementation code needs to change between deployments.
 """
-import os
 import argparse
+import asyncio
+import os
 
 from dotenv import load_dotenv
 load_dotenv()
 
 from config import load_config, AgentConfig
-from core.factory import AgentFactory
-from core.tools.registry import register_tool
 
 
-# ── RAG Tool Setup ─────────────────────────────────────────────────────────────
+# ── Retrieval Setup ────────────────────────────────────────────────────────────
 
 def _setup_rag_tool(config: AgentConfig) -> None:
     """
-    Build the RAG retriever tool and register it in the tool registry.
+    Build the shared RetrievalPipeline for this config, paying its one-time
+    cost (BM25 index over the whole corpus) before anyone is waiting on it.
     Warns (but does not crash) if the collection hasn't been indexed yet.
+
+    Named for history: every entrypoint calls it via warmup.build_shared_config.
     """
-    from rag.retriever import build_rag_tool
     from rag.vector_store.chroma import ChromaBackend
     from rag.embeddings.google import GoogleEmbeddingProvider
     from rag.embeddings.huggingface import HuggingFaceEmbeddingProvider
@@ -63,16 +64,9 @@ def _setup_rag_tool(config: AgentConfig) -> None:
             f"    python scripts/ingest.py --loader enriched\n"
         )
 
-    rag_tool = build_rag_tool(config)
-    register_tool("rag", rag_tool)
-    print(f"[RAG] Tool registered for collection: '{config.rag_collection}'")
-
-
-MODE_PRESETS = {
-    "rag": {
-        "tools": ["rag"],
-    }
-}
+    from rag.pipeline import get_pipeline
+    get_pipeline(config)
+    print(f"[RAG] Retrieval ready for collection: '{config.rag_collection}'")
 
 
 # ── Main ───────────────────────────────────────────────────────────────────────
@@ -87,18 +81,10 @@ Quick start:
   python main.py
         """,
     )
-    parser.add_argument(
-        "--mode",
-        choices=["rag"],
-        default="rag",
-        help="Agent mode (default: rag)",
-    )
-    args = parser.parse_args()
+    parser.parse_args()
 
     # ── Config ─────────────────────────────────────────────────────────────────
     config = load_config()
-    preset = MODE_PRESETS[args.mode]
-    config.tools = preset["tools"]
 
     # Verify appropriate API key is set
     if config.llm_provider == "gemini":
@@ -113,19 +99,18 @@ Quick start:
     print(f"\n{'='*62}")
     print(f"  Plug-and-Play RAG Agent")
     print(f"{'='*62}")
-    print(f"  Mode:       {args.mode}")
     print(f"  LLM:        {config.llm_provider} / {config.llm_model}")
-    print(f"  Tools:      {config.tools}")
     print(f"  PII Guard:  {'enabled (' + config.pii.strategy + ')' if config.pii.enabled else 'disabled'}")
     print(f"{'='*62}\n")
 
-    # ── RAG tool setup (if needed) ─────────────────────────────────────────────
-    if "rag" in config.tools:
-        _setup_rag_tool(config)
+    # ── Retrieval setup ────────────────────────────────────────────────────────
+    _setup_rag_tool(config)
 
-    # ── Build agent ────────────────────────────────────────────────────────────
+    # ── Build the answer engine ────────────────────────────────────────────────
     print("Initializing agent...")
-    agent_executor = AgentFactory.create(config)
+    from core.rag_chat import RagChat, Turn
+    chat = RagChat(config)
+    history: list[Turn] = []
     print("Agent ready! Type 'exit' or 'quit' to stop.\n" + "-" * 50)
 
     # ── Interactive loop ───────────────────────────────────────────────────────
@@ -143,31 +128,20 @@ Quick start:
             from core.utils import apply_pii_query_guard, apply_pii_response_guard
             user_input = apply_pii_query_guard(user_input, config)
 
-            from core.utils import build_user_query, wrap_user_query
-            session_config = {"configurable": {"thread_id": "session_1"}}
-            response = agent_executor.invoke(
-                {"messages": [("user", wrap_user_query(build_user_query(user_input)))]},
-                config=session_config,
-            )
+            # Single-pass RAG (core/rag_chat.py). Prefix cleanup and the
+            # grounding backstop run inside it, so the CLI, Streamlit and the
+            # public API share one implementation of them.
+            async def answer_turn() -> str:
+                async for kind, payload in chat.stream(history, user_input):
+                    if kind == "done":
+                        return payload.text
+                return ""
 
-            # Extract final message text
-            final_message = response["messages"][-1].content
-            if isinstance(final_message, list):
-                final_message = "".join(
-                    part["text"] if isinstance(part, dict) and "text" in part else str(part)
-                    for part in final_message
-                )
-
-            # Clean RAG prefix noise
-            from core.utils import clean_response_prefix, enforce_grounding_refusal
-            final_message = clean_response_prefix(final_message)
-
-            # Deterministic backstop: if rag_search found nothing this turn,
-            # don't trust the LLM to have actually refused as instructed.
-            final_message = enforce_grounding_refusal(response, final_message)
+            final_message = asyncio.run(answer_turn())
 
             # Checkpoint 3: Output-time PII scrub
             final_message = apply_pii_response_guard(final_message, config)
+            history.append(Turn(user=user_input, assistant=final_message))
 
             print(f"\nAgent: {final_message}")
 

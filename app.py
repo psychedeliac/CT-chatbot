@@ -1,3 +1,4 @@
+import asyncio
 import streamlit as st
 import os
 import sys
@@ -11,10 +12,9 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 load_dotenv()
 
-from core.factory import AgentFactory
+from core.rag_chat import RagChat, Turn
 from rag.retriever import NO_RESULTS_MESSAGE
 from warmup import build_shared_config
-from langchain_core.messages import ToolMessage
 
 # Streamlit App Setup
 st.set_page_config(
@@ -28,13 +28,17 @@ st.set_page_config(
 if "messages" not in st.session_state:
     st.session_state.messages = []
 if "thread_id" not in st.session_state:
-    # Distinct per browser session. The previous hard-coded "session_streamlit"
-    # was only safe by accident -- it relied on each session happening to build
-    # its own MemorySaver.
+    # Distinct per browser session, for logging and QA exports.
     st.session_state.thread_id = f"session_{uuid.uuid4().hex[:12]}"
-if "agent_executor" not in st.session_state:
+if "history" not in st.session_state:
+    # Conversation state for RagChat. It is stateless by design, so history
+    # lives with the session that owns it -- here, the browser tab.
+    st.session_state.history = []
+if "chat" not in st.session_state:
     config = build_shared_config()
-    st.session_state.agent_executor = AgentFactory.create(config)
+    # RagChat holds no per-conversation state, so this could be process-global;
+    # it stays in session_state so "Clear Conversation" can rebuild it.
+    st.session_state.chat = RagChat(config)
     st.session_state.config = config
 
 # Helper to parse chunks
@@ -152,8 +156,7 @@ with st.sidebar:
     st.markdown("---")
     if st.button("Clear Conversation & Reset Agent"):
         st.session_state.messages = []
-        if "agent_executor" in st.session_state:
-            del st.session_state.agent_executor
+        st.session_state.history = []
         st.rerun()
 
 st.title("💬 Chat Assistant")
@@ -202,68 +205,42 @@ if user_input := (st.chat_input("Ask a question about business debt or Corporate
     with st.chat_message("user"):
         st.write(user_input)
         
-    # Query LangGraph Agent
+    # Answer via the single-pass RAG path (core/rag_chat.py) -- the same engine
+    # the public API runs, so what QA sees here is what visitors get.
     with st.chat_message("assistant"):
         with st.spinner("Looking into that for you..."):
-            from core.utils import (
-                build_user_query,
-                wrap_user_query,
-                apply_pii_query_guard,
-                apply_pii_response_guard,
-            )
+            from core.utils import apply_pii_query_guard, apply_pii_response_guard
 
             config = st.session_state.config
             scrubbed_input = apply_pii_query_guard(user_input, config)
 
-            session_config = {"configurable": {"thread_id": st.session_state.thread_id}}
-
-            # Stream rather than invoke. The work takes the same ~6-10s either
-            # way, but invoke() showed a blank spinner for all of it; streaming
-            # puts words on screen at ~2s.
-            #
-            # Tokens go into a placeholder, NOT straight to the page, because
-            # the post-processing chain below (clean_response_prefix ->
-            # enforce_grounding_refusal -> PII guard) can rewrite or wholly
-            # replace the text. Streaming it directly would let an ungrounded
-            # answer finish typing out before the backstop swapped it.
-            #
-            # stream_mode=["messages", "values"] gives both: "messages" for
-            # per-token chunks, "values" for the full final state that the
-            # chunk-parsing and grounding backstop below still need.
+            # Tokens go into a placeholder, NOT straight to the page: the
+            # grounding backstop inside RagChat can replace the answer
+            # wholesale, and streaming raw tokens to the page would let an
+            # ungrounded answer finish typing before the swap.
             stream_placeholder = st.empty()
-            streamed_text = ""
-            response = None
-            try:
-                for mode, payload in st.session_state.agent_executor.stream(
-                    {"messages": [("user", wrap_user_query(build_user_query(scrubbed_input)))]},
-                    config=session_config,
-                    stream_mode=["messages", "values"],
-                ):
-                    if mode == "values":
-                        response = payload
-                    elif mode == "messages":
-                        chunk, _metadata = payload
-                        # Only the assistant's prose. Tool-call argument chunks
-                        # and ToolMessage results must not reach the user.
-                        if isinstance(chunk, ToolMessage) or not chunk.content:
-                            continue
-                        text = chunk.content
-                        if isinstance(text, list):
-                            text = "".join(
-                                part["text"] if isinstance(part, dict) and "text" in part else str(part)
-                                for part in text
-                            )
-                        streamed_text += text
-                        stream_placeholder.markdown(escape_dollars(streamed_text))
+            turn = {"streamed": "", "context": "", "answer": ""}
 
-                if response is None:
-                    raise RuntimeError("Agent stream ended without emitting final state")
+            async def run_turn():
+                async for kind, payload in st.session_state.chat.stream(
+                    st.session_state.history, scrubbed_input
+                ):
+                    if kind == "context":
+                        turn["context"] = payload
+                    elif kind == "delta":
+                        turn["streamed"] += payload
+                        stream_placeholder.markdown(escape_dollars(turn["streamed"]))
+                    else:
+                        turn["answer"] = payload.text
+
+            try:
+                asyncio.run(run_turn())
             except Exception as exc:
                 stream_placeholder.empty()
                 # A raw Streamlit traceback is a poor thing to show someone who
                 # came here about their debt -- and it leaks internals. Log the
                 # detail server-side, show a calm, actionable message.
-                print(f"[Error] Agent invocation failed: {type(exc).__name__}: {exc}")
+                print(f"[Error] Turn failed: {type(exc).__name__}: {exc}")
                 error_text = (
                     "Sorry — something went wrong on our end while looking that up. "
                     "Please try again in a moment, or call us at 1-800-889-0232 and "
@@ -275,43 +252,22 @@ if user_input := (st.chat_input("Ask a question about business debt or Corporate
                 )
                 st.stop()
 
-            # Find RAG Tool Messages from the CURRENT turn only (and deduplicate them)
+            # What retrieval actually returned this turn, deduplicated.
             retrieved_chunks = []
             seen_texts = set()
-            
-            # Find the last human message index
-            last_human_idx = 0
-            for idx, msg in enumerate(response["messages"]):
-                if msg.type == "human" or (hasattr(msg, "role") and msg.role == "user"):
-                    last_human_idx = idx
-                    
-            # Scan messages after the last user input
-            for msg in response["messages"][last_human_idx:]:
-                if isinstance(msg, ToolMessage) and msg.name == "rag_search":
-                    for chunk in parse_retrieved_chunks(msg.content):
-                        clean_text = chunk["text"].strip()
-                        if clean_text not in seen_texts:
-                            seen_texts.add(clean_text)
-                            retrieved_chunks.append(chunk)
-            
-            # Get final AI message
-            final_message = response["messages"][-1].content
-            if isinstance(final_message, list):
-                final_message = "".join(
-                    part["text"] if isinstance(part, dict) and "text" in part else str(part)
-                    for part in final_message
-                )
-            
-            # Clean RAG prefix noise
-            from core.utils import clean_response_prefix, enforce_grounding_refusal
-            final_message = clean_response_prefix(final_message)
-
-            # Deterministic backstop: if rag_search found nothing this turn,
-            # don't trust the LLM to have actually refused as instructed.
-            final_message = enforce_grounding_refusal(response, final_message)
+            for chunk in parse_retrieved_chunks(turn["context"]):
+                clean_text = chunk["text"].strip()
+                if clean_text not in seen_texts:
+                    seen_texts.add(clean_text)
+                    retrieved_chunks.append(chunk)
 
             # Checkpoint 3: Output-time PII scrub (parity with main.py).
-            final_message = apply_pii_response_guard(final_message, config)
+            # clean_response_prefix and the grounding backstop already ran
+            # inside RagChat.
+            final_message = apply_pii_response_guard(turn["answer"], config)
+            st.session_state.history.append(
+                Turn(user=scrubbed_input, assistant=final_message)
+            )
 
             # Overwrite the streamed text with the post-processed version. Same
             # content in the common case; the swap only shows when a guard

@@ -188,9 +188,11 @@ class ChatService:
 
         answer = ""
         async for kind, payload in self._chat.stream(history, scrubbed):
+            # The retrieved context is for QA UIs only -- it must never be
+            # streamed to a public caller.
             if kind == "delta":
                 yield {"type": "delta", "text": payload}
-            else:
+            elif kind == "done":
                 answer = apply_pii_response_guard(payload.text, self._config)
 
         self._append_turn(session_id, scrubbed, answer)

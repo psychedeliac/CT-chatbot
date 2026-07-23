@@ -153,17 +153,6 @@ def test_kb_v2_has_no_untagged_records() -> None:
     assert len(guards) >= 8, "scope-guard records missing from KB"
 
 
-def _agent_response(rag_content: str | None) -> dict:
-    """Minimal fake LangGraph response: one human turn, optionally one
-    rag_search ToolMessage with the given content."""
-    from langchain_core.messages import HumanMessage, ToolMessage
-
-    messages: list = [HumanMessage(content="hi")]
-    if rag_content is not None:
-        messages.append(ToolMessage(content=rag_content, name="rag_search", tool_call_id="t1"))
-    return {"messages": messages}
-
-
 def test_grounding_backstop_lets_safe_deflections_through() -> None:
     """
     The old backstop replaced EVERY empty-retrieval reply with one canned
@@ -171,14 +160,12 @@ def test_grounding_backstop_lets_safe_deflections_through() -> None:
     robotic 'not in my knowledge base' answer. Short, figure-free deflections
     (greeting, dodge, phone handoff) must survive.
     """
-    from core.utils import enforce_grounding_refusal
-    from rag.retriever import NO_RESULTS_MESSAGE
+    from core.utils import enforce_grounding
 
-    response = _agent_response(NO_RESULTS_MESSAGE)
     greeting = "Hi there! I'm Corporate Turnaround's AI assistant. What's going on with your business?"
     handoff = "I don't have the specifics on that, but our team does -- call us at 1-800-889-0232, the consultation is free."
-    assert enforce_grounding_refusal(response, greeting) == greeting
-    assert enforce_grounding_refusal(response, handoff) == handoff
+    assert enforce_grounding(False, greeting) == greeting
+    assert enforce_grounding(False, handoff) == handoff
 
 
 def test_grounding_backstop_allows_the_prompt_supplied_company_figures() -> None:
@@ -189,36 +176,31 @@ def test_grounding_backstop_allows_the_prompt_supplied_company_figures() -> None
     claims -- so plain 'hello' came back as the canned refusal, on the most
     common first message a widget ever gets.
     """
-    from core.utils import enforce_grounding_refusal
-    from rag.retriever import NO_RESULTS_MESSAGE
+    from core.utils import enforce_grounding
 
-    response = _agent_response(NO_RESULTS_MESSAGE)
     greeting = (
         "Hello! I am an AI assistant for Corporate Turnaround. Since 1998 we have worked with "
         "over 10,000 small business owners. What's going on with your business?"
     )
-    assert enforce_grounding_refusal(response, greeting) == greeting
+    assert enforce_grounding(False, greeting) == greeting
 
 
 def test_grounding_backstop_blocks_ungrounded_answers() -> None:
     """A substantive parametric answer (figures, or essay-length) after empty
     retrieval must still be replaced with the canned refusal."""
-    from core.utils import REFUSAL_MESSAGE, enforce_grounding_refusal
-    from rag.retriever import NO_RESULTS_MESSAGE
+    from core.utils import REFUSAL_MESSAGE, enforce_grounding
 
-    response = _agent_response(NO_RESULTS_MESSAGE)
     with_figures = "Debt settlement typically saves 40% and takes 24 months."
     essay = "Islam is a monotheistic religion. " * 30
-    assert enforce_grounding_refusal(response, with_figures) == REFUSAL_MESSAGE
-    assert enforce_grounding_refusal(response, essay) == REFUSAL_MESSAGE
+    assert enforce_grounding(False, with_figures) == REFUSAL_MESSAGE
+    assert enforce_grounding(False, essay) == REFUSAL_MESSAGE
 
 
 def test_grounding_backstop_noop_when_retrieval_succeeded() -> None:
-    from core.utils import enforce_grounding_refusal
+    from core.utils import enforce_grounding
 
-    response = _agent_response("<retrieved_context>real content</retrieved_context>")
     answer = "We negotiate with your creditors within a budget you can afford, saving you $10,000."
-    assert enforce_grounding_refusal(response, answer) == answer
+    assert enforce_grounding(True, answer) == answer
 
 
 def test_refusal_message_never_mentions_knowledge_base() -> None:

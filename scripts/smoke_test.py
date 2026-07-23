@@ -10,13 +10,13 @@ print("Running import smoke test...\n")
 try:
     from config import load_config, PIIConfig
     from core.llms import GeminiProvider, LLMProvider
-    from core.factory import AgentFactory
-    from core.tools.registry import get_tools, register_tool
+    from core.factory import build_llm
+    from core.rag_chat import RagChat, build_retrieval_query
     from rag.embeddings.base import EmbeddingProvider
     from rag.embeddings.google import GoogleEmbeddingProvider
     from rag.vector_store.base import VectorStoreBackend
     from rag.vector_store.chroma import ChromaBackend
-    from rag.retriever import build_rag_tool
+    from rag.pipeline import RetrievalPipeline, get_pipeline
     from data_handlers.base_loader import BaseDataLoader
     from data_handlers.ct_loader import CorporateTurnaroundLoader
     from data_handlers.registry import get_loader
@@ -30,7 +30,7 @@ try:
     cfg = load_config()
     assert cfg.llm_provider in ["gemini", "groq"]
     assert isinstance(cfg.pii.enabled, bool)
-    print(f"OK  Config: llm={cfg.llm_provider}/{cfg.llm_model}, tools={cfg.tools}, pii_enabled={cfg.pii.enabled}")
+    print(f"OK  Config: llm={cfg.llm_provider}/{cfg.llm_model}, pii_enabled={cfg.pii.enabled}")
 except Exception as e:
     print(f"FAIL  Config: {e}")
     sys.exit(1)
@@ -61,13 +61,17 @@ except Exception as e:
     print(f"FAIL  Loader registry: {e}")
     sys.exit(1)
 
-# Test 4: Tool registry
+# Test 4: Follow-up queries are standalone (no router LLM call does it now)
 try:
-    tools = get_tools(["web_search", "url_reader"])
-    assert len(tools) == 2
-    print(f"OK  Tool registry: resolved {len(tools)} tools (web_search, url_reader)")
+    from core.rag_chat import Turn
+    query = build_retrieval_query(
+        [Turn(user="Do you help with merchant cash advances?", assistant="Yes...")],
+        "how do I get out of it?",
+    )
+    assert "merchant cash advances" in query, query
+    print(f"OK  Retrieval query rewriting: follow-up resolved to '{query[:60]}...'")
 except Exception as e:
-    print(f"FAIL  Tool registry: {e}")
+    print(f"FAIL  Retrieval query rewriting: {e}")
     sys.exit(1)
 
 # Test 5: LLM provider hierarchy
