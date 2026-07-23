@@ -98,6 +98,24 @@ class RetrievalTrace:
     final: list[RetrievedChunk] = field(default_factory=list)
 
 
+_SHARED_PIPELINES: dict[tuple, "RetrievalPipeline"] = {}
+
+
+def get_pipeline(config: AgentConfig) -> "RetrievalPipeline":
+    """
+    The process-wide RetrievalPipeline for a collection.
+
+    Construction builds the BM25 index over the whole corpus (~20s) and holds
+    it in memory, so the LangChain tool and the single-pass chat path must not
+    each build their own. Keyed by collection + persist dir: two genuinely
+    different corpora still get separate pipelines.
+    """
+    key = (config.vector_store_persist_dir, config.rag_collection)
+    if key not in _SHARED_PIPELINES:
+        _SHARED_PIPELINES[key] = RetrievalPipeline(config)
+    return _SHARED_PIPELINES[key]
+
+
 class RetrievalPipeline:
     """
     Builds and owns the Chroma store, BM25 retriever, RRF ensemble, and

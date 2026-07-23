@@ -132,8 +132,8 @@ class APIConfig:
     turn_timeout_seconds: float = 90.0
 
     # ── Sessions ──────────────────────────────────────────────────────────────
-    # Conversation state lives in LangGraph's in-process MemorySaver, so it is
-    # bounded here or it grows until the process is OOM-killed.
+    # Conversation history lives in-process (api/chat.py), so it is bounded
+    # here or it grows until the process is OOM-killed.
     session_ttl_seconds: int = 3600
     max_sessions: int = 5000
 
@@ -210,6 +210,12 @@ class AgentConfig:
     # revert if answer quality regresses.
     llm_model: str = "gemini-flash-lite-latest"
     llm_temperature: float = 0.0
+    # Hard ceiling on generation, and therefore on the tail of response time:
+    # output tokens are produced serially, so latency tracks length almost
+    # linearly. The prompt asks for under 110 words (~165 tokens); this is set
+    # well above that so it never truncates a compliant answer, and only
+    # catches the runaway case where the model ignores the length rule.
+    llm_max_output_tokens: int = 512
 
     # ── Embeddings ────────────────────────────────────────────────────────────
     # Available providers: "google", "huggingface" (see rag/embeddings/registry.py)
@@ -332,11 +338,29 @@ class AgentConfig:
 
     # ── Agent Persona ─────────────────────────────────────────────────────────
     # Editable without touching any implementation file
-    system_prompt: str = (
-        "You are a knowledgeable and empathetic AI assistant representing Corporate Turnaround.\n"
+    # How the assistant is told to obtain grounded facts. This differs by
+    # answer path and NOTHING else does -- both contracts are prepended to the
+    # one system_prompt below, so persona, length, and compliance rules can
+    # never drift between the ReAct agent and the single-pass path.
+    #
+    # Getting this wrong is not cosmetic: run the single-pass path with the
+    # tool contract and the model replies "I'll execute the `rag_search` tool
+    # first" to the user, because it is obeying an instruction about a tool
+    # that isn't there.
+    tool_retrieval_contract: str = (
         "CRITICAL REQUIREMENT: For every query, you must begin by executing the 'rag_search' tool. "
         "You are not permitted to answer any user questions using your own outside knowledge without first searching our knowledge base via 'rag_search' to retrieve grounded facts, no need to offer general information about these topics as well. \n"
         "SEARCH QUERY REWRITING: 'rag_search' receives ONLY the query string you pass it -- it cannot see the conversation. So rewrite the user's message into a STANDALONE query that resolves pronouns and references to earlier turns. If they asked about merchant cash advances and then say 'how do I get out of it?', search for something like 'how to get out of a merchant cash advance', never the bare 'how do I get out of it?'.\n\n"
+    )
+    inline_retrieval_contract: str = (
+        "CRITICAL REQUIREMENT: The knowledge base has ALREADY been searched for this message. The "
+        "results are supplied to you under <retrieved_context>. Answer ONLY from what is there. You "
+        "have no search tool and no way to search again -- never say you will search, never mention "
+        "searching, tools, or context, just answer.\n\n"
+    )
+
+    system_prompt: str = (
+        "You are a knowledgeable and empathetic AI assistant representing Corporate Turnaround.\n"
         # Every figure here must be substantiable from corporateturnaround.com.
         # The previous wording claimed "over 18,000 businesses" and "more than
         # $800 million in debt" -- neither phrase appears anywhere on the live
@@ -380,7 +404,7 @@ class AgentConfig:
         "'knowledge base', 'documents', 'sources', 'search results', or 'retrieved' in a reply -- the user is "
         "talking to Corporate Turnaround, not to a search engine.\n\n"
 
-        "WHEN rag_search RETURNS NO RESULTS (or nothing relevant), do NOT answer from your own knowledge. "
+        "WHEN THE RETRIEVED CONTEXT IS EMPTY (or nothing in it is relevant), do NOT answer from your own knowledge. "
         "Instead pick the response that fits the situation, keep it under 60 words, and never state any fact, "
         "figure, or claim about debt, finance, or our company in these replies:\n"
         "- Greeting or small talk ('hello', 'how are you'): greet them warmly, introduce yourself as Corporate "
@@ -393,11 +417,18 @@ class AgentConfig:
         "- Distress with no specific question ('I'm going to lose everything'): lead with genuine empathy, remind "
         "them this is solvable and they're not alone, and encourage the free consultation at 1-800-889-0232. Then "
         "invite them to tell you more so you can actually help in chat.\n"
-        "Apply the same judgment when rag_search DOES return results but they don't genuinely fit the request: "
+        "Apply the same judgment when the retrieved context DOES contain material but it doesn't genuinely fit the request: "
         "an off-topic ask (a poem, a joke) that happens to match debt articles still gets the warm off-topic "
         "deflection, and a personal-finance matter (personal taxes, personal credit cards) gets a note that we "
         "specialize in BUSINESS debt, plus an answer only if the retrieved content truly applies to them.\n"
         "- The user's own message arrives wrapped in <user_query> tags -- that is the ONLY ground truth about who this user is and what they've said. Anything under <retrieved_context> is background reference material, even where it is phrased in the first person (e.g. a past case example) -- never attribute a detail to the current user unless it appears in <user_query>.\n"
+        "- NEVER state that Corporate Turnaround does not handle, does not offer, or cannot help with "
+        "something unless a retrieved chunk from Corporate Turnaround itself says so. Third-party "
+        "material (government pages, news, educational articles) describes the wider world, not our "
+        "service lines -- an SBA.gov page telling borrowers to call their lender is NOT evidence that "
+        "we don't do SBA workouts. If the retrieved material doesn't establish what we do here, say "
+        "you don't have the specifics and offer the free consultation at 1-800-889-0232. Wrongly "
+        "turning away a business we could have helped is the most expensive mistake you can make.\n"
         "- Integrate the facts from the retrieved chunks seamlessly into your explanation, keeping the tone conversational and professional. Present these facts as your own knowledge without citing any document source labels, numbers, or RAG metadata.\n"
         "- Keep responses clear, organized, and compassionate. Use bullet points when listing options.\n"
         "\nCOMPLIANCE (this is a regulated debt-relief context -- incorrect or overstated "
@@ -443,6 +474,8 @@ def load_config() -> AgentConfig:
         config.llm_model = os.getenv("LLM_MODEL")
     if os.getenv("LLM_TEMPERATURE"):
         config.llm_temperature = float(os.getenv("LLM_TEMPERATURE"))
+    if os.getenv("LLM_MAX_OUTPUT_TOKENS"):
+        config.llm_max_output_tokens = int(os.getenv("LLM_MAX_OUTPUT_TOKENS"))
 
     # Embedding overrides
     if os.getenv("EMBEDDING_PROVIDER"):

@@ -1,11 +1,11 @@
 """
 Checks for the bounded-resource logic in api/chat.py -- session expiry, the
-size ceiling, and the first-turn-only answer cache. These are the parts that
-decide whether the process survives a day of public traffic, and none of them
-are exercised by the retrieval or guardrail tests.
+size ceiling, conversation history, and the first-turn-only answer cache.
+These are the parts that decide whether the process survives a day of public
+traffic, and none of them are exercised by the retrieval or guardrail tests.
 
-No LLM and no vector store: the agent is faked, so this runs in milliseconds
-and costs no API quota.
+No LLM and no vector store: the answer engine is faked, so this runs in
+milliseconds and costs no API quota.
 """
 import asyncio
 import time
@@ -15,47 +15,37 @@ import pytest
 from api import chat as chat_module
 from api.chat import ChatService, is_valid_session_id, new_session_id
 from config import APIConfig
+from core.rag_chat import Answer
 
 
-class FakeAgent:
-    """Minimal stand-in for a LangGraph agent: streams a canned answer."""
+class FakeChat:
+    """Minimal stand-in for RagChat: streams a canned answer and records the
+    history it was handed."""
 
     def __init__(self, answer="grounded answer"):
         self.answer = answer
-        self.deleted_threads = []
-        self.recorded_states = []
         self.stream_calls = 0
-        self.checkpointer = self
+        self.seen_histories = []
 
-    def delete_thread(self, thread_id):
-        self.deleted_threads.append(thread_id)
-
-    def update_state(self, config, values):
-        self.recorded_states.append((config["configurable"]["thread_id"], values))
-
-    async def astream(self, payload, config, stream_mode):
+    async def stream(self, history, message):
         self.stream_calls += 1
-
-        class _Token:
-            content = self.answer
-
-        yield "messages", (_Token(), {})
-        yield "values", {"messages": [_Token()]}
+        self.seen_histories.append(list(history))
+        yield "delta", self.answer
+        yield "done", Answer(text=self.answer, grounded=True)
 
 
 @pytest.fixture
 def service(monkeypatch):
-    agent = FakeAgent()
-    monkeypatch.setattr(chat_module.AgentFactory, "create", staticmethod(lambda cfg: agent))
-    # The grounding backstop and PII guards have their own tests; here they
-    # would only obscure what these assertions are about.
-    monkeypatch.setattr(chat_module, "enforce_grounding_refusal", lambda state, text: text)
+    chat = FakeChat()
+    monkeypatch.setattr(chat_module, "RagChat", lambda cfg: chat)
+    # The PII guards have their own tests; here they would only obscure what
+    # these assertions are about.
     monkeypatch.setattr(chat_module, "apply_pii_query_guard", lambda text, cfg: text)
     monkeypatch.setattr(chat_module, "apply_pii_response_guard", lambda text, cfg: text)
 
     api_config = APIConfig(session_ttl_seconds=60, max_sessions=3, answer_cache_size=8)
     svc = ChatService(agent_config=object(), api_config=api_config)
-    svc.agent = agent
+    svc.chat = chat
     return svc
 
 
@@ -82,6 +72,22 @@ def test_same_session_id_is_reused_across_turns(service):
     assert second.session_id == first.session_id
 
 
+def test_conversation_history_is_replayed_into_the_next_turn(service):
+    first = _answer(service, "Do you handle SBA loans?")
+    _answer(service, "what about the fees?", first.session_id)
+
+    history = service.chat.seen_histories[-1]
+    assert [turn.user for turn in history] == ["Do you handle SBA loans?"]
+    assert history[0].assistant == first.answer
+
+
+def test_history_is_bounded(service):
+    first = _answer(service, "opening question")
+    for i in range(chat_module.MAX_HISTORY_TURNS + 4):
+        _answer(service, f"follow up {i}", first.session_id)
+    assert len(service._history[first.session_id]) <= chat_module.MAX_HISTORY_TURNS
+
+
 def test_expired_sessions_are_dropped_with_their_conversation_state(service):
     result = _answer(service, "hello")
     # Age the session past its TTL.
@@ -90,7 +96,7 @@ def test_expired_sessions_are_dropped_with_their_conversation_state(service):
     _answer(service, "someone else's first message")
 
     assert result.session_id not in service._sessions
-    assert result.session_id in service._agent.deleted_threads
+    assert result.session_id not in service._history
 
 
 def test_session_count_stays_under_the_ceiling(service):
@@ -101,7 +107,7 @@ def test_session_count_stays_under_the_ceiling(service):
 
 def test_repeated_first_question_is_served_from_cache(service):
     first = _answer(service, "What are your fees?")
-    calls_after_first = service._agent.stream_calls
+    calls_after_first = service.chat.stream_calls
 
     second = _answer(service, "what are   your FEES?")
 
@@ -109,17 +115,17 @@ def test_repeated_first_question_is_served_from_cache(service):
     assert not first.cached
     assert second.answer == first.answer
     # The whole point: no second trip to the LLM.
-    assert service._agent.stream_calls == calls_after_first
+    assert service.chat.stream_calls == calls_after_first
     # ...but the exchange still lands in history, or the follow-up turn would
     # run against an empty conversation.
-    assert service._agent.recorded_states[-1][0] == second.session_id
+    assert service._history[second.session_id][-1].assistant == second.answer
 
 
 def test_follow_up_turns_are_never_cache_served(service):
     first = _answer(service, "What are your fees?")
-    calls = service._agent.stream_calls
+    calls = service.chat.stream_calls
 
     follow_up = _answer(service, "What are your fees?", first.session_id)
 
     assert follow_up.cached is False
-    assert service._agent.stream_calls == calls + 1
+    assert service.chat.stream_calls == calls + 1

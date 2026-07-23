@@ -12,6 +12,16 @@ REFUSAL_MESSAGE = (
 # ("call us at 1-800-889-0232") isn't mistaken for a factual claim.
 ALLOWED_PHONE_PATTERN = re.compile(r"1?[-.\s]?800[-.\s]?(?:889[-.\s]?0232|411[-.\s]?1113)")
 
+# The two figures config.system_prompt supplies to the model as approved,
+# substantiable company facts (verified against corporateturnaround.com).
+# Stripped before the digit check for the same reason as the phone numbers:
+# the model volunteers them when introducing itself, and without this every
+# greeting -- the single most common first message on a chat widget -- tripped
+# the "ungrounded figure" rule and was replaced by the canned refusal. Any
+# OTHER number in an ungrounded reply (a percentage, a dollar amount, a
+# timeframe) still triggers it, which is the case this guard exists for.
+ALLOWED_FIGURE_PATTERN = re.compile(r"\b(?:1998|10[,.]?000)\b")
+
 # An ungrounded reply is acceptable only as a short deflection: a greeting,
 # an off-topic dodge, or a phone handoff. Substantive parametric answers are
 # longer and/or carry figures. 600 chars is ~100 words -- comfortably above
@@ -22,12 +32,29 @@ MAX_DEFLECTION_CHARS = 600
 def _is_safe_deflection(text: str) -> bool:
     """True if an ungrounded reply looks like a deflection (greeting, dodge,
     phone handoff) rather than a substantive answer smuggling in facts."""
-    stripped = ALLOWED_PHONE_PATTERN.sub("", text)
+    stripped = ALLOWED_FIGURE_PATTERN.sub("", ALLOWED_PHONE_PATTERN.sub("", text))
     if len(stripped) > MAX_DEFLECTION_CHARS:
         return False
     # Any remaining digit means a figure the KB didn't ground (a year, a
     # dollar amount, a percentage, an unapproved phone number).
     return not re.search(r"\d", stripped)
+
+
+def enforce_grounding(grounded: bool, final_message: str) -> str:
+    """
+    The grounding rule itself: an ungrounded reply may only be a short,
+    figure-free deflection (greeting, off-topic dodge, phone handoff).
+    Anything longer is replaced with the canned refusal.
+
+    Both answer paths route through here -- the agent (which infers
+    `grounded` from its ToolMessages, see enforce_grounding_refusal) and the
+    single-pass path in core/rag_chat.py (which knows directly whether
+    retrieval returned anything). One implementation, so the public endpoint
+    can never enforce a weaker rule than the internal UIs.
+    """
+    if not grounded and not _is_safe_deflection(final_message):
+        return REFUSAL_MESSAGE
+    return final_message
 
 
 def enforce_grounding_refusal(response: dict, final_message: str) -> str:
@@ -67,10 +94,7 @@ def enforce_grounding_refusal(response: dict, final_message: str) -> str:
     # Grounded only if rag_search ran this turn AND at least one call returned
     # real content. No tool call at all (empty list) is ungrounded too.
     grounded = any(content != NO_RESULTS_MESSAGE for content in rag_results)
-    if not grounded and not _is_safe_deflection(final_message):
-        return REFUSAL_MESSAGE
-
-    return final_message
+    return enforce_grounding(grounded, final_message)
 
 
 def apply_pii_query_guard(text: str, config) -> str:

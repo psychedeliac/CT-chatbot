@@ -9,7 +9,7 @@ LangChain adapter over it.
 from langchain.tools import tool
 
 from config import AgentConfig
-from rag.pipeline import RetrievalPipeline
+from rag.pipeline import get_pipeline
 
 NO_RESULTS_MESSAGE = "No relevant information found in the knowledge base for this query."
 
@@ -22,7 +22,7 @@ def build_rag_tool(config: AgentConfig):
     The returned tool is registered under the name "rag" in the tool
     registry by the caller (main.py or scripts/ingest.py).
     """
-    pipeline = RetrievalPipeline(config)
+    pipeline = get_pipeline(config)
 
     @tool
     def rag_search(query: str) -> str:

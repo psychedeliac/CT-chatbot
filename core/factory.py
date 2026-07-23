@@ -22,6 +22,23 @@ LLM_PROVIDERS: dict[str, type[LLMProvider]] = {
 }
 
 
+def build_llm(config: AgentConfig):
+    """Resolve config.llm_provider to a ready chat model. The single place
+    provider selection happens -- the ReAct agent and the single-pass path in
+    core/rag_chat.py both come through here."""
+    provider_cls = LLM_PROVIDERS.get(config.llm_provider)
+    if not provider_cls:
+        raise ValueError(
+            f"Unknown LLM provider: '{config.llm_provider}'. "
+            f"Available: {list(LLM_PROVIDERS.keys())}"
+        )
+    kwargs = {"model_name": config.llm_model, "temperature": config.llm_temperature}
+    # Only Gemini takes a cap today; passing it blindly would break Groq.
+    if provider_cls is GeminiProvider:
+        kwargs["max_output_tokens"] = config.llm_max_output_tokens
+    return provider_cls(**kwargs).get_llm()
+
+
 class AgentFactory:
 
     @staticmethod
@@ -35,16 +52,7 @@ class AgentFactory:
           3. Wire into a LangGraph agent with in-memory conversation state
         """
         # 1. Resolve LLM
-        provider_cls = LLM_PROVIDERS.get(config.llm_provider)
-        if not provider_cls:
-            raise ValueError(
-                f"Unknown LLM provider: '{config.llm_provider}'. "
-                f"Available: {list(LLM_PROVIDERS.keys())}"
-            )
-        llm = provider_cls(
-            model_name=config.llm_model,
-            temperature=config.llm_temperature,
-        ).get_llm()
+        llm = build_llm(config)
 
         # 2. Assemble tools
         tools = get_tools(config.tools)
@@ -59,7 +67,7 @@ class AgentFactory:
         agent_executor = create_react_agent(
             llm,
             tools=tools,
-            prompt=config.system_prompt,
+            prompt=config.tool_retrieval_contract + config.system_prompt,
             checkpointer=memory,
         )
         return agent_executor

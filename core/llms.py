@@ -79,6 +79,7 @@ class RotatingGeminiLLM(BaseChatModel):
     model_name: str = "gemini-2.5-flash"
     temperature: float = 0.0
     api_keys: list[str] = []
+    max_output_tokens: Optional[int] = None
 
     _bound_tools: Optional[Sequence] = PrivateAttr(default=None)
     _bound_kwargs: dict = PrivateAttr(default_factory=dict)
@@ -92,6 +93,7 @@ class RotatingGeminiLLM(BaseChatModel):
                 model=self.model_name,
                 temperature=self.temperature,
                 google_api_key=key,
+                max_output_tokens=self.max_output_tokens,
                 # The SDK defaults to 6 retries with backoff. On a 429 that
                 # means sitting on an exhausted key for tens of seconds before
                 # this class even gets the chance to rotate -- a measured 47s
@@ -111,6 +113,7 @@ class RotatingGeminiLLM(BaseChatModel):
             model_name=self.model_name,
             temperature=self.temperature,
             api_keys=self.api_keys,
+            max_output_tokens=self.max_output_tokens,
         )
         clone._bound_tools = tools
         clone._bound_kwargs = kwargs
@@ -190,9 +193,11 @@ class LLMProvider(ABC):
 class GeminiProvider(LLMProvider):
     """Google Gemini via langchain-google-genai. Requires GEMINI_API_KEY."""
 
-    def __init__(self, model_name: str = "gemini-2.5-flash", temperature: float = 0.0):
+    def __init__(self, model_name: str = "gemini-2.5-flash", temperature: float = 0.0,
+                 max_output_tokens: Optional[int] = None):
         self.model_name = model_name
         self.temperature = temperature
+        self.max_output_tokens = max_output_tokens
 
     def get_llm(self) -> BaseChatModel:
         keys = _gemini_api_keys()
@@ -205,6 +210,7 @@ class GeminiProvider(LLMProvider):
             model_name=self.model_name,
             temperature=self.temperature,
             api_keys=keys,
+            max_output_tokens=self.max_output_tokens,
         )
 
 

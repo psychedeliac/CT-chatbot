@@ -181,6 +181,25 @@ def test_grounding_backstop_lets_safe_deflections_through() -> None:
     assert enforce_grounding_refusal(response, handoff) == handoff
 
 
+def test_grounding_backstop_allows_the_prompt_supplied_company_figures() -> None:
+    """
+    The model introduces itself with the two figures config.system_prompt
+    hands it ("since 1998", "over 10,000 small business owners"). Those are
+    approved and substantiated, but the digit check read them as ungrounded
+    claims -- so plain 'hello' came back as the canned refusal, on the most
+    common first message a widget ever gets.
+    """
+    from core.utils import enforce_grounding_refusal
+    from rag.retriever import NO_RESULTS_MESSAGE
+
+    response = _agent_response(NO_RESULTS_MESSAGE)
+    greeting = (
+        "Hello! I am an AI assistant for Corporate Turnaround. Since 1998 we have worked with "
+        "over 10,000 small business owners. What's going on with your business?"
+    )
+    assert enforce_grounding_refusal(response, greeting) == greeting
+
+
 def test_grounding_backstop_blocks_ungrounded_answers() -> None:
     """A substantive parametric answer (figures, or essay-length) after empty
     retrieval must still be replaced with the canned refusal."""

@@ -1,12 +1,12 @@
 """
-api/chat.py — one shared agent serving many concurrent conversations.
+api/chat.py — one shared answer engine serving many concurrent conversations.
 
-The Streamlit app builds an agent per browser session because each carries its
-own MemorySaver. That does not scale: N users means N agents. Here a SINGLE
-agent is shared and conversations are separated by LangGraph's thread_id, which
-is what the checkpointer is designed for. Everything that must be bounded for a
-public deployment is bounded here: live sessions, cached answers, concurrent
-LLM turns, and per-turn wall time.
+The Streamlit app builds a ReAct agent per browser session because each
+carries its own MemorySaver. That does not scale: N users means N agents.
+Here a SINGLE stateless RagChat is shared and conversations are separated by
+session id, with history held in this module. Everything that must be bounded
+for a public deployment is bounded here: live sessions, history length,
+cached answers, concurrent LLM turns, and per-turn wall time.
 
 The post-processing chain (prefix clean -> grounding backstop -> PII scrub) is
 the same one core/utils.py exposes to the CLI and Streamlit. It is not
@@ -21,18 +21,10 @@ import time
 from dataclasses import dataclass
 
 from cachetools import TTLCache
-from langchain_core.messages import AIMessage, HumanMessage, ToolMessage
 
 from config import APIConfig
-from core.factory import AgentFactory
-from core.utils import (
-    apply_pii_query_guard,
-    apply_pii_response_guard,
-    build_user_query,
-    clean_response_prefix,
-    enforce_grounding_refusal,
-    wrap_user_query,
-)
+from core.rag_chat import MAX_HISTORY_TURNS, RagChat, Turn
+from core.utils import apply_pii_query_guard, apply_pii_response_guard
 
 logger = logging.getLogger(__name__)
 
@@ -71,30 +63,32 @@ def is_valid_session_id(value: str) -> bool:
 
 
 def _cache_key(message: str) -> str:
-    """Normalized so 'What are your fees?' and 'what are your fees' share an entry."""
+    """Normalized so 'What are your fees?' and 'what are your fees' share an entry.
+
+    Exact-match by design. Embedding-similarity ("semantic") caching is the
+    usual next step and was measured here first: with all-MiniLM-L6-v2,
+    "Do you settle business debt?" vs "Do you settle personal credit card
+    debt?" scores 0.757 while the genuine paraphrase "How much does your
+    program cost?" vs "How much do your services cost?" scores only 0.590.
+    No threshold separates them, so a semantic cache in this corpus would
+    serve the personal-debt answer to a business-debt question -- the one
+    distinction this assistant may never blur. Revisit only with an embedding
+    model that ranks those pairs correctly.
+    """
     normalized = " ".join(message.lower().split())
     return hashlib.sha256(normalized.encode("utf-8")).hexdigest()
-
-
-def _flatten(content) -> str:
-    """LLM content is either a string or a list of content parts."""
-    if isinstance(content, list):
-        return "".join(
-            part["text"] if isinstance(part, dict) and "text" in part else str(part)
-            for part in content
-        )
-    return content or ""
 
 
 class ChatService:
     def __init__(self, agent_config, api_config: APIConfig):
         self._config = agent_config
         self._api = api_config
-        self._agent = AgentFactory.create(agent_config)
+        self._chat = RagChat(agent_config)
         # session_id -> last-seen monotonic timestamp. Plain dict rather than a
-        # TTLCache because expiry has to run a side effect (dropping the thread
-        # from the checkpointer), and cachetools evicts silently.
+        # TTLCache because expiry has to run a side effect (dropping the
+        # conversation's history), and cachetools evicts silently.
         self._sessions: dict[str, float] = {}
+        self._history: dict[str, list[Turn]] = {}
         self._answers = TTLCache(
             maxsize=api_config.answer_cache_size,
             ttl=api_config.answer_cache_ttl_seconds,
@@ -107,7 +101,7 @@ class ChatService:
         """
         Drop expired sessions and their conversation state.
 
-        Without this, MemorySaver accumulates every conversation the process has
+        Without this, _history accumulates every conversation the process has
         ever seen and the container is eventually OOM-killed.
 
         ponytail: O(n) scan per turn over at most max_sessions entries (5k by
@@ -128,19 +122,7 @@ class ChatService:
 
         for session_id in expired:
             self._sessions.pop(session_id, None)
-            self._forget_thread(session_id)
-
-    def _forget_thread(self, session_id: str) -> None:
-        checkpointer = getattr(self._agent, "checkpointer", None)
-        delete_thread = getattr(checkpointer, "delete_thread", None)
-        if delete_thread is None:
-            return
-        try:
-            delete_thread(session_id)
-        except Exception:
-            # Losing a delete leaks one conversation's memory; failing the
-            # request over it would be worse.
-            logger.warning("Failed to drop thread state", exc_info=True)
+            self._history.pop(session_id, None)
 
     def _resolve_session(self, session_id: str | None) -> tuple[str, bool]:
         """Returns (session_id, is_new). Unknown or expired ids get a fresh one."""
@@ -202,35 +184,26 @@ class ChatService:
 
     async def _generate(self, session_id: str, message: str, is_new: bool):
         scrubbed = apply_pii_query_guard(message, self._config)
-        thread_config = {"configurable": {"thread_id": session_id}}
-        payload = {"messages": [("user", wrap_user_query(build_user_query(scrubbed)))]}
+        history = self._history.get(session_id, [])
 
-        final_state = None
-        async for mode, chunk in self._agent.astream(
-            payload, config=thread_config, stream_mode=["messages", "values"]
-        ):
-            if mode == "values":
-                final_state = chunk
-                continue
-            token, _metadata = chunk
-            # Tool-call arguments and raw retrieval output must never reach a
-            # user; only the assistant's own prose is streamed.
-            if isinstance(token, ToolMessage) or not token.content:
-                continue
-            yield {"type": "delta", "text": _flatten(token.content)}
+        answer = ""
+        async for kind, payload in self._chat.stream(history, scrubbed):
+            if kind == "delta":
+                yield {"type": "delta", "text": payload}
+            else:
+                answer = apply_pii_response_guard(payload.text, self._config)
 
-        if final_state is None:
-            raise RuntimeError("Agent stream ended without emitting final state")
-
-        answer = self._finalize(final_state)
+        self._append_turn(session_id, scrubbed, answer)
         if is_new:
             self._store_answer(message, answer)
         yield {"type": "done", "answer": answer, "cached": False}
 
-    def _finalize(self, state: dict) -> str:
-        answer = clean_response_prefix(_flatten(state["messages"][-1].content))
-        answer = enforce_grounding_refusal(state, answer)
-        return apply_pii_response_guard(answer, self._config)
+    def _append_turn(self, session_id: str, message: str, answer: str) -> None:
+        """Record the exchange, bounded to the window RagChat replays -- older
+        turns are dead weight in memory that would never reach a prompt."""
+        turns = self._history.setdefault(session_id, [])
+        turns.append(Turn(user=message, assistant=answer))
+        del turns[:-MAX_HISTORY_TURNS]
 
     async def answer(self, message: str, session_id: str | None) -> TurnResult:
         """Non-streaming turn. Drains stream_turn so both paths share one implementation."""
@@ -261,16 +234,10 @@ class ChatService:
 
     def _record_cached_turn(self, session_id: str, message: str, answer: str) -> None:
         """
-        Write a cache-served exchange into the conversation state anyway.
+        Write a cache-served exchange into the conversation history anyway.
 
         Skipping this is a real bug, not an optimization: the next turn would
         run against an empty history and the model would have no idea what the
         user just asked about.
         """
-        try:
-            self._agent.update_state(
-                {"configurable": {"thread_id": session_id}},
-                {"messages": [HumanMessage(content=message), AIMessage(content=answer)]},
-            )
-        except Exception:
-            logger.warning("Could not record cached turn in history", exc_info=True)
+        self._append_turn(session_id, message, answer)
