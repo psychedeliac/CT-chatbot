@@ -99,3 +99,50 @@ def test_every_key_exhausted_surfaces_the_last_quota_error():
     with pytest.raises(Exception, match="RESOURCE_EXHAUSTED"):
         list(_llm(clients)._stream([]))
     assert all(c.stream_calls == 1 for c in clients)
+
+
+class FlakyOnceClient:
+    """Fails with a transient (non-failover) error on the first call, then
+    succeeds -- simulates a one-off network blip rather than an exhausted key."""
+
+    def __init__(self, chunks=("ok",)):
+        self.chunks = chunks
+        self.calls = 0
+
+    def stream(self, messages, stop=None, **kwargs):
+        self.calls += 1
+        if self.calls == 1:
+            raise ConnectionError("temporary network blip")
+        return (_Chunk(c) for c in self.chunks)
+
+    def invoke(self, messages, stop=None, **kwargs):
+        self.calls += 1
+        if self.calls == 1:
+            raise ConnectionError("temporary network blip")
+        return _Chunk("".join(self.chunks))
+
+
+def test_transient_error_gets_one_retry_on_the_same_key_before_failing_over():
+    flaky = FlakyOnceClient(chunks=("recovered",))
+    spare = FakeClient()
+
+    text = "".join(c.text for c in _llm([flaky, spare])._stream([]))
+
+    assert text == "recovered"
+    assert flaky.calls == 2       # failed once, retried, succeeded
+    assert spare.stream_calls == 0  # never had to fail over
+
+
+def test_transient_error_surviving_the_retry_still_raises():
+    class AlwaysBroken:
+        def __init__(self):
+            self.calls = 0
+
+        def stream(self, messages, stop=None, **kwargs):
+            self.calls += 1
+            raise ConnectionError("still down")
+
+    broken = AlwaysBroken()
+    with pytest.raises(ConnectionError):
+        list(_llm([broken])._stream([]))
+    assert broken.calls == 2  # one original attempt + one retry, then give up

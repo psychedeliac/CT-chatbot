@@ -9,8 +9,10 @@ so the first real request never pays the ~40s BM25 + cross-encoder cost.
 import logging
 import json
 import os
+import statistics
 import time
 import uuid
+from collections import deque
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
@@ -97,6 +99,15 @@ class ChatRequest(BaseModel):
         return None
 
 
+# Rolling window of the last _METRICS_WINDOW /api/chat* calls: latency + status.
+# Answers "is the API lagging or erroring right now" without grepping logs by
+# hand -- the cheap alternative to standing up Prometheus for one process.
+_METRICS_WINDOW = 200
+_chat_latencies_ms: deque = deque(maxlen=_METRICS_WINDOW)
+_chat_statuses: deque = deque(maxlen=_METRICS_WINDOW)
+_CHAT_PATHS = {"/api/chat", "/api/chat/stream"}
+
+
 @app.middleware("http")
 async def observability(request: Request, call_next):
     """Request id, latency log, and baseline security headers on every response."""
@@ -109,6 +120,9 @@ async def observability(request: Request, call_next):
         "%s %s -> %s in %.0fms [%s]",
         request.method, request.url.path, response.status_code, elapsed_ms, request_id,
     )
+    if request.url.path in _CHAT_PATHS:
+        _chat_latencies_ms.append(elapsed_ms)
+        _chat_statuses.append(response.status_code)
     response.headers["X-Request-ID"] = request_id
     response.headers["X-Content-Type-Options"] = "nosniff"
     response.headers["Referrer-Policy"] = "no-referrer"
@@ -154,11 +168,49 @@ async def on_unhandled(request: Request, exc: Exception):
 
 @app.get("/health")
 async def health(request: Request):
-    """Liveness + readiness. Reports unhealthy until retrieval finished warming."""
+    """Liveness + readiness.
+
+    Reports unhealthy while retrieval is still warming, and again once the
+    last few LLM turns have all failed -- an exhausted key pool or a Gemini
+    outage previously left this endpoint reporting "ok" while every real chat
+    turn 500'd, which is exactly the state a load balancer needs to see as
+    down.
+    """
     service = getattr(app.state, "chat", None)
     if service is None:
         return _error(request, 503, "warming")
+    if service.is_llm_degraded:
+        return JSONResponse(
+            status_code=503,
+            content={
+                "status": "degraded",
+                "active_sessions": service.active_sessions,
+                "reason": "LLM layer failing",
+            },
+        )
     return {"status": "ok", "active_sessions": service.active_sessions}
+
+
+@app.get("/metrics")
+async def metrics(request: Request):
+    """Rolling p50/p95 latency and error rate over the last _METRICS_WINDOW
+    /api/chat* calls. Not a Prometheus scrape format -- just enough to answer
+    "is the API lagging or erroring right now" without reading logs."""
+    latencies = list(_chat_latencies_ms)
+    if not latencies:
+        return {"sample_size": 0}
+    statuses = list(_chat_statuses)
+    error_count = sum(1 for status in statuses if status >= 400)
+    if len(latencies) >= 2:
+        percentiles = statistics.quantiles(latencies, n=100)
+        p50, p95 = percentiles[49], percentiles[94]
+    else:
+        p50 = p95 = latencies[0]
+    return {
+        "sample_size": len(latencies),
+        "latency_ms": {"p50": round(p50, 1), "p95": round(p95, 1), "max": round(max(latencies), 1)},
+        "error_rate": round(error_count / len(statuses), 3),
+    }
 
 
 @app.post("/api/chat")

@@ -121,21 +121,35 @@ class RotatingGeminiLLM(BaseChatModel):
 
     def _try_each_key(self, call):
         """Run `call(client)` against each key in turn, rotating past quota/denied
-        keys. Shared by _generate and _stream so both fail over identically."""
+        keys. Shared by _generate and _stream so both fail over identically.
+
+        A non-failover error (a transient network blip, a Google-side 500 --
+        not a quota/permission issue) gets ONE immediate retry on the same key
+        before surfacing. max_retries=0 on the client deliberately skips the
+        SDK's 6-retry backoff (tens of seconds on a 429), but that same setting
+        was also eating one-off transient errors with zero retries at all. A
+        single retry with no backoff catches the blip without reintroducing
+        the latency the SDK's own retries were removed for.
+        """
         if not self.api_keys:
             raise ValueError("No Gemini API keys configured (set GEMINI_API_KEY).")
         n = len(self.api_keys)
         last_exc: Exception = RuntimeError("no Gemini API keys available")
         for offset in range(n):
             idx = (self._next + offset) % n
-            try:
-                result = call(self._client(self.api_keys[idx]))
-                self._next = (idx + 1) % n
-                return result
-            except Exception as exc:
-                if not _is_failover_error(exc):
-                    raise
-                last_exc = exc  # quota/denied key: try the next key
+            client = self._client(self.api_keys[idx])
+            for attempt in range(2):
+                try:
+                    result = call(client)
+                    self._next = (idx + 1) % n
+                    return result
+                except Exception as exc:
+                    if _is_failover_error(exc):
+                        last_exc = exc  # quota/denied key: try the next key
+                        break
+                    if attempt == 0:
+                        continue  # one fast, no-backoff retry on the same key
+                    raise  # retried once and still failing: not a key problem
         raise last_exc  # every key exhausted
 
     def _generate(self, messages: list[BaseMessage], stop=None, run_manager=None, **kwargs) -> ChatResult:

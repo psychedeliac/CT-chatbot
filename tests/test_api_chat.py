@@ -129,3 +129,55 @@ def test_follow_up_turns_are_never_cache_served(service):
 
     assert follow_up.cached is False
     assert service.chat.stream_calls == calls + 1
+
+
+# ── LLM health tracking (drives /health) ────────────────────────────────────
+
+class FailingChat:
+    """Stand-in RagChat whose stream() always raises -- simulates every
+    Gemini key being exhausted or the API being down."""
+
+    async def stream(self, history, message):
+        raise RuntimeError("all keys exhausted")
+        yield  # pragma: no cover -- makes this an async generator
+
+
+def test_healthy_with_no_traffic_yet(service):
+    assert service.is_llm_degraded is False
+
+
+def test_stays_healthy_after_a_single_failure(service):
+    service._chat = FailingChat()
+    with pytest.raises(RuntimeError):
+        _answer(service, "hello")
+    assert service.is_llm_degraded is False
+
+
+def test_flips_degraded_after_consecutive_failures(service):
+    service._chat = FailingChat()
+    for i in range(chat_module.LLM_HEALTH_FAILURE_THRESHOLD):
+        with pytest.raises(RuntimeError):
+            _answer(service, f"message {i}")
+    assert service.is_llm_degraded is True
+
+
+def test_recovers_once_a_turn_succeeds(service):
+    service._chat = FailingChat()
+    for i in range(chat_module.LLM_HEALTH_FAILURE_THRESHOLD):
+        with pytest.raises(RuntimeError):
+            _answer(service, f"message {i}")
+    assert service.is_llm_degraded is True
+
+    service._chat = FakeChat()  # simulates the outage clearing
+    _answer(service, "one more try")
+
+    assert service.is_llm_degraded is False
+
+
+def test_cache_hits_do_not_count_as_llm_outcomes(service):
+    """A cached first-turn answer never reaches _generate, so it must not mask
+    (or be mistaken for) a real LLM failure."""
+    _answer(service, "What are your fees?")
+    second = _answer(service, "What are your fees?")
+    assert second.cached is True
+    assert len(service._recent_llm_outcomes) == 1  # only the first, uncached turn

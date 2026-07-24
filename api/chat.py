@@ -18,6 +18,7 @@ import hashlib
 import logging
 import secrets
 import time
+from collections import deque
 from dataclasses import dataclass
 
 from cachetools import TTLCache
@@ -33,6 +34,13 @@ SESSION_ID_BYTES = 24
 # adopted: a caller who can name an arbitrary thread_id can inject turns into a
 # conversation they do not own.
 SESSION_ID_LENGTH = 32
+
+# How many of the most recent LLM turns /health looks at, and how many of
+# those have to fail before health flips to degraded. 3-of-3 rather than a
+# single failure: one stray error shouldn't take the readiness probe down,
+# but an exhausted key pool or a Gemini outage will fail every turn in a row.
+LLM_HEALTH_HISTORY_SIZE = 5
+LLM_HEALTH_FAILURE_THRESHOLD = 3
 
 
 class CapacityError(Exception):
@@ -94,6 +102,29 @@ class ChatService:
             ttl=api_config.answer_cache_ttl_seconds,
         )
         self._semaphore = asyncio.Semaphore(api_config.max_concurrent_turns)
+        # Outcome of the last few LLM turns (True=ok). /health reads this so a
+        # load balancer can see an exhausted key pool or a Gemini outage as
+        # unhealthy instead of a false "ok" -- see is_llm_degraded.
+        self._recent_llm_outcomes: deque[bool] = deque(maxlen=LLM_HEALTH_HISTORY_SIZE)
+
+    # ── Health ─────────────────────────────────────────────────────────────────
+
+    def _record_llm_outcome(self, ok: bool) -> None:
+        self._recent_llm_outcomes.append(ok)
+
+    @property
+    def is_llm_degraded(self) -> bool:
+        """True once the last LLM_HEALTH_FAILURE_THRESHOLD turns all failed.
+
+        Only turns that actually reached the LLM are recorded (cache hits and
+        capacity/timeout rejections never call _generate, so they don't count
+        either way) -- this reflects whether Gemini itself is reachable, not
+        whether the server is busy.
+        """
+        if len(self._recent_llm_outcomes) < LLM_HEALTH_FAILURE_THRESHOLD:
+            return False
+        recent = list(self._recent_llm_outcomes)[-LLM_HEALTH_FAILURE_THRESHOLD:]
+        return not any(recent)
 
     # ── Session lifecycle ─────────────────────────────────────────────────────
 
@@ -187,13 +218,18 @@ class ChatService:
         history = self._history.get(session_id, [])
 
         answer = ""
-        async for kind, payload in self._chat.stream(history, scrubbed):
-            # The retrieved context is for QA UIs only -- it must never be
-            # streamed to a public caller.
-            if kind == "delta":
-                yield {"type": "delta", "text": payload}
-            elif kind == "done":
-                answer = apply_pii_response_guard(payload.text, self._config)
+        try:
+            async for kind, payload in self._chat.stream(history, scrubbed):
+                # The retrieved context is for QA UIs only -- it must never be
+                # streamed to a public caller.
+                if kind == "delta":
+                    yield {"type": "delta", "text": payload}
+                elif kind == "done":
+                    answer = apply_pii_response_guard(payload.text, self._config)
+        except Exception:
+            self._record_llm_outcome(ok=False)
+            raise
+        self._record_llm_outcome(ok=True)
 
         self._append_turn(session_id, scrubbed, answer)
         if is_new:
