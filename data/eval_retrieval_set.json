@@ -722,5 +722,15 @@
     "expected_content_contains": [
       "1-800-411-1113"
     ]
+  },
+  {
+    "query": "can you help with payroll taxes",
+    "label": "in_domain",
+    "style": "informal",
+    "expect_hit": true,
+    "expected_content_contains": [
+      "tax",
+      "payroll"
+    ]
   }
 ]

@@ -264,8 +264,32 @@ class RetrievalPipeline:
             ]
             trace.reranked = sorted(scored, key=lambda c: c.rerank_score, reverse=True)
 
-        trace.final = [c for c in trace.reranked if c.passed_gate][:k]
+        trace.final = self._dedupe_by_record(c for c in trace.reranked if c.passed_gate)[:k]
         return trace
+
+    @staticmethod
+    def _dedupe_by_record(chunks) -> list[RetrievedChunk]:
+        """
+        Keep at most one chunk per source record_id.
+
+        trace.reranked is sorted by score descending, so the first chunk seen
+        per record_id is the best-scoring one. Without this, a long canonical
+        record split across 2 chunks at ingest (rag/vector_store/chroma.py)
+        can occupy 2 of rag_k context slots with itself -- one useful (the
+        answer), one dead weight (just the baked-in "Also asked:" variants,
+        no answer text). A blank/missing record_id (older pre-migration data,
+        or a source with no id) is never deduped against anything else.
+        """
+        seen: set[str] = set()
+        deduped: list[RetrievedChunk] = []
+        for chunk in chunks:
+            record_id = chunk.document.metadata.get("record_id") or ""
+            if record_id:
+                if record_id in seen:
+                    continue
+                seen.add(record_id)
+            deduped.append(chunk)
+        return deduped
 
     def retrieve(self, query: str, k: Optional[int] = None) -> list[RetrievedChunk]:
         """Thin wrapper around retrieve_with_trace().final — guarantees the

@@ -86,6 +86,14 @@ class EnrichedLoader(BaseDataLoader):
                         # tells it how far it may go beyond the chunk.
                         "authority": item.get("authority", ""),
                         "answer_policy": item.get("answer_policy", ""),
+                        # Stable id of the SOURCE record, before chunking. A
+                        # long canonical record (answer + baked-in "Also
+                        # asked:" variants) splits into 2+ chunks at ingest
+                        # (rag/vector_store/chroma.py's RecursiveCharacterTextSplitter,
+                        # which copies metadata onto every split). Retrieval
+                        # dedupes on this so one record can't occupy 2 of the
+                        # 5 context slots -- see rag/pipeline.py.
+                        "record_id": item.get("id", ""),
                     }
                     documents.append(Document(page_content=page_content, metadata=metadata))
         else:

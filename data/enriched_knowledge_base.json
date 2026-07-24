@@ -7791,5 +7791,35 @@
     "answer_policy": "answer",
     "context_prefix": "Corporate Turnaround's SBA and bank loan workout service: negotiating loan modifications and workout terms directly with lenders on defaulted SBA and business bank loans to prevent foreclosure on business or personal assets.",
     "chunk_tokens": 272
+  },
+  {
+    "id": "qa2-ct-tax-debt-0",
+    "source_type": "qa_pair",
+    "topic": "ct-tax-debt",
+    "category": "ct-services",
+    "topic_tags": [
+      "ct-services",
+      "tax-debt",
+      "payroll-tax",
+      "irs",
+      "qa",
+      "distressed-phrasing"
+    ],
+    "title": "Q&A: Do you help with payroll tax or IRS/state business tax debt?",
+    "section_heading": "Q: can you help with payroll taxes or back taxes owed to the irs",
+    "variant_questions": [
+      "do you help with irs tax debt",
+      "we owe payroll taxes what can you do",
+      "can you help with a tax lien on my business",
+      "does corporate turnaround handle back taxes",
+      "my business owes state and irs back taxes what are my options",
+      "do you deal with past due business taxes"
+    ],
+    "chunk_text": "A: Yes — tax help is one of our core services. We work to resolve liens and past due business taxes, including payroll tax debt, as part of getting your business back on a budget it can actually afford. What is realistic depends on how much is owed, which agency it is owed to, and where things stand in the collection process — that is exactly what the free consultation works out. Call 1-800-889-0232.\n\nAlso asked: do you help with irs tax debt\nAlso asked: we owe payroll taxes what can you do\nAlso asked: can you help with a tax lien on my business\nAlso asked: does corporate turnaround handle back taxes\nAlso asked: my business owes state and irs back taxes what are my options\nAlso asked: do you deal with past due business taxes",
+    "requires_disclaimer": false,
+    "authority": "canonical",
+    "answer_policy": "answer",
+    "context_prefix": "Corporate Turnaround's tax help service: resolving liens and past due business taxes, including payroll tax debt owed to the IRS or a state.",
+    "chunk_tokens": 183
   }
 ]
