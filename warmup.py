@@ -45,11 +45,14 @@ def build_shared_config():
         print(f"[Warning] Retrieval warmup failed (first query will be slow): {exc}")
 
     # Warm the PII engines too: the first sanitize_query() otherwise loads
-    # spaCy en_core_web_lg (~2.5s) inside a user's turn.
+    # spaCy en_core_web_lg (~2.5s) inside a user's turn. Calling the detector
+    # directly (not apply_pii_query_guard) skips its "detected in your query"
+    # notice -- there's no query here, just a throwaway string to force the
+    # model to load, and that notice is misleading printed at startup.
     if config.pii.enabled:
-        from core.utils import apply_pii_query_guard
+        from rag.guardrails.pii_detector import PIIGuardrail
         try:
-            apply_pii_query_guard("warmup", config)
+            PIIGuardrail(config.pii)._detect_and_anonymize("warmup")
         except Exception as exc:
             print(f"[Warning] PII warmup failed (first query will be slow): {exc}")
 
@@ -58,6 +61,13 @@ def build_shared_config():
 
 if __name__ == "__main__":
     from streamlit.web import bootstrap
+
+    # `python warmup.py` runs this file as module "__main__", a different
+    # module object from the "warmup" that app.py later does
+    # `from warmup import build_shared_config` on -- so its @lru_cache would
+    # be a second, separate cache and everything below would run TWICE.
+    # Importing under the real name here reuses that one cache instead.
+    from warmup import build_shared_config
 
     flag_options = {}
     bootstrap.load_config_options(flag_options)

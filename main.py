@@ -108,7 +108,7 @@ Quick start:
 
     # ── Build the answer engine ────────────────────────────────────────────────
     print("Initializing agent...")
-    from core.rag_chat import RagChat, Turn
+    from core.rag_chat import Answer, RagChat, Turn
     chat = RagChat(config)
     history: list[Turn] = []
     print("Agent ready! Type 'exit' or 'quit' to stop.\n" + "-" * 50)
@@ -131,19 +131,29 @@ Quick start:
             # Single-pass RAG (core/rag_chat.py). Prefix cleanup and the
             # grounding backstop run inside it, so the CLI, Streamlit and the
             # public API share one implementation of them.
-            async def answer_turn() -> str:
+            async def answer_turn() -> tuple[str, str]:
+                print("\nAgent: ", end="", flush=True)
+                streamed = ""
                 async for kind, payload in chat.stream(history, user_input):
-                    if kind == "done":
-                        return payload.text
-                return ""
+                    if kind == "delta" and isinstance(payload, str):
+                        streamed += payload
+                        print(payload, end="", flush=True)
+                    elif kind == "done" and isinstance(payload, Answer):
+                        return streamed, payload.text
+                return streamed, streamed
 
-            final_message = asyncio.run(answer_turn())
+            streamed, final_message = asyncio.run(answer_turn())
 
             # Checkpoint 3: Output-time PII scrub
             final_message = apply_pii_response_guard(final_message, config)
             history.append(Turn(user=user_input, assistant=final_message))
+            print()
 
-            print(f"\nAgent: {final_message}")
+            # The grounding backstop or PII guard can replace the streamed text
+            # wholesale (e.g. an ungrounded reply becomes a refusal). Reprint
+            # only when that happened -- the common case matches what streamed.
+            if final_message != streamed:
+                print(f"Agent (corrected): {final_message}")
 
         except KeyboardInterrupt:
             print("\nGoodbye!")

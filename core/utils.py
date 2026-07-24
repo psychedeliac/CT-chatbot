@@ -22,6 +22,15 @@ ALLOWED_PHONE_PATTERN = re.compile(r"1?[-.\s]?800[-.\s]?(?:889[-.\s]?0232|411[-.
 # timeframe) still triggers it, which is the case this guard exists for.
 ALLOWED_FIGURE_PATTERN = re.compile(r"\b(?:1998|10[,.]?000)\b")
 
+# The 988 Suicide & Crisis Lifeline (call/text 988, 24/7). A self-harm message
+# retrieves nothing from a debt KB, so it comes back grounded=False -- and the
+# prompt's crisis handling answers with 988, which without this strip is an
+# "ungrounded figure" and gets replaced by the generic debt refusal. That is
+# the one substitution we can never make: a suicidal user must get 988, not a
+# sales line. 988 is a safe constant the prompt supplies, exactly like the
+# company numbers above, so it is allowlisted the same way.
+ALLOWED_CRISIS_PATTERN = re.compile(r"\b988\b|24/7")
+
 # An ungrounded reply is acceptable only as a short deflection: a greeting,
 # an off-topic dodge, or a phone handoff. Substantive parametric answers are
 # longer and/or carry figures. 600 chars is ~100 words -- comfortably above
@@ -32,7 +41,9 @@ MAX_DEFLECTION_CHARS = 600
 def _is_safe_deflection(text: str) -> bool:
     """True if an ungrounded reply looks like a deflection (greeting, dodge,
     phone handoff) rather than a substantive answer smuggling in facts."""
-    stripped = ALLOWED_FIGURE_PATTERN.sub("", ALLOWED_PHONE_PATTERN.sub("", text))
+    stripped = ALLOWED_CRISIS_PATTERN.sub(
+        "", ALLOWED_FIGURE_PATTERN.sub("", ALLOWED_PHONE_PATTERN.sub("", text))
+    )
     if len(stripped) > MAX_DEFLECTION_CHARS:
         return False
     # Any remaining digit means a figure the KB didn't ground (a year, a

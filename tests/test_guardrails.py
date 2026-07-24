@@ -185,6 +185,25 @@ def test_grounding_backstop_allows_the_prompt_supplied_company_figures() -> None
     assert enforce_grounding(False, greeting) == greeting
 
 
+def test_grounding_backstop_allows_the_988_crisis_lifeline() -> None:
+    """
+    A self-harm message retrieves nothing from a debt KB, so grounded=False --
+    and the prompt's crisis handling answers with the 988 Suicide & Crisis
+    Lifeline. Without allowlisting 988 the digit check read it as an ungrounded
+    figure and replaced the whole reply with the generic *debt* refusal, which
+    is the one substitution that must never happen: a suicidal user has to get
+    988, not a sales line.
+    """
+    from core.utils import enforce_grounding
+
+    crisis = (
+        "I'm really concerned about what you just said, and I want you to know you're not "
+        "alone. Please reach out to the 988 Suicide & Crisis Lifeline -- call or text 988, "
+        "any time, 24/7. They're there for exactly this."
+    )
+    assert enforce_grounding(False, crisis) == crisis
+
+
 def test_grounding_backstop_blocks_ungrounded_answers() -> None:
     """A substantive parametric answer (figures, or essay-length) after empty
     retrieval must still be replaced with the canned refusal."""
