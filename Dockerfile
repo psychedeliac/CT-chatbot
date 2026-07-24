@@ -48,6 +48,12 @@ from sentence_transformers import SentenceTransformer, CrossEncoder; \
 SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2'); \
 CrossEncoder('cross-encoder/ms-marco-MiniLM-L-6-v2')"
 
+# spaCy model for Presidio PII detection. Required whenever PII_ENABLED=true --
+# without it AnalyzerEngine() raises on construction and every turn 500s. Baked
+# in (not a runtime download) so the container works on a network-restricted
+# host and pays the cost once at build. Keep in sync with pii_detector.py.
+RUN python -m spacy download en_core_web_lg
+
 COPY . .
 
 # ── 3. Build the Chroma index ─────────────────────────────────────────────────
