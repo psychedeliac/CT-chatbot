@@ -45,9 +45,9 @@ A `<script>` tag itself is not subject to CORS, but the chat requests are.
   root `pointer-events: none` with interactive children `auto`. This is the fix
   for the panel rendering underneath full-bleed hero images.
 - **Shadow DOM**, so host page CSS cannot reach in and widget CSS cannot leak.
-- Tap-to-call links on the published phone numbers only, `Enter` to send,
-  `Shift+Enter` for a newline, `Esc` to close, `aria-live` log, visible focus
-  rings, and `prefers-reduced-motion` respected.
+- Phone numbers shown as plain text — deliberately not `tel:` links.
+- `Enter` to send, `Shift+Enter` for a newline, `Esc` to close, `aria-live`
+  log, visible focus rings, and `prefers-reduced-motion` respected.
 - Auto-scroll only when you're already at the bottom, so it never yanks the
   view while you're reading an earlier answer.
 - Session id in `sessionStorage` — one conversation per tab, per visit.
@@ -73,9 +73,8 @@ Load `demo.html`, then in the console:
 
 ```js
 await fetch('./test-markdown.js').then(r => r.text()).then(eval)
-// -> {passed: 11, failed: 0, failures: []}
+// -> {passed: 10, failed: 0, failures: []}
 ```
 
 It covers the shape that actually broke — a lead-in line immediately followed
-by bullets with no blank line between — plus HTML-escaping and the phone-link
-rules.
+by bullets with no blank line between — plus HTML-escaping.

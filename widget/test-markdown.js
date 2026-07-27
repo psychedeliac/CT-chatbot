@@ -66,23 +66,17 @@
     "<ul><li>&lt;script&gt;alert(1)&lt;/script&gt;</li></ul>"
   );
 
-  // Our published numbers become tap-to-call; other figures must not.
+  // Phone numbers are shown, never linked. No tel: anywhere in the output.
   check(
-    "the company line becomes a tel link",
+    "the company line stays plain text",
     render("Call 1-800-889-0232 today"),
-    '<p>Call <a href="tel:18008890232">1-800-889-0232</a> today</p>'
-  );
-
-  check(
-    "an ordinary figure is left alone",
-    render("You owe 40-000-1234 in fees"),
-    "<p>You owe 40-000-1234 in fees</p>"
+    "<p>Call 1-800-889-0232 today</p>"
   );
 
   check("empty input", render(""), "");
 
   return {
-    passed: 11 - failures.length,
+    passed: 10 - failures.length,
     failed: failures.length,
     failures: failures,
   };

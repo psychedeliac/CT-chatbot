@@ -1,30 +1,33 @@
-# Chat Widget — Frontend Fix List (UX Audit 2026-07-27)
+# Chat Widget — Frontend Work List
 
-> **Status update (2026-07-27, later the same day).** Items 1, 2, 3 and 5 are
-> now implemented in [`widget/`](widget/) — a self-contained reference widget
-> served by the API at `GET /widget.js`. It was verified running on
-> `https://corpo-nine.vercel.app/` against the production backend: bullets
-> render as a real `<ul>`, the input is hit-testable over the hero image at
-> every scroll position, and first token arrived in 1.3s.
->
-> Item 4 (cold start) now has an opt-in `KEEPALIVE_URL` on the backend.
->
-> The Vercel widget is a separate codebase, so this list still stands for
-> whoever owns it — but `widget/ct-chat-widget.js` is now a working
-> implementation to port from rather than a description to work from. See
-> [`widget/README.md`](widget/README.md).
->
-> Two things the backend gained that the widget list predates, and that any
-> client should now use: `done.suggestions` (follow-up chips, every one of them
-> answerable) and `done.answer_id` (post to `/api/feedback` for thumbs).
+**For the frontend developer who owns the widget on `corpo-nine.vercel.app`.**
 
-Punch-list of issues found testing the live widget on
-`https://corpo-nine.vercel.app/`. **All items here are frontend-side** — the
-backend (prompt behaviour, phone-number CTA, greeting logic) has already been
-fixed and deployed. For wiring/API details see `FRONTEND_INTEGRATION.md`; this
-doc only covers what to change in the widget.
+Everything in this document is work in **your** codebase. The backend side is
+done and deployed — none of it needs waiting on.
 
-Priority order: **1 and 2 are the ones the client actually noticed.**
+There is now a complete working implementation of every item here in
+[`widget/ct-chat-widget.js`](widget/ct-chat-widget.js) in the backend repo. It
+is plain JS with no dependencies and no build step, written to be read: port
+from it rather than from these descriptions where they disagree. You can run it
+against production right now to see the target behaviour:
+
+```html
+<script src="https://ct-chatbot-production.up.railway.app/widget.js"
+        data-api="https://ct-chatbot-production.up.railway.app"></script>
+```
+
+Items 1–3 came from the live UX audit (2026-07-27) and are what the client
+noticed. Items 6–7 are new API capabilities the widget does not use yet.
+
+| # | Priority | What to do |
+|---|----------|-----------|
+| 1 | **HIGH** | Render assistant replies as Markdown; keep user messages plain text |
+| 2 | **HIGH** | `position: fixed` in a high-z-index root so the panel can't hide under page images |
+| 3 | **HIGH** | Typing indicator on send, stream `delta` tokens, swap to `done.answer` |
+| 4 | MEDIUM | Follow-up suggestion chips from `done.suggestions` |
+| 5 | MEDIUM | Thumbs up/down posting to `/api/feedback` |
+| 6 | LOW | Bubble styling, avatar, auto-scroll |
+| 7 | INFO | Latency and the occasional garbled token — nothing to do |
 
 ---
 
@@ -40,12 +43,11 @@ We help small businesses resolve debt...
 * Creditor harassment protection
 ```
 
-The `*` (and paragraph breaks) are **Markdown** — the backend intentionally
-emits Markdown (`-`/`*` bullets, blank-line paragraphs). The widget is printing
-it as raw text, so it reads like a debug console instead of a formatted answer.
+The `*` and the paragraph breaks are **Markdown** — the backend intentionally
+emits it. The widget is printing it as raw text, so it reads like a debug
+console instead of a formatted answer.
 
-**Fix.** Render the assistant message body through a Markdown renderer instead
-of dropping it into a `<p>`/text node.
+**Fix.**
 
 ```bash
 npm i react-markdown
@@ -54,25 +56,40 @@ npm i react-markdown
 ```tsx
 import ReactMarkdown from "react-markdown";
 
-// assistant bubble
 <div className="prose prose-sm max-w-none">
   <ReactMarkdown>{message.text}</ReactMarkdown>
 </div>
 ```
 
 Notes:
-- Render **only assistant** messages as Markdown. Render the **user's** message
-  as plain text (never Markdown — it's untrusted input; rendering it invites
-  injection and lets a user paste raw HTML/links into their own bubble).
-- `react-markdown` does **not** render raw HTML by default — good, keep it that
-  way (no `rehype-raw`). The backend only ever emits bullets, paragraphs, and
-  the occasional bold; no HTML is needed.
-- If you use Tailwind Typography (`prose`), constrain it (`prose-sm`,
-  `max-w-none`) so it fits the narrow chat column.
-- **Which field to render:** render `done.answer` (the authoritative final
-  text). If you also render `delta` tokens live (see #3), it's fine to run each
-  partial through the same renderer — half-finished Markdown degrades
+
+- Render **only assistant** messages as Markdown. The **user's** message must
+  stay plain text — it's untrusted input, and rendering it as markup is how a
+  user pastes HTML into your page.
+- `react-markdown` does **not** render raw HTML by default. Keep it that way —
+  no `rehype-raw`. The backend only emits bullets, paragraphs and occasional
+  bold, and the text is model-generated, so it can be steered by what a user
+  types.
+- Constrain Tailwind Typography (`prose-sm`, `max-w-none`) for the narrow
+  chat column.
+- Render `done.answer` — the authoritative final text (see #3). Running each
+  partial through the same renderer is fine; half-finished Markdown degrades
   gracefully.
+- **Watch the list-grouping edge case.** The model very often emits a lead-in
+  line immediately followed by its bullets with *no* blank line between:
+
+  ```
+  Here are the services we provide:
+  - Business debt negotiation
+  - MCA debt relief
+  ```
+
+  `react-markdown` handles this correctly. A hand-rolled renderer usually does
+  not — the naive version splits on blank lines and needs the whole block to be
+  bullets, which turns the above into one run-on paragraph. This was a real bug
+  in the reference widget before it was fixed; if you write your own renderer,
+  test this exact shape.
+- **Phone numbers stay plain text.** Do not turn them into `tel:` links.
 
 ---
 
@@ -80,7 +97,7 @@ Notes:
 
 **Symptom.** With the chat open and the page scrolled to the hero/CTA image
 section, the message input is **not clickable** — clicks land on the background
-image instead. Reproduced via `document.elementFromPoint(inputCenter)`, which
+image instead. Reproduced with `document.elementFromPoint(inputCenter)`, which
 returned the hero `<img class="object-cover">`, not the input.
 
 **Root cause.** The panel is positioned `absolute inset-4` and shares a stacking
@@ -90,9 +107,7 @@ stacking context) can paint over it depending on scroll position.
 **Fix.** Pin the widget to the viewport in its own top-level stacking context:
 
 ```tsx
-// widget root wrapper
 <div className="fixed inset-0 z-[9999] pointer-events-none">
-  {/* launcher button + panel are pointer-events-auto */}
   <div className="pointer-events-auto fixed bottom-4 right-4 ...">
     {/* panel */}
   </div>
@@ -100,97 +115,154 @@ stacking context) can paint over it depending on scroll position.
 ```
 
 Checklist:
-- Use `fixed`, not `absolute`, for the widget root and panel.
-- Give the root a high `z-index` (e.g. `z-[9999]`) above every page section,
-  header, and image.
-- Keep the root `pointer-events-none` and the interactive children
-  `pointer-events-auto`, so the widget never eats clicks on the page behind it
-  when closed/minimised.
-- Re-test with the page scrolled to **each** section (hero, calculator,
-  results, contact) with the chat open — the old bug was scroll-position
-  dependent.
+
+- `fixed`, not `absolute`, for the widget root and panel.
+- High `z-index` above every page section, header and image.
+- Root `pointer-events-none`, interactive children `pointer-events-auto`, so
+  the widget never eats clicks on the page behind it when closed.
+- Consider rendering the whole widget into a **portal at `document.body`**, or
+  a Shadow DOM — the reference widget uses a Shadow DOM, which also stops page
+  CSS from reaching into the panel.
+
+**How to verify** (this is the check that proves it, at several scroll
+positions with the chat open):
+
+```js
+const r = inputEl.getBoundingClientRect();
+document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2);
+// must resolve to the widget, never a page element
+```
 
 ---
 
-## 3. Stream tokens live + show an instant loading state (HIGH for *perceived* speed)
+## 3. Stream tokens live + show an instant loading state (HIGH)
 
 **Symptom.** After sending, the panel sits blank until the entire answer appears
 at once. Even when the backend is fast, a blank pane reads as "broken."
 
-**Cause.** The widget appears to wait for the full response before rendering.
-The API already streams — `/api/chat/stream` emits `delta` events token-by-token
-— so the fix is purely on the render side.
+**Cause.** The widget waits for the full response before rendering. The API
+already streams — `/api/chat/stream` emits `delta` events token by token — so
+this is purely a render-side fix.
 
 **Fix.**
+
 1. The instant the user sends, append an assistant bubble containing a **typing
    indicator** (three animated dots). Never leave the pane empty.
 2. Consume the SSE stream and append each `delta.text` to that bubble as it
-   arrives, so the user sees the answer type out.
-3. On `done`, **replace** the accumulated text with `done.answer` (it's the
-   only guard-checked, authoritative version) and drop the typing indicator.
-4. On `error`, replace the bubble with the `error.message` string.
+   arrives.
+3. On `done`, **replace** the accumulated text with `done.answer` and drop the
+   indicator.
+4. On `error`, replace the bubble with the `error` string.
 
-Event order on the stream (see `FRONTEND_INTEGRATION.md` §3):
-`session` → `delta …` (many) → `done` → *(or)* `error`.
+Event order: `session` → `delta …` (many) → `done` → *(or)* `error`.
 
-> Even if backend latency is low for most users, always show the typing
-> indicator on send — it's the single biggest perceived-speed win and costs
-> nothing.
+> **The `done` replacement is not optional.** The server's guards can swap an
+> answer wholesale — an ungrounded reply becomes a compliance refusal. If you
+> render the accumulated deltas as final, a non-compliant answer finishes typing
+> and stays on screen. Always render `done.answer` over whatever you streamed.
 
----
-
-## 4. Latency — mostly environmental, not a frontend bug (INFO)
-
-During the audit the first token took ~15s **from the test environment**. The
-client reports it is much faster for them, which points to one of:
-- **Cold start** — Railway hobby instances spin down when idle; the *first*
-  request after a quiet period pays a startup penalty. Subsequent turns are
-  fast.
-- **Network distance** from the test machine to the Railway region.
-
-There is nothing to fix in the widget for this. Two optional mitigations:
-- Implement the typing indicator in #3 so any wait is visibly "working," not
-  "hung."
-- (Infra, optional) Keep the instance warm with a periodic `GET /health` ping,
-  or move off the spin-down tier, if first-message latency is ever a complaint.
-
-If you *do* see a consistent multi-second first-token time for warm requests
-from a normal user location, tell the backend team — that would be a server
-concern (retrieval + rerank), not frontend.
+Store `session_id` from the `session` event and send it with every subsequent
+message, or each turn starts a new conversation with no history.
 
 ---
 
-## 5. Message styling / "feel" (LOW, polish)
+## 4. Follow-up suggestion chips (MEDIUM — new)
+
+The `done` event now carries `suggestions`: up to three follow-up questions,
+already filtered so they never repeat what was just answered.
+
+```json
+{ "type": "done", "answer": "...", "suggestions": ["What happens during a free consultation?", "..."], "answer_id": "cbJk89426fUAz5uk" }
+```
+
+**What to build.** Render them as tappable chips under the latest assistant
+message. Tapping one sends it as the user's next message and clears the row.
+Clear the chips as soon as the user sends anything, so a stale row never sits
+under a newer answer.
+
+These are drawn from the knowledge base, not invented by the model, so every
+chip has a hand-authored answer behind it — tapping one cannot produce a
+refusal. Show them as-is; don't rewrite the text.
+
+`suggestions` is an empty array when the assistant declines a question. Render
+nothing in that case.
+
+---
+
+## 5. Answer feedback — thumbs up/down (MEDIUM — new)
+
+Every `done` event carries an opaque `answer_id`. A thumbs control on assistant
+messages posts it back:
+
+```ts
+await fetch(`${API}/api/feedback`, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({ answer_id, verdict: "up" | "down", comment: "" }),
+});
+```
+
+- `comment` is optional (max 1000 chars) if you want a "tell us more" box on
+  thumbs-down.
+- Fire and forget — a rating that fails to record is not worth interrupting the
+  conversation over. Replace the buttons with a short thank-you on click.
+- Don't echo the question or answer text back; the server already has both,
+  plus the knowledge-base records that produced the answer. That's what makes a
+  thumbs-down actionable.
+- `404` means the id has aged out (they live one hour). Nothing to show the
+  user.
+
+---
+
+## 6. Message styling / "feel" (LOW, polish)
 
 Current bubbles read as an undifferentiated wall of text. Cheap wins:
+
 - Distinct bubble styling for **user** (right-aligned, brand fill) vs
   **assistant** (left-aligned, light surface).
 - A small assistant avatar/label to anchor the conversation.
 - Comfortable line-height and spacing between messages.
-- Auto-scroll to the newest message as it streams.
-
-These are optional but they're most of the difference between "feels like a real
-assistant" and "feels like a form field."
+- Auto-scroll to the newest message as it streams — but **only when the user is
+  already near the bottom**, or it yanks the view while they're reading an
+  earlier answer.
 
 ---
 
-## 6. Occasional garbled token (LOW, INFO — not frontend)
+## 7. Latency and garbled tokens (INFO — nothing to do)
 
-One reply printed `MC手数` (stray non-Latin characters) — a rare generation
-quirk from the model tier the backend uses. It is **not** a frontend issue and
-nothing to handle in the widget. Logged here only so it's not mistaken for an
+**Latency.** During the audit the first token took ~15s from the test
+environment; the client reports it is much faster for them. Causes are
+environmental — Railway instances can spin down when idle, and network distance
+varies. The typing indicator in #3 covers the perceived-speed side, which is the
+part you control. Measured from a browser against production after the recent
+backend work: **1.3s to first token**.
+
+If you see a consistent multi-second first-token time for warm requests from a
+normal user location, tell the backend team — that would be a server concern.
+
+**Garbled token.** One reply printed `MC手数` (stray non-Latin characters) — a
+rare generation quirk from the model tier. Not a frontend issue and not an
 encoding bug on your side. If it becomes frequent, the backend team can switch
 model tiers.
 
 ---
 
-## Summary for the frontend dev
+## API reference
 
-| # | Priority | What to do |
-|---|----------|-----------|
-| 1 | HIGH | Render assistant replies as Markdown (`react-markdown`); keep user messages plain text |
-| 2 | HIGH | Make the widget `position: fixed` in a high-z-index, pointer-events-none root so it can't hide under page images |
-| 3 | HIGH | Show a typing indicator on send; stream `delta` tokens; swap to `done.answer` at the end |
-| 4 | INFO | Latency is environmental (cold start / network); typing indicator covers it |
-| 5 | LOW | User/assistant bubble styling, avatar, auto-scroll |
-| 6 | INFO | Garbled-token quirk is backend/model, ignore on frontend |
+Base URL: `https://ct-chatbot-production.up.railway.app`
+
+Your origin must be in the backend's `CORS_ALLOWED_ORIGINS` — ask the backend
+team when you add a new deployment domain. `corpo-nine.vercel.app` is already
+allowed.
+
+| Endpoint | Purpose |
+|---|---|
+| `POST /api/chat/stream` | SSE stream. `{message, session_id?}` → `session` / `delta` / `done` / `error` events |
+| `POST /api/chat` | Non-streaming equivalent. Returns `{session_id, answer, cached, suggestions, answer_id}` |
+| `POST /api/feedback` | `{answer_id, verdict, comment?}` → `{ok: true}` |
+| `GET /health` | `{status, active_sessions}` |
+| `GET /widget.js` | The reference widget, if you want to embed it directly |
+
+Request limits: 2000 characters per message; rate limited per IP (10/minute,
+100/hour) — a `429` means slow down, and the copy for it should say so rather
+than reading as an error.

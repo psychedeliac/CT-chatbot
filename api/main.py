@@ -57,54 +57,13 @@ limiter = Limiter(
 )
 
 
-async def _keep_warm(url: str, interval_seconds: int):
-    """Hit our own public health URL on a schedule.
-
-    Railway's hobby tier spins an idle instance down; the next visitor then
-    pays the full container + BM25 + cross-encoder start (~15s to first token,
-    which is what the UX audit measured). Inbound traffic is what resets that
-    idle timer, so the ping has to go out through the public URL -- calling the
-    handler in-process would keep nothing awake.
-
-    Opt-in via KEEPALIVE_URL because it is only correct on a single always-on
-    instance: pointed at a load-balanced deployment it wakes an arbitrary
-    replica, and on a paid always-on tier it is pure noise. An external uptime
-    pinger does the same job with none of those caveats -- this exists so the
-    fix is available without standing one up.
-    """
-    import httpx
-
-    await asyncio.sleep(interval_seconds)
-    async with httpx.AsyncClient(timeout=20) as client:
-        while True:
-            try:
-                await client.get(url)
-            except Exception as exc:  # a failed ping must never kill the app
-                logger.warning("Keep-warm ping failed: %s", exc)
-            await asyncio.sleep(interval_seconds)
-
-
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     logger.info("Warming retrieval before accepting traffic...")
     agent_config = build_shared_config()
     app.state.chat = ChatService(agent_config, api_config)
-
-    warm_task = None
-    if api_config.keepalive_url:
-        warm_task = asyncio.create_task(
-            _keep_warm(api_config.keepalive_url, api_config.keepalive_interval_seconds)
-        )
-        logger.info(
-            "Keep-warm ping every %ss -> %s",
-            api_config.keepalive_interval_seconds, api_config.keepalive_url,
-        )
-
     logger.info("Ready. CORS origins: %s", list(api_config.allowed_origins))
     yield
-
-    if warm_task:
-        warm_task.cancel()
 
 
 app = FastAPI(

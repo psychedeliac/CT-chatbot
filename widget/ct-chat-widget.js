@@ -39,11 +39,10 @@
   // this visit. The server expires sessions anyway, so a stale id restored a
   // week later would just be rejected and replaced.
   var SESSION_KEY = "ct-chat-session";
-  var PHONE_PATTERN = /\b(1-800-889-0232|1-800-411-1113|988)\b/g;
 
   /* ── Markdown ────────────────────────────────────────────────────────────
    * A deliberately tiny renderer for the subset the backend emits: bullets,
-   * ordered lists, paragraphs, bold, and the published phone numbers.
+   * ordered lists, paragraphs, and bold. Phone numbers stay plain text.
    *
    * Escaping happens FIRST and unconditionally, so nothing that arrives over
    * the wire can become markup. Only patterns matched after escaping become
@@ -61,16 +60,10 @@
   }
 
   function inline(text) {
+    // Phone numbers are deliberately left as plain text -- no tel: links.
     return escapeHtml(text)
       .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
-      .replace(/(^|[\s(])\*([^*\n]+)\*(?=[\s).,!?]|$)/g, "$1<em>$2</em>")
-      // Tap-to-call on mobile. Only our own published numbers are linked --
-      // auto-linking every digit string would turn a figure in an answer into
-      // a phone link.
-      .replace(PHONE_PATTERN, function (number) {
-        var tel = number.replace(/-/g, "");
-        return '<a href="tel:' + tel + '">' + number + "</a>";
-      });
+      .replace(/(^|[\s(])\*([^*\n]+)\*(?=[\s).,!?]|$)/g, "$1<em>$2</em>");
   }
 
   var BULLET = /^\s*[-*]\s+/;
@@ -213,9 +206,6 @@
     .bubble p:last-child { margin-bottom: 0; }
     .bubble ul, .bubble ol { margin: 6px 0; padding-left: 20px; }
     .bubble li { margin: 3px 0; }
-    .bubble a { color: inherit; font-weight: 600; }
-    .user .bubble a { color: #fff; }
-    .bot  .bubble a { color: var(--accent); }
 
     .label { font-size: 11.5px; color: #667085; margin: 0 0 4px 2px; }
 
