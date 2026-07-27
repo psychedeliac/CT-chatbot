@@ -1,5 +1,23 @@
 # Chat Widget — Frontend Fix List (UX Audit 2026-07-27)
 
+> **Status update (2026-07-27, later the same day).** Items 1, 2, 3 and 5 are
+> now implemented in [`widget/`](widget/) — a self-contained reference widget
+> served by the API at `GET /widget.js`. It was verified running on
+> `https://corpo-nine.vercel.app/` against the production backend: bullets
+> render as a real `<ul>`, the input is hit-testable over the hero image at
+> every scroll position, and first token arrived in 1.3s.
+>
+> Item 4 (cold start) now has an opt-in `KEEPALIVE_URL` on the backend.
+>
+> The Vercel widget is a separate codebase, so this list still stands for
+> whoever owns it — but `widget/ct-chat-widget.js` is now a working
+> implementation to port from rather than a description to work from. See
+> [`widget/README.md`](widget/README.md).
+>
+> Two things the backend gained that the widget list predates, and that any
+> client should now use: `done.suggestions` (follow-up chips, every one of them
+> answerable) and `done.answer_id` (post to `/api/feedback` for thumbs).
+
 Punch-list of issues found testing the live widget on
 `https://corpo-nine.vercel.app/`. **All items here are frontend-side** — the
 backend (prompt behaviour, phone-number CTA, greeting logic) has already been
