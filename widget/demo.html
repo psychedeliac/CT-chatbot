@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CT chat widget — harness</title>
+<style>
+  body { margin: 0; font: 16px/1.6 system-ui, sans-serif; color: #14181f; }
+  section { padding: 64px 24px; }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  h1 { font-size: 30px; margin: 0 0 12px; }
+  /* Reproduces the reported bug's setting: a full-bleed image that used to
+     paint over the widget panel and swallow clicks on the input. */
+  .hero {
+    position: relative; height: 90vh; display: grid; place-items: center;
+    background: linear-gradient(135deg, #0b5cff, #001a4d); color: #fff;
+    isolation: isolate;
+  }
+  .hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .35; }
+  .hero .wrap { position: relative; }
+  code { background: #f1f4f9; padding: 2px 6px; border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <img alt="" src="data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800'%3E%3Crect width='1200' height='800' fill='%23123'/%3E%3C/svg%3E">
+  <div class="wrap">
+    <h1>Full-bleed hero section</h1>
+    <p>Open the chat here and click the input. Before the fix, clicks landed on
+       this image instead of the widget.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h1>Widget harness</h1>
+    <p>Point the script tag at a running API with <code>data-api</code>. Default
+       is <code>http://localhost:8000</code>; that origin must appear in
+       <code>CORS_ALLOWED_ORIGINS</code> for the page you serve this from.</p>
+    <p>What to check: Markdown bullets render as a list, the typing indicator
+       appears immediately on send, tokens stream in, follow-up chips appear
+       under the answer, and the thumbs record feedback.</p>
+  </div>
+</section>
+
+<section style="background:#f6f8fb">
+  <div class="wrap">
+    <h1>Scroll target</h1>
+    <p>Keep the chat open and scroll between sections — the panel should stay
+       pinned to the viewport and stay on top the whole way.</p>
+  </div>
+</section>
+
+<script src="./ct-chat-widget.js" data-api="http://localhost:8000"></script>
+</body>
+</html>

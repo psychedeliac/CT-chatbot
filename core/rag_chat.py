@@ -33,6 +33,7 @@ from dataclasses import dataclass
 from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 
 from config import AgentConfig
+from core.suggestions import build_suggestions
 from core.utils import build_user_query, clean_response_prefix, enforce_grounding, wrap_user_query
 from rag.pipeline import get_pipeline
 from rag.retriever import NO_RESULTS_MESSAGE
@@ -50,9 +51,26 @@ class Turn:
 
 
 @dataclass(frozen=True)
+class Retrieved:
+    """What one turn's retrieval produced, before the LLM sees any of it."""
+    context: str
+    grounded: bool
+    suggestions: tuple[str, ...] = ()
+    record_ids: tuple[str, ...] = ()
+
+
+@dataclass(frozen=True)
 class Answer:
     text: str
     grounded: bool
+    # Follow-up chips for the widget, drawn from the KB records this turn
+    # retrieved. Empty when retrieval came back empty -- an ungrounded turn is
+    # already being refused, and chips would imply the assistant knows more
+    # about a topic it just declined.
+    suggestions: tuple[str, ...] = ()
+    # The KB records behind this answer. Not shown to the user; carried so a
+    # thumbs-down can be traced to what retrieval actually supplied.
+    record_ids: tuple[str, ...] = ()
 
 
 def build_retrieval_query(history: list[Turn], message: str) -> str:
@@ -96,14 +114,34 @@ class RagChat:
         messages.append(HumanMessage(content=f"{user_block}\n\n{context}"))
         return messages
 
-    async def retrieve(self, history: list[Turn], message: str) -> tuple[str, bool]:
-        """Returns (context_block, grounded). Runs off the event loop -- the
-        cross-encoder is CPU-bound and would otherwise stall every other
-        concurrent request for the duration."""
+    async def retrieve(self, history: list[Turn], message: str) -> "Retrieved":
+        """Runs off the event loop -- the cross-encoder is CPU-bound and would
+        otherwise stall every other concurrent request for the duration.
+
+        The trace, not just the final k: follow-up chips are drawn from the
+        wider reranked candidate list, because the handful of chunks that reach
+        the LLM are often all site copy with no question in them.
+        """
         query = build_retrieval_query(history, message)
-        chunks = await asyncio.to_thread(self._pipeline.retrieve, query)
-        context = self._pipeline.format_for_llm(chunks)
-        return (context or NO_RESULTS_MESSAGE), bool(chunks)
+        trace = await asyncio.to_thread(
+            self._pipeline.retrieve_with_trace, query, None, False
+        )
+        context = self._pipeline.format_for_llm(trace.final)
+        record_ids = tuple(
+            chunk.document.metadata.get("record_id", "") for chunk in trace.final
+        )
+        return Retrieved(
+            context=context or NO_RESULTS_MESSAGE,
+            grounded=bool(trace.final),
+            suggestions=(
+                build_suggestions(
+                    trace.reranked, message, exclude_record_ids=frozenset(record_ids)
+                )
+                if trace.final
+                else ()
+            ),
+            record_ids=record_ids,
+        )
 
     async def stream(self, history: list[Turn], message: str):
         """
@@ -117,9 +155,9 @@ class RagChat:
         The context event exists so a QA UI can show what was retrieved without
         running retrieval a second time.
         """
-        context, grounded = await self.retrieve(history, message)
-        yield "context", context
-        messages = self._messages(history, message, context)
+        retrieved = await self.retrieve(history, message)
+        yield "context", retrieved.context
+        messages = self._messages(history, message, retrieved.context)
 
         parts: list[str] = []
         async for chunk in self._llm.astream(messages):
@@ -129,8 +167,15 @@ class RagChat:
             parts.append(text)
             yield "delta", text
 
-        answer = enforce_grounding(grounded, clean_response_prefix("".join(parts)))
-        yield "done", Answer(text=answer, grounded=grounded)
+        answer = enforce_grounding(
+            retrieved.grounded, clean_response_prefix("".join(parts))
+        )
+        yield "done", Answer(
+            text=answer,
+            grounded=retrieved.grounded,
+            suggestions=retrieved.suggestions,
+            record_ids=retrieved.record_ids,
+        )
 
 
 def _flatten(content) -> str:

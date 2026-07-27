@@ -6,6 +6,7 @@ Run:  uvicorn api.main:app --host 0.0.0.0 --port 8000
 Retrieval is built during lifespan startup, before uvicorn accepts connections,
 so the first real request never pays the ~40s BM25 + cross-encoder cost.
 """
+import asyncio
 import logging
 import json
 import os
@@ -13,10 +14,11 @@ import statistics
 import time
 import uuid
 from collections import deque
+from typing import Literal
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse, StreamingResponse
+from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
 from pydantic import BaseModel, Field
 from slowapi import Limiter
 from slowapi.errors import RateLimitExceeded
@@ -55,13 +57,54 @@ limiter = Limiter(
 )
 
 
+async def _keep_warm(url: str, interval_seconds: int):
+    """Hit our own public health URL on a schedule.
+
+    Railway's hobby tier spins an idle instance down; the next visitor then
+    pays the full container + BM25 + cross-encoder start (~15s to first token,
+    which is what the UX audit measured). Inbound traffic is what resets that
+    idle timer, so the ping has to go out through the public URL -- calling the
+    handler in-process would keep nothing awake.
+
+    Opt-in via KEEPALIVE_URL because it is only correct on a single always-on
+    instance: pointed at a load-balanced deployment it wakes an arbitrary
+    replica, and on a paid always-on tier it is pure noise. An external uptime
+    pinger does the same job with none of those caveats -- this exists so the
+    fix is available without standing one up.
+    """
+    import httpx
+
+    await asyncio.sleep(interval_seconds)
+    async with httpx.AsyncClient(timeout=20) as client:
+        while True:
+            try:
+                await client.get(url)
+            except Exception as exc:  # a failed ping must never kill the app
+                logger.warning("Keep-warm ping failed: %s", exc)
+            await asyncio.sleep(interval_seconds)
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     logger.info("Warming retrieval before accepting traffic...")
     agent_config = build_shared_config()
     app.state.chat = ChatService(agent_config, api_config)
+
+    warm_task = None
+    if api_config.keepalive_url:
+        warm_task = asyncio.create_task(
+            _keep_warm(api_config.keepalive_url, api_config.keepalive_interval_seconds)
+        )
+        logger.info(
+            "Keep-warm ping every %ss -> %s",
+            api_config.keepalive_interval_seconds, api_config.keepalive_url,
+        )
+
     logger.info("Ready. CORS origins: %s", list(api_config.allowed_origins))
     yield
+
+    if warm_task:
+        warm_task.cancel()
 
 
 app = FastAPI(
@@ -191,6 +234,35 @@ async def health(request: Request):
     return {"status": "ok", "active_sessions": service.active_sessions}
 
 
+WIDGET_PATH = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+    "widget", "ct-chat-widget.js",
+)
+
+
+@app.get("/widget.js")
+async def widget_js(request: Request):
+    """Serve the reference widget from this origin.
+
+    A classic <script> tag is not subject to CORS, so a site can embed the
+    widget straight from here without hosting the file or adding a build step:
+
+        <script src="https://<this-host>/widget.js" data-api="https://<this-host>"></script>
+
+    The site's own origin still has to appear in CORS_ALLOWED_ORIGINS -- that
+    governs the XHR the widget then makes, which is the part that matters.
+    """
+    if not os.path.isfile(WIDGET_PATH):
+        return _error(request, 404, "Widget not available on this deployment.")
+    return FileResponse(
+        WIDGET_PATH,
+        media_type="application/javascript",
+        # Short: long enough to spare repeat visitors the fetch, short enough
+        # that a fix reaches embedding sites the same day without a cache bust.
+        headers={"Cache-Control": "public, max-age=300"},
+    )
+
+
 @app.get("/metrics")
 async def metrics(request: Request):
     """Rolling p50/p95 latency and error rate over the last _METRICS_WINDOW
@@ -221,8 +293,40 @@ async def chat(request: Request, body: ChatRequest):
     # An explicit Response, not a dict: slowapi injects the X-RateLimit-* headers
     # into the returned object and raises if it isn't a Response.
     return JSONResponse(
-        {"session_id": result.session_id, "answer": result.answer, "cached": result.cached}
+        {
+            "session_id": result.session_id,
+            "answer": result.answer,
+            "cached": result.cached,
+            "suggestions": list(result.suggestions),
+            "answer_id": result.answer_id,
+        }
     )
+
+
+class FeedbackRequest(BaseModel):
+    answer_id: str = Field(min_length=1, max_length=64)
+    verdict: Literal["up", "down"]
+    comment: str = Field(default="", max_length=1000)
+
+
+@app.post("/api/feedback")
+@limiter.limit(api_config.rate_limit_sustained)
+async def feedback(request: Request, body: FeedbackRequest):
+    """Rate one answer.
+
+    The client sends only the opaque answer_id it was given; the question, the
+    answer and the records retrieved are looked up server-side. That keeps
+    retrieval internals off the wire and means a rating cannot be forged to
+    describe a turn that never happened.
+    """
+    service = getattr(app.state, "chat", None)
+    if service is None:
+        return _error(request, 503, "warming")
+    if not service.record_feedback(body.answer_id, body.verdict, body.comment):
+        # Expired or never issued. Not worth an alarming message -- the rating
+        # is lost either way and the user does not need to know why.
+        return _error(request, 404, "That message is no longer available to rate.")
+    return JSONResponse({"ok": True})
 
 
 @app.post("/api/chat/stream")

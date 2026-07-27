@@ -39,15 +39,22 @@ class FakeChat:
     given, so a test can see exactly which message and which history would
     have reached the model."""
 
-    def __init__(self, answer="grounded answer"):
+    def __init__(self, answer="grounded answer", suggestions=(), record_ids=()):
         self.answer = answer
+        self.suggestions = tuple(suggestions)
+        self.record_ids = tuple(record_ids)
         self.turns = []  # (history, message) per call
 
     async def stream(self, history, message):
         self.turns.append((list(history), message))
         yield "context", "RETRIEVED-CONTEXT-INTERNAL-ONLY"
         yield "delta", self.answer
-        yield "done", Answer(text=self.answer, grounded=True)
+        yield "done", Answer(
+            text=self.answer,
+            grounded=True,
+            suggestions=self.suggestions,
+            record_ids=self.record_ids,
+        )
 
     @property
     def call_count(self):
@@ -416,3 +423,74 @@ def test_cache_hits_cannot_fake_a_recovery():
 
     assert cached.cached is True
     assert service.is_llm_degraded is True
+
+
+# ── Follow-up chips ─────────────────────────────────────────────────────────
+
+def test_follow_up_chips_reach_the_caller():
+    chips = ("What happens during a free consultation?", "How much does it cost?")
+    service = build_service(FakeChat(suggestions=chips))
+
+    done = next(e for e in events(service, "what do you do") if e["type"] == "done")
+
+    assert done["suggestions"] == list(chips)
+
+
+def test_a_cache_served_answer_keeps_its_chips():
+    """The chips are computed from retrieval, which is exactly what the cache
+    skips. Cached with the answer, or the second asker gets a bare reply."""
+    chat = FakeChat(suggestions=("How much does it cost?",))
+    service = build_service(chat)
+
+    first = answer(service, "what do you do")
+    calls = chat.call_count
+    second = answer(service, "what do you do")
+
+    assert second.cached is True
+    assert chat.call_count == calls, "the cache re-ran the model"
+    assert second.suggestions == first.suggestions == ("How much does it cost?",)
+
+
+# ── Answer feedback ─────────────────────────────────────────────────────────
+
+def test_every_answer_comes_with_an_id_that_can_be_rated():
+    service = build_service(FakeChat())
+    result = answer(service, "what do you do")
+
+    assert result.answer_id
+    assert service.record_feedback(result.answer_id, "down") is True
+
+
+def test_two_answers_get_different_ids():
+    """A shared id would attach every rating to whichever turn was last."""
+    service = build_service(FakeChat())
+    first = answer(service, "what do you do")
+    second = answer(service, "and the fees?", first.session_id)
+
+    assert first.answer_id != second.answer_id
+
+
+def test_a_rating_for_an_unknown_answer_is_refused_not_recorded():
+    """Otherwise anyone can POST arbitrary ids and the feedback log fills with
+    ratings that describe no real turn."""
+    service = build_service(FakeChat())
+    assert service.record_feedback("never-issued", "down") is False
+
+
+def test_a_rating_records_the_question_and_the_records_behind_the_answer(caplog):
+    """A thumbs-down is only actionable if it says which KB records produced
+    the answer -- that is the difference between "someone was unhappy" and a
+    specific record to fix."""
+    service = build_service(
+        FakeChat(answer="We can help.", record_ids=("qa2-ct-services-overview-0",))
+    )
+    result = answer(service, "what services do you offer")
+
+    with caplog.at_level("INFO"):
+        service.record_feedback(result.answer_id, "down", comment="too vague")
+
+    logged = "\n".join(caplog.messages)
+    assert "FEEDBACK" in logged
+    assert "qa2-ct-services-overview-0" in logged
+    assert "what services do you offer" in logged
+    assert "too vague" in logged

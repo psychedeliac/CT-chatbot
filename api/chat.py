@@ -15,6 +15,7 @@ weaker compliance guarantees than the internal UIs.
 """
 import asyncio
 import hashlib
+import json
 import logging
 import secrets
 import time
@@ -56,6 +57,8 @@ class TurnResult:
     session_id: str
     answer: str
     cached: bool
+    suggestions: tuple[str, ...] = ()
+    answer_id: str = ""
 
 
 def new_session_id() -> str:
@@ -100,6 +103,13 @@ class ChatService:
         self._answers = TTLCache(
             maxsize=api_config.answer_cache_size,
             ttl=api_config.answer_cache_ttl_seconds,
+        )
+        # answer_id -> the turn it identifies, for feedback that arrives later.
+        # Bounded on both axes for the same reason sessions are: a public
+        # endpoint must not grow a dict per request forever.
+        self._rated = TTLCache(
+            maxsize=api_config.feedback_cache_size,
+            ttl=api_config.feedback_ttl_seconds,
         )
         self._semaphore = asyncio.Semaphore(api_config.max_concurrent_turns)
         # Outcome of the last few LLM turns (True=ok). /health reads this so a
@@ -192,9 +202,19 @@ class ChatService:
 
         cached = self._cached_answer(message) if is_new else None
         if cached is not None:
-            self._record_cached_turn(resolved_id, message, cached)
-            yield {"type": "delta", "text": cached}
-            yield {"type": "done", "answer": cached, "cached": True}
+            answer, suggestions = cached
+            self._record_cached_turn(resolved_id, message, answer)
+            answer_id = self._remember_for_feedback(
+                session_id=resolved_id, question=message, answer=answer, record_ids=()
+            )
+            yield {"type": "delta", "text": answer}
+            yield {
+                "type": "done",
+                "answer": answer,
+                "cached": True,
+                "suggestions": list(suggestions),
+                "answer_id": answer_id,
+            }
             return
 
         try:
@@ -218,6 +238,8 @@ class ChatService:
         history = self._history.get(session_id, [])
 
         answer = ""
+        suggestions: tuple[str, ...] = ()
+        record_ids: tuple[str, ...] = ()
         try:
             async for kind, payload in self._chat.stream(history, scrubbed):
                 # The retrieved context is for QA UIs only -- it must never be
@@ -226,6 +248,8 @@ class ChatService:
                     yield {"type": "delta", "text": payload}
                 elif kind == "done":
                     answer = apply_pii_response_guard(payload.text, self._config)
+                    suggestions = payload.suggestions
+                    record_ids = payload.record_ids
         except Exception:
             self._record_llm_outcome(ok=False)
             raise
@@ -233,8 +257,17 @@ class ChatService:
 
         self._append_turn(session_id, scrubbed, answer)
         if is_new:
-            self._store_answer(message, answer)
-        yield {"type": "done", "answer": answer, "cached": False}
+            self._store_answer(message, answer, suggestions)
+        answer_id = self._remember_for_feedback(
+            session_id=session_id, question=scrubbed, answer=answer, record_ids=record_ids
+        )
+        yield {
+            "type": "done",
+            "answer": answer,
+            "cached": False,
+            "suggestions": list(suggestions),
+            "answer_id": answer_id,
+        }
 
     def _append_turn(self, session_id: str, message: str, answer: str) -> None:
         """Record the exchange, bounded to the window RagChat replays -- older
@@ -246,29 +279,73 @@ class ChatService:
     async def answer(self, message: str, session_id: str | None) -> TurnResult:
         """Non-streaming turn. Drains stream_turn so both paths share one implementation."""
         resolved_id = session_id or ""
-        final = ""
-        cached = False
+        done: dict = {}
         async for event in self.stream_turn(message, session_id):
             if event["type"] == "session":
                 resolved_id = event["session_id"]
             elif event["type"] == "done":
-                final = str(event["answer"])
-                cached = bool(event["cached"])
-        return TurnResult(session_id=resolved_id, answer=final, cached=cached)
+                done = event
+        return TurnResult(
+            session_id=resolved_id,
+            answer=str(done.get("answer", "")),
+            cached=bool(done.get("cached")),
+            suggestions=tuple(done.get("suggestions", ())),
+            answer_id=str(done.get("answer_id", "")),
+        )
 
     # ── Answer cache ──────────────────────────────────────────────────────────
     # Only first turns are cacheable: a follow-up's answer depends on history
     # that is unique to its session, so keying it on the message alone would
     # serve one user's context to another.
 
-    def _cached_answer(self, message: str) -> str | None:
+    def _cached_answer(self, message: str) -> tuple[str, tuple[str, ...]] | None:
         if not self._api.answer_cache_enabled:
             return None
         return self._answers.get(_cache_key(message))
 
-    def _store_answer(self, message: str, answer: str) -> None:
+    def _store_answer(self, message: str, answer: str, suggestions: tuple[str, ...]) -> None:
+        """The follow-up chips are cached with their answer. Recomputing them
+        would mean re-running retrieval, which is most of what the cache exists
+        to skip."""
         if self._api.answer_cache_enabled:
-            self._answers[_cache_key(message)] = answer
+            self._answers[_cache_key(message)] = (answer, suggestions)
+
+    # ── Feedback trail ────────────────────────────────────────────────────────
+    # A thumbs-down is only actionable with the question and the records that
+    # produced the answer. Held in a bounded TTL cache and looked up when the
+    # rating arrives, so the client never has to echo back (or be trusted with)
+    # the retrieval internals.
+
+    def _remember_for_feedback(
+        self, session_id: str, question: str, answer: str, record_ids: tuple[str, ...]
+    ) -> str:
+        answer_id = secrets.token_urlsafe(12)
+        self._rated[answer_id] = {
+            "session_id": session_id,
+            "question": question,
+            "answer": answer,
+            "record_ids": list(record_ids),
+        }
+        return answer_id
+
+    def record_feedback(self, answer_id: str, verdict: str, comment: str = "") -> bool:
+        """Log a rating against the turn it refers to. False if the id is
+        unknown or has aged out -- the caller turns that into a 404 rather than
+        writing an unattributable rating.
+
+        ponytail: structured log line, not a table. Railway retains stdout, and
+        a JSONL grep answers "what did people mark wrong this week" for as long
+        as this is one instance. Point it at a real store when ratings start
+        driving KB work.
+        """
+        turn = self._rated.get(answer_id)
+        if turn is None:
+            return False
+        logger.info(
+            "FEEDBACK %s",
+            json.dumps({"verdict": verdict, "comment": comment[:500], **turn}),
+        )
+        return True
 
     def _record_cached_turn(self, session_id: str, message: str, answer: str) -> None:
         """

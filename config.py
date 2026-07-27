@@ -145,6 +145,22 @@ class APIConfig:
     answer_cache_size: int = 512
     answer_cache_ttl_seconds: int = 1800
 
+    # ── Answer feedback ───────────────────────────────────────────────────────
+    # Each answer gets an id the widget can rate later. The mapping from id to
+    # (question, answer, retrieved records) is held only long enough for a
+    # rating to plausibly arrive -- a user who is going to click thumbs-down
+    # does it while reading, not an hour later. Bounded for the same reason
+    # sessions are: this is a public endpoint.
+    feedback_cache_size: int = 2048
+    feedback_ttl_seconds: int = 3600
+
+    # ── Keep-warm ─────────────────────────────────────────────────────────────
+    # Set KEEPALIVE_URL to this service's own public /health URL to stop an
+    # idle-tier instance spinning down (see api/main.py:_keep_warm for when
+    # this is and isn't the right tool). Empty = off.
+    keepalive_url: str = ""
+    keepalive_interval_seconds: int = 600
+
 
 def load_api_config() -> APIConfig:
     """Build APIConfig from env vars, falling back to the dataclass defaults."""
@@ -174,6 +190,12 @@ def load_api_config() -> APIConfig:
         answer_cache_enabled=os.getenv("ANSWER_CACHE_ENABLED", "true").lower() == "true",
         answer_cache_size=_int("ANSWER_CACHE_SIZE", defaults.answer_cache_size),
         answer_cache_ttl_seconds=_int("ANSWER_CACHE_TTL_SECONDS", defaults.answer_cache_ttl_seconds),
+        feedback_cache_size=_int("FEEDBACK_CACHE_SIZE", defaults.feedback_cache_size),
+        feedback_ttl_seconds=_int("FEEDBACK_TTL_SECONDS", defaults.feedback_ttl_seconds),
+        keepalive_url=os.getenv("KEEPALIVE_URL", defaults.keepalive_url),
+        keepalive_interval_seconds=_int(
+            "KEEPALIVE_INTERVAL_SECONDS", defaults.keepalive_interval_seconds
+        ),
     )
 
     if "*" in config.allowed_origins:
