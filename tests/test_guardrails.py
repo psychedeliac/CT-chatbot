@@ -1,39 +1,129 @@
 """
-tests/test_guardrails.py — Regression checks for the guardrail layer.
+tests/test_guardrails.py — the compliance layer, checked on real inputs.
 
-Run directly (no pytest needed):
-    python tests/test_guardrails.py
+What changed from the previous version: every check on the context-formatting
+layer used to hand format_for_llm a Document the test itself had just built
+with the exact metadata the assertion was about. That proves the formatter can
+format; it proves nothing about whether a chunk that actually reaches the model
+in production carries its marker, which is the only thing that matters -- a
+NerdWallet article voiced as our own advice, or a fee record answered past its
+deflection, is a regulatory problem, not a formatting one.
 
-These cover defects that actually shipped, not hypotheticals.
+So the marker checks now sweep real queries through real retrieval and assert
+the invariant over whatever comes back: any chunk flagged in the corpus must
+arrive at the model with its warning attached. The sweep also asserts it saw
+each flag at least once, so the invariant can never pass vacuously.
+
+The pure-function checks (grounding backstop, prefix cleaner, PII allowlist)
+stay pure -- they have no corpus dependency and no useful integration form --
+but the adversarial cases are broadened past the ones that happened to ship.
 """
+import collections
+import json
 import os
-import sys
 
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import pytest
 
 from config import AgentConfig, PIIConfig, VALID_PII_STRATEGIES
-from core.utils import clean_response_prefix, apply_pii_query_guard, apply_pii_response_guard
+from core.utils import (
+    REFUSAL_MESSAGE,
+    clean_response_prefix,
+    enforce_grounding,
+    apply_pii_query_guard,
+    apply_pii_response_guard,
+)
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+KB_PATH = os.path.join(ROOT, "data", "enriched_knowledge_base.json")
 
 
-def test_company_phone_survives_pii_scrub() -> None:
-    """
-    The phone recognizer cannot tell the company's published line from a
-    private number. Before the allowlist, answers rendered as "call us at
-    [REDACTED_PHONE_NUMBER]" -- redacting the assistant's only call to action.
-    """
+# ── The grounding backstop ──────────────────────────────────────────────────
+# enforce_grounding is the deterministic half of the grounding rule: the prompt
+# asks the model to deflect when retrieval is empty, and this catches the turns
+# where it doesn't. Both directions are failures -- refusing a greeting reads as
+# broken, and letting a figure through is an unsubstantiated claim.
+
+@pytest.mark.parametrize("reply", [
+    "Debt settlement typically saves 40% and takes 24 months.",
+    "Most clients settle for around 50 cents on the dollar.",
+    "We can usually cut your MCA payment by $3,000 a month.",
+    "Expect the process to take 18-36 months.",
+    "Our success rate is 94%.",
+    "Islam is a monotheistic religion. " * 30,          # off-topic essay
+    "Here is a Python script:\n" + "print(1)\n" * 40,   # jailbreak-shaped
+])
+def test_an_ungrounded_substantive_answer_is_replaced(reply):
+    assert enforce_grounding(False, reply) == REFUSAL_MESSAGE
+
+
+@pytest.mark.parametrize("reply", [
+    "Hi there! I'm Corporate Turnaround's AI assistant. What's going on with your business?",
+    "I don't have the specifics on that, but our team does -- call 1-800-889-0232.",
+    "That's outside what we handle, but I'm glad to help with business debt.",
+    # The two figures config.system_prompt itself supplies to the model.
+    "Hello! Since 1998 we have worked with over 10,000 small business owners.",
+    # Crisis routing. A self-harm message grounds nothing in a debt KB, so this
+    # arrives here as an "ungrounded" reply -- and replacing it with the debt
+    # refusal is the one substitution that can never be allowed to happen.
+    "Please reach out to the 988 Suicide & Crisis Lifeline -- call or text 988, any time, 24/7.",
+    "Our client service line is 1-800-411-1113 if you're already enrolled.",
+])
+def test_a_short_figure_free_deflection_survives(reply):
+    assert enforce_grounding(False, reply) == reply
+
+
+def test_a_grounded_answer_is_never_touched():
+    """Retrieval succeeded, so figures in the reply came from the corpus."""
+    answer = "We negotiate within a budget you can afford -- over 10,000 owners since 1998."
+    assert enforce_grounding(True, answer) == answer
+
+
+def test_the_refusal_does_not_sound_like_a_search_engine():
+    """Users are talking to Corporate Turnaround, not to a retrieval system."""
+    assert "knowledge base" not in REFUSAL_MESSAGE.lower()
+    assert "context" not in REFUSAL_MESSAGE.lower()
+    assert "1-800-889-0232" in REFUSAL_MESSAGE
+
+
+# ── Response prefix cleanup ─────────────────────────────────────────────────
+
+@pytest.mark.parametrize("raw,expected", [
+    ("Based on the context, you have options.", "You have options."),
+    ("According to the documents, call us.", "Call us."),
+    ("BASED ON the provided information, we can help.", "We can help."),
+])
+def test_rag_preamble_is_stripped(raw, expected):
+    assert clean_response_prefix(raw) == expected
+
+
+@pytest.mark.parametrize("kept", [
+    "Basing your plan on revenue is wise.",
+    "According to your lender, the balance is due -- that's worth checking.",
+    "",
+])
+def test_sentences_that_merely_look_like_a_preamble_are_left_alone(kept):
+    assert clean_response_prefix(kept) == kept
+
+
+# ── PII (Presidio, real) ────────────────────────────────────────────────────
+
+def test_our_published_numbers_survive_the_scrub_and_a_private_one_does_not():
+    """The recognizer cannot tell our published line from a caller's cell.
+    Without the allowlist, answers rendered as "call us at [REDACTED_PHONE_NUMBER]"
+    -- redacting the assistant's only call to action."""
     from rag.guardrails.pii_detector import PIIGuardrail
 
-    config = PIIConfig(enabled=True, strategy="anonymize")
-    guardrail = PIIGuardrail(config)
-
+    guardrail = PIIGuardrail(PIIConfig(enabled=True, strategy="anonymize"))
     out = guardrail.scrub_response(
-        "Call us at 1-800-889-0232. Ask for Sarah Jenkins on 415-555-0134."
+        "Call us at 1-800-889-0232 or 1-800-411-1113. "
+        "Ask for Sarah Jenkins on 415-555-0134."
     )
-    assert "1-800-889-0232" in out, f"company line was redacted: {out}"
-    assert "415-555-0134" not in out, f"private number leaked: {out}"
+
+    assert "1-800-889-0232" in out and "1-800-411-1113" in out
+    assert "415-555-0134" not in out
 
 
-def test_pii_guards_noop_when_disabled() -> None:
+def test_both_guards_no_op_when_pii_is_switched_off():
     config = AgentConfig()
     config.pii = PIIConfig(enabled=False)
     text = "Call 1-800-889-0232 or 415-555-0134"
@@ -41,204 +131,136 @@ def test_pii_guards_noop_when_disabled() -> None:
     assert apply_pii_response_guard(text, config) == text
 
 
-def test_ingest_scrub_is_off_by_default() -> None:
-    """
-    Scrubbing this corpus at ingest redacted the company's own number, turned
+def test_ingest_time_scrubbing_stays_off():
+    """Scrubbing this corpus at ingest redacted the company's own number, turned
     "About Us" into "About [REDACTED_LOCATION]", and damaged 120 of 798 docs.
-    Checkpoints 2 and 3 stay on; checkpoint 1 must stay off by default.
-    """
+    Checkpoints 2 and 3 stay on; checkpoint 1 must stay off by default."""
     assert PIIConfig().scrub_on_ingest is False
 
 
-def test_invalid_pii_strategy_is_rejected() -> None:
-    """"redact" is not a strategy; it silently disabled PII guarding entirely."""
+def test_a_typo_in_the_strategy_name_cannot_silently_disable_pii_guarding():
+    """"redact" is not a strategy, and setting it disabled PII guarding
+    entirely rather than failing."""
     assert "redact" not in VALID_PII_STRATEGIES
     assert VALID_PII_STRATEGIES == {"anonymize", "block"}
 
 
-def test_clean_response_prefix_strips_rag_preamble() -> None:
-    assert clean_response_prefix("Based on the context, you have options.") == "You have options."
-    assert clean_response_prefix("According to the documents, call us.") == "Call us."
-    # Must not mangle a sentence that merely starts with a similar word.
-    assert clean_response_prefix("Basing your plan on revenue is wise.").startswith("Basing")
+# ── KB tagging (no retrieval) ───────────────────────────────────────────────
+
+def _kb_records():
+    with open(KB_PATH, encoding="utf-8") as f:
+        return json.load(f)
 
 
-def test_retrieved_context_wrapper_is_emitted() -> None:
-    """
-    The system prompt tells the model that background material arrives under
-    <retrieved_context>. Nothing emitted that tag, so the instruction referred
-    to something that never existed.
-    """
-    from langchain_core.documents import Document
-    from rag.pipeline import RetrievalPipeline, RetrievedChunk
-
-    chunk = RetrievedChunk(
-        document=Document(page_content="Title: T\nSection: S\n\nBody text here.", metadata={}),
-        rrf_rank=1,
-        rerank_score=1.0,
-    )
-    out = RetrievalPipeline.format_for_llm(None, [chunk])  # type: ignore[arg-type]
-    assert "<retrieved_context>" in out and "</retrieved_context>" in out
-
-
-def test_compliance_marker_added_for_flagged_sources() -> None:
-    from langchain_core.documents import Document
-    from rag.pipeline import RetrievalPipeline, RetrievedChunk
-
-    chunk = RetrievedChunk(
-        document=Document(
-            page_content="Title: T\nSection: S\n\nClient saved $40,000.",
-            metadata={"requires_disclaimer": True},
-        ),
-        rrf_rank=1,
-        rerank_score=1.0,
-    )
-    out = RetrievalPipeline.format_for_llm(None, [chunk])  # type: ignore[arg-type]
-    assert "COMPLIANCE:" in out
-
-
-def test_background_sources_are_marked_third_party() -> None:
-    """
-    KB v2: 270 of 402 records are third-party educational/regulatory content.
-    Unmarked, the LLM voices consumer-finance articles and IRS form details as
-    Corporate Turnaround's own advice. authority=background must add framing.
-    """
-    from langchain_core.documents import Document
-    from rag.pipeline import RetrievalPipeline, RetrievedChunk
-
-    chunk = RetrievedChunk(
-        document=Document(
-            page_content="Title: T\nSection: S\n\nYou can send a written dispute within 30 days.",
-            metadata={"authority": "background"},
-        ),
-        rrf_rank=1,
-        rerank_score=1.0,
-    )
-    out = RetrievalPipeline.format_for_llm(None, [chunk])  # type: ignore[arg-type]
-    assert "third-party educational material" in out
-
-
-def test_deflect_policy_tag_is_emitted() -> None:
-    """Scope-guard records (fees, savings, legal/bankruptcy advice) carry
-    answer_policy=deflect; the LLM must see the restriction inline."""
-    from langchain_core.documents import Document
-    from rag.pipeline import RetrievalPipeline, RetrievedChunk
-
-    chunk = RetrievedChunk(
-        document=Document(
-            page_content="Title: Q&A: fees\nSection: S\n\nA: Fees depend on your situation.",
-            metadata={"answer_policy": "deflect"},
-        ),
-        rrf_rank=1,
-        rerank_score=1.0,
-    )
-    out = RetrievalPipeline.format_for_llm(None, [chunk])  # type: ignore[arg-type]
-    assert "[POLICY: Restricted topic." in out
-
-
-def test_kb_v2_has_no_untagged_records() -> None:
-    """Every KB record must carry authority + answer_policy so the format
-    layer can enforce voice and scope. A missing tag silently downgrades a
-    scope guard to an ordinary chunk."""
-    import json
-
-    path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
-                        "data", "enriched_knowledge_base.json")
-    with open(path, encoding="utf-8") as f:
-        records = json.load(f)
-    untagged = [r["id"] for r in records
-                if not r.get("authority") or not r.get("answer_policy")]
+def test_every_record_carries_the_tags_the_format_layer_enforces_voice_with():
+    """A missing tag silently downgrades a scope guard to an ordinary chunk --
+    the LLM then answers a fee question with whatever the text implies."""
+    untagged = [
+        r["id"] for r in _kb_records()
+        if not r.get("authority") or not r.get("answer_policy")
+    ]
     assert not untagged, f"untagged records: {untagged[:5]}"
-    guards = [r for r in records if r.get("answer_policy") == "deflect"]
-    assert len(guards) >= 8, "scope-guard records missing from KB"
 
 
-def test_grounding_backstop_lets_safe_deflections_through() -> None:
-    """
-    The old backstop replaced EVERY empty-retrieval reply with one canned
-    refusal -- so 'hello' and 'I'm going to lose everything' both got a
-    robotic 'not in my knowledge base' answer. Short, figure-free deflections
-    (greeting, dodge, phone handoff) must survive.
-    """
-    from core.utils import enforce_grounding
-
-    greeting = "Hi there! I'm Corporate Turnaround's AI assistant. What's going on with your business?"
-    handoff = "I don't have the specifics on that, but our team does -- call us at 1-800-889-0232, the consultation is free."
-    assert enforce_grounding(False, greeting) == greeting
-    assert enforce_grounding(False, handoff) == handoff
+def test_the_scope_guards_are_still_in_the_corpus():
+    """Correct refusals are records here, not prompt rules. If a KB rebuild
+    drops them, fee/savings/legal questions stop being deflected and start
+    being answered."""
+    guards = [r for r in _kb_records() if r.get("answer_policy") == "deflect"]
+    assert len(guards) >= 8, f"only {len(guards)} scope-guard records left"
 
 
-def test_grounding_backstop_allows_the_prompt_supplied_company_figures() -> None:
-    """
-    The model introduces itself with the two figures config.system_prompt
-    hands it ("since 1998", "over 10,000 small business owners"). Those are
-    approved and substantiated, but the digit check read them as ungrounded
-    claims -- so plain 'hello' came back as the canned refusal, on the most
-    common first message a widget ever gets.
-    """
-    from core.utils import enforce_grounding
+# ── Context markers, over real retrieval ────────────────────────────────────
 
-    greeting = (
-        "Hello! I am an AI assistant for Corporate Turnaround. Since 1998 we have worked with "
-        "over 10,000 small business owners. What's going on with your business?"
-    )
-    assert enforce_grounding(False, greeting) == greeting
-
-
-def test_grounding_backstop_allows_the_988_crisis_lifeline() -> None:
-    """
-    A self-harm message retrieves nothing from a debt KB, so grounded=False --
-    and the prompt's crisis handling answers with the 988 Suicide & Crisis
-    Lifeline. Without allowlisting 988 the digit check read it as an ungrounded
-    figure and replaced the whole reply with the generic *debt* refusal, which
-    is the one substitution that must never happen: a suicidal user has to get
-    988, not a sales line.
-    """
-    from core.utils import enforce_grounding
-
-    crisis = (
-        "I'm really concerned about what you just said, and I want you to know you're not "
-        "alone. Please reach out to the 988 Suicide & Crisis Lifeline -- call or text 988, "
-        "any time, 24/7. They're there for exactly this."
-    )
-    assert enforce_grounding(False, crisis) == crisis
+# Queries chosen to pull each flagged category out of the live corpus: our own
+# canonical answers, third-party educational material, deflection topics, and
+# records the scrapers flagged as outcome/regulated claims.
+MARKER_SWEEP = [
+    "what services do you offer",
+    "what do you charge",
+    "how much will I save",
+    "what is a merchant cash advance",
+    "how does the program work",
+    "do i have to file bankruptcy",
+    "can you help with payroll taxes",
+    "creditors keep calling me all day what do i do",
+    "what is a confession of judgment",
+    "are you available in my state",
+    "can i get sued by my mca lender",
+    "i got three mca advances and my sales dropped hard",
+]
 
 
-def test_grounding_backstop_blocks_ungrounded_answers() -> None:
-    """A substantive parametric answer (figures, or essay-length) after empty
-    retrieval must still be replaced with the canned refusal."""
-    from core.utils import REFUSAL_MESSAGE, enforce_grounding
+@pytest.fixture(scope="module")
+def formatted_contexts():
+    """(chunk, formatted block) for every chunk the sweep actually sends to the
+    model. One retrieval pass, shared by the marker checks below."""
+    if not os.path.isdir(os.path.join(ROOT, "chroma_db")):
+        pytest.skip("no ingested store -- run scripts/ingest.py --loader enriched --force")
+    from rag.pipeline import get_pipeline
 
-    with_figures = "Debt settlement typically saves 40% and takes 24 months."
-    essay = "Islam is a monotheistic religion. " * 30
-    assert enforce_grounding(False, with_figures) == REFUSAL_MESSAGE
-    assert enforce_grounding(False, essay) == REFUSAL_MESSAGE
-
-
-def test_grounding_backstop_noop_when_retrieval_succeeded() -> None:
-    from core.utils import enforce_grounding
-
-    answer = "We negotiate with your creditors within a budget you can afford, saving you $10,000."
-    assert enforce_grounding(True, answer) == answer
+    pipeline = get_pipeline(AgentConfig())
+    pairs = []
+    for query in MARKER_SWEEP:
+        for chunk in pipeline.retrieve(query):
+            pairs.append((query, chunk, pipeline.format_for_llm([chunk])))
+    return pairs
 
 
-def test_refusal_message_never_mentions_knowledge_base() -> None:
-    """Users are talking to Corporate Turnaround, not to a search engine."""
-    from core.utils import REFUSAL_MESSAGE
+@pytest.mark.corpus
+def test_the_sweep_is_not_vacuous(formatted_contexts):
+    """Guards the three checks below: if retrieval stopped returning flagged
+    content they would pass by having nothing to check."""
+    seen = collections.Counter()
+    for _, chunk, _ in formatted_contexts:
+        meta = chunk.document.metadata
+        seen["background"] += meta.get("authority") == "background"
+        seen["deflect"] += meta.get("answer_policy") == "deflect"
+        seen["disclaimer"] += bool(meta.get("requires_disclaimer"))
+    assert seen["background"] and seen["deflect"] and seen["disclaimer"], seen
 
-    assert "knowledge base" not in REFUSAL_MESSAGE.lower()
-    assert "1-800-889-0232" in REFUSAL_MESSAGE
+
+@pytest.mark.corpus
+def test_third_party_material_is_never_handed_over_as_our_own_voice(formatted_contexts):
+    """270 of the corpus's records are consumer-finance articles, IRS pages and
+    SBA guidance. Unmarked, the model states their figures and thresholds as
+    Corporate Turnaround's advice."""
+    for query, chunk, block in formatted_contexts:
+        if chunk.document.metadata.get("authority") == "background":
+            assert "third-party educational material" in block, (
+                f"{query!r} -> {chunk.document.metadata.get('record_id')} "
+                f"reached the model unmarked"
+            )
 
 
-if __name__ == "__main__":
-    failures = 0
-    for name, fn in sorted(globals().items()):
-        if name.startswith("test_") and callable(fn):
-            try:
-                fn()
-                print(f"  PASS  {name}")
-            except AssertionError as exc:
-                failures += 1
-                print(f"  FAIL  {name}: {exc}")
-    print(f"\n{'All guardrail checks passed.' if not failures else f'{failures} failure(s).'}")
-    sys.exit(1 if failures else 0)
+@pytest.mark.corpus
+def test_restricted_topics_arrive_with_their_restriction_attached(formatted_contexts):
+    """Fees, savings estimates and legal conclusions are answerable only to the
+    extent the canonical deflection says. The record alone reads like an
+    ordinary answer; the POLICY tag is what stops the model elaborating."""
+    for query, chunk, block in formatted_contexts:
+        if chunk.document.metadata.get("answer_policy") == "deflect":
+            assert "[POLICY: Restricted topic." in block, (
+                f"{query!r} -> deflection record sent without its policy tag"
+            )
+
+
+@pytest.mark.corpus
+def test_outcome_claims_arrive_with_their_compliance_warning(formatted_contexts):
+    """The scrapers flagged these and nothing read the flag for a while, so
+    specific outcomes reached the model indistinguishable from explanation --
+    which is how a past result becomes an implied promise."""
+    for query, chunk, block in formatted_contexts:
+        if chunk.document.metadata.get("requires_disclaimer"):
+            assert "COMPLIANCE:" in block, (
+                f"{query!r} -> outcome claim sent without its disclaimer"
+            )
+
+
+@pytest.mark.corpus
+def test_the_context_wrapper_the_system_prompt_names_actually_exists(formatted_contexts):
+    """The prompt tells the model its background material arrives under
+    <retrieved_context>. For a while nothing emitted that tag, so the
+    instruction referred to something that never existed."""
+    for _, _, block in formatted_contexts:
+        assert "<retrieved_context>" in block and "</retrieved_context>" in block

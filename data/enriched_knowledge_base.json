@@ -7295,17 +7295,22 @@
     "title": "Q&A: What can Corporate Turnaround actually do for my business? (services overview)",
     "section_heading": "Q: my business is in a massive hole and payments are killing us what can you guys actually do for me to fix this",
     "variant_questions": [
+      "what services do you offer",
+      "tell me all the services you provide, not just MCAs",
+      "what do you help with besides merchant cash advances",
+      "list everything corporate turnaround does",
+      "what kinds of debt can you help with",
       "im so overwhelmed my shop owes money to different lenders and suppliers i dont even know where to start looking for help what are my options",
       "i got 4 business loans i cant pay anymore what do i do right now",
       "what are my realistic options here besides just going bankrupt",
       "im totally stuck with my business debt and dont know what to do next what are my actual options"
     ],
-    "chunk_text": "A: Corporate Turnaround specializes in getting small businesses out of debt without bankruptcy. Our services include: business debt negotiation and settlement within a monthly budget you can afford; MCA debt relief for cash advances with crushing daily payments; full business restructuring; creditor harassment protection; SBA and bank loan workouts; and business tax debt resolution with specialists who negotiate directly with the IRS. If customers owe you money, we also offer collection help through vetted partners, plus free business tools and counseling through our SCORE alliance. Every path starts the same way: a free, no-obligation consultation where we review your situation and lay out realistic options — 1-800-889-0232.\n\nAlso asked: im so overwhelmed my shop owes money to different lenders and suppliers i dont even know where to start looking for help what are my options\nAlso asked: i got 4 business loans i cant pay anymore what do i do right now\nAlso asked: what are my realistic options here besides just going bankrupt\nAlso asked: im totally stuck with my business debt and dont know what to do next what are my actual options",
+    "chunk_text": "A: Corporate Turnaround specializes in getting small businesses out of debt without bankruptcy. Our services include: business debt negotiation and settlement within a monthly budget you can afford; MCA debt relief for cash advances with crushing daily payments; full business restructuring; creditor harassment protection; SBA and bank loan workouts; and business tax debt resolution with specialists who negotiate directly with the IRS. If customers owe you money, we also offer collection help through vetted partners, plus free business tools and counseling through our SCORE alliance. Every path starts the same way: a free, no-obligation consultation where we review your situation and lay out realistic options — 1-800-889-0232.\n\nAlso asked: what services do you offer\nAlso asked: tell me all the services you provide, not just MCAs\nAlso asked: what do you help with besides merchant cash advances\nAlso asked: list everything corporate turnaround does\nAlso asked: what kinds of debt can you help with\nAlso asked: im so overwhelmed my shop owes money to different lenders and suppliers i dont even know where to start looking for help what are my options\nAlso asked: i got 4 business loans i cant pay anymore what do i do right now\nAlso asked: what are my realistic options here besides just going bankrupt\nAlso asked: im totally stuck with my business debt and dont know what to do next what are my actual options",
     "requires_disclaimer": false,
     "authority": "canonical",
     "answer_policy": "answer",
     "context_prefix": "Overview of every Corporate Turnaround service line: debt negotiation, MCA relief, restructuring, creditor harassment protection, SBA workouts, tax resolution, and collection help.",
-    "chunk_tokens": 287
+    "chunk_tokens": 355
   },
   {
     "id": "qa2-ct-mca-bridge-0",

@@ -140,9 +140,19 @@ def clean_response_prefix(text: str) -> str:
     if not text:
         return text
         
-    # Pattern to match "Based on <something>," or "According to <something>," at the beginning of the text,
-    # followed by optional spaces and a capitalized letter.
-    pattern = r"^\s*(based\s+on|according\s+to)\s+[^,.:\n]+,\s*"
+    # "Based on <retrieval-ish noun>," / "According to <retrieval-ish noun>,"
+    # at the very start of the reply.
+    #
+    # The object has to be named. Matching any object ([^,.:\n]+) also ate
+    # legitimate attributions the assistant makes in this domain -- "According
+    # to your lender, the balance is due" came out as "The balance is due",
+    # silently dropping whose claim it was.
+    pattern = (
+        r"^\s*(based\s+on|according\s+to)\s+"
+        r"(the\s+|your\s+)?(provided\s+|retrieved\s+|available\s+)?"
+        r"(context|information|documents?|sources?|knowledge\s+base|text|material)"
+        r"[^,.:\n]*,\s*"
+    )
     
     cleaned = re.sub(pattern, "", text, flags=re.IGNORECASE)
     

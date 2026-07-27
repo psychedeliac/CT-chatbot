@@ -264,13 +264,22 @@ class RetrievalPipeline:
             ]
             trace.reranked = sorted(scored, key=lambda c: c.rerank_score, reverse=True)
 
-        trace.final = self._dedupe_by_record(c for c in trace.reranked if c.passed_gate)[:k]
+        trace.final = self._dedupe_by_record(
+            (c for c in trace.reranked if c.passed_gate), trace.reranked
+        )[:k]
         return trace
 
     @staticmethod
-    def _dedupe_by_record(chunks) -> list[RetrievedChunk]:
+    def _is_variants_only(text: str) -> bool:
+        """True for the answer-less sibling chunk that holds nothing but the
+        baked-in `Also asked:` variant phrasings (scripts/build_kb_v2.py)."""
+        lines = [ln.strip() for ln in text.splitlines() if ln.strip()]
+        return bool(lines) and all(ln.startswith("Also asked:") for ln in lines)
+
+    @classmethod
+    def _dedupe_by_record(cls, chunks, siblings=()) -> list[RetrievedChunk]:
         """
-        Keep at most one chunk per source record_id.
+        Keep at most one chunk per source record_id -- the one with answer text.
 
         trace.reranked is sorted by score descending, so the first chunk seen
         per record_id is the best-scoring one. Without this, a long canonical
@@ -279,7 +288,22 @@ class RetrievalPipeline:
         answer), one dead weight (just the baked-in "Also asked:" variants,
         no answer text). A blank/missing record_id (older pre-migration data,
         or a source with no id) is never deduped against anything else.
+
+        The variants chunk is exactly what an informally-phrased query matches
+        best, so it routinely outscores its own answer chunk and, without the
+        substitution below, evicted it -- handing the LLM a list of questions
+        and no answer. A variants chunk passing the gate is itself proof the
+        record is relevant, so its answer sibling is substituted in even if
+        that sibling scored below the gate.
         """
+        best_answer: dict[str, RetrievedChunk] = {}
+        for chunk in siblings:
+            record_id = chunk.document.metadata.get("record_id") or ""
+            if record_id and record_id not in best_answer and not cls._is_variants_only(
+                chunk.document.page_content
+            ):
+                best_answer[record_id] = chunk
+
         seen: set[str] = set()
         deduped: list[RetrievedChunk] = []
         for chunk in chunks:
@@ -288,6 +312,8 @@ class RetrievalPipeline:
                 if record_id in seen:
                     continue
                 seen.add(record_id)
+                if cls._is_variants_only(chunk.document.page_content):
+                    chunk = best_answer.get(record_id, chunk)
             deduped.append(chunk)
         return deduped
 
